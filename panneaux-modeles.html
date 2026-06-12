@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panneaux muraux — Tous les modèles · Deutschconfort</title>
+<meta name="description" content="Tous les panneaux muraux Deutschconfort : effet pierre, béton, bois et ardoise. Reliefs 3D légers, prêts à peindre, intérieur & extérieur. Showroom à Casablanca.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  /* ---- Catalogue (fond clair, esprit nuancier) ---- */
+  .cat-intro{padding:118px 0 0}
+  .cat-intro .breadcrumb{margin-bottom:34px}
+  .cat-intro .eyebrow{color:var(--taupe);margin-bottom:22px}
+  .cat-intro h1{font-family:var(--serif);font-weight:400;font-size:clamp(48px,7vw,108px);line-height:.94}
+  .cat-intro h1 em{font-style:italic;color:var(--taupe)}
+  .cat-intro .lead{max-width:60ch;font-size:19px;color:var(--ink-soft);margin-top:28px}
+  .cat-meta{display:flex;gap:40px;margin-top:40px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:28px}
+  .cat-meta .m .n{font-family:var(--serif);font-size:30px;line-height:1}
+  .cat-meta .m .l{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe);margin-top:7px}
+
+  /* sticky filter bar */
+  .filterbar{position:sticky;top:84px;z-index:40;background:rgba(255,255,255,.9);backdrop-filter:blur(10px);border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:64px}
+  .filterbar .wrap{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding-top:16px;padding-bottom:16px}
+  .chip{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;padding:10px 18px;border:1px solid var(--line);background:transparent;color:var(--ink-soft);cursor:pointer;transition:all .2s;font-family:var(--sans);white-space:nowrap}
+  .chip:hover{border-color:var(--ink)}
+  .chip.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .chip .c{opacity:.5;margin-left:7px}
+
+  /* catalogue grid on crisp white */
+  .catalogue{background:#fff;padding:56px 0 110px}
+  .pgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:30px 24px}
+  .pcard{display:block;background:transparent;cursor:pointer}
+  .pcard-ph{position:relative;overflow:hidden;aspect-ratio:3/4;background:#F2EFE9;display:flex;align-items:center;justify-content:center}
+  .pcard-ph img{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .pcard:hover .pcard-ph img{transform:scale(1.05)}
+  .pcard-ph .slot-label{position:absolute;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe);text-align:center;padding:0 14px;line-height:1.7}
+  .pcard-ph .slot-label svg{display:block;margin:0 auto 12px;width:30px;height:30px;opacity:.32}
+  .pcard-ph .tag-new{position:absolute;top:12px;left:12px;background:var(--ink);color:var(--paper);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;padding:6px 10px}
+  .pcard-ph .req{position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,20,18,.55),transparent 55%);opacity:0;transition:opacity .3s;display:flex;align-items:flex-end;justify-content:center;padding-bottom:22px}
+  .pcard-ph .req span{color:#F5F2EC;font-size:11px;letter-spacing:.16em;text-transform:uppercase;border-bottom:1px solid rgba(245,242,236,.7);padding-bottom:3px}
+  .pcard:hover .pcard-ph .req{opacity:1}
+  .pcard-info{padding:16px 2px 0;display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-top:1px solid var(--line-soft);margin-top:0}
+  .pcard-name{font-family:var(--serif);font-size:22px;line-height:1.1}
+  .pcard-ref{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe);white-space:nowrap}
+  .pcard-desc{font-size:12.5px;letter-spacing:.04em;color:var(--ink-soft);opacity:.7;margin-top:4px}
+  .pcard.hide{display:none}
+
+  .fam-head{grid-column:1 / -1;padding:34px 0 4px;display:flex;align-items:baseline;gap:18px}
+  .fam-head:first-child{padding-top:0}
+  .fam-head h2{font-family:var(--serif);font-weight:400;font-size:clamp(26px,3vw,40px);line-height:1}
+  .fam-head .fl{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe)}
+  .fam-head.hide{display:none}
+
+  .help-note{background:var(--paper-2);border:1px solid var(--line);padding:26px 30px;display:flex;gap:22px;align-items:center;margin-top:10px}
+  .help-note .ic{font-size:26px;color:var(--taupe)}
+  .help-note p{font-size:14.5px;color:var(--ink-soft);line-height:1.6}
+  .help-note b{font-weight:400;color:var(--ink)}
+
+  /* ---- Installation / pose ---- */
+  .pose{background:#fff;padding:8px 0 120px}
+  .pose .phead{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;padding-bottom:30px}
+  .pose .eyebrow{color:var(--taupe);margin-bottom:18px}
+  .pose h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4vw,52px);line-height:1}
+  .pose-intro{font-size:17px;color:var(--ink-soft);max-width:48ch;line-height:1.6}
+  .pose-video{position:relative;background:#000;width:min(430px,86vw);aspect-ratio:9/16;margin:0 auto;overflow:hidden}
+  .pose-video video{width:100%;height:100%;object-fit:fill;display:block;background:#000}
+  .pose-video .ph-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:rgba(245,242,236,.78);text-align:center;padding:24px;pointer-events:none;background:rgba(20,20,18,.28)}
+  .pose-video .ph-fallback svg{width:54px;height:54px;opacity:.8}
+  .pose-video .ph-fallback span{font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+  .pose-cap{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe);margin:16px 0 54px}
+  .pose-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:0 30px}
+  .pstep{padding:24px 0;border-top:1px solid var(--ink)}
+  .pstep .pn{font-family:var(--serif);font-size:28px;color:var(--taupe);line-height:1}
+  .pstep h4{font-size:13.5px;letter-spacing:.08em;text-transform:uppercase;margin-top:12px;font-weight:400}
+  .pstep p{font-size:13px;color:var(--ink-soft);margin-top:9px;line-height:1.55}
+  .pose-foot{margin-top:42px;padding:26px 30px;background:var(--paper-2);border:1px solid var(--line);display:flex;gap:22px;align-items:center;flex-wrap:wrap;justify-content:space-between}
+  .pose-foot p{font-size:14.5px;color:var(--ink-soft);line-height:1.6;max-width:64ch}
+  .pose-foot b{font-weight:400;color:var(--ink)}
+
+  @media(max-width:1100px){.pgrid{grid-template-columns:repeat(3,1fr)}}
+  @media(max-width:900px){.pose-steps{grid-template-columns:1fr 1fr;gap:0 26px}}
+  @media(max-width:760px){
+    .pgrid{grid-template-columns:repeat(2,1fr);gap:26px 16px}
+    .filterbar{top:0}
+    .help-note{flex-direction:column;align-items:flex-start;gap:14px}
+    .pose-steps{grid-template-columns:1fr}
+  }
+  @media(max-width:420px){.pgrid{grid-template-columns:1fr 1fr;gap:20px 12px}}
+</style>
+<!-- @seo -->
+<meta name="geo.region" content="MA-CAS">
+<meta name="geo.placename" content="Casablanca">
+<meta name="geo.position" content="33.5883;-7.6114">
+<meta name="ICBM" content="33.5883, -7.6114">
+<link rel="canonical" href="https://deutsch-confort.com/panneaux-modeles.html">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_MA">
+<meta property="og:site_name" content="Deutschconfort">
+<meta property="og:title" content="Panneaux muraux — Tous les modèles">
+<meta property="og:description" content="Le catalogue complet des panneaux et habillages muraux Deutschconfort : reliefs 3D, tasseaux, aspect marbre, aspect bois, mosaïques. Casablanca.">
+<meta property="og:url" content="https://deutsch-confort.com/panneaux-modeles.html">
+<meta property="og:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Panneaux muraux — Tous les modèles">
+<meta name="twitter:description" content="Le catalogue complet des panneaux et habillages muraux Deutschconfort : reliefs 3D, tasseaux, aspect marbre, aspect bois, mosaïques. Casablanca.">
+<meta name="twitter:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
+</head>
+<body>
+
+<div class="util">
+  <div class="wrap">
+    <div class="left">Showroom — 11 Rue Hounaine, Bd d'Anfa · Casablanca</div>
+    <div class="right">
+      <a href="contact.html" data-catalogue>Télécharger le catalogue</a>
+      <a href="contact.html">Je suis professionnel</a>
+      <a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
+    <div class="navlinks">
+      <a href="collections.html" class="is-active">Collections</a>
+      <a href="simulateur.html">Simulateur</a>
+      <a href="visite-virtuelle.html">Visite virtuelle</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="navactions">
+      <span class="lang">FR</span>
+      <a class="btn btn-fill" href="contact.html" data-catalogue>Catalogue</a>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+<div class="mobile-menu">
+  <button class="mclose" aria-label="Fermer">×</button>
+  <a href="index.html">Accueil</a>
+  <a href="collections.html">Collections</a>
+  <a href="simulateur.html">Simulateur</a>
+  <a href="revetement-mural.html">Revêtement mural</a>
+  <a href="visite-virtuelle.html">Visite virtuelle</a>
+  <a href="realisations.html">Réalisations</a>
+  <a href="a-propos.html">À propos</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- intro -->
+<section class="cat-intro">
+  <div class="wrap">
+    <div class="breadcrumb"><a href="index.html">Accueil</a><span>/</span><a href="collections.html">Collections</a><span>/</span><a href="revetement-mural.html">Revêtement mural</a><span>/</span>Tous les modèles</div>
+    <div class="eyebrow">Catalogue · Panneaux muraux</div>
+    <h1>Tous nos <em>modèles</em></h1>
+    <p class="lead">L'intégralité de nos panneaux. Reliefs 3D, pierre, bois — à découvrir au showroom, échantillon en main.</p>
+    <div class="cat-meta">
+      <div class="m"><div class="n serif">5</div><div class="l">Familles</div></div>
+      <div class="m"><div class="n serif">12+</div><div class="l">Modèles</div></div>
+      <div class="m"><div class="n serif">∞</div><div class="l">Combinaisons</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- filter bar -->
+<div class="filterbar">
+  <div class="wrap">
+    <button class="chip active" data-f="all">Tous</button>
+    <button class="chip" data-f="3d">PIERRE</button>
+    <button class="chip" data-f="tasseaux">CIMENT/BÉTON</button>
+    <button class="chip" data-f="bois">Aspect bois</button>
+  </div>
+</div>
+
+<!-- catalogue grid -->
+<section class="catalogue">
+  <div class="wrap">
+    <div class="pgrid" id="pgrid">
+
+      <!-- FAMILLE : Reliefs 3D -->
+      <div class="fam-head" data-fam="3d"><h2 class="serif">Tout l'univers</h2><span class="fl">
+</span></div>
+      <a class="pcard" data-cat="3d" data-name="Moon 1" data-ref="DC-307" href="panneau-moon.html">
+        <div class="pcard-ph" style="background:#fff"><img src="images/panels/moon-product.png" alt="Panneau mural Moon 1 — relief sculpté chiselé, finition blanche" style="object-fit:contain;padding:6%"><span class="tag-new">Nouveau</span><span class="req"><span>Voir le modèle</span></span></div>
+        <div class="pcard-info"><span class="pcard-name">Moon 1</span><span class="pcard-ref">Réf. DC-307</span></div>
+        <div class="pcard-desc">118 × 48 cm · 0,57 m²</div>
+      </a>
+      <a class="pcard" data-cat="3d" data-name="Big Rock" data-ref="DC-301" href="panneau-big-rock.html">
+        <div class="pcard-ph" style="background:#fff"><img src="images/panels/big-rock-product.png" alt="Panneau mural Big Rock — effet pierre brute" style="object-fit:contain;padding:6%"><span class="tag-new">Vedette</span><span class="req"><span>Voir le modèle</span></span></div>
+        <div class="pcard-info"><span class="pcard-name">Big Rock</span><span class="pcard-ref">Réf. DC-301</span></div>
+        <div class="pcard-desc">120 × 60 &amp; 240 × 60 cm · deux formats</div>
+      </a>
+      <a class="pcard" data-cat="3d" data-name="Cubo" data-ref="DC-302" href="panneau-cubo.html">
+        <div class="pcard-ph" style="background:#fff"><img src="images/panels/cubo-product.png" alt="Panneau mural Cubo — mosaïque pierre éclatée" style="object-fit:contain;padding:6%"><span class="tag-new">Vedette</span><span class="req"><span>Voir le modèle</span></span></div>
+        <div class="pcard-info"><span class="pcard-name">Cubo</span><span class="pcard-ref">Réf. DC-302</span></div>
+        <div class="pcard-desc">240 × 50 cm · 1,20 m²</div>
+      </a>
+      <a class="pcard" data-cat="3d" data-name="Mattoni" data-ref="DC-303" href="panneau-mattoni.html">
+        <div class="pcard-ph" style="background:#fff"><img src="images/panels/mattoni-product.png" alt="Panneau mural Mattoni — ardoise à lamelles" style="object-fit:contain;padding:6%"><span class="tag-new">Vedette</span><span class="req"><span>Voir le modèle</span></span></div>
+        <div class="pcard-info"><span class="pcard-name">Mattoni</span><span class="pcard-ref">Réf. DC-303</span></div>
+        <div class="pcard-desc">200 × 50 cm · 1,00 m²</div>
+      </a>
+      <a class="pcard" data-cat="3d" data-name="Travertin" data-ref="DC-308">
+        <div class="pcard-ph" style="background:#fff"><img src="images/panels/travertin-product.png" alt="Panneau mural Travertin — aspect pierre travertin, veines verticales" style="object-fit:contain;padding:6%"><span class="tag-new">Nouveau</span><span class="req"><span>Demander ce modèle</span></span></div>
+        <div class="pcard-info"><span class="pcard-name">Travertin</span><span class="pcard-ref">Réf. DC-308</span></div>
+        <div class="pcard-desc">120 × 57 cm · 0,68 m²</div>
+      </a>
+      <a class="pcard" data-cat="3d" data-name="Brick" data-ref="DC-309">
+        <div class="pcard-ph" style="background:#fff"><img src="images/panels/brick-product.png" alt="Panneau mural Brick — lame de briques en relief, pierre éclatée" style="object-fit:contain;padding:6%"><span class="tag-new">Nouveau</span><span class="req"><span>Demander ce modèle</span></span></div>
+        <div class="pcard-info"><span class="pcard-name">Brick</span><span class="pcard-ref">Réf. DC-309</span></div>
+        <div class="pcard-desc">217 × 28 cm · 0,61 m²</div>
+      </a>
+
+      <!-- FAMILLE : Tasseaux & lambris -->
+      <div class="fam-head" data-fam="tasseaux"><h2 class="serif">Ciment / Béton</h2><span class="fl">
+</span></div>
+      <a class="pcard" data-cat="tasseaux" data-name="Cemento" data-ref="DC-C01" href="panneau-cemento.html">
+        <div class="pcard-ph" style="background:#fff"><img src="images/panels/cemento-product.png" alt="Panneau mural Cemento — effet béton banché" style="object-fit:contain;padding:6%"><span class="tag-new">Vedette</span><span class="req"><span>Voir le modèle</span></span></div>
+        <div class="pcard-info"><span class="pcard-name">Cemento</span><span class="pcard-ref">Réf. DC-C01</span></div>
+        <div class="pcard-desc">120 × 57 cm · 0,68 m²</div>
+      </a>
+      <a class="pcard" data-cat="tasseaux" data-name="Béton Brut" data-ref="DC-C02" href="panneau-beton-brut.html">
+        <div class="pcard-ph" style="background:#fff"><img src="images/panels/beton-brut-product.png" alt="Panneau mural Béton Brut — effet décoffrage" style="object-fit:contain;padding:6%"><span class="tag-new">Vedette</span><span class="req"><span>Voir le modèle</span></span></div>
+        <div class="pcard-info"><span class="pcard-name">Béton Brut</span><span class="pcard-ref">Réf. DC-C02</span></div>
+        <div class="pcard-desc">120 × 80 cm · 0,96 m²</div>
+      </a>
+
+      <!-- FAMILLE : Aspect bois -->
+      <div class="fam-head" data-fam="bois"><h2 class="serif">Aspect bois</h2><span class="fl">
+</span></div>
+      <a class="pcard" data-cat="bois" data-name="Bois Cubo" data-ref="DC-B01" href="panneau-bois-cubo.html">
+        <div class="pcard-ph" style="background:#fff"><img src="images/panels/bois-cubo-product.png" alt="Panneau mural Bois Cubo — damier de cubes de bois" style="object-fit:contain;padding:6%"><span class="tag-new">Vedette</span><span class="req"><span>Voir le modèle</span></span></div>
+        <div class="pcard-info"><span class="pcard-name">Bois Cubo</span><span class="pcard-ref">Réf. DC-B01</span></div>
+        <div class="pcard-desc">200 × 28 cm · 0,56 m²</div>
+      </a>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- installation / pose -->
+<section class="pose">
+  <div class="wrap">
+    <div class="phead">
+      <div>
+        <div class="eyebrow">Installation des panneaux</div>
+        <h2>La pose, en 5 étapes</h2>
+      </div>
+      <p class="pose-intro">Simple et rapide. Le panneau se colle et se visse directement sur béton, enduit ciment, bois ou marbre — sans structure intermédiaire.</p>
+    </div>
+
+    <div class="pose-video">
+      <video controls preload="metadata" poster="images/realisations/big-rock-04.jpg" playsinline data-src="media/pose-installation.mp4"></video>
+      <div class="ph-fallback">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M10 8.5l5 3.5-5 3.5z" fill="currentColor" stroke="none"/></svg>
+        <span>Vidéo de pose — bientôt disponible</span>
+      </div>
+    </div>
+    <p class="pose-cap">Vidéo explicative de la pose · Deutschconfort</p>
+
+    <div class="pose-steps">
+      <div class="pstep"><div class="pn">01</div><h4>Encollage</h4><p>Colle haute adhérence appliquée au pistolet, en cordons réguliers à l'arrière du panneau.</p></div>
+      <div class="pstep"><div class="pn">02</div><h4>Alignement</h4><p>Pose et ajustement à la règle de nivelage, pour un alignement parfait d'un panneau à l'autre.</p></div>
+      <div class="pstep"><div class="pn">03</div><h4>Vissage</h4><p>Six points percés et vissés, têtes enfoncées de 2 à 3 mm dans la matière.</p></div>
+      <div class="pstep"><div class="pn">04</div><h4>Joints</h4><p>Mastic acrylique entre les panneaux et sur les têtes de vis, pour uniformiser la surface.</p></div>
+      <div class="pstep"><div class="pn">05</div><h4>Peinture</h4><p>Peinture acrylique à l'eau pour extérieur (même en intérieur), dans la couleur de votre choix.</p></div>
+    </div>
+
+    <div class="pose-foot">
+      <p><b>Posé par vos soins ou par nos équipes.</b> La pose reste simple et rapide en autonomie — la découpe sur mesure permet d'épouser angles et retours. Vous préférez nous la confier ? Nos équipes partenaires, formées par Deutschconfort, s'en chargent.</p>
+      <a class="btn btn-fill" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20j'ai%20une%20question%20sur%20la%20pose%20des%20panneaux." target="_blank" rel="noopener">Une question sur la pose ?</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ctaband">
+  <div class="wrap">
+    <div class="eyebrow">Un coup de cœur ?</div>
+    <h2>Voyons-le <em>en vrai</em>.</h2>
+    <p>Passez au showroom pour découvrir les panneaux, échantillon en main — ou demandez un devis pour le modèle qui vous plaît.</p>
+    <div class="cta">
+      <a class="btn btn-light btn-fill" href="devis.html">Estimer mon projet · Devis</a>
+      <a class="btn btn-light" href="visite-virtuelle.html">Visiter le showroom</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
+        <p class="tag">Initiateur de tendances depuis 1999.</p>
+      </div>
+      <div class="fcol"><h6>Collections</h6><a href="revetement-mural.html">Revêtement mural</a><a href="sol-interieur.html">Sol intérieur</a><a href="sol-vinyle.html">Sol vinyle</a><a href="sol-exterieur.html">Sol extérieur</a></div>
+      <div class="fcol"><h6>Maison</h6><a href="a-propos.html">À propos</a><a href="realisations.html">Réalisations</a><a href="devis.html">Demander un devis</a><a href="contact.html">Contact</a><a href="contact.html">Je suis professionnel</a></div>
+      <div class="fcol"><h6>Suivez-nous</h6><a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a><a href="https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/">Facebook</a><a href="mailto:deutschconfort@gmail.com">Email</a></div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Deutschconfort · Tous droits réservés</span>
+      <span>Casablanca · Maroc</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+<script>
+  (function(){
+    var WA='https://wa.me/212614474221?text=';
+    // pre-fill WhatsApp per model
+    document.querySelectorAll('.pcard').forEach(function(c){
+      if(c.getAttribute('href')) return; // garde les liens vers une page produit
+      var name=c.dataset.name||'un modèle';
+      var ref=c.dataset.ref||'';
+      var msg='Bonjour Deutschconfort, je suis intéressé(e) par le panneau mural : '+name+(ref?(' ('+ref+')'):'')+'. Pouvez-vous m\'envoyer plus d\'informations et un devis ?';
+      c.setAttribute('href', WA+encodeURIComponent(msg));
+      c.setAttribute('target','_blank'); c.setAttribute('rel','noopener');
+    });
+    // filter
+    var chips=document.querySelectorAll('.filterbar .chip');
+    var cards=document.querySelectorAll('#pgrid .pcard');
+    var fams=document.querySelectorAll('#pgrid .fam-head');
+    chips.forEach(function(ch){
+      ch.addEventListener('click',function(){
+        chips.forEach(function(c){c.classList.remove('active')});
+        ch.classList.add('active');
+        var f=ch.dataset.f;
+        cards.forEach(function(card){
+          card.classList.toggle('hide',!(f==='all'||card.dataset.cat===f));
+        });
+        fams.forEach(function(fh){
+          // En "Tous", on masque les séparateurs de famille : une seule grille continue.
+          fh.classList.toggle('hide', f==='all' || fh.dataset.fam!==f);
+        });
+      });
+    });
+    // état initial : "Tous" actif → grille continue sans séparateurs
+    var act=document.querySelector('.filterbar .chip.active');
+    if(act) act.click();
+
+    // vidéo de pose : charger seulement si le fichier existe (évite une erreur tant qu'il n'est pas uploadé)
+    var pv=document.querySelector('.pose-video video');
+    var pf=document.querySelector('.pose-video .ph-fallback');
+    if(pv){
+      var src=pv.getAttribute('data-src');
+      if(src){
+        fetch(src,{method:'HEAD'}).then(function(r){
+          if(r.ok){
+            var s=document.createElement('source'); s.src=src; s.type='video/mp4';
+            pv.appendChild(s); pv.load();
+            pv.addEventListener('loadeddata',function(){ if(pf) pf.style.display='none'; });
+          }
+        }).catch(function(){/* fichier absent : on garde l'aperçu */});
+      }
+    }
+  })();
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Deutschconfort","image":"https://deutsch-confort.com/images/facade-hero.jpg","url":"https://deutsch-confort.com","telephone":"+212614474221","email":"deutschconfort@gmail.com","priceRange":"$","foundingDate":"1999","address":{"@type":"PostalAddress","streetAddress":"11 Rue Hounaine, Bd d'Anfa","addressLocality":"Casablanca","addressCountry":"MA"},"areaServed":"Maroc","sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"19:00"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"VideoObject","name":"Pose des panneaux muraux Deutschconfort","description":"Démonstration de la pose d'un panneau mural Deutschconfort, étape par étape.","thumbnailUrl":"https://deutsch-confort.com/images/realisations/big-rock-04.jpg","contentUrl":"https://deutsch-confort.com/media/pose-installation.mp4","uploadDate":"2026-06-12"}
+</script>
+</body>
+</html>

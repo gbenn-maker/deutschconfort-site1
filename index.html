@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deutschconfort — Revêtements de sol & mur haut de gamme · Casablanca</title>
+<meta name="description" content="Initiateur de tendances depuis 1999. Deutschconfort distribue des matériaux décoratifs haut de gamme : parquets, panneaux, sols vinyles, moulures. Casablanca.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  /* hero */
+  .hero{position:relative;height:90vh;min-height:640px;overflow:hidden}
+  .hero img{transform:scale(1.04)}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,20,18,.34),rgba(20,20,18,.06) 38%,rgba(20,20,18,.74)),linear-gradient(90deg,rgba(20,20,18,.6),rgba(20,20,18,.18) 44%,transparent 70%)}
+  .hero-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:8vh;color:#F5F2EC}
+  .hero-content .inner{max-width:760px}
+  .hero-content .eyebrow{opacity:.92}
+  .hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(56px,9vw,140px);line-height:.92;letter-spacing:.01em;margin:18px 0 0;text-shadow:0 2px 32px rgba(20,20,18,.5)}
+  .hero h1 em{font-style:italic;color:var(--sand)}
+  .hero p{max-width:500px;margin-top:26px;font-size:17px;font-weight:300;opacity:.95;text-shadow:0 1px 18px rgba(20,20,18,.55)}
+  .hero-cta{display:flex;gap:18px;margin-top:36px;flex-wrap:wrap}
+
+  /* manifesto */
+  .manifesto{padding:130px 0 110px;border-bottom:1px solid var(--line)}
+  .manifesto .wrap{display:grid;grid-template-columns:1fr 1.35fr;gap:80px;align-items:start}
+  .manifesto .eyebrow{color:var(--taupe)}
+  .manifesto h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4vw,58px);line-height:1.08;letter-spacing:.005em}
+  .manifesto h2 em{font-style:italic;color:var(--taupe)}
+  .manifesto .col p{font-size:18px;color:var(--ink-soft);max-width:46ch}
+  .manifesto .col p + p{margin-top:22px}
+  .stats{display:flex;gap:54px;margin-top:46px;flex-wrap:wrap}
+  .stat .n{font-family:var(--serif);font-size:46px;line-height:1}
+  .stat .l{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.6;margin-top:8px}
+
+  /* savoir-faire */
+  .savoir{background:var(--ink);color:var(--paper);margin-top:60px}
+  .savoir .inner{display:grid;grid-template-columns:1fr 1fr;min-height:84vh}
+  .savoir .ph{position:relative;overflow:hidden}
+  .savoir .txt{display:flex;flex-direction:column;justify-content:center;padding:90px clamp(48px,6vw,110px)}
+  .savoir .eyebrow{color:var(--sand)}
+  .savoir h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,4.4vw,62px);line-height:1.05;margin:22px 0 0}
+  .savoir h2 em{font-style:italic;color:var(--sand)}
+  .savoir .txt > p{color:rgba(245,242,236,.74);font-size:17px;margin-top:26px;max-width:44ch}
+  .features{margin-top:48px;border-top:1px solid rgba(245,242,236,.16)}
+  .feat{display:flex;gap:24px;padding:26px 0;border-bottom:1px solid rgba(245,242,236,.16);align-items:baseline}
+  .feat .fn{font-family:var(--serif);font-size:22px;color:var(--sand);min-width:42px}
+  .feat h4{font-size:15px;letter-spacing:.12em;text-transform:uppercase;font-weight:400}
+
+  /* realisations */
+  .realis{padding-bottom:120px}
+  .rgrid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:300px;gap:6px}
+  .rgrid .r{position:relative;overflow:hidden;background:var(--paper-2);display:block}
+  .rgrid .r img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .rgrid .r:hover img{transform:scale(1.05)}
+  .rs7{grid-column:span 7}.rs6{grid-column:span 6}.rs5{grid-column:span 5}.rs4{grid-column:span 4}
+  .card .ph-split{display:grid;grid-template-columns:1fr 1fr;gap:4px;aspect-ratio:4/3;overflow:hidden}
+  .card .ph-split img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .card:hover .ph-split img{transform:scale(1.06)}
+  .rcap{position:absolute;left:24px;bottom:22px;color:#F5F2EC;font-size:12px;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 14px rgba(0,0,0,.5)}
+
+  /* visit */
+  .visit{background:var(--paper-2);border-top:1px solid var(--line)}
+  .visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;padding:110px 48px;align-items:center}
+  .visit h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,4.6vw,64px);line-height:1.04}
+  .visit h2 em{font-style:italic;color:var(--taupe)}
+  .visit .eyebrow{color:var(--taupe)}
+  .visit .lead{font-size:18px;color:var(--ink-soft);margin-top:22px;max-width:42ch}
+  .visit .cta{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap}
+
+  @media(max-width:980px){
+    .manifesto .wrap,.savoir .inner,.visit .wrap{grid-template-columns:1fr;gap:40px}
+    .visit .wrap{padding:70px 24px}
+    .rgrid .r{grid-column:span 12 !important}
+  }
+</style>
+<!-- @seo -->
+<meta name="geo.region" content="MA-CAS">
+<meta name="geo.placename" content="Casablanca">
+<meta name="geo.position" content="33.5883;-7.6114">
+<meta name="ICBM" content="33.5883, -7.6114">
+<link rel="canonical" href="https://deutsch-confort.com/">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_MA">
+<meta property="og:site_name" content="Deutschconfort">
+<meta property="og:title" content="Deutschconfort — Revêtements de sol & mur haut de gamme · Casablanca">
+<meta property="og:description" content="Initiateur de tendances depuis 1999. Deutschconfort distribue des matériaux décoratifs haut de gamme : parquets, panneaux, sols vinyles, moulures. Casablanca.">
+<meta property="og:url" content="https://deutsch-confort.com/">
+<meta property="og:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Deutschconfort — Revêtements de sol & mur haut de gamme · Casablanca">
+<meta name="twitter:description" content="Initiateur de tendances depuis 1999. Deutschconfort distribue des matériaux décoratifs haut de gamme : parquets, panneaux, sols vinyles, moulures. Casablanca.">
+<meta name="twitter:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
+</head>
+<body>
+
+<div class="util">
+  <div class="wrap">
+    <div class="left">Showroom — 11 Rue Hounaine, Bd d'Anfa · Casablanca</div>
+    <div class="right">
+      <a href="contact.html" data-catalogue>Télécharger le catalogue</a>
+      <a href="contact.html">Je suis professionnel</a>
+      <a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
+    <div class="navlinks">
+      <a href="collections.html">Collections</a>
+      <a href="simulateur.html">Simulateur</a>
+      <a href="visite-virtuelle.html">Visite virtuelle</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="navactions">
+      <span class="lang">FR</span>
+      <a class="btn btn-fill" href="contact.html" data-catalogue>Catalogue</a>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+<div class="mobile-menu">
+  <button class="mclose" aria-label="Fermer">×</button>
+  <a href="index.html">Accueil</a>
+  <a href="collections.html">Collections</a>
+  <a href="simulateur.html">Simulateur</a>
+  <a href="visite-virtuelle.html">Visite virtuelle</a>
+  <a href="realisations.html">Réalisations</a>
+  <a href="a-propos.html">À propos</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- hero -->
+<section class="hero">
+  <img src="images/facade-hero.jpg" alt="Façade habillée par Deutschconfort — pierre & bois">
+  <div class="hero-content wrap">
+    <div class="inner">
+      <div class="eyebrow">Maison de revêtements · Casablanca · Depuis 1999</div>
+      <h1>Initiateur<br>de <em>tendances</em></h1>
+      <p>Matériaux décoratifs haut de gamme pour l'agencement des espaces privés et publics. Habillages muraux (panneaux), parquets, plinthes, moulures.</p>
+      <div class="hero-cta">
+        <a class="btn btn-light btn-fill" href="collections.html">Découvrir les collections</a>
+        <a class="btn btn-light" href="contact.html" data-catalogue>Télécharger le catalogue</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- manifesto -->
+<section class="manifesto" id="apropos">
+  <div class="wrap">
+    <div class="col">
+      <div class="eyebrow">La maison</div>
+      <h2>L'art du<br>revêtement,<br><em>depuis 1999.</em></h2>
+    </div>
+    <div class="col">
+      <p>Experts en revêtements, Deutschconfort distribue des matériaux décoratifs haut de gamme pour l'agencement des espaces privés et publics.</p>
+      <p>Sélectionnés auprès des meilleurs fabricants européens, nos panneaux et habillages muraux, parquets massifs, moulures et plinthes composent un vocabulaire de matières où chaque surface raconte une intention.</p>
+      <div class="stats">
+        <div class="stat"><div class="n serif">1999</div><div class="l">Fondée à Casablanca</div></div>
+        <div class="stat"><div class="n serif">4</div><div class="l">Univers de revêtement</div></div>
+        <div class="stat"><div class="n serif">25+</div><div class="l">Années d'expertise</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- collections -->
+<section id="collections">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Les collections</div>
+        <h2>Quatre univers<br>de matière</h2>
+      </div>
+      <a href="collections.html" class="link-underline">Toutes les collections →</a>
+    </div>
+    <div class="collections" style="padding-bottom:40px">
+      <a class="card" href="revetement-mural.html">
+        <div class="ph"><img src="images/realisations/r-salon-ivoire.jpg" alt="Revêtement mural"></div>
+        <div class="meta"><div><div class="idx">01</div><h3 class="serif">Revêtement mural</h3><p>Panneaux &amp; habillages</p></div><span class="go">Découvrir</span></div>
+      </a>
+      <a class="card" href="sol-interieur.html">
+        <div class="ph"><img src="images/parquet/bois/BOIS_13.jpeg" alt="Parquet bois — sol intérieur Deutschconfort"></div>
+        <div class="meta"><div><div class="idx">02</div><h3 class="serif">Sol intérieur</h3><p>Parquets &amp; sols nobles</p></div><span class="go">Découvrir</span></div>
+      </a>
+      <a class="card" href="sol-vinyle.html">
+        <div class="ph"><img src="images/parquet/strat/STRAT_19.jpeg" alt="Sol vinyle aspect bois foncé — Deutschconfort"></div>
+        <div class="meta"><div><div class="idx">03</div><h3 class="serif">Sol vinyle</h3><p>Lames &amp; dalles design</p></div><span class="go">Découvrir</span></div>
+      </a>
+      <a class="card" href="revetement-mural.html#plinthes">
+        <div class="ph-split">
+          <img src="images/moulures.jpg" alt="Moulures décoratives en PU prêtes à peindre — Deutschconfort">
+          <img src="images/plinthe-pu.png" alt="Plinthes carrées en PU prêtes à peindre — Deutschconfort">
+        </div>
+        <div class="meta"><div><div class="idx">04</div><h3 class="serif">Moulures &amp; plinthes</h3><p>Finitions prêtes à peindre</p></div><span class="go">Découvrir</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- savoir-faire -->
+<section class="savoir" id="savoir">
+  <div class="inner">
+    <div class="ph"><img src="images/parquet/bois/BOIS_06.jpeg" alt="Détail de pose"></div>
+    <div class="txt">
+      <div class="eyebrow">Le savoir-faire</div>
+      <h2>Une sélection<br>exigeante, un<br><em>accompagnement</em> sur mesure.</h2>
+      <p>De la sélection de la matière à la finition posée, nous accompagnons particuliers, architectes et prescripteurs à chaque étape du projet.</p>
+      <div class="features">
+        <div class="feat"><div class="fn">01</div><h4>Sélection haut de gamme</h4></div>
+        <div class="feat"><div class="fn">02</div><h4>Conseil &amp; prescription</h4></div>
+        <div class="feat"><div class="fn">03</div><h4>Pose &amp; finitions</h4></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- realisations -->
+<section class="realis" id="realisations">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Nos réalisations</div>
+        <h2>Les espaces<br>que nous habillons</h2>
+      </div>
+      <a href="realisations.html" class="link-underline">Voir le portfolio →</a>
+    </div>
+    <div class="rgrid">
+      <a class="r rs7" href="realisations.html"><img src="images/realisations/r-villa-facade.jpg" alt="Façade de villa habillée en panneaux muraux — Deutschconfort, Casablanca" loading="lazy"><span class="rcap">Façade villa · Panneaux</span></a>
+      <a class="r rs5" href="realisations.html"><img src="images/realisations/r-couloir-pierre.jpg" alt="Mur intérieur en parement pierre empilée — Deutschconfort" loading="lazy"><span class="rcap">Mur intérieur · Pierre</span></a>
+      <a class="r rs5" href="realisations.html"><img src="images/realisations/r-mur-tv-bois.jpg" alt="Mur TV en bois et pierre rétroéclairée — Deutschconfort" loading="lazy"><span class="rcap">Mur TV · Bois &amp; pierre</span></a>
+      <a class="r rs7" href="realisations.html"><img src="images/realisations/r-tiara-facade.jpg" alt="Boutique TIARA habillée en pierre texturée — Casablanca" loading="lazy"><span class="rcap">Commerce · Casablanca</span></a>
+      <a class="r rs6" href="realisations.html"><img src="images/realisations/big-rock-04.jpg" alt="Mur d'accent en panneau effet pierre Big Rock — Deutschconfort" loading="lazy"><span class="rcap">Mur d'accent · Pierre</span></a>
+      <a class="r rs6" href="realisations.html"><img src="images/realisations/cemento-02.jpg" alt="Mur en panneau effet béton Cemento — Deutschconfort" loading="lazy"><span class="rcap">Béton · Mur d'accent</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- visit -->
+<section class="visit" id="visit">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Le showroom</div>
+      <h2>Venez <em>toucher</em><br>la matière.</h2>
+      <p class="lead">Notre showroom sur Casablanca présente l'ensemble des collections. Sur rendez-vous ou en visite libre.</p>
+      <div class="cta">
+        <a class="btn btn-fill" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">Demander un devis · WhatsApp</a>
+        <a class="btn" href="contact.html">Nous trouver</a>
+      </div>
+    </div>
+    <div class="infogrid" id="contact">
+      <div class="info"><h5>Adresse</h5><p>11 Rue Hounaine,<br>Boulevard d'Anfa,<br>Casablanca 20100, Maroc</p></div>
+      <div class="info"><h5>Horaires</h5><p>Lun–Ven · 9h30–13h / 15h–19h<br>Samedi · 10h–13h<br>Dimanche · Fermé</p></div>
+      <div class="info"><h5>Téléphone</h5><p>+212 522 944 061<br><a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">+212 614 474 221 · WhatsApp</a></p></div>
+      <div class="info"><h5>Email</h5><p><a href="mailto:deutschconfort@gmail.com">deutschconfort@gmail.com</a></p></div>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer class="site">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
+        <p class="tag">Initiateur de tendances depuis 1999.</p>
+      </div>
+      <div class="fcol"><h6>Collections</h6><a href="revetement-mural.html">Revêtement mural</a><a href="sol-interieur.html">Sol intérieur</a><a href="sol-vinyle.html">Sol vinyle</a><a href="sol-exterieur.html">Sol extérieur</a></div>
+      <div class="fcol"><h6>Maison</h6><a href="a-propos.html">À propos</a><a href="realisations.html">Réalisations</a><a href="devis.html">Demander un devis</a><a href="contact.html">Contact</a><a href="contact.html">Je suis professionnel</a></div>
+      <div class="fcol"><h6>Suivez-nous</h6><a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a><a href="https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/">Facebook</a><a href="mailto:deutschconfort@gmail.com">Email</a></div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Deutschconfort · Tous droits réservés</span>
+      <span>Casablanca · Maroc</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Deutschconfort","image":"https://deutsch-confort.com/images/facade-hero.jpg","url":"https://deutsch-confort.com","telephone":"+212614474221","email":"deutschconfort@gmail.com","priceRange":"$","foundingDate":"1999","address":{"@type":"PostalAddress","streetAddress":"11 Rue Hounaine, Bd d'Anfa","addressLocality":"Casablanca","addressCountry":"MA"},"areaServed":"Maroc","sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"19:00"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Deutschconfort","url":"https://deutsch-confort.com","logo":"https://deutsch-confort.com/favicon.png","foundingDate":"1999","sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Deutschconfort","url":"https://deutsch-confort.com","inLanguage":"fr-MA"}
+</script>
+</body>
+</html>

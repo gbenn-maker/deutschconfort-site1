@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Estimer mon projet — Demande de devis · Deutschconfort</title>
+<meta name="description" content="Indiquez votre surface en m² et le ou les modèles qui vous plaisent : nous préparons votre devis personnalisé. Deutschconfort, Casablanca.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  .est{display:grid;grid-template-columns:0.9fr 1.1fr;gap:clamp(40px,5vw,84px);align-items:start;padding:52px 0 100px}
+  .est .idx{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe);margin-bottom:20px}
+  .est h1{font-family:var(--serif);font-weight:400;font-size:clamp(46px,6vw,88px);line-height:.94}
+  .est h1 em{font-style:italic;color:var(--taupe)}
+  .est .lead{font-size:18px;color:var(--ink-soft);margin-top:26px;max-width:42ch;line-height:1.6}
+  .est .steps-mini{margin-top:34px;display:grid;gap:0}
+  .est .sm{display:flex;gap:16px;padding:18px 0;border-top:1px solid var(--line);align-items:baseline}
+  .est .sm .n{font-family:var(--serif);font-size:20px;color:var(--taupe);min-width:30px}
+  .est .sm p{font-size:14.5px;color:var(--ink-soft);line-height:1.55}
+  .est .sm b{color:var(--ink);font-weight:400}
+
+  .card{background:#fff;border:1px solid var(--line);padding:clamp(26px,3.4vw,44px)}
+  .fld{margin-bottom:30px}
+  .fld > label{display:block;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe);margin-bottom:14px}
+  .surf{display:flex;align-items:baseline;gap:12px;border-bottom:1px solid var(--ink);padding-bottom:10px}
+  .surf input{font-family:var(--serif);font-size:54px;line-height:1;border:0;outline:0;width:100%;background:transparent;color:var(--ink);-moz-appearance:textfield}
+  .surf input::-webkit-outer-spin-button,.surf input::-webkit-inner-spin-button{-webkit-appearance:none;margin:0}
+  .surf .unit{font-family:var(--serif);font-size:30px;color:var(--taupe);white-space:nowrap}
+
+  .models{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .mchip{display:flex;flex-direction:column;gap:3px;text-align:left;padding:14px 16px;border:1px solid var(--line);background:transparent;cursor:pointer;transition:all .18s;font-family:var(--sans);position:relative}
+  .mchip:hover{border-color:var(--ink)}
+  .mchip .mn{font-family:var(--serif);font-size:19px;color:var(--ink);line-height:1.1}
+  .mchip .md{font-size:11px;letter-spacing:.06em;color:var(--taupe)}
+  .mchip .est-n{font-size:11.5px;letter-spacing:.04em;color:var(--ink-soft);margin-top:4px;min-height:15px}
+  .mchip.on{background:var(--ink);border-color:var(--ink)}
+  .mchip.on .mn{color:var(--paper)}
+  .mchip.on .md{color:rgba(245,242,236,.65)}
+  .mchip.on .est-n{color:var(--sand)}
+  .mchip .tick{position:absolute;top:12px;right:14px;width:16px;height:16px;opacity:0;transition:opacity .18s}
+  .mchip.on .tick{opacity:1}
+
+  .precis textarea{width:100%;border:1px solid var(--line);background:#fff;padding:14px 16px;font-family:var(--sans);font-size:15px;color:var(--ink);resize:vertical;min-height:84px;outline:0}
+  .precis textarea:focus{border-color:var(--ink)}
+
+  .send{width:100%;justify-content:center;font-size:13px;padding:20px}
+  .send.disabled{opacity:.4;pointer-events:none}
+  .note{font-size:12.5px;color:var(--taupe);margin-top:16px;line-height:1.55;text-align:center}
+
+  @media(max-width:900px){
+    .est{grid-template-columns:1fr;padding:34px 0 64px}
+    .models{grid-template-columns:1fr}
+  }
+</style>
+<!-- @seo -->
+<meta name="geo.region" content="MA-CAS">
+<meta name="geo.placename" content="Casablanca">
+<meta name="geo.position" content="33.5883;-7.6114">
+<meta name="ICBM" content="33.5883, -7.6114">
+<link rel="canonical" href="https://deutsch-confort.com/devis.html">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_MA">
+<meta property="og:site_name" content="Deutschconfort">
+<meta property="og:title" content="Estimer mon projet — Demande de devis">
+<meta property="og:description" content="Indiquez votre surface en m² et le ou les modèles qui vous plaisent : nous préparons votre devis personnalisé. Deutschconfort, Casablanca.">
+<meta property="og:url" content="https://deutsch-confort.com/devis.html">
+<meta property="og:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Estimer mon projet — Demande de devis">
+<meta name="twitter:description" content="Indiquez votre surface en m² et le ou les modèles qui vous plaisent : nous préparons votre devis personnalisé. Deutschconfort, Casablanca.">
+<meta name="twitter:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
+</head>
+<body>
+
+<div class="util">
+  <div class="wrap">
+    <div class="left">Showroom — 11 Rue Hounaine, Bd d'Anfa · Casablanca</div>
+    <div class="right">
+      <a href="contact.html" data-catalogue>Télécharger le catalogue</a>
+      <a href="contact.html">Je suis professionnel</a>
+      <a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
+    <div class="navlinks">
+      <a href="collections.html">Collections</a>
+      <a href="devis.html" class="is-active">Devis</a>
+      <a href="visite-virtuelle.html">Visite virtuelle</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="navactions">
+      <span class="lang">FR</span>
+      <a class="btn btn-fill" href="contact.html" data-catalogue>Catalogue</a>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+<div class="mobile-menu">
+  <button class="mclose" aria-label="Fermer">×</button>
+  <a href="index.html">Accueil</a>
+  <a href="collections.html">Collections</a>
+  <a href="panneaux-modeles.html">Tous les modèles</a>
+  <a href="devis.html">Devis</a>
+  <a href="visite-virtuelle.html">Visite virtuelle</a>
+  <a href="realisations.html">Réalisations</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<section class="wrap">
+  <div class="breadcrumb" style="margin-top:40px"><a href="index.html">Accueil</a><span>/</span>Estimer mon projet</div>
+  <div class="est">
+
+    <div class="intro">
+      <div class="idx">Demande de devis</div>
+      <h1>Estimez votre <em>projet</em></h1>
+      <p class="lead">Indiquez la surface à habiller et le ou les modèles qui vous plaisent. Nous préparons votre devis personnalisé et revenons vers vous rapidement.</p>
+      <div class="steps-mini">
+        <div class="sm"><span class="n">01</span><p>Entrez votre <b>surface en m²</b>.</p></div>
+        <div class="sm"><span class="n">02</span><p>Choisissez <b>un ou plusieurs modèles</b>.</p></div>
+        <div class="sm"><span class="n">03</span><p>Envoyez votre demande sur <b>WhatsApp</b> — nous vous répondons avec un devis.</p></div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="fld">
+        <label for="surf">Surface à habiller</label>
+        <div class="surf">
+          <input id="surf" type="number" min="0" step="0.5" inputmode="decimal" placeholder="0" aria-label="Surface en mètres carrés">
+          <span class="unit">m²</span>
+        </div>
+      </div>
+
+      <div class="fld">
+        <label>Modèle(s) souhaité(s)</label>
+        <div class="models" id="models"></div>
+      </div>
+
+      <div class="fld precis">
+        <label for="precis">Précisions <span style="text-transform:none;letter-spacing:0;opacity:.7">(facultatif)</span></label>
+        <textarea id="precis" placeholder="Pièce, ville, intérieur / extérieur, échéance…"></textarea>
+      </div>
+
+      <a class="btn btn-fill send disabled" id="send" target="_blank" rel="noopener">Envoyer ma demande sur WhatsApp</a>
+      <p class="note">Aucune information de paiement. Votre demande nous parvient directement sur WhatsApp ; le devis chiffré vous est envoyé en retour.</p>
+    </div>
+
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
+        <p class="tag">Initiateur de tendances depuis 1999.</p>
+      </div>
+      <div class="fcol"><h6>Collections</h6><a href="revetement-mural.html">Revêtement mural</a><a href="sol-interieur.html">Sol intérieur</a><a href="sol-vinyle.html">Sol vinyle</a><a href="sol-exterieur.html">Sol extérieur</a></div>
+      <div class="fcol"><h6>Maison</h6><a href="a-propos.html">À propos</a><a href="realisations.html">Réalisations</a><a href="devis.html">Demander un devis</a><a href="contact.html">Contact</a></div>
+      <div class="fcol"><h6>Suivez-nous</h6><a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a><a href="https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/">Facebook</a><a href="mailto:deutschconfort@gmail.com">Email</a></div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Deutschconfort · Tous droits réservés</span>
+      <span>Casablanca · Maroc</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+<script>
+  (function(){
+    var MODELS=[
+      {name:'Moon 1', ref:'DC-307', area:0.57, fmt:'118 × 48 cm'},
+      {name:'Big Rock', ref:'DC-301', area:0.72, fmt:'120×60 / 240×60 cm'},
+      {name:'Cubo', ref:'DC-302', area:1.20, fmt:'240 × 50 cm'},
+      {name:'Mattoni', ref:'DC-303', area:1.00, fmt:'200 × 50 cm'},
+      {name:'Travertin', ref:'DC-308', area:0.68, fmt:'120 × 57 cm'},
+      {name:'Brick', ref:'DC-309', area:0.61, fmt:'217 × 28 cm'},
+      {name:'Cemento', ref:'DC-C01', area:0.68, fmt:'120 × 57 cm'},
+      {name:'Béton Brut', ref:'DC-C02', area:0.96, fmt:'120 × 80 cm'},
+      {name:'Bois Cubo', ref:'DC-B01', area:0.56, fmt:'200 × 28 cm'}
+    ];
+    var WA='https://wa.me/212614474221?text=';
+    var selected={};
+    var wrap=document.getElementById('models');
+    var surfEl=document.getElementById('surf');
+    var precisEl=document.getElementById('precis');
+    var sendEl=document.getElementById('send');
+    var TICK='<svg class="tick" viewBox="0 0 24 24" fill="none" stroke="#F5F2EC" stroke-width="2"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+
+    MODELS.forEach(function(m,i){
+      var b=document.createElement('button');
+      b.type='button'; b.className='mchip'; b.dataset.i=i;
+      b.innerHTML=TICK+'<span class="mn">'+m.name+'</span><span class="md">'+m.fmt+'</span><span class="est-n"></span>';
+      b.addEventListener('click',function(){
+        selected[i]=!selected[i];
+        b.classList.toggle('on',selected[i]);
+        update();
+      });
+      wrap.appendChild(b);
+    });
+
+    function panels(area){
+      var s=parseFloat(surfEl.value);
+      if(!s||s<=0) return null;
+      return Math.ceil(s/area);
+    }
+    function update(){
+      // per-model estimate
+      document.querySelectorAll('.mchip').forEach(function(b){
+        var m=MODELS[b.dataset.i];
+        var el=b.querySelector('.est-n');
+        if(selected[b.dataset.i]){
+          var n=panels(m.area);
+          el.textContent = n? ('≈ '+n+' panneaux') : (m.area.toFixed(2).replace('.',',')+' m² / panneau');
+        } else { el.textContent=''; }
+      });
+      // build message + enable button
+      var chosen=MODELS.filter(function(m,i){return selected[i];});
+      var s=parseFloat(surfEl.value);
+      var ok = chosen.length>0 && s>0;
+      sendEl.classList.toggle('disabled', !ok);
+      if(!ok){ sendEl.removeAttribute('href'); return; }
+
+      var lines=[];
+      lines.push('Bonjour Deutschconfort, je souhaite un devis pour mon projet.');
+      lines.push('');
+      lines.push('• Surface à habiller : environ '+(s % 1 === 0 ? s : s.toFixed(2).replace('.',','))+' m²');
+      lines.push('• Modèle(s) souhaité(s) :');
+      chosen.forEach(function(m){
+        var n=panels(m.area);
+        lines.push('   – '+m.name+' ('+m.ref+')'+(n?(' — estimation ≈ '+n+' panneaux'):''));
+      });
+      var p=precisEl.value.trim();
+      if(p){ lines.push(''); lines.push('Précisions : '+p); }
+      lines.push('');
+      lines.push('Merci de me communiquer votre devis.');
+      sendEl.setAttribute('href', WA+encodeURIComponent(lines.join('\n')));
+    }
+    surfEl.addEventListener('input',update);
+    precisEl.addEventListener('input',update);
+    update();
+  })();
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Deutschconfort","image":"https://deutsch-confort.com/images/facade-hero.jpg","url":"https://deutsch-confort.com","telephone":"+212614474221","email":"deutschconfort@gmail.com","priceRange":"$","foundingDate":"1999","address":{"@type":"PostalAddress","streetAddress":"11 Rue Hounaine, Bd d'Anfa","addressLocality":"Casablanca","addressCountry":"MA"},"areaServed":"Maroc","sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"19:00"}]}
+</script>
+</body>
+</html>

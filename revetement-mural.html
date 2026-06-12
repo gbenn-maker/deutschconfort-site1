@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Revêtement mural — Panneaux & habillages · Deutschconfort</title>
+<meta name="description" content="Panneaux décoratifs, plinthes et moulures en polyuréthane prêtes à peindre. Donner du relief et du caractère aux murs. Deutschconfort, Casablanca.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  .cathero{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px);align-items:center;padding:56px 0 96px}
+  .cathero .idx{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe);margin-bottom:20px}
+  .cathero h1{font-family:var(--serif);font-weight:400;font-size:clamp(52px,6.5vw,104px);line-height:.92}
+  .cathero h1 em{font-style:italic;color:var(--taupe)}
+  .cathero .sub{font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe);margin-top:18px}
+  .cathero p{font-size:18px;color:var(--ink-soft);margin-top:26px;max-width:46ch}
+  .cathero .cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+  .cathero .ph{position:relative;overflow:hidden;aspect-ratio:4/5}
+
+  .gamme{padding:20px 0 100px}
+  .ggrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .gtile{position:relative;overflow:hidden;background:var(--paper-2);aspect-ratio:3/4;display:block}
+  .gtile img{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .gtile:hover img{transform:scale(1.05)}
+  .gtile .gl{position:absolute;left:0;right:0;bottom:0;padding:22px 22px 24px;color:#F5F2EC;background:linear-gradient(0deg,rgba(20,20,18,.66),transparent);font-family:var(--serif);font-size:25px;line-height:1.05}
+  .gtile.slot .gl{position:absolute;background:none;color:var(--taupe)}
+
+  .characts{background:var(--ink);color:var(--paper);padding:110px 0}
+  .characts .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(50px,7vw,100px);align-items:center}
+  .characts .eyebrow{color:var(--sand);margin-bottom:24px}
+  .characts .quote{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(30px,3.4vw,48px);line-height:1.16}
+  .characts .quote .sand{color:var(--sand)}
+  .clist{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+  .citem{padding:26px 0;border-top:1px solid rgba(245,242,236,.18)}
+  .citem .cn{font-family:var(--serif);color:var(--sand);font-size:22px}
+  .citem h4{font-size:14px;letter-spacing:.1em;text-transform:uppercase;margin-top:10px;font-weight:400}
+  .citem p{font-size:13.5px;color:rgba(245,242,236,.6);margin-top:7px}
+
+  /* Plinthes & moulures */
+  .finitions{padding:40px 0 96px}
+  .fgrid{display:grid;grid-template-columns:1fr;gap:clamp(40px,6vw,72px)}
+  .fitem{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,68px);align-items:center}
+  .fimg{position:relative;overflow:hidden;aspect-ratio:4/3;background:var(--paper-2)}
+  .fimg img{width:100%;height:100%;object-fit:cover}
+  .ftxt .k{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--taupe);margin-bottom:14px}
+  .ftxt h3{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.4vw,46px);line-height:1}
+  .ftxt p{font-size:16px;color:var(--ink-soft);margin-top:16px;max-width:46ch;line-height:1.6}
+  .specs{margin-top:26px;display:grid;grid-template-columns:1fr 1fr;gap:0 36px}
+  .specs>div{padding:15px 0;border-top:1px solid var(--line)}
+  .specs dt{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--taupe)}
+  .specs dd{font-family:var(--serif);font-size:21px;margin-top:5px}
+  .note-perso{margin-top:22px;font-size:13.5px;color:var(--ink-soft);font-style:italic}
+
+  /* Installation / pose */
+  .pose{padding:24px 0 40px}
+  .pose .phead{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;padding-bottom:30px}
+  .pose h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,4vw,50px);line-height:1}
+  .pose-intro{font-size:16px;color:var(--ink-soft);max-width:48ch;line-height:1.6}
+  .pose-video{position:relative;background:#000;width:min(430px,86vw);aspect-ratio:9/16;margin:0 auto;overflow:hidden}
+  .pose-video video{width:100%;height:100%;object-fit:fill;display:block;background:#000}
+  .pose-video .ph-fallback{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;color:rgba(245,242,236,.78);text-align:center;padding:24px;pointer-events:none;background:rgba(20,20,18,.28)}
+  .pose-video .ph-fallback svg{width:54px;height:54px;opacity:.8}
+  .pose-video .ph-fallback span{font-size:12px;letter-spacing:.2em;text-transform:uppercase}
+  .pose-cap{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe);margin:16px 0 0;display:flex;gap:16px;flex-wrap:wrap;align-items:center}
+
+  .assoc{padding:96px 0 0}
+  .agrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+  .acell{position:relative;overflow:hidden;aspect-ratio:1/1;display:block;background:var(--paper-2)}
+  .acell img{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .acell:hover img{transform:scale(1.05)}
+  .acell .cap{position:absolute;left:20px;bottom:18px;color:#F5F2EC;font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 12px rgba(0,0,0,.5)}
+
+  @media(max-width:900px){
+    .cathero{grid-template-columns:1fr;padding:40px 0 60px}
+    .ggrid{grid-template-columns:1fr 1fr}
+    .characts .wrap{grid-template-columns:1fr;gap:46px}
+    .agrid{grid-template-columns:1fr}
+    .fitem{grid-template-columns:1fr;gap:26px}
+  }
+  @media(max-width:560px){.ggrid{grid-template-columns:1fr}}
+</style>
+<!-- @seo -->
+<meta name="geo.region" content="MA-CAS">
+<meta name="geo.placename" content="Casablanca">
+<meta name="geo.position" content="33.5883;-7.6114">
+<meta name="ICBM" content="33.5883, -7.6114">
+<link rel="canonical" href="https://deutsch-confort.com/revetement-mural.html">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_MA">
+<meta property="og:site_name" content="Deutschconfort">
+<meta property="og:title" content="Revêtement mural — Panneaux & habillages">
+<meta property="og:description" content="Panneaux décoratifs, plinthes et moulures en polyuréthane prêtes à peindre. Donner du relief et du caractère aux murs. Deutschconfort, Casablanca.">
+<meta property="og:url" content="https://deutsch-confort.com/revetement-mural.html">
+<meta property="og:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Revêtement mural — Panneaux & habillages">
+<meta name="twitter:description" content="Panneaux décoratifs, plinthes et moulures en polyuréthane prêtes à peindre. Donner du relief et du caractère aux murs. Deutschconfort, Casablanca.">
+<meta name="twitter:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
+</head>
+<body>
+
+<div class="util">
+  <div class="wrap">
+    <div class="left">Showroom — 11 Rue Hounaine, Bd d'Anfa · Casablanca</div>
+    <div class="right">
+      <a href="contact.html" data-catalogue>Télécharger le catalogue</a>
+      <a href="contact.html">Je suis professionnel</a>
+      <a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
+    <div class="navlinks">
+      <a href="collections.html" class="is-active">Collections</a>
+      <a href="simulateur.html">Simulateur</a>
+      <a href="visite-virtuelle.html">Visite virtuelle</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="navactions">
+      <span class="lang">FR</span>
+      <a class="btn btn-fill" href="contact.html" data-catalogue>Catalogue</a>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+<div class="mobile-menu">
+  <button class="mclose" aria-label="Fermer">×</button>
+  <a href="index.html">Accueil</a>
+  <a href="collections.html">Collections</a>
+  <a href="simulateur.html">Simulateur</a>
+  <a href="visite-virtuelle.html">Visite virtuelle</a>
+  <a href="realisations.html">Réalisations</a>
+  <a href="a-propos.html">À propos</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- hero -->
+<section class="wrap">
+  <div class="breadcrumb" style="margin-top:40px"><a href="index.html">Accueil</a><span>/</span><a href="collections.html">Collections</a><span>/</span>Revêtement mural</div>
+  <div class="cathero">
+    <div class="txt">
+      <div class="idx">COLLECTION </div>
+      <h1>Revêtement <em>mural</em></h1>
+      <div class="sub">Panneaux & habillages</div>
+      <p>Donnez du relief, de la profondeur et du caractère aux murs. Panneaux décoratifs, plinthes et moulures prêtes à peindre, pour l'intérieur et l'extérieur privé comme public.</p>
+      <div class="cta">
+        <a class="btn btn-fill" href="panneaux-modeles.html">Voir tous les modèles</a>
+        <a class="btn" href="devis.html">Estimer mon projet</a>
+      </div>
+    </div>
+    <div class="ph"><img src="images/realisations/r-salon-ivoire.jpg" alt="Panneau mural décoratif en relief — Deutschconfort, Casablanca"></div>
+  </div>
+</section>
+
+<!-- gamme -->
+<section class="gamme">
+  <div class="wrap">
+    <div class="section-head" style="padding:0 0 36px">
+      <div>
+        <div class="eyebrow">La gamme</div>
+        <h2>Reliefs & habillages</h2>
+      </div>
+      <a href="panneaux-modeles.html" class="link-underline">Tous les modèles →</a>
+    </div>
+    <div class="ggrid">
+      <a class="gtile" href="panneaux-modeles.html"><img src="images/realisations/r-salon-ivoire.jpg" alt="Panneaux décoratifs"><span class="gl">Panneaux<br>décoratifs</span></a>
+      <a class="gtile" href="#plinthes"><img src="images/plinthe-pu.png" alt="Plinthes carrées en PU prêtes à peindre"><span class="gl">Plinthes</span></a>
+      <a class="gtile" href="#moulures"><img src="images/moulures.jpg" alt="Moulures décoratives en PU"><span class="gl">Moulures</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- caractéristiques -->
+<section class="characts">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Pourquoi Deutschconfort</div>
+      <p class="quote">Le mur cesse d'être une surface pour devenir un <span class="sand">décor</span>.</p>
+    </div>
+    <div class="clist">
+      <div class="citem"><div class="cn">01</div><h4>Reliefs & textures</h4><p>Des panneaux qui sculptent la lumière et donnent de la profondeur à la pièce.</p></div>
+      <div class="citem"><div class="cn">02</div><h4>Murs & plafonds</h4><p>Des habillages pensés pour les espaces privés comme pour les lieux publics.</p></div>
+      <div class="citem"><div class="cn">03</div><h4>Plinthes & moulures</h4><p>Profilés en polyuréthane prêts à peindre, hauteur personnalisable, pour des finitions nettes.</p></div>
+      <div class="citem"><div class="cn">04</div><h4>Pose rapide</h4><p>Des systèmes légers et faciles à mettre en œuvre, sans gros chantier.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- plinthes & moulures -->
+<section class="finitions" id="plinthes">
+  <div class="wrap">
+    <div class="section-head" style="padding:0 0 40px">
+      <div>
+        <div class="eyebrow">Finitions</div>
+        <h2>Plinthes & moulures</h2>
+      </div>
+      <a href="devis.html" class="link-underline">Estimer mon projet →</a>
+    </div>
+    <div class="fgrid">
+
+      <article class="fitem">
+        <div class="fimg"><img src="images/plinthe-pu.png" alt="Plinthe carrée blanche en PU, prête à peindre, en situation"></div>
+        <div class="ftxt">
+          <div class="k">Polyuréthane · Prêt à peindre</div>
+          <h3>Plinthes carrées</h3>
+          <p>Lignes droites et nettes pour une finition contemporaine. En polyuréthane (PU) prêt à peindre — légères, stables, résistantes à l'humidité et faciles à poser.</p>
+          <div class="specs">
+            <div><dt>Longueur</dt><dd>200 cm</dd></div>
+            <div><dt>Hauteurs</dt><dd>7 · 8 · 10 cm</dd></div>
+            <div><dt>Épaisseur</dt><dd>1,3 cm</dd></div>
+            <div><dt>Finition</dt><dd>Prête à peindre</dd></div>
+          </div>
+          <p class="note-perso">Hauteur personnalisable selon votre projet — sur demande.</p>
+        </div>
+      </article>
+
+      <article class="fitem" id="moulures">
+        <div class="fimg"><img src="images/moulures.jpg" alt="Mur habillé de moulures et cadres décoratifs en PU"></div>
+        <div class="ftxt">
+          <div class="k">Polyuréthane · Prêt à peindre</div>
+          <h3>Moulures</h3>
+          <p>Cadres muraux, soubassements et encadrements : les moulures décoratives en PU rythment le mur et lui donnent du relief. Prêtes à peindre dans la teinte de votre choix.</p>
+          <div class="specs">
+            <div><dt>Longueur</dt><dd>195 cm</dd></div>
+            <div><dt>Largeurs</dt><dd>28 · 38 mm</dd></div>
+            <div><dt>Matière</dt><dd>Polyuréthane</dd></div>
+            <div><dt>Finition</dt><dd>Prête à peindre</dd></div>
+          </div>
+          <p class="note-perso">Autres profils et longueurs disponibles sur demande.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- installation / pose -->
+<section class="pose">
+  <div class="wrap">
+    <div class="phead">
+      <div>
+        <div class="eyebrow">Installation</div>
+        <h2>La pose, en vidéo</h2>
+      </div>
+      <p class="pose-intro">Simple et rapide. Le panneau se colle et se visse directement sur béton, enduit ciment, bois ou marbre — sans structure intermédiaire.</p>
+    </div>
+    <div class="pose-video">
+      <video controls preload="metadata" poster="images/realisations/big-rock-04.jpg" playsinline data-src="media/pose-installation.mp4"></video>
+      <div class="ph-fallback">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="12" r="10"/><path d="M10 8.5l5 3.5-5 3.5z" fill="currentColor" stroke="none"/></svg>
+        <span>Vidéo de pose — bientôt disponible</span>
+      </div>
+    </div>
+    <p class="pose-cap"><span>Vidéo explicative de la pose · Deutschconfort</span><a href="panneaux-modeles.html" class="link-underline" style="border-color:var(--ink)">Voir la pose détaillée en 5 étapes →</a></p>
+  </div>
+</section>
+
+<!-- réalisations associées -->
+<section class="assoc">
+  <div class="wrap">
+    <div class="section-head" style="padding:0 0 36px">
+      <div>
+        <div class="eyebrow">En situation</div>
+        <h2>Réalisations</h2>
+      </div>
+      <a href="realisations.html" class="link-underline">Tout le portfolio →</a>
+    </div>
+    <div class="agrid">
+      <a class="acell" href="realisations.html"><img src="images/realisations/r-salon-ivoire.jpg" alt="Habillage mural décoratif — réalisation Deutschconfort" loading="lazy"><span class="cap">Habillage mural</span></a>
+      <a class="acell" href="realisations.html"><img src="images/realisations/r-salon-tv.jpg" alt="Panneau mural décoratif posé en intérieur — Deutschconfort" loading="lazy"><span class="cap">Panneau décoratif</span></a>
+      <a class="acell" href="realisations.html"><img src="images/realisations/r-tiara-facade.jpg" alt="Espace public habillé à Casablanca — Deutschconfort" loading="lazy"><span class="cap">Espace public</span></a>
+    </div>
+  </div>
+</section>
+
+<section class="ctaband">
+  <div class="wrap">
+    <div class="eyebrow">Un projet d'habillage ?</div>
+    <h2>Donnons du <em>relief</em> à vos murs.</h2>
+    <p>Panneaux, plinthes ou moulures — nous vous aidons à choisir le bon habillage pour chaque pièce.</p>
+    <div class="cta">
+      <a class="btn btn-light btn-fill" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">Demander un devis · WhatsApp</a>
+      <a class="btn btn-light" href="contact.html">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
+        <p class="tag">Initiateur de tendances depuis 1999.</p>
+      </div>
+      <div class="fcol"><h6>Collections</h6><a href="revetement-mural.html">Revêtement mural</a><a href="sol-interieur.html">Sol intérieur</a><a href="sol-vinyle.html">Sol vinyle</a><a href="sol-exterieur.html">Sol extérieur</a></div>
+      <div class="fcol"><h6>Maison</h6><a href="a-propos.html">À propos</a><a href="realisations.html">Réalisations</a><a href="devis.html">Demander un devis</a><a href="contact.html">Contact</a><a href="contact.html">Je suis professionnel</a></div>
+      <div class="fcol"><h6>Suivez-nous</h6><a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a><a href="https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/">Facebook</a><a href="mailto:deutschconfort@gmail.com">Email</a></div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Deutschconfort · Tous droits réservés</span>
+      <span>Casablanca · Maroc</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+<script>
+  (function(){
+    var pv=document.querySelector('.pose-video video');
+    var pf=document.querySelector('.pose-video .ph-fallback');
+    if(pv){
+      var src=pv.getAttribute('data-src');
+      if(src){
+        fetch(src,{method:'HEAD'}).then(function(r){
+          if(r.ok){
+            var s=document.createElement('source'); s.src=src; s.type='video/mp4';
+            pv.appendChild(s); pv.load();
+            pv.addEventListener('loadeddata',function(){ if(pf) pf.style.display='none'; });
+          }
+        }).catch(function(){});
+      }
+    }
+  })();
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Deutschconfort","image":"https://deutsch-confort.com/images/facade-hero.jpg","url":"https://deutsch-confort.com","telephone":"+212614474221","email":"deutschconfort@gmail.com","priceRange":"$","foundingDate":"1999","address":{"@type":"PostalAddress","streetAddress":"11 Rue Hounaine, Bd d'Anfa","addressLocality":"Casablanca","addressCountry":"MA"},"areaServed":"Maroc","sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"19:00"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"VideoObject","name":"Pose des panneaux muraux Deutschconfort","description":"Démonstration de la pose d'un panneau mural Deutschconfort, étape par étape.","thumbnailUrl":"https://deutsch-confort.com/images/realisations/big-rock-04.jpg","contentUrl":"https://deutsch-confort.com/media/pose-installation.mp4","uploadDate":"2026-06-12"}
+</script>
+</body>
+</html>

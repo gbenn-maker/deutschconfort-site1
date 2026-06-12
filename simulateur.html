@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulation sur mesure — Voyez nos designs chez vous · Deutschconfort</title>
+<meta name="description" content="Envoyez-nous une photo de votre mur ou de votre sol sur WhatsApp, choisissez un décor Deutschconfort, et recevez votre simulation en image sous 24 h. Gratuit, sans engagement.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  .shero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,5vw,84px);align-items:center;padding:54px 0 92px}
+  .shero .idx{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe);margin-bottom:20px}
+  .shero h1{font-family:var(--serif);font-weight:400;font-size:clamp(48px,6vw,98px);line-height:.94}
+  .shero h1 em{font-style:italic;color:var(--taupe)}
+  .shero p.lead{font-size:18px;color:var(--ink-soft);margin-top:24px;max-width:48ch}
+  .shero .promise{display:flex;flex-wrap:wrap;gap:10px 24px;margin-top:26px}
+  .shero .promise span{font-size:12.5px;letter-spacing:.04em;color:var(--ink-soft);display:flex;align-items:center;gap:9px}
+  .shero .promise span::before{content:"";width:5px;height:5px;border-radius:50%;background:var(--taupe)}
+  .wa-cta{display:inline-flex;align-items:center;gap:12px;margin-top:34px;background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:18px 28px;transition:opacity .2s}
+  .wa-cta:hover{opacity:.9}
+  .wa-cta svg{width:19px;height:19px;fill:currentColor}
+  .shero .sub{font-size:12.5px;color:var(--taupe);margin-top:14px}
+
+  .shero .ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--paper-2)}
+  .shero .ph img{width:100%;height:100%;object-fit:cover}
+  .shero .ph .tagimg{position:absolute;left:18px;bottom:18px;background:rgba(245,242,236,.92);color:var(--ink);font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:9px 14px}
+
+  .steps{background:var(--ink);color:var(--paper);padding:100px 0}
+  .steps .head{text-align:center;max-width:720px;margin:0 auto 56px}
+  .steps .head .eyebrow{color:var(--sand);margin-bottom:18px}
+  .steps .head h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.6vw,50px);line-height:1.05}
+  .steps .head h2 em{font-style:italic;color:var(--sand)}
+  .sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,60px)}
+  .step .n{font-family:var(--serif);font-size:30px;color:var(--sand);padding-bottom:18px;border-bottom:1px solid rgba(245,242,236,.18);margin-bottom:18px}
+  .step h3{font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-weight:400;margin-bottom:12px}
+  .step p{font-size:14.5px;color:rgba(245,242,236,.66);line-height:1.55}
+
+  .designs{padding:96px 0 30px;text-align:center}
+  .designs .eyebrow{color:var(--taupe);margin-bottom:16px}
+  .designs h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.2vw,44px)}
+  .designs p{font-size:15px;color:var(--ink-soft);margin:14px auto 36px;max-width:52ch}
+  .dchips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+  .dchips a{font-size:12px;letter-spacing:.12em;text-transform:uppercase;padding:12px 20px;border:1px solid var(--line);color:var(--ink);transition:all .2s}
+  .dchips a:hover{border-color:var(--ink);background:var(--ink);color:var(--paper)}
+
+  @media(max-width:880px){
+    .shero{grid-template-columns:1fr;padding:36px 0 56px}
+    .shero .ph{order:-1;aspect-ratio:3/2}
+    .sgrid{grid-template-columns:1fr;gap:34px}
+  }
+</style>
+<!-- @seo -->
+<meta name="geo.region" content="MA-CAS">
+<meta name="geo.placename" content="Casablanca">
+<meta name="geo.position" content="33.5883;-7.6114">
+<meta name="ICBM" content="33.5883, -7.6114">
+<link rel="canonical" href="https://deutsch-confort.com/simulateur.html">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_MA">
+<meta property="og:site_name" content="Deutschconfort">
+<meta property="og:title" content="Simulation sur mesure — Voyez nos designs chez vous">
+<meta property="og:description" content="Envoyez-nous une photo de votre mur ou de votre sol sur WhatsApp, choisissez un décor Deutschconfort, et recevez votre simulation en image sous 24 h. Gratuit, sans engagement.">
+<meta property="og:url" content="https://deutsch-confort.com/simulateur.html">
+<meta property="og:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Simulation sur mesure — Voyez nos designs chez vous">
+<meta name="twitter:description" content="Envoyez-nous une photo de votre mur ou de votre sol sur WhatsApp, choisissez un décor Deutschconfort, et recevez votre simulation en image sous 24 h. Gratuit, sans engagement.">
+<meta name="twitter:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
+</head>
+<body>
+
+<div class="util">
+  <div class="wrap">
+    <div class="left">Showroom — 11 Rue Hounaine, Bd d'Anfa · Casablanca</div>
+    <div class="right">
+      <a href="contact.html" data-catalogue>Télécharger le catalogue</a>
+      <a href="contact.html">Je suis professionnel</a>
+      <a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
+    <div class="navlinks">
+      <a href="collections.html">Collections</a>
+      <a href="simulateur.html" class="is-active">Simulateur</a>
+      <a href="visite-virtuelle.html">Visite virtuelle</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="navactions">
+      <span class="lang">FR</span>
+      <a class="btn btn-fill" href="contact.html" data-catalogue>Catalogue</a>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+<div class="mobile-menu">
+  <button class="mclose" aria-label="Fermer">×</button>
+  <a href="index.html">Accueil</a>
+  <a href="collections.html">Collections</a>
+  <a href="simulateur.html">Simulateur</a>
+  <a href="visite-virtuelle.html">Visite virtuelle</a>
+  <a href="realisations.html">Réalisations</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- HERO -->
+<section class="wrap">
+  <div class="breadcrumb" style="margin-top:36px"><a href="index.html">Accueil</a><span>/</span>Simulation sur mesure</div>
+  <div class="shero">
+    <div class="txt">
+      <div class="idx">Simulation sur mesure</div>
+      <h1>Votre projet,<br><em>en image</em></h1>
+      <p class="lead">Envoyez-nous une photo de votre mur ou de votre sol sur WhatsApp, dites-nous le modèle qui vous plaît, et notre équipe vous renvoie une simulation de votre espace — sous 24 heures.</p>
+      <div class="promise">
+        <span>Gratuit</span>
+        <span>Sans engagement</span>
+        <span>Réponse sous 24 h</span>
+      </div>
+      <a class="wa-cta" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20une%20simulation.%20Voici%20une%20photo%20de%20ma%20surface%20(mur%20ou%20sol)%20%E2%80%94%20j'aimerais%20voir%20le%20rendu%20avec%20l'un%20de%20vos%20d%C3%A9cors." target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.817 11.817 0 018.413 3.488 11.824 11.824 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.737-.979.74.372zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.074-.149-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+        Envoyer ma photo sur WhatsApp
+      </a>
+      <div class="sub">Ou écrivez-nous au +212 6 14 47 42 21</div>
+    </div>
+    <div class="ph">
+      <img src="images/realisations/r-salon-ivoire.jpg" alt="Séjour habillé d'un revêtement Deutschconfort">
+      <span class="tagimg">Vu chez nos clients</span>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="steps">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Comment ça marche</div>
+      <h2>Trois étapes, <em>une simulation</em></h2>
+    </div>
+    <div class="sgrid">
+      <div class="step">
+        <div class="n">01</div>
+        <h3>Envoyez votre photo</h3>
+        <p>Prenez en photo le mur, la façade ou le sol que vous souhaitez habiller, et envoyez-la-nous sur WhatsApp. Une photo nette, de face, suffit.</p>
+      </div>
+      <div class="step">
+        <div class="n">02</div>
+        <h3>Choisissez un décor</h3>
+        <p>Indiquez le modèle qui vous plaît — panneau mural ou parquet — ou laissez nos conseillers vous orienter selon votre style et votre lumière.</p>
+      </div>
+      <div class="step">
+        <div class="n">03</div>
+        <h3>Recevez votre simulation</h3>
+        <p>Notre équipe réalise le montage et vous renvoie votre espace en image, avec votre décor en place — sous 24 heures, gratuitement.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DESIGNS -->
+<section class="designs">
+  <div class="wrap">
+    <div class="eyebrow">Avant d'envoyer</div>
+    <h2>Parcourez nos décors</h2>
+    <p>Repérez les modèles qui vous inspirent, puis citez-les dans votre message — ça nous fait gagner du temps pour votre simulation.</p>
+    <div class="dchips">
+      <a href="revetement-mural.html">Revêtement mural</a>
+      <a href="parquet-bois-naturel.html">Parquet bois naturel</a>
+      <a href="parquet-stratifie.html">Parquet stratifié</a>
+      <a href="sol-vinyle.html">Sol vinyle</a>
+      <a href="sol-exterieur.html">Sol extérieur</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ctaband">
+  <div class="wrap">
+    <div class="eyebrow">Prêt à voir votre projet ?</div>
+    <h2>Envoyez-nous votre <em>photo</em>.</h2>
+    <p>Une simulation gratuite, sans engagement, dans les 24 heures. Et si le rendu vous plaît, on passe au devis.</p>
+    <div class="cta">
+      <a class="btn btn-light btn-fill" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20une%20simulation.%20Voici%20une%20photo%20de%20ma%20surface%20(mur%20ou%20sol)%20%E2%80%94%20j'aimerais%20voir%20le%20rendu%20avec%20l'un%20de%20vos%20d%C3%A9cors." target="_blank" rel="noopener">Envoyer ma photo · WhatsApp</a>
+      <a class="btn btn-light" href="collections.html">Voir les collections</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
+        <p class="tag">Initiateur de tendances depuis 1999.</p>
+      </div>
+      <div class="fcol"><h6>Collections</h6><a href="revetement-mural.html">Revêtement mural</a><a href="sol-interieur.html">Sol intérieur</a><a href="sol-vinyle.html">Sol vinyle</a><a href="sol-exterieur.html">Sol extérieur</a></div>
+      <div class="fcol"><h6>Maison</h6><a href="a-propos.html">À propos</a><a href="realisations.html">Réalisations</a><a href="devis.html">Demander un devis</a><a href="contact.html">Contact</a><a href="contact.html">Je suis professionnel</a></div>
+      <div class="fcol"><h6>Suivez-nous</h6><a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a><a href="https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/">Facebook</a><a href="mailto:deutschconfort@gmail.com">Email</a></div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Deutschconfort · Tous droits réservés</span>
+      <span>Casablanca · Maroc</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Deutschconfort","image":"https://deutsch-confort.com/images/facade-hero.jpg","url":"https://deutsch-confort.com","telephone":"+212614474221","email":"deutschconfort@gmail.com","priceRange":"$","foundingDate":"1999","address":{"@type":"PostalAddress","streetAddress":"11 Rue Hounaine, Bd d'Anfa","addressLocality":"Casablanca","addressCountry":"MA"},"areaServed":"Maroc","sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"19:00"}]}
+</script>
+</body>
+</html>

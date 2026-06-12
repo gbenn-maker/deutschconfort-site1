@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Béton Brut — Panneau mural effet décoffrage · Deutschconfort</title>
+<meta name="description" content="Béton Brut : panneau mural en lames horizontales, effet béton brut de décoffrage. Texture minérale mouchetée, esprit architecte. Façades, murs d'accent, intérieur et extérieur. Deutschconfort, Casablanca.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  /* product hero */
+  .prod{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px);align-items:center;padding:48px 0 90px}
+  .prod .txt .fam{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe);margin-bottom:20px}
+  .prod .txt h1{font-family:var(--serif);font-weight:400;font-size:clamp(58px,8vw,128px);line-height:.9}
+  .prod .txt .ref{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe);margin-top:18px}
+  .prod .txt p{font-size:18px;color:var(--ink-soft);margin-top:26px;max-width:46ch}
+  .prod .txt .cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+  .prod .shot{position:relative;background:transparent;overflow:visible;aspect-ratio:4/5;cursor:zoom-in;display:flex;align-items:center;justify-content:center}
+  .prod .shot img{transition:transform .9s cubic-bezier(.2,.7,.2,1);object-fit:contain;padding:4%}
+  .prod .shot:hover img{transform:scale(1.04)}
+  .prod .shot .cap{position:absolute;left:18px;bottom:16px;background:rgba(245,242,236,.9);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);padding:8px 13px}
+
+  /* full-bleed showcase */
+  .showcase{position:relative;height:78vh;min-height:520px;overflow:hidden}
+  .showcase img{transform:scale(1.03)}
+  .showcase::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,20,18,.5),transparent 45%)}
+  .showcase .cap{position:absolute;left:0;right:0;bottom:0;z-index:2;color:#F5F2EC}
+  .showcase .cap .wrap{padding-bottom:40px}
+  .showcase .cap .eyebrow{color:var(--sand);margin-bottom:14px}
+  .showcase .cap h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.4vw,48px);line-height:1.05;max-width:20ch}
+
+  /* specs */
+  .specs{padding:96px 0}
+  .specs .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:start}
+  .specs .lead{font-family:var(--serif);font-style:italic;font-size:clamp(26px,3vw,40px);line-height:1.18;color:var(--ink)}
+  .specs .lead .t{color:var(--taupe)}
+  .speclist{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+  .spec{padding:24px 0;border-top:1px solid var(--line)}
+  .spec .n{font-family:var(--serif);font-size:22px;color:var(--taupe)}
+  .spec h4{font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-top:9px;font-weight:400}
+  .spec p{font-size:14px;color:var(--ink-soft);margin-top:6px}
+
+  /* finishing facts strip */
+  .facts{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .facts .wrap{display:flex;flex-wrap:wrap;gap:50px;padding:42px 48px}
+  .fact .l{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--taupe)}
+  .fact .v{font-family:var(--serif);font-size:26px;margin-top:6px}
+
+  /* gallery (réalisations) */
+  .gal{padding:96px 0 110px}
+  .gal .section-head{padding:0 0 40px}
+  .masonry{column-count:3;column-gap:14px}
+  .masonry .mitem{break-inside:avoid;margin-bottom:14px;position:relative;overflow:hidden;cursor:zoom-in;background:var(--paper-2);display:block}
+  .masonry .mitem img{width:100%;height:auto;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .masonry .mitem:hover img{transform:scale(1.05)}
+  .masonry .mitem::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,20,18,.46),transparent 50%);opacity:0;transition:opacity .35s}
+  .masonry .mitem:hover::after{opacity:1}
+  .masonry .mitem .cap{position:absolute;left:18px;bottom:15px;z-index:2;color:#F5F2EC;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:0;transform:translateY(6px);transition:.35s}
+  .masonry .mitem:hover .cap{opacity:1;transform:none}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:200;background:rgba(16,15,13,.94);display:none;align-items:center;justify-content:center}
+  .lb.open{display:flex}
+  .lb img{max-width:92vw;max-height:86vh;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .lb .x{position:absolute;top:22px;right:26px;color:#F5F2EC;font-size:34px;cursor:pointer;line-height:1;background:none;border:none}
+  .lb .nav{position:absolute;top:50%;transform:translateY(-50%);color:#F5F2EC;font-size:30px;cursor:pointer;background:none;border:none;padding:20px;opacity:.8;transition:opacity .2s}
+  .lb .nav:hover{opacity:1}
+  .lb .prev{left:8px}.lb .next{right:8px}
+  .lb .count{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:rgba(245,242,236,.7);font-size:12px;letter-spacing:.18em}
+
+  @media(max-width:900px){
+    .prod{grid-template-columns:1fr;padding:32px 0 56px}
+    .specs .wrap{grid-template-columns:1fr;gap:36px}
+    .masonry{column-count:2}
+  }
+  @media(max-width:560px){
+    .masonry{column-count:1}
+    .speclist{grid-template-columns:1fr}
+    .facts .wrap{gap:28px}
+  }
+</style>
+<!-- @seo -->
+<meta name="geo.region" content="MA-CAS">
+<meta name="geo.placename" content="Casablanca">
+<meta name="geo.position" content="33.5883;-7.6114">
+<meta name="ICBM" content="33.5883, -7.6114">
+<link rel="canonical" href="https://deutsch-confort.com/panneau-beton-brut.html">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_MA">
+<meta property="og:site_name" content="Deutschconfort">
+<meta property="og:title" content="Béton Brut — Panneau mural effet décoffrage">
+<meta property="og:description" content="Béton Brut : panneau mural en lames horizontales, effet béton brut de décoffrage. Texture minérale mouchetée, esprit architecte. Façades, murs d'accent, intérieur et extérieur. Deutschconfort, Casablanca.">
+<meta property="og:url" content="https://deutsch-confort.com/panneau-beton-brut.html">
+<meta property="og:image" content="https://deutsch-confort.com/images/panels/beton-brut-product.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Béton Brut — Panneau mural effet décoffrage">
+<meta name="twitter:description" content="Béton Brut : panneau mural en lames horizontales, effet béton brut de décoffrage. Texture minérale mouchetée, esprit architecte. Façades, murs d'accent, intérieur et extérieur. Deutschconfort, Casablanca.">
+<meta name="twitter:image" content="https://deutsch-confort.com/images/panels/beton-brut-product.png">
+</head>
+<body>
+
+<div class="util">
+  <div class="wrap">
+    <div class="left">Showroom — 11 Rue Hounaine, Bd d'Anfa · Casablanca</div>
+    <div class="right">
+      <a href="contact.html" data-catalogue>Télécharger le catalogue</a>
+      <a href="contact.html">Je suis professionnel</a>
+      <a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
+    <div class="navlinks">
+      <a href="collections.html" class="is-active">Collections</a>
+      <a href="simulateur.html">Simulateur</a>
+      <a href="visite-virtuelle.html">Visite virtuelle</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="navactions">
+      <span class="lang">FR</span>
+      <a class="btn btn-fill" href="contact.html" data-catalogue>Catalogue</a>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+<div class="mobile-menu">
+  <button class="mclose" aria-label="Fermer">×</button>
+  <a href="index.html">Accueil</a>
+  <a href="collections.html">Collections</a>
+  <a href="simulateur.html">Simulateur</a>
+  <a href="revetement-mural.html">Revêtement mural</a>
+  <a href="panneaux-modeles.html">Tous les modèles</a>
+  <a href="visite-virtuelle.html">Visite virtuelle</a>
+  <a href="realisations.html">Réalisations</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- product hero -->
+<section class="wrap">
+  <div class="breadcrumb" style="margin-top:40px"><a href="index.html">Accueil</a><span>/</span><a href="collections.html">Collections</a><span>/</span><a href="revetement-mural.html">Revêtement mural</a><span>/</span><a href="panneaux-modeles.html">Modèles</a><span>/</span>Béton Brut</div>
+  <div class="prod">
+    <div class="txt">
+      <div class="fam">Ciment / Béton · Décoffrage</div>
+      <h1>Béton Brut</h1>
+      <div class="ref">Réf. DC-C02</div>
+      <div class="ref" style="margin-top:10px;color:var(--ink-soft)">120 × 80 cm · 0,96 m² par panneau</div>
+      <p>Le béton brut de décoffrage, en lames horizontales. Une texture minérale mouchetée et ses joints marqués — l'esprit architecte et industriel, pour de grands murs au caractère affirmé.</p>
+      <div class="cta">
+        <a class="btn btn-fill" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20panneau%20B%C3%A9ton%20Brut%20(R%C3%A9f.%20DC-C02).%20Pouvez-vous%20m'envoyer%20plus%20d'informations%20et%20un%20devis%20%3F" target="_blank" rel="noopener">Demander un devis · WhatsApp</a>
+        <a class="btn" href="contact.html">Voir au showroom</a>
+      </div>
+    </div>
+    <div class="shot" data-full="images/panels/beton-brut-product.png">
+      <img src="images/panels/beton-brut-product.png" alt="Panneau Béton Brut — packshot, panneau effet décoffrage">
+      <span class="cap">Le panneau · 1 unité</span>
+    </div>
+  </div>
+</section>
+
+<!-- full-bleed showcase -->
+<section class="showcase">
+  <img src="images/realisations/beton-brut-01.jpg" alt="Béton Brut — grand mur extérieur effet décoffrage">
+  <div class="cap">
+    <div class="wrap">
+      <div class="eyebrow">En situation</div>
+      <h2>Le béton brut, à l'échelle d'un mur.</h2>
+    </div>
+  </div>
+</section>
+
+<!-- specs -->
+<section class="specs">
+  <div class="wrap">
+    <div>
+      <p class="lead">Le <span class="t">béton de décoffrage</span>, sa matière et ses joints, en léger.</p>
+    </div>
+    <div class="speclist">
+      <div class="spec"><div class="n">01</div><h4>Effet décoffrage</h4><p>Texture minérale mouchetée et joints marqués — le béton coulé en banches, fidèlement.</p></div>
+      <div class="spec"><div class="n">02</div><h4>Lames horizontales</h4><p>Un calepinage linéaire qui étire le mur et structure les grandes surfaces.</p></div>
+      <div class="spec"><div class="n">03</div><h4>Léger</h4><p>Le caractère du béton sans sa masse — pose murale facilitée, sans structure.</p></div>
+      <div class="spec"><div class="n">04</div><h4>Intérieur & extérieur</h4><p>Façades, clôtures, murs d'accent et espaces à l'esprit industriel.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="facts">
+  <div class="wrap">
+    <div class="fact"><div class="l">Aspect</div><div class="v serif">Béton décoffrage</div></div>
+    <div class="fact"><div class="l">Pose</div><div class="v serif">Murale, collée</div></div>
+    <div class="fact"><div class="l">Usage</div><div class="v serif">Int. & Ext.</div></div>
+    <div class="fact"><div class="l">Format</div><div class="v serif">120 × 80 cm</div></div>
+  </div>
+</div>
+
+<!-- gallery -->
+<section class="gal">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" style="color:var(--taupe);margin-bottom:18px">Réalisations · Béton Brut</div>
+        <h2 class="serif" style="font-weight:400">Vu chez nos clients</h2>
+      </div>
+      <a href="realisations.html" class="link-underline">Tout le portfolio →</a>
+    </div>
+
+    <div class="masonry" id="gal">
+      <a class="mitem" data-full="images/realisations/beton-brut-03.jpg"><img src="images/realisations/beton-brut-03.jpg" alt="Béton Brut — mur de cage d'escalier, teinte anthracite" loading="lazy"><span class="cap">Cage d'escalier · anthracite</span></a>
+      <a class="mitem" data-full="images/realisations/beton-brut-02.jpg"><img src="images/realisations/beton-brut-02.jpg" alt="Béton Brut — mur en perspective effet décoffrage" loading="lazy"><span class="cap">Mur en perspective</span></a>
+      <a class="mitem" data-full="images/realisations/beton-brut-04.jpg"><img src="images/realisations/beton-brut-04.jpg" alt="Béton Brut — mur de jardin, teinte gris clair" loading="lazy"><span class="cap">Mur de jardin · gris clair</span></a>
+      <a class="mitem" data-full="images/realisations/beton-brut-01.jpg"><img src="images/realisations/beton-brut-01.jpg" alt="Béton Brut — grand mur extérieur" loading="lazy"><span class="cap">Grand mur extérieur</span></a>
+      <a class="mitem" data-full="images/realisations/beton-brut-05.jpg"><img src="images/realisations/beton-brut-05.jpg" alt="Béton Brut — mur d'accent dans un salon" loading="lazy"><span class="cap">Salon · mur d'accent</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ctaband">
+  <div class="wrap">
+    <div class="eyebrow">Ce modèle vous plaît ?</div>
+    <h2>Mettez du <em>Béton Brut</em> chez vous.</h2>
+    <p>Demandez un devis ou passez au showroom pour voir et toucher le panneau, échantillon en main.</p>
+    <div class="cta">
+      <a class="btn btn-light btn-fill" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20panneau%20B%C3%A9ton%20Brut%20(R%C3%A9f.%20DC-C02).%20Pouvez-vous%20m'envoyer%20plus%20d'informations%20et%20un%20devis%20%3F" target="_blank" rel="noopener">Demander un devis · WhatsApp</a>
+      <a class="btn btn-light" href="panneaux-modeles.html">Voir d'autres modèles</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
+        <p class="tag">Initiateur de tendances depuis 1999.</p>
+      </div>
+      <div class="fcol"><h6>Collections</h6><a href="revetement-mural.html">Revêtement mural</a><a href="sol-interieur.html">Sol intérieur</a><a href="sol-vinyle.html">Sol vinyle</a><a href="sol-exterieur.html">Sol extérieur</a></div>
+      <div class="fcol"><h6>Maison</h6><a href="a-propos.html">À propos</a><a href="realisations.html">Réalisations</a><a href="devis.html">Demander un devis</a><a href="contact.html">Contact</a><a href="contact.html">Je suis professionnel</a></div>
+      <div class="fcol"><h6>Suivez-nous</h6><a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a><a href="https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/">Facebook</a><a href="mailto:deutschconfort@gmail.com">Email</a></div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Deutschconfort · Tous droits réservés</span>
+      <span>Casablanca · Maroc</span>
+    </div>
+  </div>
+</footer>
+
+<!-- lightbox -->
+<div class="lb" id="lb">
+  <button class="x" aria-label="Fermer">×</button>
+  <button class="nav prev" aria-label="Précédent">‹</button>
+  <img alt="">
+  <button class="nav next" aria-label="Suivant">›</button>
+  <div class="count" id="lbcount"></div>
+</div>
+
+<script src="js/site.js"></script>
+<script>
+  (function(){
+    var items=[].slice.call(document.querySelectorAll('[data-full]'));
+    var srcs=items.map(function(e){return e.dataset.full;});
+    var lb=document.getElementById('lb'), img=lb.querySelector('img'), count=document.getElementById('lbcount');
+    var i=0;
+    function show(n){i=(n+srcs.length)%srcs.length;img.src=srcs[i];count.textContent=(i+1)+' / '+srcs.length;}
+    function open(n){show(n);lb.classList.add('open');document.body.style.overflow='hidden';}
+    function close(){lb.classList.remove('open');document.body.style.overflow='';}
+    items.forEach(function(el,n){el.addEventListener('click',function(e){e.preventDefault();open(n);});});
+    lb.querySelector('.x').addEventListener('click',close);
+    lb.querySelector('.prev').addEventListener('click',function(){show(i-1);});
+    lb.querySelector('.next').addEventListener('click',function(){show(i+1);});
+    lb.addEventListener('click',function(e){if(e.target===lb)close();});
+    document.addEventListener('keydown',function(e){
+      if(!lb.classList.contains('open'))return;
+      if(e.key==='Escape')close();
+      else if(e.key==='ArrowLeft')show(i-1);
+      else if(e.key==='ArrowRight')show(i+1);
+    });
+  })();
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Deutschconfort","image":"https://deutsch-confort.com/images/facade-hero.jpg","url":"https://deutsch-confort.com","telephone":"+212614474221","email":"deutschconfort@gmail.com","priceRange":"$","foundingDate":"1999","address":{"@type":"PostalAddress","streetAddress":"11 Rue Hounaine, Bd d'Anfa","addressLocality":"Casablanca","addressCountry":"MA"},"areaServed":"Maroc","sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"19:00"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"Béton Brut — Panneau mural effet décoffrage","image":"https://deutsch-confort.com/images/panels/beton-brut-product.png","description":"Béton Brut : panneau mural en lames horizontales, effet béton brut de décoffrage. Texture minérale mouchetée, esprit architecte. Façades, murs d'accent, intérieur et extérieur. Deutschconfort, Casablanca.","brand":{"@type":"Brand","name":"Deutschconfort"},"category":"Panneau mural décoratif","material":"Polyuréthane","offers":{"@type":"Offer","availability":"https://schema.org/InStock","url":"https://deutsch-confort.com/panneau-beton-brut.html","seller":{"@type":"Organization","name":"Deutschconfort"}}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://deutsch-confort.com/"},{"@type":"ListItem","position":2,"name":"Collections","item":"https://deutsch-confort.com/collections.html"},{"@type":"ListItem","position":3,"name":"Revêtement mural","item":"https://deutsch-confort.com/revetement-mural.html"},{"@type":"ListItem","position":4,"name":"Béton Brut — Panneau mural effet décoffrage"}]}
+</script>
+</body>
+</html>

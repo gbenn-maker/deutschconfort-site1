@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://deutsch-confort.com/sitemap.xml
