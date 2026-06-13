@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le Celestone — habillage mural décoratif au Maroc</title>
+<meta name="description" content="Le Celestone : habillage mural décoratif haute densité. N'absorbe pas l'eau, résiste aux intempéries, prêt à peindre. Showroom Casablanca.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  .svc-hero{position:relative;height:66vh;min-height:480px;overflow:hidden}
+  .svc-hero img{width:100%;height:100%;object-fit:cover;transform:scale(1.04)}
+  .svc-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,20,18,.34),rgba(20,20,18,.08) 40%,rgba(20,20,18,.74))}
+  .svc-hero .hero-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:6vh;color:#F5F2EC}
+  .svc-hero .inner{max-width:820px}
+  .svc-hero .eyebrow{opacity:.92}
+  .svc-hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,7vw,96px);line-height:.96;margin:14px 0 0;text-shadow:0 2px 28px rgba(20,20,18,.5)}
+  .svc-hero h1 em{font-style:italic;color:var(--sand)}
+  .svc-hero p{max-width:560px;margin-top:20px;font-size:17px;font-weight:300;opacity:.95}
+  .svc-hero .hero-cta{display:flex;gap:16px;margin-top:30px;flex-wrap:wrap}
+
+  .svc-lead{padding:90px 0 40px}
+  .svc-lead .wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:70px;align-items:start}
+  .svc-lead .eyebrow{color:var(--taupe)}
+  .svc-lead h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.4vw,50px);line-height:1.08}
+  .svc-lead h2 em{font-style:italic;color:var(--taupe)}
+  .svc-lead p{font-size:18px;color:var(--ink-soft)}
+  .svc-lead p + p{margin-top:18px}
+
+  .benefits{padding:80px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:50px}
+  .benefits .head{max-width:680px;margin-bottom:46px}
+  .benefits h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.2vw,46px);line-height:1.08}
+  .bgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line)}
+  .bcell{background:var(--paper);padding:32px 28px}
+  .bcell .n{font-family:var(--serif);font-size:34px;color:var(--sand);line-height:1}
+  .bcell h3{font-size:15px;letter-spacing:.05em;text-transform:uppercase;font-weight:500;margin:14px 0 8px}
+  .bcell p{color:var(--ink-soft);font-size:15px}
+
+  .effects{padding:90px 0}
+  .effects .head{max-width:680px;margin-bottom:40px}
+  .effects h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.2vw,46px)}
+  .egrid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+  .ecard{border:1px solid var(--line);padding:30px 28px;display:block;color:inherit;text-decoration:none;transition:background .3s}
+  .ecard:hover{background:var(--paper-2)}
+  .ecard h3{font-family:var(--serif);font-size:26px;margin-bottom:8px}
+  .ecard p{color:var(--ink-soft);font-size:15px}
+  .ecard span{display:inline-block;margin-top:14px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--taupe)}
+
+  .why{background:var(--ink);color:var(--paper)}
+  .why .wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:96px 48px;align-items:center}
+  .why .eyebrow{color:var(--sand)}
+  .why h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,3.8vw,54px);line-height:1.06;margin-top:18px}
+  .why h2 em{font-style:italic;color:var(--sand)}
+  .why .feat{display:flex;gap:20px;padding:22px 0;border-bottom:1px solid rgba(245,242,236,.16);align-items:baseline}
+  .why .feat:first-of-type{border-top:1px solid rgba(245,242,236,.16)}
+  .why .feat .fn{font-family:var(--serif);font-size:22px;color:var(--sand);min-width:40px}
+  .why .feat h4{font-size:15px;letter-spacing:.04em;font-weight:500}
+  .why .feat p{color:rgba(245,242,236,.72);font-size:14px;margin-top:4px}
+
+  .faq{padding:90px 0 110px}
+  .faq .head{max-width:680px;margin-bottom:40px}
+  .faq h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.2vw,46px)}
+  .faq details{border-top:1px solid var(--line);padding:24px 0}
+  .faq details:last-of-type{border-bottom:1px solid var(--line)}
+  .faq summary{font-size:19px;font-family:var(--serif);cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;align-items:center}
+  .faq summary::-webkit-details-marker{display:none}
+  .faq summary::after{content:"+";color:var(--taupe);font-size:24px}
+  .faq details[open] summary::after{content:"–"}
+  .faq details p{color:var(--ink-soft);font-size:16px;margin-top:14px;max-width:74ch}
+
+  @media(max-width:980px){
+    .svc-lead .wrap,.why .wrap{grid-template-columns:1fr;gap:36px}
+    .why .wrap{padding:64px 24px}
+    .bgrid,.egrid{grid-template-columns:1fr}
+  }
+</style>
+<!-- @seo -->
+<meta name="geo.region" content="MA-CAS">
+<meta name="geo.placename" content="Casablanca">
+<meta name="geo.position" content="33.5883;-7.6114">
+<meta name="ICBM" content="33.5883, -7.6114">
+<link rel="canonical" href="https://deutsch-confort.com/le-celestone.html">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_MA">
+<meta property="og:site_name" content="Deutschconfort">
+<meta property="og:title" content="Le Celestone — habillage mural décoratif au Maroc">
+<meta property="og:description" content="Le Celestone : habillage mural décoratif haute densité. N'absorbe pas l'eau, résiste aux intempéries, prêt à peindre. Showroom Casablanca.">
+<meta property="og:url" content="https://deutsch-confort.com/le-celestone.html">
+<meta property="og:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Le Celestone — habillage mural décoratif au Maroc">
+<meta name="twitter:description" content="Le Celestone : habillage mural décoratif haute densité. N'absorbe pas l'eau, résiste aux intempéries, prêt à peindre. Showroom Casablanca.">
+<meta name="twitter:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
+</head>
+<body>
+
+<div class="util">
+  <div class="wrap">
+    <div class="left">Showroom — 11 Rue Hounaine, Bd d'Anfa · Casablanca</div>
+    <div class="right">
+      <a href="contact.html" data-catalogue>Télécharger le catalogue</a>
+      <a href="contact.html">Je suis professionnel</a>
+      <a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
+    <div class="navlinks">
+      <a href="collections.html">Collections</a>
+      <a href="simulateur.html">Simulateur</a>
+      <a href="visite-virtuelle.html">Visite virtuelle</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="a-propos.html">À propos</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="navactions">
+      <span class="lang">FR</span>
+      <a class="btn btn-fill" href="contact.html" data-catalogue>Catalogue</a>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+<div class="mobile-menu">
+  <button class="mclose" aria-label="Fermer">×</button>
+  <a href="index.html">Accueil</a>
+  <a href="collections.html">Collections</a>
+  <a href="simulateur.html">Simulateur</a>
+  <a href="visite-virtuelle.html">Visite virtuelle</a>
+  <a href="realisations.html">Réalisations</a>
+  <a href="a-propos.html">À propos</a>
+  <a href="contact.html">Contact</a>
+</div>
+
+<!-- hero -->
+<section class="svc-hero">
+  <img src="images/facade-hero.jpg" alt="Le Celestone, habillage mural décoratif sur une façade à Casablanca par Deutschconfort">
+  <div class="hero-content wrap">
+    <div class="inner">
+      <div class="eyebrow">La matière · Deutschconfort</div>
+      <h1>Le <em>Celestone</em></h1>
+      <p>Notre habillage mural décoratif : un polymère technique haute performance à cœur massif haute densité. Beau comme la pierre, pensé pour durer.</p>
+      <div class="hero-cta">
+        <a class="btn btn-light btn-fill" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20un%20devis%20pour%20Le%20Celestone." target="_blank" rel="noopener">Demander un devis · WhatsApp</a>
+        <a class="btn btn-light" href="realisations.html">Voir nos réalisations</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- breadcrumb -->
+<section class="wrap">
+  <div class="breadcrumb" style="margin-top:40px"><a href="index.html">Accueil</a><span>/</span><a href="revetement-mural.html">Revêtement mural</a><span>/</span>Le Celestone</div>
+</section>
+
+<!-- lead -->
+<section class="svc-lead">
+  <div class="wrap">
+    <div class="col">
+      <div class="eyebrow">La matière</div>
+      <h2>Une matière, <em>toutes</em><br>les surfaces.</h2>
+    </div>
+    <div class="col">
+      <p>Le Celestone est l'habillage mural décoratif de Deutschconfort : un polymère technique haute performance à cœur massif haute densité, décliné en panneaux qui imitent fidèlement la pierre, le béton ou le bois. C'est la matière propre de tous nos habillages muraux, plinthes et moulures.</p>
+      <p>Là où un panneau décoratif classique se limite à l'intérieur, Le Celestone n'absorbe pas l'eau : c'est précisément cet usage façade, terrasse et mur de jardin qui le distingue. Léger malgré sa densité, il se colle et se visse simplement, même en hauteur, et se livre en primaire prêt à peindre dans la couleur de votre choix.</p>
+      <p>Le résultat : une surface continue, durable et élégante — en intérieur comme en extérieur, partout au Maroc.</p>
+    </div>
+  </div>
+</section>
+
+<!-- benefits -->
+<section class="benefits">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow" style="color:var(--taupe)">Les bénéfices</div>
+      <h2>Ce que Le Celestone change pour vos murs</h2>
+    </div>
+    <div class="bgrid">
+      <div class="bcell"><div class="n">01</div><h3>N'absorbe pas l'eau</h3><p>Excellente résistance à l'eau et à l'humidité : le panneau n'absorbe pas l'eau, ce qui autorise l'usage en façade, terrasse et mur de jardin.</p></div>
+      <div class="bcell"><div class="n">02</div><h3>Résiste aux intempéries</h3><p>Conçu pour le climat marocain : pluie, soleil, sel marin et variations thermiques. Les couleurs et la matière tiennent dans le temps.</p></div>
+      <div class="bcell"><div class="n">03</div><h3>Résistant aux chocs</h3><p>Cœur massif haute densité : robuste, indéformable dans le temps, il encaisse les chocs du quotidien.</p></div>
+      <div class="bcell"><div class="n">04</div><h3>Léger à poser</h3><p>Assez léger pour simplifier nettement la pose en hauteur et sur façade, malgré sa densité.</p></div>
+      <div class="bcell"><div class="n">05</div><h3>Collable &amp; vissable</h3><p>Se fixe par collage en cordons à l'arrière du panneau, complété d'un vissage, directement sur la plupart des supports.</p></div>
+      <div class="bcell"><div class="n">06</div><h3>Prêt à peindre</h3><p>Livré en finition primaire, prêt à peindre dans la teinte de votre choix pour une finition entièrement personnalisée.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- effects -->
+<section class="effects">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow" style="color:var(--taupe)">Les effets</div>
+      <h2>Pierre, béton, bois — au choix</h2>
+    </div>
+    <div class="egrid">
+      <a class="ecard" href="habillage-effet-pierre.html">
+        <h3>Effet pierre</h3>
+        <p>Des habillages effet pierre au relief naturel, pour un mur d'apparat en intérieur comme en façade.</p>
+        <span>Découvrir →</span>
+      </a>
+      <a class="ecard" href="panneau-effet-beton.html">
+        <h3>Effet béton</h3>
+        <p>Le minéral contemporain : panneaux muraux effet béton pour une ambiance industrielle et épurée.</p>
+        <span>Découvrir →</span>
+      </a>
+      <a class="ecard" href="panneau-effet-bois.html">
+        <h3>Effet bois</h3>
+        <p>La chaleur du bois sans son entretien : panneaux et lambris décoratifs effet bois.</p>
+        <span>Découvrir →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- why / wedge -->
+<section class="why">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Pourquoi Deutschconfort</div>
+      <h2>La matière, <em>et</em><br>le geste.</h2>
+      <p style="color:rgba(245,242,236,.74);font-size:17px;margin-top:22px;max-width:44ch">Le Celestone est une matière exclusive ; nos équipes en maîtrisent la pose depuis 1999. C'est cette combinaison — matière + savoir-faire — qui fait la différence sur le mur fini.</p>
+    </div>
+    <div>
+      <div class="feat"><div class="fn">01</div><div><h4>Une matière exclusive</h4><p>Le Celestone est le savoir-faire matière propre de Deutschconfort, distinct des panneaux importés génériques.</p></div></div>
+      <div class="feat"><div class="fn">02</div><div><h4>Posé par nos équipes depuis 1999</h4><p>Plus de 4 800 clients accompagnés. <a href="pose-installation.html" style="color:var(--sand)">Pose et installation</a> du support à la finition.</p></div></div>
+      <div class="feat"><div class="fn">03</div><div><h4>Conseil en showroom</h4><p>Venez toucher la matière à notre showroom du Boulevard d'Anfa, Casablanca, avant de décider.</p></div></div>
+      <div class="feat"><div class="fn">04</div><div><h4>Intérieur, façade &amp; extérieur</h4><p>Une seule matière pour tous vos murs, du salon à la façade exposée.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- faq -->
+<section class="faq">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow" style="color:var(--taupe)">Questions fréquentes</div>
+      <h2>Le Celestone, en clair</h2>
+    </div>
+    <details open>
+      <summary>Qu'est-ce que Le Celestone ?</summary>
+      <p>Le Celestone est l'habillage mural décoratif de Deutschconfort : un polymère technique haute performance à cœur massif haute densité, décliné en panneaux effet pierre, béton ou bois, ainsi qu'en moulures et plinthes. C'est une matière exclusive, distincte des panneaux décoratifs importés.</p>
+    </details>
+    <details>
+      <summary>Peut-on l'utiliser en extérieur et en façade ?</summary>
+      <p>Oui. Le Celestone n'absorbe pas l'eau et offre une excellente résistance à l'humidité, aux intempéries et aux variations climatiques. C'est cet usage façade, terrasse et mur de jardin qui le distingue d'un panneau décoratif d'intérieur classique.</p>
+    </details>
+    <details>
+      <summary>Comment se pose Le Celestone ?</summary>
+      <p>Par collage en cordons réguliers à l'arrière du panneau, complété d'un vissage, avec ajustement à la règle de nivelage. Les joints et têtes de vis sont repris au mastic acrylique. Nos équipes assurent la <a href="pose-installation.html">pose et l'installation</a>, ou vous pouvez poser en autonomie.</p>
+    </details>
+    <details>
+      <summary>Faut-il le peindre ?</summary>
+      <p>Le Celestone est livré en primaire prêt à peindre. Vous le peignez dans la couleur de votre choix pour une finition sur mesure, parfaitement intégrée à votre décoration.</p>
+    </details>
+    <details>
+      <summary>Où voir et commander Le Celestone au Maroc ?</summary>
+      <p>À notre showroom de Casablanca, Boulevard d'Anfa, pour toucher la matière et être conseillé. Pour un devis, écrivez-nous sur WhatsApp au +212 614 474 221. Nous accompagnons les projets partout au Maroc.</p>
+    </details>
+  </div>
+</section>
+
+<!-- cta band -->
+<section class="ctaband">
+  <div class="wrap">
+    <div class="eyebrow">Un projet d'habillage ?</div>
+    <h2>Donnez du <em>relief</em> à vos murs.</h2>
+    <p>Effet pierre, béton ou bois, en intérieur comme en façade — parlons de votre projet et de la pose.</p>
+    <div class="cta">
+      <a class="btn btn-light btn-fill" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20un%20devis%20pour%20Le%20Celestone." target="_blank" rel="noopener">Demander un devis · WhatsApp</a>
+      <a class="btn btn-light" href="contact.html">Nous contacter</a>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer class="site">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
+        <p class="tag">Initiateur de tendances depuis 1999.</p>
+      </div>
+      <div class="fcol"><h6>Collections</h6><a href="le-celestone.html">Le Celestone</a><a href="revetement-mural.html">Revêtement mural</a><a href="sol-interieur.html">Sol intérieur</a><a href="sol-vinyle.html">Sol vinyle</a><a href="sol-exterieur.html">Sol extérieur</a></div>
+      <div class="fcol"><h6>Maison</h6><a href="a-propos.html">À propos</a><a href="realisations.html">Réalisations</a><a href="devis.html">Demander un devis</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="contact.html">Je suis professionnel</a></div>
+      <div class="fcol"><h6>Suivez-nous</h6><a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a><a href="https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/">Facebook</a><a href="mailto:deutschconfort@gmail.com">Email</a></div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Deutschconfort · Tous droits réservés</span>
+      <span>Casablanca · Maroc</span>
+    </div>
+  </div>
+</footer>
+
+<script src="js/site.js"></script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"Le Celestone","description":"Habillage mural décoratif en Polymère Celestone™, à cœur massif haute densité : n'absorbe pas l'eau, résiste aux intempéries et aux chocs, prêt à peindre. Effet pierre, béton ou bois, pour l'intérieur comme la façade.","brand":{"@type":"Brand","name":"Deutschconfort"},"category":"Habillage mural décoratif","material":"Polymère Celestone™","image":"https://deutsch-confort.com/images/facade-hero.jpg","url":"https://deutsch-confort.com/le-celestone.html","manufacturer":{"@type":"Organization","name":"Deutschconfort"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Qu'est-ce que Le Celestone ?","acceptedAnswer":{"@type":"Answer","text":"Le Celestone est l'habillage mural décoratif de Deutschconfort : un polymère technique haute performance à cœur massif haute densité, décliné en panneaux effet pierre, béton ou bois, ainsi qu'en moulures et plinthes."}},{"@type":"Question","name":"Peut-on l'utiliser en extérieur et en façade ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Le Celestone n'absorbe pas l'eau et offre une excellente résistance à l'humidité, aux intempéries et aux variations climatiques. Cet usage façade, terrasse et mur de jardin le distingue d'un panneau décoratif d'intérieur classique."}},{"@type":"Question","name":"Comment se pose Le Celestone ?","acceptedAnswer":{"@type":"Answer","text":"Par collage en cordons réguliers à l'arrière du panneau, complété d'un vissage, avec ajustement à la règle de nivelage. Les joints et têtes de vis sont repris au mastic acrylique. Nos équipes assurent la pose, ou vous posez en autonomie."}},{"@type":"Question","name":"Faut-il le peindre ?","acceptedAnswer":{"@type":"Answer","text":"Le Celestone est livré en primaire prêt à peindre. Vous le peignez dans la couleur de votre choix pour une finition sur mesure."}},{"@type":"Question","name":"Où voir et commander Le Celestone au Maroc ?","acceptedAnswer":{"@type":"Answer","text":"À notre showroom de Casablanca, Boulevard d'Anfa, pour toucher la matière. Pour un devis, écrivez-nous sur WhatsApp au +212 614 474 221. Nous accompagnons les projets partout au Maroc."}}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://deutsch-confort.com/"},{"@type":"ListItem","position":2,"name":"Revêtement mural","item":"https://deutsch-confort.com/revetement-mural.html"},{"@type":"ListItem","position":3,"name":"Le Celestone","item":"https://deutsch-confort.com/le-celestone.html"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Deutschconfort","url":"https://deutsch-confort.com","logo":"https://deutsch-confort.com/favicon.png","foundingDate":"1999","sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"]}
+</script>
+</body>
+</html>
