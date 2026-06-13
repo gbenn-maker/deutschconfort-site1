@@ -154,3 +154,18 @@ L'étude marketing (avril 2026) contient des éléments qui **contredisent les g
 - Seuls chiffres à l'écran : **1999**, **4 800+ clients**.
 
 > ⚠️ À CONFIRMER (CEO) si un jour il veut assouplir : (a) afficher des prix/économies chiffrées dans les pubs, (b) proposer échantillon/diagnostic à domicile. Tant que non confirmé → version marque ci-dessus.
+
+---
+
+## BANQUE DE RÉALISATIONS (rendus réels — à consulter avant de générer)
+Source de vérité visuelle = les vrais chantiers terminés Deutschconfort.
+
+**Emplacements :**
+- Dossier local : `C:\Users\User\Desktop\deutschconfort-realisations\` (`photos/`, `videos/`, `MANIFEST.md` = index). Lisible par Claude (hors Downloads → l'outil Read affiche les images).
+- Photos déjà publiques (utilisables comme image input Higgsfield) : `https://deutsch-confort.com/images/realisations/*.jpg`.
+
+**Règles d'usage (obligatoire) :**
+1. **Avant toute génération produit/pub**, consulter la banque (lire le `MANIFEST.md` + regarder 1-3 images pertinentes) pour caler l'aspect RÉEL : texture du Celestone, lumière, rendu posé, finitions. Ne jamais produire un visuel qui contredit la réalité des rendus.
+2. **Image→vidéo** : privilégier une **vraie photo de réalisation** comme image de base (Higgsfield image-to-video) → bien plus crédible qu'un rendu 100% IA. Fournir l'URL publique (`images/realisations/...`) ou uploader le fichier local via le MCP.
+3. **Avant/après** : si une réalisation dispose d'un « avant » et d'un « après », les exploiter en priorité pour le format avant/après (le plus performant).
+4. Tenir le `MANIFEST.md` à jour quand le user dépose de nouveaux fichiers (sur demande « indexe mes réalisations »).
