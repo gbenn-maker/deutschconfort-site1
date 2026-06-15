@@ -22,7 +22,10 @@ Sortie : le code de la page (selon la techno du repo) + meta title + meta descri
   "nous fabriquons", "notre production". Deutschconfort PROPOSE / DISTRIBUE / INSTALLE.
 - Matériau : toujours « Polymère Celestone™ » ou « Le Celestone ».
   INTERDIT : PU, polyuréthane, mousse, foam, mousse PU.
-- AUCUN prix, aucun montant, aucune fourchette. CTA unique de conversion :
+- AUCUN prix, aucun montant, aucune fourchette — NI dans le contenu visible NI
+  dans le JSON-LD. Pour un schema Product : JAMAIS de bloc « offers », « price »
+  ni « priceCurrency » (un Product sans offre reste valide et évite l'avertissement
+  Search Console « champ price manquant »). CTA unique de conversion :
   devis via WhatsApp +212 614 474 221.
 - Seuls chiffres d'entreprise autorisés : « depuis 1999 » et « 4 800+ clients ».
   Aucun autre chiffre (CA, m², capacité, nombre de modèles, etc.).

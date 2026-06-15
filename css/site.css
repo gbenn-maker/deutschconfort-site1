@@ -117,7 +117,7 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:84
 
 /* footer */
 footer.site{background:var(--ink);color:var(--paper);padding:80px 0 36px}
-footer.site .top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:60px;border-bottom:1px solid rgba(245,242,236,.16)}
+footer.site .top{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:40px;padding-bottom:60px;border-bottom:1px solid rgba(245,242,236,.16)}
 footer.site .brand{color:var(--paper)}
 footer.site .brand small{opacity:.5}
 footer.site .fcol h6{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.5;margin-bottom:18px}
