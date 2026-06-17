@@ -58,8 +58,8 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:84
 .navlinks a.is-active{opacity:1}
 .navactions{display:flex;gap:16px;align-items:center}
 .lang{font-size:12px;letter-spacing:.18em;opacity:.6}
-.burger{display:none;flex-direction:column;gap:5px;width:30px;height:22px;justify-content:center;cursor:pointer;background:none;border:none}
-.burger span{display:block;height:1.5px;background:var(--ink);transition:.3s}
+.burger{display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;width:44px;height:44px;margin-right:-10px;cursor:pointer;background:none;border:none;-webkit-tap-highlight-color:transparent}
+.burger span{display:block;width:26px;height:2px;background:var(--ink);transition:.3s}
 .mobile-menu{display:none;position:fixed;inset:0;z-index:70;background:var(--paper);padding:40px 32px;flex-direction:column}
 .mobile-menu.open{display:flex}
 .mobile-menu .mclose{align-self:flex-end;font-size:30px;background:none;border:none;cursor:pointer;line-height:1}
