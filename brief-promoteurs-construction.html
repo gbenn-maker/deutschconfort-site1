@@ -528,8 +528,8 @@
 
   /* ── vidéos en format mobile / portrait (iPhone) ── */
   .page .vidblock{margin-top:30px;display:flex;flex-direction:column;align-items:center;gap:12px}
-  .page .phone{width:min(82vw,330px);aspect-ratio:9/16;border-radius:30px;overflow:hidden;border:1px solid var(--line);background:#000;box-shadow:0 26px 64px -34px rgba(33,29,23,.75)}
-  .page .phone video{width:100%;height:100%;object-fit:cover;display:block;background:#000}
+  .page .vphone{width:min(70vw,300px);border-radius:24px;overflow:hidden;border:1px solid var(--line);background:#000;box-shadow:0 24px 60px -34px rgba(33,29,23,.75)}
+  .page .vphone video{width:100%;height:auto;display:block;background:#000}
   .page .vidblock .figcap{margin-top:0;text-align:center}
 
 </style>
@@ -669,7 +669,7 @@
       <div class="c"><div class="ico">// UN SEUL TOIT</div><h3>Sol + mur + plinthes + moulures</h3><p>Un contrat, une facture, un SAV, un interlocuteur. Vous arrêtez d'arbitrer entre fournisseurs&nbsp;; nous portons l'ensemble.</p></div>
     </div>
     <!-- VIDÉO : pose en situation (équipes) — source : media/pose-installation.mp4 (fichier local) -->
-    <div class="vidblock reveal"><div class="phone"><video controls preload="none" playsinline><source src="media/pose-installation.mp4" type="video/mp4"></video></div><div class="figcap">Pose directe sur l'existant — démonstration</div></div>
+    <div class="vidblock reveal"><div class="vphone"><video controls preload="metadata" playsinline poster="media/pose-installation-vertical-poster.jpg"><source src="media/pose-installation-vertical.mp4" type="video/mp4"></video></div><div class="figcap">Pose directe sur l'existant — démonstration</div></div>
   </section>
 
   <section id="s-tresorerie">
@@ -752,7 +752,7 @@
   </div>
 
   <!-- VIDÉO : showroom Bd d'Anfa — source : media/showroom-2026.mp4 + poster media/showroom-poster.jpg (fichiers locaux) -->
-  <div class="vidblock reveal" style="margin-bottom:40px"><div class="phone"><video controls preload="none" playsinline poster="media/showroom-poster.jpg"><source src="media/showroom-2026.mp4" type="video/mp4"></video></div><div class="figcap">Showroom Deutschconfort — Bd d'Anfa, Casablanca</div></div>
+  <div class="vidblock reveal" style="margin-bottom:40px"><div class="vphone"><video controls preload="metadata" playsinline poster="media/showroom-2026-vertical-poster.jpg"><source src="media/showroom-2026-vertical.mp4" type="video/mp4"></video></div><div class="figcap">Showroom Deutschconfort — Bd d'Anfa, Casablanca</div></div>
 
   <footer><span>Deutschconfort · Casablanca · Bd d'Anfa, 11 Rue Hounaine</span><span>Sols · Murs · Finitions · depuis 1999</span></footer>
 </div></div>
