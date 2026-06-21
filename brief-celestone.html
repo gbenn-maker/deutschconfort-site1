@@ -381,7 +381,6 @@
   .page .rc-rows .r{display:flex;justify-content:space-between;gap:14px;color:var(--ink-soft)}
   .page .rc-rows .r b{font-family:"IBM Plex Mono",monospace;color:var(--ink);font-weight:500;white-space:nowrap}
   .page .rc-rows .r.sep{border-top:1px solid var(--line);padding-top:11px;margin-top:2px}
-  .page .rc-rows .r.remise b{color:var(--clay)}
   .page .rc-rows .r.line span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .page .rc-rows .r.muted{color:var(--bronze);font-size:.86rem}
   .page .rc-total{margin-top:18px;padding-top:15px;border-top:2px solid var(--ink)}
@@ -574,7 +573,6 @@
           <div class="calc-lines" id="calcLines"></div>
           <button type="button" class="calc-add" id="calcAdd">+ Ajouter un modèle</button>
           <label class="calc-pose"><input type="checkbox" id="calcPose"> <span>Inclure la pose par nos équipes <b>+85 DH/m²</b></span></label>
-          <p class="calc-star">* Vous avez une surface dépassant les 60&nbsp;m²&nbsp;? Vous êtes peut-être éligible à une remise — <a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20ma%20surface%20d%C3%A9passe%2060%20m%C2%B2%2C%20suis-je%20%C3%A9ligible%20%C3%A0%20une%20remise%20%3F" target="_blank" rel="noopener">contactez notre commercial sur WhatsApp</a> pour en savoir plus.</p>
         </div>
         <div class="calc-receipt">
           <div class="rc-eyebrow">Estimation</div>
@@ -731,7 +729,6 @@
   var nf0 = new Intl.NumberFormat('fr-FR',{maximumFractionDigits:0});
   var nf2 = new Intl.NumberFormat('fr-FR',{maximumFractionDigits:0});
   function dh(n){ return nf0.format(Math.round(n)) + ' DH'; }
-  function remiseRate(s){ return 0; }
 
   var linesEl = document.getElementById('calcLines');
   var addBtn  = document.getElementById('calcAdd');
@@ -815,8 +812,6 @@
       }
     });
 
-    var rate = 0; // remise gérée hors calculateur
-
     if(totalSurf <= 0 || subtotalHT <= 0){
       rowsEl.innerHTML = '<div class="r muted">Indiquez une surface pour estimer.</div>';
       totalEl.textContent = '—'; permEl.textContent = '';
@@ -824,8 +819,7 @@
       return;
     }
 
-    var remiseAmt = subtotalHT * rate;
-    var panneauxHT = subtotalHT - remiseAmt;
+    var panneauxHT = subtotalHT;
     var poseHT = poseEl.checked ? totalSurf * POSE : 0;
     var totalHT = panneauxHT + poseHT;
     var tva = totalHT * TVA;
@@ -836,7 +830,6 @@
       html += '<div class="r line"><span>'+d.m.name+' '+d.m.fmt+' · '+nf0.format(d.m2)+' m² · '+d.panels+' pan.</span><b>'+dh(d.ht)+'</b></div>';
     });
     html += '<div class="r sep"><span>Sous-total HT</span><b>'+dh(subtotalHT)+'</b></div>';
-    if(rate>0) html += '<div class="r remise"><span>Remise dégressive (−'+Math.round(rate*100)+'%)</span><b>−'+dh(remiseAmt)+'</b></div>';
     if(poseHT>0) html += '<div class="r"><span>Pose ('+nf0.format(totalSurf)+' m² × 85 DH)</span><b>'+dh(poseHT)+'</b></div>';
     html += '<div class="r"><span>Total HT</span><b>'+dh(totalHT)+'</b></div>';
     html += '<div class="r"><span>TVA 20%</span><b>'+dh(tva)+'</b></div>';
@@ -849,7 +842,6 @@
     var msg = 'Bonjour Deutschconfort, je souhaite un devis Le Celestone.\n';
     detail.forEach(function(d){ msg += '• '+d.m.name+' '+d.m.fmt+' cm — '+nf0.format(d.m2)+' m² ('+d.panels+' panneaux)\n'; });
     msg += 'Surface totale : '+nf0.format(totalSurf)+' m²';
-    if(rate>0) msg += ' (remise −'+Math.round(rate*100)+'%)';
     if(poseHT>0) msg += '\nAvec pose (85 DH/m²)';
     msg += '\nEstimation TTC : '+dh(totalTTC);
     waEl.href = 'https://wa.me/212614474221?text=' + encodeURIComponent(msg);
