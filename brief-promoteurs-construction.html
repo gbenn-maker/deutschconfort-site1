@@ -532,6 +532,13 @@
   .page .vphone video{width:100%;height:auto;display:block;background:#000}
   .page .vidblock .figcap{margin-top:0;text-align:center}
 
+
+  /* ── calculateur remise projet ── */
+  .page .calc-tiers.tiers4{grid-template-columns:repeat(4,1fr)}
+  .page .pin{display:flex;flex-direction:column;gap:6px;margin-bottom:14px}
+  .page .pin label{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em;color:var(--ink-soft)}
+  @media(max-width:560px){.page .calc-tiers.tiers4{grid-template-columns:repeat(2,1fr)}}
+
 </style>
 <meta name="robots" content="noindex,nofollow">
 </head>
@@ -621,17 +628,34 @@
   </section>
 
   <section id="s-bundle">
-    <div class="sec-head reveal"><div class="sec-num">05</div><div><h2>Une remise qui enveloppe toutes vos surfaces.</h2><p class="sub">Pour chaque projet, on évalue le besoin <strong>total en m²</strong> — panneaux Le Celestone (mur) et parquet (sol), <strong>combinés</strong>. Plus ce volume combiné franchit les paliers, plus la remise sur la <strong>commande globale</strong> grandit. Une seule commande surfaces, une remise qui enveloppe tout — au lieu de la fractionner entre plusieurs prestataires.</p></div></div>
+    <div class="sec-head reveal"><div class="sec-num">05</div><div><h2>Une remise qui enveloppe toutes vos surfaces.</h2><p class="sub">On évalue le besoin <strong>total en m²</strong> — Le Celestone (mur) <strong>+</strong> parquet (sol), combinés. Plus ce volume franchit les paliers, plus la remise sur la <strong>commande globale</strong> grandit. Une seule commande surfaces, une remise qui enveloppe tout — au lieu de la fractionner entre plusieurs prestataires.</p></div></div>
     <div class="duo reveal">
       <div class="d"><div class="dk">Surfaces fractionnées</div><div class="dv">Une remise par prestataire</div><div class="dp">Le mur chez l'un, le sol chez l'autre&nbsp;: chaque fournisseur applique sa remise dans son coin, sur de petits volumes.</div></div>
       <div class="d hot"><div class="dk">Lot surfaces regroupé</div><div class="dv">Une remise enveloppante</div><div class="dp">Celestone + parquet sur une seule commande&nbsp;: le volume combiné atteint des paliers supérieurs et déclenche une remise majorée sur l'ensemble. Plus vous regroupez, plus vous économisez.</div></div>
     </div>
-    <div class="calc-tiers reveal" style="margin-top:18px">
-      <div class="tier"><div class="tk">Palier 1 · surface combinée</div><div class="tv">Remise socle</div></div>
-      <div class="tier"><div class="tk">Palier 2 · volume supérieur</div><div class="tv">Remise majorée</div></div>
-      <div class="tier on"><div class="tk">Palier 3 · grand programme</div><div class="tv">Remise maximale</div></div>
+    <div class="calc reveal" id="calc" style="margin-top:18px">
+      <div class="calc-grid">
+        <div class="calc-build">
+          <div class="calc-lab">Les surfaces de votre projet</div>
+          <div class="pin"><label>Murs — Le Celestone</label><div class="cl-surf"><input type="number" id="inMur" class="cl-m2" min="0" step="1" inputmode="decimal" placeholder="0"><span>m²</span></div></div>
+          <div class="pin"><label>Sols — Parquet (Quickstep / Balterio)</label><div class="cl-surf"><input type="number" id="inSol" class="cl-m2" min="0" step="1" inputmode="decimal" placeholder="0"><span>m²</span></div></div>
+          <div class="calc-tierlab">Paliers de remise · surface combinée mur + sol</div>
+          <div class="calc-tiers tiers4" id="calcTiers"></div>
+        </div>
+        <div class="calc-receipt">
+          <div class="rc-eyebrow">Votre remise projet</div>
+          <div class="rc-rows" id="rcRows"><div class="r muted">Indiquez vos surfaces pour estimer.</div></div>
+          <div class="rc-total">
+            <div class="rc-total-k">Remise sur la commande globale</div>
+            <div class="rc-total-v" id="rcTotal">—</div>
+            <div class="rc-perm" id="rcPerm"></div>
+          </div>
+          <a class="btn btn-primary rc-cta" id="rcWa" href="https://wa.me/212614474221" target="_blank" rel="noopener">Étudier mon projet · WhatsApp</a>
+          <p class="rc-note">Remise appliquée à la commande globale (Le Celestone + parquet + finitions), selon la surface combinée. Estimation indicative&nbsp;; seuils, périmètre et points exacts confirmés à l'étude de votre projet, dans votre devis confidentiel.</p>
+        </div>
+      </div>
     </div>
-    <p class="cmp-note">Un interlocuteur, un fournisseur, plusieurs solutions surfaces. Seuils de m² combinés (mur + sol) et points de remise exacts (en&nbsp;%) calés à l'étude de votre projet, dans votre devis confidentiel.</p>
+    <p class="cmp-note">Un interlocuteur, un fournisseur, plusieurs solutions surfaces. Au-delà de 1 500 m² combinés, la remise atteint son maximum.</p>
   </section>
 
   <section id="s-comparatif">
@@ -790,5 +814,34 @@
   }
 })();
 </script>
+<script>
+/* Calculateur de remise projet — surface combinée (mur Le Celestone + sol parquet). En % uniquement. */
+(function(){
+  var TIERS=[{min:100,rate:0.10,label:'100 – 300 m²'},{min:300,rate:0.15,label:'300 – 500 m²'},{min:500,rate:0.18,label:'500 – 1 500 m²'},{min:1500,rate:0.25,label:'\u2265 1 500 m²'}];
+  function tierFor(t){var r=null;for(var i=0;i<TIERS.length;i++){if(t>=TIERS[i].min)r=TIERS[i];}return r;}
+  function nextTier(t){for(var i=0;i<TIERS.length;i++){if(TIERS[i].min>t)return TIERS[i];}return null;}
+  var nf=new Intl.NumberFormat('fr-FR',{maximumFractionDigits:0});
+  var inMur=document.getElementById('inMur'),inSol=document.getElementById('inSol'),tiersEl=document.getElementById('calcTiers'),rowsEl=document.getElementById('rcRows'),totalEl=document.getElementById('rcTotal'),permEl=document.getElementById('rcPerm'),waEl=document.getElementById('rcWa');
+  if(!inMur||!tiersEl)return;
+  tiersEl.innerHTML=TIERS.map(function(t){return '<div class="tier" data-min="'+t.min+'"><div class="tk">'+t.label+'</div><div class="tv">\u2212'+Math.round(t.rate*100)+'%</div></div>';}).join('');
+  function compute(){
+    var mur=parseFloat(inMur.value)||0,sol=parseFloat(inSol.value)||0,total=mur+sol;
+    var tier=tierFor(total);
+    Array.prototype.slice.call(tiersEl.children).forEach(function(el){el.classList.toggle('on', !!tier && Number(el.getAttribute('data-min'))===tier.min);});
+    if(total<=0){rowsEl.innerHTML='<div class="r muted">Indiquez vos surfaces pour estimer.</div>';totalEl.textContent='\u2014';permEl.textContent='';waEl.href='https://wa.me/212614474221';return;}
+    var html='';
+    if(mur>0)html+='<div class="r line"><span>Murs \u00b7 Le Celestone</span><b>'+nf.format(mur)+' m²</b></div>';
+    if(sol>0)html+='<div class="r line"><span>Sols \u00b7 Parquet</span><b>'+nf.format(sol)+' m²</b></div>';
+    html+='<div class="r sep"><span>Surface combinée</span><b>'+nf.format(total)+' m²</b></div>';
+    rowsEl.innerHTML=html;
+    var nt=nextTier(total);
+    if(!tier){totalEl.textContent='\u2014';permEl.textContent='Remise projet dès 100 m² \u00b7 encore '+nf.format(100-total)+' m² pour \u221210%';}
+    else{totalEl.textContent='\u2212'+Math.round(tier.rate*100)+'%';permEl.textContent=nt?('Palier '+tier.label+' \u00b7 encore '+nf.format(nt.min-total)+' m² pour \u2212'+Math.round(nt.rate*100)+'%'):('Palier maximum \u00b7 '+tier.label);}
+    var msg='Bonjour Deutschconfort, projet promoteur — murs '+nf.format(mur)+' m², sols '+nf.format(sol)+' m² (combiné '+nf.format(total)+' m²)'+(tier?(' \u2192 remise projet \u2212'+Math.round(tier.rate*100)+'%'):'')+'. Je souhaite étudier un accord-cadre.';
+    waEl.href='https://wa.me/212614474221?text='+encodeURIComponent(msg);
+  }
+  inMur.addEventListener('input',compute);inSol.addEventListener('input',compute);
+  compute();
+})();
+</script>
 </body></html>
-
