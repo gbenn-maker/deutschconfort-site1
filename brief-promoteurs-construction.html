@@ -539,6 +539,7 @@
   .page .pin label{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.04em;color:var(--ink-soft)}
   @media(max-width:560px){.page .calc-tiers.tiers4{grid-template-columns:repeat(2,1fr)}}
 
+  .page .pl{display:grid;grid-template-columns:1fr 96px;gap:8px;align-items:center;margin-top:6px}
 </style>
 <meta name="robots" content="noindex,nofollow">
 </head>
@@ -636,22 +637,22 @@
     <div class="calc reveal" id="calc" style="margin-top:18px">
       <div class="calc-grid">
         <div class="calc-build">
-          <div class="calc-lab">Les surfaces de votre projet</div>
-          <div class="pin"><label>Murs — Le Celestone</label><div class="cl-surf"><input type="number" id="inMur" class="cl-m2" min="0" step="1" inputmode="decimal" placeholder="0"><span>m²</span></div></div>
-          <div class="pin"><label>Sols — Parquet (Quickstep / Balterio)</label><div class="cl-surf"><input type="number" id="inSol" class="cl-m2" min="0" step="1" inputmode="decimal" placeholder="0"><span>m²</span></div></div>
+          <div class="calc-lab">La commande de votre projet</div>
+          <div class="pin"><label>Murs — Le Celestone</label><div class="pl"><select id="selMur" class="cl-model"></select><div class="cl-surf"><input type="number" id="inMur" class="cl-m2" min="0" step="1" inputmode="decimal" placeholder="0"><span>m²</span></div></div></div>
+          <div class="pin"><label>Sols — Parquet (Quickstep / Balterio)</label><div class="pl"><select id="selSol" class="cl-model"></select><div class="cl-surf"><input type="number" id="inSol" class="cl-m2" min="0" step="1" inputmode="decimal" placeholder="0"><span>m²</span></div></div></div>
           <div class="calc-tierlab">Paliers de remise · surface combinée mur + sol</div>
           <div class="calc-tiers tiers4" id="calcTiers"></div>
         </div>
         <div class="calc-receipt">
-          <div class="rc-eyebrow">Votre remise projet</div>
-          <div class="rc-rows" id="rcRows"><div class="r muted">Indiquez vos surfaces pour estimer.</div></div>
+          <div class="rc-eyebrow">Votre projet</div>
+          <div class="rc-rows" id="rcRows"><div class="r muted">Choisissez vos produits et surfaces.</div></div>
           <div class="rc-total">
-            <div class="rc-total-k">Remise sur la commande globale</div>
+            <div class="rc-total-k">Prix net projet (TTC)</div>
             <div class="rc-total-v" id="rcTotal">—</div>
             <div class="rc-perm" id="rcPerm"></div>
           </div>
           <a class="btn btn-primary rc-cta" id="rcWa" href="https://wa.me/212614474221" target="_blank" rel="noopener">Étudier mon projet · WhatsApp</a>
-          <p class="rc-note">Remise appliquée à la commande globale (Le Celestone + parquet + finitions), selon la surface combinée. Estimation indicative&nbsp;; seuils, périmètre et points exacts confirmés à l'étude de votre projet, dans votre devis confidentiel.</p>
+          <p class="rc-note">Prix indicatifs TTC au m² (hors pose &amp; peinture). La remise projet s'applique à la commande globale selon la surface combinée. Devis ferme et confidentiel établi au métré réel.</p>
         </div>
       </div>
     </div>
@@ -692,8 +693,6 @@
       <div class="c"><div class="ico">// AUTONOMIE</div><h3>Vos ouvriers, formés à la signature</h3><p>Une équipe formée pose vite, propre, partout. Le savoir-faire reste chez vous, projet après projet.</p></div>
       <div class="c"><div class="ico">// UN SEUL TOIT</div><h3>Sol + mur + plinthes + moulures</h3><p>Un contrat, une facture, un SAV, un interlocuteur. Vous arrêtez d'arbitrer entre fournisseurs&nbsp;; nous portons l'ensemble.</p></div>
     </div>
-    <!-- VIDÉO : pose en situation (équipes) — source : media/pose-installation.mp4 (fichier local) -->
-    <div class="vidblock reveal"><div class="vphone"><video controls preload="metadata" playsinline poster="media/pose-installation-vertical-poster.jpg"><source src="media/pose-installation-vertical.mp4" type="video/mp4"></video></div><div class="figcap">Pose directe sur l'existant — démonstration</div></div>
   </section>
 
   <section id="s-tresorerie">
@@ -775,8 +774,6 @@
     <div class="actions"><a class="btn btn-primary" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20suis%20promoteur%2Fconstructeur%20et%20je%20souhaite%20%C3%A9tudier%20un%20accord-cadre%20partenaire%20(sol%20%2B%20mur%20%2B%20finitions).">WhatsApp · +212 6 14 47 42 21</a><a class="btn btn-ghost" href="https://deutsch-confort.com">deutsch-confort.com</a></div>
   </div>
 
-  <!-- VIDÉO : showroom Bd d'Anfa — source : media/showroom-2026.mp4 + poster media/showroom-poster.jpg (fichiers locaux) -->
-  <div class="vidblock reveal" style="margin-bottom:40px"><div class="vphone"><video controls preload="metadata" playsinline poster="media/showroom-2026-vertical-poster.jpg"><source src="media/showroom-2026-vertical.mp4" type="video/mp4"></video></div><div class="figcap">Showroom Deutschconfort — Bd d'Anfa, Casablanca</div></div>
 
   <footer><span>Deutschconfort · Casablanca · Bd d'Anfa, 11 Rue Hounaine</span><span>Sols · Murs · Finitions · depuis 1999</span></footer>
 </div></div>
@@ -815,32 +812,43 @@
 })();
 </script>
 <script>
-/* Calculateur de remise projet — surface combinée (mur Le Celestone + sol parquet). En % uniquement. */
+/* Calculateur projet promoteur \u2014 prix r\u00e9els TTC + remise par surface combin\u00e9e (mur Le Celestone + sol parquet). */
 (function(){
-  var TIERS=[{min:100,rate:0.10,label:'100 – 300 m²'},{min:300,rate:0.15,label:'300 – 500 m²'},{min:500,rate:0.18,label:'500 – 1 500 m²'},{min:1500,rate:0.25,label:'\u2265 1 500 m²'}];
+  var WALL=[{id:'bigrock',n:'Big Rock',p:525.6},{id:'cemento',n:'Cemento',p:527},{id:'moon',n:'Moon',p:591},{id:'brick',n:'Brick',p:435},{id:'mattoni',n:'Mattoni',p:342},{id:'brut',n:'B\u00e9ton Brut',p:350.4},{id:'deco',n:'B\u00e9ton D\u00e9coffrage',p:334},{id:'cubo',n:'Cubo',p:325}];
+  var FLOOR=[{id:'strat',n:'Stratifi\u00e9',p:185},{id:'spc',n:'Vinyle SPC',p:285}];
+  var TIERS=[{min:100,rate:0.10,label:'100 \u2013 300 m\u00b2'},{min:300,rate:0.15,label:'300 \u2013 500 m\u00b2'},{min:500,rate:0.18,label:'500 \u2013 1 500 m\u00b2'},{min:1500,rate:0.25,label:'\u2265 1 500 m\u00b2'}];
   function tierFor(t){var r=null;for(var i=0;i<TIERS.length;i++){if(t>=TIERS[i].min)r=TIERS[i];}return r;}
   function nextTier(t){for(var i=0;i<TIERS.length;i++){if(TIERS[i].min>t)return TIERS[i];}return null;}
+  var byId={};WALL.concat(FLOOR).forEach(function(m){byId[m.id]=m;});
   var nf=new Intl.NumberFormat('fr-FR',{maximumFractionDigits:0});
-  var inMur=document.getElementById('inMur'),inSol=document.getElementById('inSol'),tiersEl=document.getElementById('calcTiers'),rowsEl=document.getElementById('rcRows'),totalEl=document.getElementById('rcTotal'),permEl=document.getElementById('rcPerm'),waEl=document.getElementById('rcWa');
-  if(!inMur||!tiersEl)return;
+  function dh(n){return nf.format(Math.round(n))+' DH';}
+  var selMur=document.getElementById('selMur'),inMur=document.getElementById('inMur'),selSol=document.getElementById('selSol'),inSol=document.getElementById('inSol'),tiersEl=document.getElementById('calcTiers'),rowsEl=document.getElementById('rcRows'),totalEl=document.getElementById('rcTotal'),permEl=document.getElementById('rcPerm'),waEl=document.getElementById('rcWa');
+  if(!selMur||!tiersEl)return;
+  selMur.innerHTML=WALL.map(function(m){return '<option value="'+m.id+'">'+m.n+' \u2014 '+nf.format(m.p)+' DH/m\u00b2</option>';}).join('');
+  selSol.innerHTML=FLOOR.map(function(m){return '<option value="'+m.id+'">'+m.n+' \u2014 '+nf.format(m.p)+' DH/m\u00b2</option>';}).join('');
   tiersEl.innerHTML=TIERS.map(function(t){return '<div class="tier" data-min="'+t.min+'"><div class="tk">'+t.label+'</div><div class="tv">\u2212'+Math.round(t.rate*100)+'%</div></div>';}).join('');
   function compute(){
-    var mur=parseFloat(inMur.value)||0,sol=parseFloat(inSol.value)||0,total=mur+sol;
-    var tier=tierFor(total);
+    var wm=parseFloat(inMur.value)||0,sm=parseFloat(inSol.value)||0,total=wm+sm;
+    var wp=byId[selMur.value].p,fp=byId[selSol.value].p;
+    var pubW=wm*wp,pubF=sm*fp,pub=pubW+pubF;
+    var tier=tierFor(total),rate=tier?tier.rate:0,remise=pub*rate,net=pub-remise;
     Array.prototype.slice.call(tiersEl.children).forEach(function(el){el.classList.toggle('on', !!tier && Number(el.getAttribute('data-min'))===tier.min);});
-    if(total<=0){rowsEl.innerHTML='<div class="r muted">Indiquez vos surfaces pour estimer.</div>';totalEl.textContent='\u2014';permEl.textContent='';waEl.href='https://wa.me/212614474221';return;}
+    if(total<=0||pub<=0){rowsEl.innerHTML='<div class="r muted">Choisissez vos produits et surfaces.</div>';totalEl.textContent='\u2014';permEl.textContent='';waEl.href='https://wa.me/212614474221';return;}
     var html='';
-    if(mur>0)html+='<div class="r line"><span>Murs \u00b7 Le Celestone</span><b>'+nf.format(mur)+' m²</b></div>';
-    if(sol>0)html+='<div class="r line"><span>Sols \u00b7 Parquet</span><b>'+nf.format(sol)+' m²</b></div>';
-    html+='<div class="r sep"><span>Surface combinée</span><b>'+nf.format(total)+' m²</b></div>';
+    if(wm>0)html+='<div class="r line"><span>'+byId[selMur.value].n+' \u00b7 '+nf.format(wm)+' m\u00b2</span><b>'+dh(pubW)+'</b></div>';
+    if(sm>0)html+='<div class="r line"><span>'+byId[selSol.value].n+' \u00b7 '+nf.format(sm)+' m\u00b2</span><b>'+dh(pubF)+'</b></div>';
+    html+='<div class="r sep"><span>Surface combin\u00e9e</span><b>'+nf.format(total)+' m\u00b2</b></div>';
+    html+='<div class="r"><span>Prix public TTC</span><b>'+dh(pub)+'</b></div>';
+    if(rate>0)html+='<div class="r muted"><span>Remise projet (\u2212'+Math.round(rate*100)+'%)</span><b>\u2212 '+dh(remise)+'</b></div>';
     rowsEl.innerHTML=html;
+    totalEl.textContent=dh(net);
     var nt=nextTier(total);
-    if(!tier){totalEl.textContent='\u2014';permEl.textContent='Remise projet dès 100 m² \u00b7 encore '+nf.format(100-total)+' m² pour \u221210%';}
-    else{totalEl.textContent='\u2212'+Math.round(tier.rate*100)+'%';permEl.textContent=nt?('Palier '+tier.label+' \u00b7 encore '+nf.format(nt.min-total)+' m² pour \u2212'+Math.round(nt.rate*100)+'%'):('Palier maximum \u00b7 '+tier.label);}
-    var msg='Bonjour Deutschconfort, projet promoteur — murs '+nf.format(mur)+' m², sols '+nf.format(sol)+' m² (combiné '+nf.format(total)+' m²)'+(tier?(' \u2192 remise projet \u2212'+Math.round(tier.rate*100)+'%'):'')+'. Je souhaite étudier un accord-cadre.';
+    if(rate>0){permEl.textContent='soit '+dh(remise)+' \u00e9conomis\u00e9s'+(nt?(' \u00b7 encore '+nf.format(nt.min-total)+' m\u00b2 pour \u2212'+Math.round(nt.rate*100)+'%'):' \u00b7 palier maximum');}
+    else{permEl.textContent='Remise projet d\u00e8s 100 m\u00b2 \u00b7 encore '+nf.format(100-total)+' m\u00b2 pour \u221210%';}
+    var msg='Bonjour Deutschconfort, projet promoteur \u2014 '+byId[selMur.value].n+' '+nf.format(wm)+' m\u00b2 + '+byId[selSol.value].n+' '+nf.format(sm)+' m\u00b2 (combin\u00e9 '+nf.format(total)+' m\u00b2). Prix public '+dh(pub)+(rate>0?(', remise \u2212'+Math.round(rate*100)+'% \u2192 net '+dh(net)):'')+'. Je souhaite \u00e9tudier un accord-cadre.';
     waEl.href='https://wa.me/212614474221?text='+encodeURIComponent(msg);
   }
-  inMur.addEventListener('input',compute);inSol.addEventListener('input',compute);
+  selMur.addEventListener('change',compute);selSol.addEventListener('change',compute);inMur.addEventListener('input',compute);inSol.addEventListener('input',compute);
   compute();
 })();
 </script>
