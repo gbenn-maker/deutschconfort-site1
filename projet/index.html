@@ -1,0 +1,836 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#171512">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://deutsch-confort.com https://www.deutsch-confort.com; connect-src https://insta-pro-deutschconfort-production-a767.up.railway.app; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+  <title>Mon projet Celestone · Deutschconfort</title>
+  <meta name="description" content="Créez votre dossier projet Celestone en 2 minutes : usage, surface, style, photos et prochaine étape.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,400;9..144,600&display=swap" rel="stylesheet">
+  <style>
+    :root{--paper:#f4eee2;--card:#fffdf8;--ink:#211d17;--muted:#6c6458;--line:#d5c9b5;--clay:#b14a2b;--bronze:#937544;--dark:#171512;--ok:#2f6b4f;--shadow:0 18px 60px rgba(43,36,27,.12)}
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%;background:var(--paper);color:var(--ink);font-family:"DM Sans",system-ui,sans-serif}
+    body{background-image:radial-gradient(circle at 10% 0%,rgba(177,74,43,.08),transparent 28rem),radial-gradient(circle at 100% 100%,rgba(147,117,68,.08),transparent 28rem)}
+    button,input{font:inherit}
+    button{cursor:pointer}
+    .shell{min-height:100vh;display:grid;grid-template-rows:auto 1fr auto}
+    .top{position:sticky;top:0;z-index:20;background:rgba(244,238,226,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(147,117,68,.22)}
+    .top-in{max-width:980px;margin:auto;padding:14px 18px;display:flex;align-items:center;gap:16px}
+    .brand{font-weight:800;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
+    .brand small{display:block;color:var(--bronze);font-weight:600;letter-spacing:.08em;margin-top:2px}
+    .progress-wrap{margin-left:auto;width:min(360px,45vw)}
+    .progress-meta{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-bottom:6px}
+    .bar{height:6px;background:#e4daca;border-radius:999px;overflow:hidden}
+    .bar>span{display:block;height:100%;width:11.11%;background:linear-gradient(90deg,var(--clay),#d57c52);transition:width .3s ease}
+    .main{width:100%;max-width:980px;margin:auto;padding:24px 18px 110px}
+    .screen{display:none;animation:in .28s ease}
+    .screen.active{display:block}
+    @keyframes in{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    .stage{min-height:calc(100vh - 190px);display:flex;flex-direction:column;justify-content:center}
+    .eyebrow{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--bronze);font-weight:700;margin-bottom:14px}
+    h1,h2{font-family:"Fraunces",serif;font-weight:500;line-height:1.02;margin:0;letter-spacing:-.02em}
+    h1{font-size:clamp(42px,8vw,78px);max-width:12ch}
+    h2{font-size:clamp(34px,6vw,58px);max-width:15ch}
+    .accent{color:var(--clay);font-style:italic}
+    .lead{font-size:clamp(17px,2.2vw,21px);color:var(--muted);max-width:640px;line-height:1.55;margin:20px 0 0}
+    .micro{font-size:12px;color:var(--muted)}
+    .hero-card{margin-top:34px;border:1px solid var(--line);background:rgba(255,253,248,.7);border-radius:22px;padding:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;overflow:hidden}
+    .hero-card div{padding:10px 16px}
+    .hero-card b{display:block;font-family:"Fraunces",serif;font-size:20px;font-weight:500}
+    .hero-card span{font-size:12px;color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:28px}
+    .choice{border:1px solid var(--line);background:var(--card);border-radius:18px;padding:18px;text-align:left;min-height:112px;transition:.18s;position:relative}
+    .choice:hover{transform:translateY(-2px);border-color:#ad9671;box-shadow:0 10px 30px rgba(43,36,27,.08)}
+    .choice.selected{border:2px solid var(--clay);padding:17px;background:#fff8f2}
+    .choice .icon{font-size:24px;margin-bottom:12px}
+    .choice b{display:block;font-size:16px}
+    .choice span{display:block;color:var(--muted);font-size:13px;margin-top:5px;line-height:1.4}
+    .formbox{margin-top:26px;border:1px solid var(--line);background:var(--card);border-radius:20px;padding:20px}
+    .field{margin-bottom:16px}
+    .field:last-child{margin-bottom:0}
+    label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:7px}
+    input[type=text],input[type=tel],input[type=email],input[type=number]{width:100%;border:1px solid var(--line);background:#fff;border-radius:12px;padding:13px 14px;color:var(--ink);outline:none}
+    input:focus{border-color:var(--clay);box-shadow:0 0 0 3px rgba(177,74,43,.08)}
+    .inline{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:linear-gradient(180deg,rgba(244,238,226,0),rgba(244,238,226,.96) 22%,rgba(244,238,226,.99));padding:28px 18px max(16px,env(safe-area-inset-bottom))}
+    .nav-in{max-width:980px;margin:auto;display:flex;gap:12px;justify-content:flex-end}
+    .btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:13px;padding:13px 18px;font-weight:700;min-width:120px}
+    .btn.primary{background:var(--dark);color:white;border-color:var(--dark)}
+    .btn.primary:hover{background:#2b2823}
+    .btn.clay{background:var(--clay);color:white;border-color:var(--clay)}
+    .btn:disabled{opacity:.5;cursor:wait}
+    .error{display:none;margin-top:14px;color:#9b2c24;background:#fff2ef;border:1px solid #edc6bd;padding:10px 12px;border-radius:10px;font-size:13px}
+    .error.show{display:block}
+    .upload{margin-top:26px;border:1.5px dashed var(--bronze);background:rgba(255,253,248,.72);border-radius:20px;padding:26px;text-align:center}
+    .upload input{display:none}
+    .upload label{cursor:pointer;margin:0}
+    .upload .big{font-family:"Fraunces",serif;font-size:23px;color:var(--ink);display:block;margin-bottom:6px}
+    .photo-state{margin-top:14px;font-size:13px;color:var(--ok);font-weight:700}
+    .recs{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:28px}
+    .rec{border:1px solid var(--line);background:var(--card);border-radius:18px;overflow:hidden;cursor:pointer;transition:.18s;position:relative}
+    .rec:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(43,36,27,.1)}
+    .rec.selected{outline:2px solid var(--clay);background:#fff8f2}
+    .model-photo{height:150px;background:#e8dfd0;position:relative;overflow:hidden}
+    .model-photo img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .25s ease}
+    .rec:hover .model-photo img{transform:scale(1.025)}
+    .selected-pill{position:absolute;right:10px;top:10px;background:var(--clay);color:white;border-radius:999px;padding:6px 9px;font-size:10px;font-weight:800;letter-spacing:.03em}
+    .rec .body{padding:15px}
+    .rec b{font-family:"Fraunces",serif;font-size:21px;font-weight:500}
+    .rec p{font-size:12px;color:var(--muted);line-height:1.45;margin:6px 0 0}
+    .rec-meta{display:flex;justify-content:space-between;gap:8px;margin-bottom:7px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--bronze)}
+    .selection-note{margin-top:14px;padding:11px 13px;border-radius:12px;background:#eee5d7;color:var(--muted);font-size:12px}
+    .collection-toggle{margin-top:16px;width:100%;border:1px solid var(--bronze);background:transparent;color:var(--ink);border-radius:13px;padding:13px 16px;font-weight:800}
+    .collection{display:none;margin-top:20px}
+    .collection.open{display:block}
+    .category-block{margin-top:24px}
+    .category-block:first-child{margin-top:0}
+    .category-title{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+    .category-title b{font-family:"Fraunces",serif;font-size:23px;font-weight:500}
+    .category-title span{font-size:11px;color:var(--muted)}
+    .reassure-box{margin-top:26px;border:1px solid var(--line);background:var(--card);border-radius:20px;padding:22px}
+    .reassure-box h3{font-family:"Fraunces",serif;font-size:27px;font-weight:500;margin:0 0 10px}
+    .reassure-box>p{color:var(--muted);line-height:1.6;margin:0}
+    .proof-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:18px}
+    .proof{border:1px solid #e6dccb;background:#fffaf2;border-radius:14px;padding:14px}
+    .proof b{display:block;font-size:13px;margin-bottom:5px}
+    .proof span{font-size:12px;line-height:1.5;color:var(--muted)}
+    .truth-note{margin-top:14px;padding:11px 13px;border-left:3px solid var(--bronze);background:#f7f1e7;color:var(--muted);font-size:11px;line-height:1.5}
+    .summary{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:28px}
+    .panel{border:1px solid var(--line);background:var(--card);border-radius:20px;padding:20px}
+    .rows{display:grid;gap:0}
+    .row{display:flex;justify-content:space-between;gap:20px;padding:12px 0;border-bottom:1px solid #ece4d6;font-size:14px}
+    .row:last-child{border-bottom:0}
+    .row span:first-child{color:var(--muted)}
+    .segment{background:var(--dark);color:#f8f2e7}
+    .segment .eyebrow{color:#d2ad74}
+    .segment-code{font-family:"Fraunces",serif;font-size:64px;line-height:1}
+    .segment h3{font-family:"Fraunces",serif;font-size:25px;font-weight:500;margin:10px 0 8px}
+    .segment p{color:#d7cfc1;font-size:14px;line-height:1.5;margin:0}
+    .wa{display:block;text-decoration:none;text-align:center;background:#1f7a55;color:white;border-radius:14px;padding:15px;font-weight:800;margin-top:18px}
+    .restart{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:999px;padding:8px 12px;font-size:11px;font-weight:800;white-space:nowrap}
+    .final-actions{display:grid;gap:10px;margin-top:18px}
+    .action-link{display:flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;text-align:center;border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:14px;padding:14px;font-weight:800;background:rgba(255,255,255,.07)}
+    .action-link.call{background:#f4eee2;color:var(--ink);border-color:#f4eee2}
+    .action-link.wa{margin-top:0;background:#1f7a55;border-color:#1f7a55}
+    .gallery-modal{position:fixed;inset:0;z-index:80;background:rgba(23,21,18,.96);color:#fff;display:none;overflow:auto;padding:18px}
+    .gallery-modal.open{display:block}
+    .gallery-inner{max-width:980px;margin:auto;padding:18px 0 60px}
+    .gallery-head{position:sticky;top:0;z-index:2;background:rgba(23,21,18,.94);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0 16px}
+    .gallery-head h3{font-family:"Fraunces",serif;font-size:30px;font-weight:500;margin:0}
+    .gallery-close{border:1px solid #665f55;background:#2b2823;color:#fff;border-radius:999px;padding:9px 13px;font-weight:800}
+    .gallery-model{margin-top:28px}
+    .gallery-model h4{font-family:"Fraunces",serif;font-size:25px;font-weight:500;margin:0 0 10px}
+    .gallery-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+    .gallery-grid img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;background:#332f29}
+    .sync{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);margin-top:12px}
+    .sync i{width:7px;height:7px;border-radius:50%;background:#9a938a}
+    .sync.ok i{background:#3a8b66}
+    .foot{max-width:980px;width:100%;margin:auto;padding:0 18px 22px;font-size:11px;color:var(--muted);display:flex;justify-content:space-between;gap:12px}
+    .hp{position:absolute!important;left:-9999px!important}
+    @media(max-width:720px){
+      .top-in{padding:12px 14px}.brand small{display:none}.main{padding:22px 14px 110px}.grid,.recs,.summary,.inline,.proof-grid{grid-template-columns:1fr}.choice{min-height:auto}.hero-card{grid-template-columns:1fr;padding:8px}.hero-card div{padding:10px}.stage{min-height:calc(100vh - 170px)}.nav{padding-left:14px;padding-right:14px}.nav-in{justify-content:space-between}.nav-in .btn{flex:1}.progress-wrap{width:42vw}.rec{display:grid;grid-template-columns:118px 1fr}.model-photo{height:100%;min-height:128px}
+    }
+  </style>
+</head>
+<body>
+<div class="shell">
+  <header class="top">
+    <div class="top-in">
+      <div class="brand">Deutschconfort<small>Celestone · espace projet</small></div>
+      <button class="restart" id="restartBtn" type="button">Recommencer</button>
+      <div class="progress-wrap">
+        <div class="progress-meta"><span id="progressLabel">Étape 1 sur 10</span><span id="dossierCode">Dossier en création</span></div>
+        <div class="bar"><span id="progressBar"></span></div>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <section class="screen active" data-screen="1">
+      <div class="stage">
+        <div class="eyebrow">Votre projet · environ 2 minutes</div>
+        <h1>On transforme votre mur en <span class="accent">projet clair.</span></h1>
+        <p class="lead">Répondez à quelques questions. Nous préparons votre dossier Celestone, recommandons 2–3 modèles adaptés et revenons vers vous sur WhatsApp avec la prochaine étape.</p>
+        <div class="hero-card">
+          <div><b>10 étapes</b><span>courtes et mobiles</span></div>
+          <div><b>2–3 modèles</b><span>adaptés à votre contexte</span></div>
+          <div><b>1 dossier</b><span>qui suit votre projet dans notre CRM</span></div>
+        </div>
+        <div class="sync" id="syncState"><i></i><span>Création du dossier…</span></div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="2">
+      <div class="stage">
+        <div class="eyebrow">01 · Usage</div>
+        <h2>Où voulez-vous utiliser <span class="accent">Celestone ?</span></h2>
+        <p class="lead">Cela nous aide à filtrer les textures et la manière de préparer le chantier.</p>
+        <div class="grid">
+          <button class="choice" data-field="project_type" data-value="Façade extérieure"><div class="icon">▥</div><b>Façade extérieure</b><span>Maison, immeuble, commerce, entrée.</span></button>
+          <button class="choice" data-field="project_type" data-value="Jardin / piscine"><div class="icon">◫</div><b>Jardin / piscine</b><span>Mur périphérique, terrasse, pool house.</span></button>
+          <button class="choice" data-field="project_type" data-value="Intérieur"><div class="icon">◇</div><b>Intérieur</b><span>Salon, chambre, cage d'escalier, mur décoratif.</span></button>
+          <button class="choice" data-field="project_type" data-value="Commerce / hôtel"><div class="icon">▦</div><b>Commerce / hôtel</b><span>Restaurant, boutique, bureau, hospitality.</span></button>
+        </div>
+        <div class="error" data-error="2">Choisissez un usage pour continuer.</div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="3">
+      <div class="stage">
+        <div class="eyebrow">02 · Mesures</div>
+        <h2>Quelle surface devons-nous <span class="accent">habiller ?</span></h2>
+        <p class="lead">Une estimation suffit. Si vous ne savez pas, nous pouvons organiser la prise de mesures dans la zone couverte.</p>
+        <div class="formbox" id="surfaceKnown" style="display:none;margin-top:24px">
+          <div class="field"><label>Surface approximative en m²</label><input id="surfaceM2" type="number" min="1" step="1" inputmode="decimal" placeholder="Ex. 42"></div>
+        </div>
+        <div class="grid">
+          <button class="choice" data-field="measurement_mode" data-value="known"><div class="icon">≈</div><b>Je connais les m²</b><span>Entrez une surface approximative.</span></button>
+          <button class="choice" data-field="measurement_mode" data-value="dimensions"><div class="icon">↔</div><b>J'ai longueur × hauteur</b><span>Nous calculons automatiquement.</span></button>
+          <button class="choice" data-field="measurement_mode" data-value="visit"><div class="icon">◎</div><b>Je veux une prise de mesures</b><span>Nous vérifions l'éligibilité à une visite.</span></button>
+          <button class="choice" data-field="measurement_mode" data-value="unknown"><div class="icon">?</div><b>Je ne sais pas encore</b><span>On peut avancer avec une photo.</span></button>
+        </div>
+        <div class="formbox" id="surfaceDims" style="display:none">
+          <div class="inline">
+            <div class="field"><label>Longueur totale (m)</label><input id="wallLength" type="number" min=".1" step=".1" placeholder="Ex. 12"></div>
+            <div class="field"><label>Hauteur moyenne (m)</label><input id="wallHeight" type="number" min=".1" step=".1" placeholder="Ex. 2.5"></div>
+          </div>
+          <div class="micro" id="surfaceCalc">Surface calculée : —</div>
+        </div>
+        <div class="error" data-error="3">Indiquez comment vous souhaitez estimer la surface.</div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="4">
+      <div class="stage">
+        <div class="eyebrow">03 · Direction esthétique</div>
+        <h2>Quel univers vous parle le <span class="accent">plus ?</span></h2>
+        <p class="lead">Pas besoin de connaître les noms des modèles. Choisissez simplement une famille visuelle.</p>
+        <div class="grid">
+          <button class="choice" data-field="style_family" data-value="pierre"><div class="icon">⬡</div><b>Pierre minérale</b><span>Relief naturel, façade forte, aspect massif.</span></button>
+          <button class="choice" data-field="style_family" data-value="brique"><div class="icon">▦</div><b>Brique contemporaine</b><span>Rythme architectural, lignes horizontales.</span></button>
+          <button class="choice" data-field="style_family" data-value="beton"><div class="icon">▱</div><b>Béton architectural</b><span>Sobre, brut, décoffrage ou minimal.</span></button>
+          <button class="choice" data-field="style_family" data-value="graphique"><div class="icon">◈</div><b>Relief graphique / 3D</b><span>Mur signature, formes et profondeur.</span></button>
+          <button class="choice" data-field="style_family" data-value="surprise"><div class="icon">✦</div><b>Je veux être conseillé</b><span>Montrez-moi les pistes les plus adaptées.</span></button>
+        </div>
+        <div class="error" data-error="4">Choisissez une direction esthétique.</div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="5">
+      <div class="stage">
+        <div class="eyebrow">04 · Contexte</div>
+        <h2>Où et quand se fait le <span class="accent">projet ?</span></h2>
+        <p class="lead">La ville détermine la logistique et la possibilité d'une visite de mesure.</p>
+        <div class="formbox">
+          <div class="field"><label>Ville / zone</label><input id="city" type="text" placeholder="Ex. Casablanca, Dar Bouazza, Rabat…"></div>
+          <div class="field">
+            <label>Quand souhaitez-vous avancer ?</label>
+            <div class="grid" style="margin-top:8px">
+              <button class="choice" data-field="timeframe" data-value="Dès que possible"><b>Dès que possible</b><span>Projet actif maintenant.</span></button>
+              <button class="choice" data-field="timeframe" data-value="Dans 1 mois"><b>Dans 1 mois</b><span>Décision à court terme.</span></button>
+              <button class="choice" data-field="timeframe" data-value="Dans 2–3 mois"><b>Dans 2–3 mois</b><span>Projet en préparation.</span></button>
+              <button class="choice" data-field="timeframe" data-value="Je me renseigne"><b>Je me renseigne</b><span>Phase d'inspiration / étude.</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="error" data-error="5">Indiquez votre ville et une échéance.</div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="6">
+      <div class="stage">
+        <div class="eyebrow">05 · Photos</div>
+        <h2>Une photo nous fait gagner <span class="accent">beaucoup de temps.</span></h2>
+        <p class="lead">Ajoutez jusqu'à 4 photos du mur ou de l'espace. C'est optionnel, mais cela peut permettre une estimation beaucoup plus rapide.</p>
+        <div class="upload">
+          <label for="photos"><span class="big">Ajouter des photos</span><span class="micro">JPG / PNG / WebP · compression automatique avant envoi</span></label>
+          <input id="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple>
+          <div class="photo-state" id="photoState">Aucune photo ajoutée</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="7">
+      <div class="stage">
+        <div class="eyebrow">06 · Choix des revêtements</div>
+        <h2>Quels modèles voyez-vous sur <span class="accent">votre projet ?</span></h2>
+        <p class="lead">Nous vous proposons d’abord trois pistes cohérentes avec vos réponses. Vous pouvez en sélectionner <strong>une ou plusieurs</strong>, puis ouvrir toute la collection si vous voulez comparer davantage.</p>
+        <div class="recs" id="recommendations"></div>
+        <div class="selection-note" id="selectedModelsNote">Sélectionnez au moins un modèle pour continuer.</div>
+        <button class="collection-toggle" id="collectionToggle" type="button">Voir toute la collection ↓</button>
+        <div class="collection" id="fullCollection"></div>
+        <div class="error" data-error="7">Sélectionnez au moins un revêtement. Vous pouvez ouvrir toute la collection si les trois propositions ne vous correspondent pas.</div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="8">
+      <div class="stage">
+        <div class="eyebrow">07 · Vos doutes produit</div>
+        <h2>Souhaiteriez-vous éclaircir vos doutes <span class="accent">avant d’aller plus loin ?</span></h2>
+        <p class="lead">Composition du matériau, résistance et tenue dans le temps, humidité et extérieur, efficacité de la pose, finition… Nous pouvons vous donner l’essentiel tout de suite.</p>
+        <div class="grid">
+          <button class="choice" data-field="reassurance_requested" data-value="yes"><div class="icon">✓</div><b>Oui, je veux être rassuré</b><span>Montrez-moi les points techniques essentiels.</span></button>
+          <button class="choice" data-field="reassurance_requested" data-value="no"><div class="icon">→</div><b>Non, c’est clair pour moi</b><span>Je peux continuer directement.</span></button>
+        </div>
+        <div class="reassure-box" id="reassurancePanel" style="display:none">
+          <div class="eyebrow">L’essentiel sur Celestone</div>
+          <h3>Un relief architectural fort, sans les contraintes d’un parement lourd.</h3>
+          <p>Celestone est un revêtement en <strong>polyuréthane rigide haute densité à cœur massif</strong>. Cette construction permet d’obtenir des panneaux légers, rigides et résistants aux chocs, tout en conservant un relief marqué. Le matériau est hydrophobe et conçu pour résister à l’eau et à l’humidité ; pour l’usage extérieur, la formulation intègre des additifs anti-UV. Les panneaux sont destinés à l’intérieur comme à l’extérieur lorsque le support et la mise en œuvre sont adaptés.</p>
+          <div class="proof-grid">
+            <div class="proof"><b>Composition & solidité</b><span>PU rigide haute densité à cœur massif : structure légère, rigide et conçue pour bien encaisser les chocs du quotidien.</span></div>
+            <div class="proof"><b>Humidité & extérieur</b><span>Matériau hydrophobe, résistant à l’humidité, avec protection anti-UV prévue pour les applications extérieures.</span></div>
+            <div class="proof"><b>Pose plus simple</b><span>Le faible poids facilite la manutention, notamment en hauteur. La mise en œuvre se fait par collage et vissage sur un support correctement préparé.</span></div>
+            <div class="proof"><b>Finition maîtrisée</b><span>Les panneaux sont fournis avec un primaire prêt à peindre. Une peinture acrylique à l’eau est recommandée pour une bonne adhérence et une finition durable.</span></div>
+          </div>
+          <div class="truth-note"><strong>À retenir :</strong> la tenue finale d’un revêtement dépend aussi de la qualité du support, de sa préparation, de la pose, de la finition et de l’exposition du chantier. Notre équipe vérifie ces points avant de vous orienter.</div>
+        </div>
+        <div class="error" data-error="8">Choisissez simplement Oui ou Non pour continuer.</div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="9">
+      <div class="stage">
+        <div class="eyebrow">08 · Contact</div>
+        <h2>À qui doit-on envoyer la <span class="accent">suite ?</span></h2>
+        <p class="lead">Nous utilisons ces informations uniquement pour reprendre votre dossier et vous répondre sur votre projet.</p>
+        <div class="formbox">
+          <div class="field"><label>Nom et prénom</label><input id="fullName" type="text" autocomplete="name" placeholder="Votre nom"></div>
+          <div class="field"><label>WhatsApp / téléphone</label><input id="phone" type="tel" autocomplete="tel" placeholder="+212 6…"></div>
+          <div class="field"><label>E-mail <span style="font-weight:400">(optionnel)</span></label><input id="email" type="email" autocomplete="email" placeholder="vous@exemple.com"></div>
+          <input class="hp" id="website" type="text" tabindex="-1" autocomplete="off">
+          <div class="micro">En continuant, vous acceptez d'être recontacté uniquement au sujet de ce projet Celestone. Vos coordonnées et photos sont transmises de manière chiffrée (HTTPS) à notre outil interne et ne sont pas affichées publiquement.</div>
+        </div>
+        <div class="error" data-error="9">Indiquez au minimum votre nom et votre numéro WhatsApp.</div>
+      </div>
+    </section>
+
+    <section class="screen" data-screen="10">
+      <div class="stage">
+        <div class="eyebrow">09 · Dossier prêt</div>
+        <h2>Votre projet est maintenant <span class="accent">structuré.</span></h2>
+        <p class="lead">Le dossier est transmis à Deutschconfort. La prochaine étape dépend des informations que vous avez déjà fournies.</p>
+        <div class="summary">
+          <div class="panel">
+            <div class="eyebrow">Récapitulatif</div>
+            <div class="rows" id="summaryRows"></div>
+            <div class="sync" id="finalSync"><i></i><span>Synchronisation en cours…</span></div>
+          </div>
+          <div class="panel segment">
+            <div class="eyebrow">Parcours recommandé</div>
+            <div class="segment-code" id="segmentCode">—</div>
+            <h3 id="segmentTitle">Prochaine étape</h3>
+            <p id="segmentText">Nous préparons la suite adaptée à votre dossier.</p>
+            <div class="final-actions">
+              <a class="action-link call" href="tel:+212614474221">☎ Appeler maintenant</a>
+              <a class="action-link wa" id="whatsappCta" href="#" target="_blank" rel="noreferrer">WhatsApp · envoyer mon projet</a>
+              <button class="action-link" id="galleryCta" type="button">▦ Voir la galerie photos</button>
+              <a class="action-link" href="https://deutsch-confort.com/" target="_blank" rel="noreferrer">↗ Visiter le site web</a>
+            </div>
+            <div class="micro" style="color:#a99f90;margin-top:10px">Aucun prix n'est affiché ici : le chiffrage vous est envoyé 1:1 après revue du dossier.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="gallery-modal" id="galleryModal" aria-hidden="true">
+    <div class="gallery-inner">
+      <div class="gallery-head"><h3>Réalisations Celestone</h3><button class="gallery-close" id="galleryClose" type="button">Fermer ×</button></div>
+      <div id="galleryContent"></div>
+    </div>
+  </div>
+
+  <div class="nav" id="nav">
+    <div class="nav-in">
+      <button class="btn" id="backBtn" style="visibility:hidden">Retour</button>
+      <button class="btn primary" id="nextBtn">Commencer</button>
+    </div>
+  </div>
+
+  <footer class="foot"><span>Deutschconfort · Casablanca</span><span>Celestone · revêtements décoratifs intérieur / extérieur</span></footer>
+</div>
+
+<script>
+(function(){
+  var API_ROOT = 'https://insta-pro-deutschconfort-production-a767.up.railway.app/api/public/web-projects';
+  var WA_NUMBER = '212614474221';
+  var TOKEN_KEY = 'celestone_project_token_v1';
+  var STATE_KEY = 'celestone_project_state_v1';
+
+  var state = {
+    token:null, code:null, step:1, photo_count:0, recommendations:[],
+    answers:{ project_type:'', measurement_mode:'', surface_m2:null, wall_length:null, wall_height:null, style_family:'', city:'', timeframe:'', selected_model:'', selected_models:[], collection_opened:false, reassurance_requested:'' },
+    contact:{ full_name:'', phone:'', email:'' },
+    lastSyncOk:false
+  };
+
+  var SITE_ASSET_ROOT = 'https://deutsch-confort.com/';
+  var MODEL_CATALOG = [
+    {id:'big-rock',name:'Big Rock',category:'Pierre & minéral',family:'pierre',size:'240×60 / 120×60 cm',image:'images/panels/big-rock-product.png',reason:'Relief pierre puissant, particulièrement adapté aux façades, jardins et murs signature.'},
+    {id:'travertin',name:'Travertin',category:'Pierre & minéral',family:'pierre',size:'115×75 cm',image:'images/panels/travertin-product.png',reason:'Lecture minérale plus régulière, élégante et lumineuse.'},
+    {id:'mattoni',name:'Mattoni',category:'Brique',family:'brique',size:'207×50 cm',image:'images/panels/mattoni-product.png',reason:'Brique XL contemporaine, très efficace pour rythmer les grandes surfaces.'},
+    {id:'cemento',name:'Cemento',category:'Béton architectural',family:'beton',size:'120×57 cm',image:'images/panels/cemento-product.png',reason:'Béton texturé polyvalent, sobre et architectural.'},
+    {id:'beton-brut',name:'Béton Brut',category:'Béton architectural',family:'beton',size:'120×80 cm',image:'images/panels/beton-brut-product.png',reason:'Aspect brut et minimal pour une architecture épurée.'},
+    {id:'beton-decoffrage',name:'Béton Décoffrage',category:'Béton architectural',family:'beton',size:'230×51 cm',image:'images/panels/beton-decoffrage-product.jpg',reason:'Trame de coffrage graphique, idéale sur les grands pans de mur.'},
+    {id:'cubo',name:'Cubo',category:'Reliefs 3D & graphiques',family:'graphique',size:'240×50 cm',image:'images/panels/cubo-product.png',reason:'Relief 3D géométrique pour un mur décoratif fort.'},
+    {id:'moon',name:'Moon',category:'Reliefs 3D & graphiques',family:'graphique',size:'118×48 cm',image:'images/panels/moon-product.png',reason:'Ondulation sculpturale et organique, avec beaucoup de profondeur.'},
+    {id:'bois-cubo',name:'Bois Cubo',category:'Bois & organique',family:'organique',size:'125×39,5 cm',image:'images/panels/bois-cubo-product.png',reason:'Relief inspiré du bois pour apporter chaleur et matière.'}
+  ];
+  var GALLERY = {
+    'Big Rock':['images/realisations/big-rock-01.jpg','images/realisations/big-rock-02.jpg','images/realisations/big-rock-04.jpg','images/realisations/big-rock-06.jpg'],
+    'Béton Brut':['images/realisations/beton-brut-01.jpg','images/realisations/beton-brut-02.jpg','images/realisations/beton-brut-04.jpg'],
+    'Cemento':['images/realisations/cemento-01.jpg','images/realisations/cemento-02.jpg','images/realisations/cemento-03.jpg'],
+    'Cubo':['images/realisations/cubo-03.jpg','images/realisations/cubo-04.jpg','images/realisations/cubo-05.jpg'],
+    'Mattoni':['images/realisations/mattoni-01.jpg','images/realisations/mattoni-02.jpg','images/realisations/mattoni-03.jpg'],
+    'Moon':['images/realisations/moon-01.jpg','images/realisations/moon-02.jpg','images/realisations/moon-03.jpg'],
+    'Bois Cubo':['images/realisations/bois-cubo-01.jpg','images/realisations/bois-cubo-02.jpg']
+  };
+  var MODEL_MAP = Object.fromEntries(MODEL_CATALOG.map(function(m){return [m.name,m];}));
+  var CATEGORY_ORDER = ['Pierre & minéral','Brique','Béton architectural','Reliefs 3D & graphiques','Bois & organique'];
+
+  function el(id){ return document.getElementById(id); }
+  function localSave(){
+    try{
+      // Never persist contact PII (name, phone, email) in browser storage.
+      // The server remains the source of truth; the token is enough to resume.
+      var safeState=Object.assign({},state,{contact:{full_name:'',phone:'',email:''}});
+      localStorage.setItem(STATE_KEY,JSON.stringify(safeState));
+      if(state.token)localStorage.setItem(TOKEN_KEY,state.token);
+    }catch(e){}
+  }
+  function qs(name){ return new URLSearchParams(location.search).get(name); }
+
+  function hydrate(d){
+    if(!d)return;
+    state.token = d.public_token || state.token;
+    state.code = d.code || state.code;
+    state.step = Math.max(1, Math.min(10, Number(d.current_step || state.step || 1)));
+    state.photo_count = Number(d.photo_count || 0);
+    state.recommendations = d.recommendations || [];
+    state.answers = Object.assign({}, state.answers, d.answers || {});
+    if(!Array.isArray(state.answers.selected_models))state.answers.selected_models=[];
+    if(!state.answers.selected_models.length&&state.answers.selected_model)state.answers.selected_models=[state.answers.selected_model];
+    if(d.project_type)state.answers.project_type=d.project_type;
+    if(d.surface_m2)state.answers.surface_m2=d.surface_m2;
+    if(d.style_family)state.answers.style_family=d.style_family;
+    if(d.city)state.answers.city=d.city;
+    if(d.timeframe)state.answers.timeframe=d.timeframe;
+    state.contact.full_name=d.full_name||state.contact.full_name;
+    state.contact.phone=d.phone||state.contact.phone;
+    state.contact.email=d.email||state.contact.email;
+    localSave();
+  }
+
+  async function api(path, options){
+    var res = await fetch(API_ROOT + path, Object.assign({headers:{'Content-Type':'application/json'}}, options||{}));
+    if(!res.ok){
+      var body={}; try{body=await res.json();}catch(e){}
+      var err=new Error(body.error||('HTTP '+res.status)); err.status=res.status; throw err;
+    }
+    return res.json();
+  }
+
+  async function boot(){
+    try{
+      var persisted = null;
+      try{ persisted=JSON.parse(localStorage.getItem(STATE_KEY)||'null'); }catch(e){}
+      if(persisted)state=Object.assign(state,persisted,{answers:Object.assign(state.answers,persisted.answers||{}),contact:Object.assign(state.contact,persisted.contact||{})});
+      var explicitToken=qs('d');
+      var resume=qs('resume')==='1';
+      var token=explicitToken||(resume?(state.token||localStorage.getItem(TOKEN_KEY)):null);
+      if(!explicitToken&&!resume){
+        state.token=null; state.code=null; state.step=1; state.photo_count=0; state.recommendations=[];
+        state.answers={project_type:'',measurement_mode:'',surface_m2:null,wall_length:null,wall_height:null,style_family:'',city:'',timeframe:'',selected_model:'',selected_models:[],collection_opened:false,reassurance_requested:''};
+        state.contact={full_name:'',phone:'',email:''};
+        try{localStorage.removeItem(STATE_KEY);localStorage.removeItem(TOKEN_KEY);}catch(e){}
+      }
+      var data;
+      if(token){
+        state.token=token;
+        try{
+          data=await api('/'+encodeURIComponent(token));
+        }catch(e){
+          if(e.status===404){
+            state.token=null;
+            data=await api('/start',{method:'POST',body:JSON.stringify({source:'celestone_project_brief',utm:utm(),website:''})});
+          }else{
+            throw e;
+          }
+        }
+      }else{
+        data=await api('/start',{method:'POST',body:JSON.stringify({source:'celestone_project_brief',utm:utm(),website:''})});
+      }
+      hydrate(data.dossier);
+      state.lastSyncOk=true;
+      setSync(true,'Dossier '+state.code+' synchronisé');
+    }catch(e){
+      state.lastSyncOk=false;
+      if(!state.code)state.code='LOCAL-'+String(Date.now()).slice(-5);
+      setSync(false,'Mode hors ligne · vos réponses restent sur cet appareil');
+    }
+    bindInputs();
+    render();
+  }
+
+  function utm(){
+    var p=new URLSearchParams(location.search), out={};
+    ['utm_source','utm_medium','utm_campaign','utm_content','utm_term'].forEach(function(k){if(p.get(k))out[k]=p.get(k);});
+    out.landing=location.href;
+    return out;
+  }
+
+  function setSync(ok,text){
+    var s=el('syncState'); if(!s)return;
+    s.className='sync'+(ok?' ok':''); s.querySelector('span').textContent=text;
+  }
+
+  async function sync(extra){
+    localSave();
+    if(!state.token){ state.lastSyncOk=false; return null; }
+    var payload = {
+      current_step:state.step,
+      answers:state.answers,
+      full_name:state.contact.full_name,
+      phone:state.contact.phone,
+      email:state.contact.email,
+      city:state.answers.city,
+      surface_m2:state.answers.surface_m2,
+      project_type:state.answers.project_type,
+      style_family:state.answers.style_family,
+      timeframe:state.answers.timeframe,
+      website:el('website')?el('website').value:''
+    };
+    if(extra)Object.keys(extra).forEach(function(k){payload[k]=extra[k];});
+    try{
+      var data=await api('/'+encodeURIComponent(state.token),{method:'PATCH',body:JSON.stringify(payload)});
+      hydrate(data.dossier);
+      state.lastSyncOk=true;
+      setSync(true,'Dossier '+state.code+' synchronisé');
+      return data;
+    }catch(e){
+      state.lastSyncOk=false;
+      setSync(false,'Connexion interrompue · sauvegarde locale active');
+      return null;
+    }
+  }
+
+  var syncTimer=null;
+  function queueSync(){ clearTimeout(syncTimer); syncTimer=setTimeout(function(){sync();},350); }
+
+  function bindInputs(){
+    document.querySelectorAll('[data-field][data-value]').forEach(function(b){
+      b.addEventListener('click',function(){
+        var f=b.getAttribute('data-field'), v=b.getAttribute('data-value');
+        state.answers[f]=v;
+        if(f==='measurement_mode')toggleSurfaceFields();
+        if(f==='style_family')state.recommendations=recommend();
+        if(f==='reassurance_requested')renderReassurance();
+        if(f==='timeframe'||f==='project_type'||f==='style_family'||f==='measurement_mode'||f==='reassurance_requested')queueSync();
+        renderChoices();
+      });
+    });
+    el('surfaceM2').addEventListener('input',function(){state.answers.surface_m2=num(this.value);queueSync();});
+    el('wallLength').addEventListener('input',calcDims);
+    el('wallHeight').addEventListener('input',calcDims);
+    el('city').addEventListener('input',function(){state.answers.city=this.value;queueSync();});
+    el('fullName').addEventListener('input',function(){state.contact.full_name=this.value;queueSync();});
+    el('phone').addEventListener('input',function(){state.contact.phone=this.value;queueSync();});
+    el('email').addEventListener('input',function(){state.contact.email=this.value;queueSync();});
+    el('photos').addEventListener('change',uploadPhotos);
+    el('restartBtn').addEventListener('click',restartBrief);
+    el('galleryCta').addEventListener('click',openGallery);
+    el('galleryClose').addEventListener('click',closeGallery);
+    el('galleryModal').addEventListener('click',function(e){if(e.target===this)closeGallery();});
+    el('collectionToggle').addEventListener('click',function(){
+      state.answers.collection_opened=!state.answers.collection_opened;
+      renderCollection();
+      queueSync();
+    });
+    el('backBtn').addEventListener('click',function(){go(Math.max(1,state.step-1),false);});
+    el('nextBtn').addEventListener('click',function(){ if(state.step===10)return; if(validate(state.step))go(Math.min(10,state.step+1),true); });
+    el('whatsappCta').addEventListener('click',function(e){ e.preventDefault(); completeAndWhatsapp(); });
+  }
+
+  function num(v){ var n=Number(v); return isFinite(n)&&n>0?Math.round(n*10)/10:null; }
+  function calcDims(){
+    state.answers.wall_length=num(el('wallLength').value);
+    state.answers.wall_height=num(el('wallHeight').value);
+    if(state.answers.wall_length&&state.answers.wall_height)state.answers.surface_m2=Math.round(state.answers.wall_length*state.answers.wall_height*10)/10;
+    el('surfaceCalc').textContent='Surface calculée : '+(state.answers.surface_m2?state.answers.surface_m2+' m²':'—');
+    queueSync();
+  }
+
+  function toggleSurfaceFields(){
+    el('surfaceKnown').style.display=state.answers.measurement_mode==='known'?'block':'none';
+    el('surfaceDims').style.display=state.answers.measurement_mode==='dimensions'?'block':'none';
+  }
+
+  function validate(step){
+    var ok=true;
+    if(step===2)ok=!!state.answers.project_type;
+    if(step===3){
+      ok=!!state.answers.measurement_mode;
+      if(state.answers.measurement_mode==='known')ok=!!state.answers.surface_m2;
+      if(state.answers.measurement_mode==='dimensions')ok=!!state.answers.wall_length&&!!state.answers.wall_height;
+    }
+    if(step===4)ok=!!state.answers.style_family;
+    if(step===5)ok=!!String(state.answers.city||'').trim()&&!!state.answers.timeframe;
+    if(step===7)ok=Array.isArray(state.answers.selected_models)&&state.answers.selected_models.length>0;
+    if(step===8)ok=state.answers.reassurance_requested==='yes'||state.answers.reassurance_requested==='no';
+    if(step===9){
+      // Safari/iOS autofill can visually populate fields without reliably firing input/change.
+      // Read the DOM at submit time so what the visitor sees is what we validate and save.
+      state.contact.full_name=String(el('fullName').value||'').trim();
+      state.contact.phone=String(el('phone').value||'').trim();
+      state.contact.email=String(el('email').value||'').trim();
+      ok=!!state.contact.full_name&&state.contact.phone.replace(/\D/g,'').length>=8;
+      if(ok)queueSync();
+    }
+    var box=document.querySelector('[data-error="'+step+'"]');
+    if(box)box.classList.toggle('show',!ok);
+    return ok;
+  }
+
+  async function go(step,forward){
+    state.step=step;
+    if(step===7){state.recommendations=recommend();}
+    render();
+    window.scrollTo({top:0,behavior:'smooth'});
+    if(forward)await sync();
+    if(step===10){ await sync({completed:true}); renderSummary(); }
+  }
+
+  function render(){
+    document.querySelectorAll('.screen').forEach(function(s){s.classList.toggle('active',Number(s.getAttribute('data-screen'))===state.step);});
+    el('progressLabel').textContent='Étape '+state.step+' sur 10';
+    el('progressBar').style.width=(state.step/10*100)+'%';
+    el('dossierCode').textContent=state.code||'Dossier en création';
+    el('backBtn').style.visibility=state.step===1?'hidden':'visible';
+    el('nextBtn').style.display=state.step===10?'none':'inline-block';
+    el('nextBtn').textContent=state.step===1?'Commencer':(state.step===9?'Voir mon dossier':'Continuer');
+    renderChoices();
+    toggleSurfaceFields();
+    el('surfaceM2').value=state.answers.surface_m2||'';
+    el('wallLength').value=state.answers.wall_length||'';
+    el('wallHeight').value=state.answers.wall_height||'';
+    el('city').value=state.answers.city||'';
+    el('fullName').value=state.contact.full_name||'';
+    el('phone').value=state.contact.phone||'';
+    el('email').value=state.contact.email||'';
+    el('photoState').textContent=state.photo_count?state.photo_count+' photo(s) ajoutée(s) au dossier':'Aucune photo ajoutée';
+    if(state.step===7){renderRecommendations();renderCollection();}
+    if(state.step===8)renderReassurance();
+    if(state.step===10)renderSummary();
+    localSave();
+  }
+
+  function renderChoices(){
+    document.querySelectorAll('[data-field][data-value]').forEach(function(b){
+      b.classList.toggle('selected',state.answers[b.getAttribute('data-field')]===b.getAttribute('data-value'));
+    });
+  }
+
+  function recommend(){
+    var style=state.answers.style_family;
+    var ids={
+      pierre:['big-rock','travertin','cemento'],
+      brique:['mattoni','beton-decoffrage','cemento'],
+      beton:['cemento','beton-brut','beton-decoffrage'],
+      graphique:['cubo','moon','bois-cubo'],
+      surprise:['big-rock','mattoni','cubo']
+    }[style]||['big-rock','mattoni','cubo'];
+    return ids.map(function(id){return MODEL_CATALOG.find(function(m){return m.id===id;});}).filter(Boolean);
+  }
+
+  function selectedModels(){
+    return Array.isArray(state.answers.selected_models)?state.answers.selected_models:[];
+  }
+
+  function modelCard(m){
+    var card=document.createElement('div');
+    var selected=selectedModels().indexOf(m.name)>=0;
+    card.className='rec'+(selected?' selected':'');
+    card.innerHTML='<div class="model-photo"><img src="'+SITE_ASSET_ROOT+esc(m.image)+'" alt="'+esc(m.name)+'" loading="lazy">'+(selected?'<span class="selected-pill">✓ Sélectionné</span>':'')+'</div><div class="body"><div class="rec-meta"><span>'+esc(m.category)+'</span><span>'+esc(m.size)+'</span></div><b>'+esc(m.name)+'</b><p>'+esc(m.reason)+'</p></div>';
+    card.addEventListener('click',function(){toggleModel(m.name);});
+    return card;
+  }
+
+  function toggleModel(name){
+    var arr=selectedModels().slice();
+    var i=arr.indexOf(name);
+    if(i>=0)arr.splice(i,1);else arr.push(name);
+    state.answers.selected_models=arr;
+    state.answers.selected_model=arr[0]||'';
+    var err=document.querySelector('[data-error="7"]'); if(err&&arr.length)err.classList.remove('show');
+    renderRecommendations();
+    renderCollection();
+    queueSync();
+  }
+
+  function renderRecommendations(){
+    var raw=state.recommendations&&state.recommendations.length?state.recommendations:recommend();
+    var list=raw.map(function(r){return Object.assign({},MODEL_MAP[r.name]||r,r);}).filter(function(r){return r&&r.name;});
+    state.recommendations=list;
+    var root=el('recommendations'); root.innerHTML='';
+    list.forEach(function(m){root.appendChild(modelCard(m));});
+    var arr=selectedModels();
+    el('selectedModelsNote').innerHTML=arr.length
+      ? '<strong>'+arr.length+' modèle'+(arr.length>1?'s':'')+' sélectionné'+(arr.length>1?'s':'')+' :</strong> '+arr.map(esc).join(' · ')
+      : 'Sélectionnez au moins un modèle pour continuer.';
+  }
+
+  function renderCollection(){
+    var root=el('fullCollection');
+    var open=!!state.answers.collection_opened;
+    root.classList.toggle('open',open);
+    el('collectionToggle').textContent=open?'Réduire la collection ↑':'Voir toute la collection ↓';
+    if(!open){root.innerHTML='';return;}
+    root.innerHTML='';
+    CATEGORY_ORDER.forEach(function(cat){
+      var models=MODEL_CATALOG.filter(function(m){return m.category===cat;});
+      var block=document.createElement('div'); block.className='category-block';
+      var title=document.createElement('div'); title.className='category-title';
+      title.innerHTML='<b>'+esc(cat)+'</b><span>'+models.length+' modèle'+(models.length>1?'s':'')+'</span>';
+      var grid=document.createElement('div'); grid.className='recs'; grid.style.marginTop='0';
+      models.forEach(function(m){grid.appendChild(modelCard(m));});
+      block.appendChild(title); block.appendChild(grid); root.appendChild(block);
+    });
+  }
+
+  function renderReassurance(){
+    var yes=state.answers.reassurance_requested==='yes';
+    el('reassurancePanel').style.display=yes?'block':'none';
+  }
+
+  async function compress(file){
+    return new Promise(function(resolve,reject){
+      var img=new Image(), url=URL.createObjectURL(file);
+      img.onload=function(){
+        try{
+          var max=1400, scale=Math.min(1,max/Math.max(img.width,img.height));
+          var c=document.createElement('canvas'); c.width=Math.round(img.width*scale); c.height=Math.round(img.height*scale);
+          c.getContext('2d').drawImage(img,0,0,c.width,c.height);
+          var data=c.toDataURL('image/jpeg',.72); URL.revokeObjectURL(url); resolve(data);
+        }catch(e){URL.revokeObjectURL(url);reject(e);}
+      };
+      img.onerror=function(){URL.revokeObjectURL(url);reject(new Error('image'));};
+      img.src=url;
+    });
+  }
+
+  async function uploadPhotos(ev){
+    var files=Array.from(ev.target.files||[]).slice(0,Math.max(0,4-state.photo_count));
+    if(!files.length)return;
+    el('photoState').textContent='Préparation des photos…';
+    var photos=[];
+    for(var i=0;i<files.length;i++){
+      try{photos.push({name:files[i].name,type:'image/jpeg',data_url:await compress(files[i])});}catch(e){}
+    }
+    if(!photos.length){el('photoState').textContent='Impossible de préparer ces photos.';return;}
+    if(state.token){
+      try{
+        var data=await api('/'+encodeURIComponent(state.token)+'/photos',{method:'POST',body:JSON.stringify({photos:photos})});
+        hydrate(data.dossier); state.lastSyncOk=true;
+      }catch(e){state.photo_count=Math.min(4,state.photo_count+photos.length);state.lastSyncOk=false;}
+    }else{state.photo_count=Math.min(4,state.photo_count+photos.length);}
+    el('photoState').textContent=state.photo_count+' photo(s) ajoutée(s) au dossier';
+    localSave();
+  }
+
+  function deriveSegment(){
+    var city=String(state.answers.city||'').toLowerCase();
+    var casa=/(casablanca|bouskoura|dar\s*bouazza|tamaris|ain\s*diab|aïn\s*diab|californie)/i.test(city);
+    if(state.answers.measurement_mode==='visit'&&casa)return {code:'A',title:'Prise de mesures offerte',text:'Nous pouvons organiser une visite de prise de mesures dans la zone Casablanca.'};
+    if(state.photo_count>0&&state.answers.surface_m2)return {code:'B',title:'Estimation sous 24h',text:'Votre dossier contient une surface exploitable et des photos. Nous pouvons chiffrer beaucoup plus vite.'};
+    if(state.answers.surface_m2)return {code:'C',title:'Estimation à distance + showroom',text:'La surface est connue. Nous pouvons préparer une estimation et vous inviter à voir les textures au showroom.'};
+    return {code:'D',title:'Orientation vers la solution la plus proche',text:'Il reste quelques informations à compléter. Nous vous orientons vers la solution la plus simple pour avancer.'};
+  }
+
+  function renderSummary(){
+    var seg=deriveSegment();
+    el('segmentCode').textContent=seg.code;
+    el('segmentTitle').textContent=seg.title;
+    el('segmentText').textContent=seg.text;
+    var rows=[
+      ['Dossier',state.code||'—'],
+      ['Projet',state.answers.project_type||'—'],
+      ['Ville',state.answers.city||'—'],
+      ['Surface',state.answers.surface_m2?'~'+state.answers.surface_m2+' m²':'À mesurer'],
+      ['Style',styleLabel(state.answers.style_family)],
+      ['Modèles',selectedModels().length?selectedModels().join(', '):'À décider'],
+      ['Doutes produit',state.answers.reassurance_requested==='yes'?'Éclaircis dans le brief':'Pas de précision demandée'],
+      ['Échéance',state.answers.timeframe||'—'],
+      ['Photos',state.photo_count?state.photo_count+' photo(s)':'Aucune']
+    ];
+    el('summaryRows').innerHTML=rows.map(function(r){return '<div class="row"><span>'+esc(r[0])+'</span><b>'+esc(r[1])+'</b></div>';}).join('');
+    var fs=el('finalSync');
+    fs.className='sync'+(state.lastSyncOk?' ok':'');
+    fs.querySelector('span').textContent=state.lastSyncOk?'Dossier synchronisé dans Insta-Pro':'Synchronisation indisponible · le récapitulatif sera inclus dans WhatsApp';
+    el('whatsappCta').href=localWa();
+  }
+
+  function styleLabel(v){return {pierre:'Pierre minérale',brique:'Brique contemporaine',beton:'Béton architectural',graphique:'Relief graphique / 3D',surprise:'Conseil Deutschconfort'}[v]||'—';}
+
+  function recap(){
+    var bits=[
+      'Projet: '+(state.answers.project_type||'non précisé'),
+      'Ville: '+(state.answers.city||'non précisée'),
+      'Surface: '+(state.answers.surface_m2?'~'+state.answers.surface_m2+' m²':'à mesurer'),
+      'Style: '+styleLabel(state.answers.style_family),
+      selectedModels().length?'Modèles: '+selectedModels().join(', '):null,
+      'Échéance: '+(state.answers.timeframe||'non précisée'),
+      'Photos: '+state.photo_count
+    ].filter(Boolean);
+    return bits.join(' · ');
+  }
+
+  function localWa(){
+    var msg='Bonjour, je viens de compléter mon dossier Celestone '+(state.code||'')+'.\n\n'+recap();
+    return 'https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(msg);
+  }
+
+  function restartBrief(){
+    if(!confirm('Recommencer avec un nouveau dossier ?'))return;
+    try{localStorage.removeItem(STATE_KEY);localStorage.removeItem(TOKEN_KEY);}catch(e){}
+    var u=new URL(location.href); u.searchParams.delete('d'); u.searchParams.set('new',Date.now().toString(36));
+    location.href=u.toString();
+  }
+
+  function openGallery(){
+    var root=el('galleryContent'); root.innerHTML='';
+    var preferred=selectedModels();
+    var order=preferred.concat(Object.keys(GALLERY).filter(function(n){return preferred.indexOf(n)<0;}));
+    order.forEach(function(name){
+      var photos=GALLERY[name]; if(!photos||!photos.length)return;
+      var block=document.createElement('section'); block.className='gallery-model';
+      block.innerHTML='<h4>'+esc(name)+'</h4><div class="gallery-grid">'+photos.map(function(src){return '<img src="'+SITE_ASSET_ROOT+esc(src)+'" alt="Réalisation '+esc(name)+'" loading="lazy">';}).join('')+'</div>';
+      root.appendChild(block);
+    });
+    el('galleryModal').classList.add('open'); el('galleryModal').setAttribute('aria-hidden','false'); document.body.style.overflow='hidden';
+  }
+  function closeGallery(){
+    el('galleryModal').classList.remove('open'); el('galleryModal').setAttribute('aria-hidden','true'); document.body.style.overflow='';
+  }
+
+  async function completeAndWhatsapp(){
+    var btn=el('whatsappCta'); btn.textContent='Ouverture de WhatsApp…'; btn.style.pointerEvents='none';
+    var data=await sync({completed:true});
+    var url=(data&&data.whatsapp_url)?data.whatsapp_url:localWa();
+    renderSummary();
+    window.location.href=url;
+    setTimeout(function(){btn.textContent='Continuer sur WhatsApp';btn.style.pointerEvents='';},1200);
+  }
+
+  function esc(v){return String(v==null?'':v).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[ch];});}
+
+  boot();
+})();
+</script>
+</body>
+</html>
