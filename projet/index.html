@@ -55,9 +55,10 @@
     .field{margin-bottom:16px}
     .field:last-child{margin-bottom:0}
     label{display:block;font-size:12px;font-weight:700;color:var(--muted);margin-bottom:7px}
-    input[type=text],input[type=tel],input[type=email],input[type=number]{width:100%;border:1px solid var(--line);background:#fff;border-radius:12px;padding:13px 14px;color:var(--ink);outline:none}
+    input[type=text],input[type=tel],input[type=email],input[type=number],input[type=date]{width:100%;border:1px solid var(--line);background:#fff;border-radius:12px;padding:13px 14px;color:var(--ink);outline:none}
     input:focus{border-color:var(--clay);box-shadow:0 0 0 3px rgba(177,74,43,.08)}
     .inline{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .date-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
     .nav{position:fixed;left:0;right:0;bottom:0;z-index:30;background:linear-gradient(180deg,rgba(244,238,226,0),rgba(244,238,226,.96) 22%,rgba(244,238,226,.99));padding:28px 18px max(16px,env(safe-area-inset-bottom))}
     .nav-in{max-width:980px;margin:auto;display:flex;gap:12px;justify-content:flex-end}
     .btn{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:13px;padding:13px 18px;font-weight:700;min-width:120px}
@@ -134,7 +135,7 @@
     .foot{max-width:980px;width:100%;margin:auto;padding:0 18px 22px;font-size:11px;color:var(--muted);display:flex;justify-content:space-between;gap:12px}
     .hp{position:absolute!important;left:-9999px!important}
     @media(max-width:720px){
-      .top-in{padding:12px 14px}.brand small{display:none}.main{padding:22px 14px 110px}.grid,.recs,.summary,.inline,.proof-grid{grid-template-columns:1fr}.choice{min-height:auto}.hero-card{grid-template-columns:1fr;padding:8px}.hero-card div{padding:10px}.stage{min-height:calc(100vh - 170px)}.nav{padding-left:14px;padding-right:14px}.nav-in{justify-content:space-between}.nav-in .btn{flex:1}.progress-wrap{width:42vw}.rec{display:grid;grid-template-columns:118px 1fr}.model-photo{height:100%;min-height:128px}
+      .top-in{padding:12px 14px}.brand small{display:none}.main{padding:22px 14px 110px}.grid,.recs,.summary,.inline,.proof-grid,.date-grid{grid-template-columns:1fr}.choice{min-height:auto}.hero-card{grid-template-columns:1fr;padding:8px}.hero-card div{padding:10px}.stage{min-height:calc(100vh - 170px)}.nav{padding-left:14px;padding-right:14px}.nav-in{justify-content:space-between}.nav-in .btn{flex:1}.progress-wrap{width:42vw}.rec{display:grid;grid-template-columns:118px 1fr}.model-photo{height:100%;min-height:128px}
     }
   </style>
 </head>
@@ -202,7 +203,22 @@
           </div>
           <div class="micro" id="surfaceCalc">Surface calculée : —</div>
         </div>
-        <div class="error" data-error="3">Indiquez comment vous souhaitez estimer la surface.</div>
+        <div class="formbox" id="surfaceVisit" style="display:none">
+          <div class="field">
+            <label>Choisissez 3 jours qui vous conviennent</label>
+            <div class="date-grid">
+              <input id="measureDate1" type="date" aria-label="Première date disponible">
+              <input id="measureDate2" type="date" aria-label="Deuxième date disponible">
+              <input id="measureDate3" type="date" aria-label="Troisième date disponible">
+            </div>
+            <div class="micro" style="margin-top:9px">Donnez-nous trois possibilités. Mohammed ou Abderrahman choisira le jour qui convient à son planning, puis vous contactera directement pour confirmer l'heure.</div>
+          </div>
+          <div class="field">
+            <label>Adresse / quartier <span style="font-weight:400">(facultatif)</span></label>
+            <input id="measurementAddress" type="text" autocomplete="street-address" placeholder="Ex. Aïn Diab, résidence…, rue…">
+          </div>
+        </div>
+        <div class="error" data-error="3">Indiquez comment vous souhaitez estimer la surface. Pour une visite, choisissez 3 dates différentes.</div>
       </div>
     </section>
 
@@ -365,7 +381,7 @@
 
   var state = {
     token:null, code:null, step:1, photo_count:0, recommendations:[],
-    answers:{ project_type:'', measurement_mode:'', surface_m2:null, wall_length:null, wall_height:null, style_family:'', city:'', timeframe:'', selected_model:'', selected_models:[], collection_opened:false, reassurance_requested:'' },
+    answers:{ project_type:'', measurement_mode:'', surface_m2:null, wall_length:null, wall_height:null, measurement_date_options:[], measurement_address:'', style_family:'', city:'', timeframe:'', selected_model:'', selected_models:[], collection_opened:false, reassurance_requested:'' },
     contact:{ full_name:'', phone:'', email:'' },
     lastSyncOk:false
   };
@@ -399,7 +415,8 @@
     try{
       // Never persist contact PII (name, phone, email) in browser storage.
       // The server remains the source of truth; the token is enough to resume.
-      var safeState=Object.assign({},state,{contact:{full_name:'',phone:'',email:''}});
+      var safeAnswers=Object.assign({},state.answers,{measurement_address:''});
+      var safeState=Object.assign({},state,{answers:safeAnswers,contact:{full_name:'',phone:'',email:''}});
       localStorage.setItem(STATE_KEY,JSON.stringify(safeState));
       if(state.token)localStorage.setItem(TOKEN_KEY,state.token);
     }catch(e){}
@@ -415,6 +432,7 @@
     state.recommendations = d.recommendations || [];
     state.answers = Object.assign({}, state.answers, d.answers || {});
     if(!Array.isArray(state.answers.selected_models))state.answers.selected_models=[];
+    if(!Array.isArray(state.answers.measurement_date_options))state.answers.measurement_date_options=[];
     if(!state.answers.selected_models.length&&state.answers.selected_model)state.answers.selected_models=[state.answers.selected_model];
     if(d.project_type)state.answers.project_type=d.project_type;
     if(d.surface_m2)state.answers.surface_m2=d.surface_m2;
@@ -446,7 +464,7 @@
       var token=explicitToken||(resume?(state.token||localStorage.getItem(TOKEN_KEY)):null);
       if(!explicitToken&&!resume){
         state.token=null; state.code=null; state.step=1; state.photo_count=0; state.recommendations=[];
-        state.answers={project_type:'',measurement_mode:'',surface_m2:null,wall_length:null,wall_height:null,style_family:'',city:'',timeframe:'',selected_model:'',selected_models:[],collection_opened:false,reassurance_requested:''};
+        state.answers={project_type:'',measurement_mode:'',surface_m2:null,wall_length:null,wall_height:null,measurement_date_options:[],measurement_address:'',style_family:'',city:'',timeframe:'',selected_model:'',selected_models:[],collection_opened:false,reassurance_requested:''};
         state.contact={full_name:'',phone:'',email:''};
         try{localStorage.removeItem(STATE_KEY);localStorage.removeItem(TOKEN_KEY);}catch(e){}
       }
@@ -538,6 +556,10 @@
     el('surfaceM2').addEventListener('input',function(){state.answers.surface_m2=num(this.value);queueSync();});
     el('wallLength').addEventListener('input',calcDims);
     el('wallHeight').addEventListener('input',calcDims);
+    ['measureDate1','measureDate2','measureDate3'].forEach(function(id){
+      el(id).addEventListener('change',function(){readMeasurementDates();queueSync();});
+    });
+    el('measurementAddress').addEventListener('input',function(){state.answers.measurement_address=this.value;queueSync();});
     el('city').addEventListener('input',function(){state.answers.city=this.value;queueSync();});
     el('fullName').addEventListener('input',function(){state.contact.full_name=this.value;queueSync();});
     el('phone').addEventListener('input',function(){state.contact.phone=this.value;queueSync();});
@@ -558,6 +580,24 @@
   }
 
   function num(v){ var n=Number(v); return isFinite(n)&&n>0?Math.round(n*10)/10:null; }
+  function todayLocal(){
+    var d=new Date(), y=d.getFullYear(), m=String(d.getMonth()+1).padStart(2,'0'), day=String(d.getDate()).padStart(2,'0');
+    return y+'-'+m+'-'+day;
+  }
+  function readMeasurementDates(){
+    state.answers.measurement_date_options=['measureDate1','measureDate2','measureDate3']
+      .map(function(id){return el(id).value||'';})
+      .filter(Boolean);
+    return state.answers.measurement_date_options;
+  }
+  function formatVisitDate(v){
+    var m=String(v||'').match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if(!m)return v||'—';
+    try{
+      return new Intl.DateTimeFormat('fr-FR',{weekday:'short',day:'2-digit',month:'short',year:'numeric',timeZone:'UTC'})
+        .format(new Date(Date.UTC(Number(m[1]),Number(m[2])-1,Number(m[3]),12)));
+    }catch(e){return v;}
+  }
   function calcDims(){
     state.answers.wall_length=num(el('wallLength').value);
     state.answers.wall_height=num(el('wallHeight').value);
@@ -569,6 +609,7 @@
   function toggleSurfaceFields(){
     el('surfaceKnown').style.display=state.answers.measurement_mode==='known'?'block':'none';
     el('surfaceDims').style.display=state.answers.measurement_mode==='dimensions'?'block':'none';
+    el('surfaceVisit').style.display=state.answers.measurement_mode==='visit'?'block':'none';
   }
 
   function validate(step){
@@ -578,6 +619,10 @@
       ok=!!state.answers.measurement_mode;
       if(state.answers.measurement_mode==='known')ok=!!state.answers.surface_m2;
       if(state.answers.measurement_mode==='dimensions')ok=!!state.answers.wall_length&&!!state.answers.wall_height;
+      if(state.answers.measurement_mode==='visit'){
+        var dates=readMeasurementDates();
+        ok=dates.length===3&&new Set(dates).size===3&&dates.every(function(d){return d>=todayLocal();});
+      }
     }
     if(step===4)ok=!!state.answers.style_family;
     if(step===5)ok=!!String(state.answers.city||'').trim()&&!!state.answers.timeframe;
@@ -619,6 +664,12 @@
     el('surfaceM2').value=state.answers.surface_m2||'';
     el('wallLength').value=state.answers.wall_length||'';
     el('wallHeight').value=state.answers.wall_height||'';
+    var visitDates=Array.isArray(state.answers.measurement_date_options)?state.answers.measurement_date_options:[];
+    ['measureDate1','measureDate2','measureDate3'].forEach(function(id,idx){
+      el(id).min=todayLocal();
+      el(id).value=visitDates[idx]||'';
+    });
+    el('measurementAddress').value=state.answers.measurement_address||'';
     el('city').value=state.answers.city||'';
     el('fullName').value=state.contact.full_name||'';
     el('phone').value=state.contact.phone||'';
@@ -768,6 +819,11 @@
       ['Échéance',state.answers.timeframe||'—'],
       ['Photos',state.photo_count?state.photo_count+' photo(s)':'Aucune']
     ];
+    if(state.answers.measurement_mode==='visit'){
+      rows.push(['Prise de mesures','Demandée']);
+      rows.push(['Disponibilités',(state.answers.measurement_date_options||[]).map(formatVisitDate).join(' · ')||'À compléter']);
+      if(state.answers.measurement_address)rows.push(['Adresse / quartier',state.answers.measurement_address]);
+    }
     el('summaryRows').innerHTML=rows.map(function(r){return '<div class="row"><span>'+esc(r[0])+'</span><b>'+esc(r[1])+'</b></div>';}).join('');
     var fs=el('finalSync');
     fs.className='sync'+(state.lastSyncOk?' ok':'');
@@ -785,6 +841,12 @@
       'Style: '+styleLabel(state.answers.style_family),
       selectedModels().length?'Modèles: '+selectedModels().join(', '):null,
       'Échéance: '+(state.answers.timeframe||'non précisée'),
+      state.answers.measurement_mode==='visit'&&state.answers.measurement_date_options.length
+        ? 'Disponibilités mesure: '+state.answers.measurement_date_options.map(formatVisitDate).join(' / ')
+        : null,
+      state.answers.measurement_mode==='visit'&&state.answers.measurement_address
+        ? 'Adresse mesure: '+state.answers.measurement_address
+        : null,
       'Photos: '+state.photo_count
     ].filter(Boolean);
     return bits.join(' · ');
