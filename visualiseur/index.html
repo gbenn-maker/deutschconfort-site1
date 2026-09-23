@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#F5F2EC">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://deutsch-confort.com https://www.deutsch-confort.com https://www.facebook.com https://insta-pro-deutschconfort-production-a767.up.railway.app http://localhost:* http://127.0.0.1:*; connect-src 'self' https://insta-pro-deutschconfort-production-a767.up.railway.app https://www.facebook.com https://connect.facebook.net http://localhost:* http://127.0.0.1:*; object-src 'none'; base-uri 'none'; form-action 'self' https://www.facebook.com; frame-src https://www.facebook.com">
+  <title>Visualiseur · Deutschconfort</title>
+  <meta name="description" content="Projetez Le Celestone™ ou un sol sur les photos de votre pièce. Visualisation indicative, rendu HD, conseil au showroom de Casablanca.">
+  <link rel="icon" href="../favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:opsz,wght@6..96,400;6..96,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Meta Pixel -->
+  <script>
+  !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init','1750427786411371');fbq('track','PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1" alt=""></noscript>
+</head>
+<body>
+<header class="top">
+  <div class="top-in">
+    <a class="logo" href="../" aria-label="Deutschconfort, retour au site"><span>Deutsch</span><span>Confort</span></a>
+    <div class="top-mid">
+      <div class="caps" id="progressLabel">Visualiseur</div>
+      <div class="bar" aria-hidden="true"><span id="progressBar"></span></div>
+    </div>
+    <button class="top-btn" id="restartBtn" type="button">Nouveau</button>
+  </div>
+</header>
+<div class="banner hidden" id="demoBanner"><b>Mode démonstration</b> · le serveur est injoignable, la projection se calcule sur votre appareil et le contact passe par WhatsApp.</div>
+
+<main class="main" id="main">
+
+  <!-- 0 · Accueil + consentement -->
+  <section class="screen active" data-screen="0">
+    <div class="stage hero">
+      <div>
+        <div class="eyebrow">Visualiseur · Le Celestone™ &amp; sols</div>
+        <h1>Voyez votre pièce habillée, avant de décider.</h1>
+        <p class="lead">Photographiez votre mur ou votre sol, choisissez un panneau Le Celestone™ ou un parquet, et regardez le résultat sur vos propres photos. Puis parlons-en au showroom.</p>
+        <div class="proof">
+          <div><b>Depuis 1999</b>maison casablancaise</div>
+          <div><b>+4 800</b>clients accompagnés</div>
+          <div><b>&lt; 3 s</b>aperçu instantané</div>
+        </div>
+      </div>
+      <div>
+        <div class="hero-visual"><img src="../images/panels/big-rock-product.png" alt="Panneau Le Celestone Big Rock" loading="eager"><span class="tag">Visualisation indicative</span></div>
+        <div class="consent">
+          <h3>Vos photos, vos règles</h3>
+          <p class="micro">Conformément à la loi 09-08 relative à la protection des données personnelles :</p>
+          <ul>
+            <li><b>Finalité</b> : produire votre visualisation et vous recontacter au sujet de ce projet uniquement.</li>
+            <li><b>Conservation</b> : photos et rendus supprimés automatiquement après 90 jours.</li>
+            <li><b>Suppression</b> : à tout moment, sur simple demande (bouton en fin de parcours ou WhatsApp).</li>
+            <li>Aucune photo n'est publiée ni indexée. Métadonnées (GPS) retirées à la réception.</li>
+          </ul>
+          <label class="check"><input type="checkbox" id="consent"><span>J'accepte que Deutschconfort traite mes photos et mes coordonnées pour ce projet.</span></label>
+        </div>
+        <div class="error" data-error="0">Cochez la case de consentement pour commencer : sans elle, aucune photo ne peut être traitée.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1 · Votre projet -->
+  <section class="screen" data-screen="1">
+    <div class="stage">
+      <div class="eyebrow">01 · Votre projet</div>
+      <h2>Quelques repères pour cadrer la projection.</h2>
+      <p class="lead">Ils servent à l'échelle du rendu et à préparer le conseil. Une estimation suffit.</p>
+      <div class="label" style="margin-top:20px">Pièce ou espace</div>
+      <div class="grid" style="margin-top:8px">
+        <button class="choice" type="button" data-field="room_type" data-value="Salon"><b>Salon</b><span>Mur TV, cheminée, séjour</span></button>
+        <button class="choice" type="button" data-field="room_type" data-value="Chambre"><b>Chambre</b><span>Tête de lit, dressing</span></button>
+        <button class="choice" type="button" data-field="room_type" data-value="Entrée / couloir"><b>Entrée / couloir</b><span>Cage d'escalier, hall</span></button>
+        <button class="choice" type="button" data-field="room_type" data-value="Commerce / bureau"><b>Commerce / bureau</b><span>Accueil, restaurant, hôtel</span></button>
+        <button class="choice" type="button" data-field="room_type" data-value="Façade / extérieur"><b>Façade / extérieur</b><span>Entrée, mur de jardin</span></button>
+        <button class="choice" type="button" data-field="room_type" data-value="Autre"><b>Autre</b><span>Précisez au contact</span></button>
+      </div>
+      <div class="field"><label for="city">Ville</label><input id="city" type="text" autocomplete="address-level2" placeholder="Casablanca, Bouskoura, Rabat…"></div>
+      <div class="inline">
+        <div class="field"><label for="surface">Surface (m²)</label><input id="surface" type="number" inputmode="decimal" min="1" step="1" placeholder="Ex. 12"><div class="hint">Mur ou sol à habiller</div></div>
+        <div class="field"><label for="ceiling">Hauteur sous plafond (cm)</label><input id="ceiling" type="number" inputmode="numeric" min="180" max="600" step="5" placeholder="Ex. 270"><div class="hint">Sert à l'échelle du rendu</div></div>
+      </div>
+      <div class="label" style="margin-top:18px">Délai</div>
+      <div class="grid" style="margin-top:8px">
+        <button class="choice" type="button" data-field="timeframe" data-value="Dès que possible"><b>Dès que possible</b></button>
+        <button class="choice" type="button" data-field="timeframe" data-value="Dans 1 mois"><b>Dans 1 mois</b></button>
+        <button class="choice" type="button" data-field="timeframe" data-value="Dans 2–3 mois"><b>Dans 2–3 mois</b></button>
+        <button class="choice" type="button" data-field="timeframe" data-value="Je me renseigne"><b>Je me renseigne</b></button>
+      </div>
+      <div class="label" style="margin-top:18px">Vous êtes</div>
+      <div class="grid" style="margin-top:8px">
+        <button class="choice" type="button" data-field="project_type" data-value="particulier"><b>Particulier</b><span>Votre logement</span></button>
+        <button class="choice" type="button" data-field="project_type" data-value="professionnel"><b>Professionnel</b><span>Architecte, promoteur, décorateur, entreprise</span></button>
+      </div>
+      <div class="error" data-error="1">Indiquez au moins la pièce, la ville et la hauteur sous plafond : sans hauteur, le rendu n'est pas à l'échelle.</div>
+    </div>
+  </section>
+
+  <!-- 2 · Photos guidées -->
+  <section class="screen" data-screen="2">
+    <div class="stage">
+      <div class="eyebrow">02 · Photos</div>
+      <h2>Trois à cinq photos, prises droit et en pleine lumière.</h2>
+      <p class="lead">Suivez les gabarits : un coin gauche, la face, un coin droit, puis le sol. Reculez pour voir le mur entier. Lumière du jour de préférence, sans contre-jour.</p>
+      <div class="level" id="levelRow">
+        <span>Niveau</span>
+        <div class="bubble" aria-hidden="true"><i id="levelDot"></i></div>
+        <span id="levelText">Tenez le téléphone droit</span>
+        <button class="link" type="button" id="levelBtn">Activer</button>
+      </div>
+      <div class="shots" id="shots">
+        <div class="shot-msg" id="shotMsg"></div>
+      </div>
+      <p class="micro" style="margin-top:12px">Les photos sont réduites à 2048 px sur votre appareil avant l'envoi. Netteté et exposition sont vérifiées automatiquement.</p>
+      <div class="error" data-error="2">Ajoutez au moins une photo nette : la projection s'applique sur une photo réelle de votre espace.</div>
+    </div>
+  </section>
+
+  <!-- 3 · Zone -->
+  <section class="screen" data-screen="3">
+    <div class="stage">
+      <div class="eyebrow">03 · Zone à habiller</div>
+      <h2>Posez les quatre coins du mur, du sol ou des deux.</h2>
+      <p class="lead">Déplacez les poignées au doigt. Utilisez la gomme pour protéger les meubles ou objets devant le mur.</p>
+      <div class="thumbs" id="zoneThumbs"></div>
+      <div class="editor-wrap" id="editorWrap"><canvas id="editor" aria-label="Éditeur de zone"></canvas></div>
+      <div class="tools" role="group" aria-label="Outils">
+        <button class="tool on" type="button" data-tool="wall">Mur</button>
+        <button class="tool" type="button" data-tool="floor">Sol</button>
+        <button class="tool" type="button" data-tool="erase">Gomme</button>
+        <button class="tool" type="button" id="toolUndo">Annuler</button>
+      </div>
+      <div class="tools">
+        <button class="tool" type="button" id="toggleWall">Mur : actif</button>
+        <button class="tool" type="button" id="toggleFloor">Sol : inactif</button>
+      </div>
+      <div class="scale-row">
+        <div class="field"><label for="wallHeight">Hauteur du mur cadré (cm)</label><input id="wallHeight" type="number" inputmode="numeric" min="60" max="600" step="5" placeholder="Ex. 260"></div>
+        <div class="field"><label for="floorWidth">Largeur du sol cadré (cm)</label><input id="floorWidth" type="number" inputmode="numeric" min="60" max="1500" step="10" placeholder="Ex. 400"></div>
+      </div>
+      <div class="error" data-error="3">Activez au moins une zone (mur ou sol) et indiquez sa dimension pour que le motif soit à la bonne échelle.</div>
+    </div>
+  </section>
+
+  <!-- 4 · Produit -->
+  <section class="screen" data-screen="4">
+    <div class="stage">
+      <div class="eyebrow">04 · Produit</div>
+      <h2>Choisissez ce que vous voulez voir sur votre photo.</h2>
+      <div class="tabs" role="tablist">
+        <button class="tab on" type="button" role="tab" data-cat="wall">Murs · Le Celestone™</button>
+        <button class="tab" type="button" role="tab" data-cat="floor">Sols</button>
+      </div>
+      <div class="cards" id="cards"></div>
+      <div class="options hidden" id="floorOptions">
+        <div class="label">Motif de pose</div>
+        <div class="chips" id="patternChips"></div>
+        <div class="label" style="margin-top:14px">Sens de pose</div>
+        <div class="chips" id="orientChips">
+          <button class="chip on" type="button" data-orient="0">Le long du mur</button>
+          <button class="chip" type="button" data-orient="90">Vers le fond</button>
+          <button class="chip" type="button" data-orient="45">En diagonale</button>
+        </div>
+      </div>
+      <div class="options hidden" id="wallOptions">
+        <div class="label">Teinte Jotun Fenomastic</div>
+        <p class="micro">Les panneaux Le Celestone™ sont livrés blancs, prêts à peindre. Choisissez la teinte : nom et code Jotun.</p>
+        <div class="swatches" id="swatches"></div>
+      </div>
+      <div class="demand">
+        <div class="label">Vous cherchiez autre chose ?</div>
+        <p class="micro">Un modèle, une teinte, un motif qui manque : dites-le nous, cela oriente nos prochaines références.</p>
+        <div class="row"><input id="demandText" type="text" placeholder="Ex. chevron en chêne foncé, panneau effet marbre…" aria-label="Ce que vous cherchiez"><button class="btn small ghost" type="button" id="demandBtn">Envoyer</button></div>
+      </div>
+      <div class="error" data-error="4">Sélectionnez un produit. Pour un panneau mural, choisissez aussi une teinte.</div>
+    </div>
+  </section>
+
+  <!-- 5 · Aperçu -->
+  <section class="screen" data-screen="5">
+    <div class="stage">
+      <div class="eyebrow">05 · Aperçu instantané</div>
+      <h2 id="previewTitle">Votre pièce, projetée.</h2>
+      <div class="compare" id="compare">
+        <canvas id="previewCanvas" aria-label="Aperçu après"></canvas>
+        <img class="before" id="beforeImg" alt="Avant">
+        <div class="handle"></div>
+        <span class="lbl l">Avant</span><span class="lbl r">Après · indicatif</span>
+        <input type="range" id="compareRange" min="0" max="100" value="50" aria-label="Comparer avant et après">
+      </div>
+      <div class="render-meta"><span id="renderInfo">Calcul en cours…</span><span>Visualisation indicative</span></div>
+      <div id="variantsWrap" class="hidden">
+        <div class="label" style="margin-top:12px">Autres teintes</div>
+        <div class="variants" id="variants"></div>
+      </div>
+      <div class="btn-row">
+        <button class="btn ghost small" type="button" id="otherPhotoBtn">Autre photo</button>
+        <button class="btn ghost small" type="button" id="otherProductBtn">Autre produit</button>
+        <button class="btn ghost small" type="button" id="adjustZoneBtn">Ajuster la zone</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 · Rendu HD -->
+  <section class="screen" data-screen="6">
+    <div class="stage">
+      <div class="eyebrow">06 · Rendu HD</div>
+      <h2>Nous affinons la lumière et les ombres.</h2>
+      <div class="wait" id="hdWait">
+        <div class="spin" id="hdSpin"></div>
+        <h3 id="hdTitle">Envoi de votre aperçu…</h3>
+        <p id="hdText">Comptez 30 à 90 secondes. Si l'affinage n'est pas disponible, votre aperçu instantané est conservé tel quel : rien n'est perdu.</p>
+      </div>
+      <div id="hdResult" class="hidden">
+        <div class="compare" id="hdCompare" style="margin-top:16px">
+          <img id="hdAfter" alt="Rendu HD">
+          <img class="before" id="hdBefore" alt="Avant">
+          <div class="handle"></div>
+          <span class="lbl l">Avant</span><span class="lbl r">Rendu HD · indicatif</span>
+          <input type="range" id="hdRange" min="0" max="100" value="50" aria-label="Comparer avant et rendu HD">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7 · Contact -->
+  <section class="screen" data-screen="7">
+    <div class="stage">
+      <div class="eyebrow">07 · Vos coordonnées</div>
+      <h2>À qui envoyons-nous les rendus et la suite ?</h2>
+      <p class="lead">Un conseiller vous répond sur WhatsApp avec les rendus, les échantillons disponibles et les prochaines étapes.</p>
+      <div class="inline">
+        <div class="field"><label for="firstName">Prénom</label><input id="firstName" type="text" autocomplete="given-name"></div>
+        <div class="field"><label for="lastName">Nom</label><input id="lastName" type="text" autocomplete="family-name"></div>
+      </div>
+      <div class="field"><label for="phone">WhatsApp</label><input id="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="+212 6…"></div>
+      <div class="field"><label for="email">E-mail <span style="text-transform:none;letter-spacing:0;font-weight:400">(facultatif)</span></label><input id="email" type="email" autocomplete="email"></div>
+      <div class="field"><label for="contactCity">Ville</label><input id="contactCity" type="text" autocomplete="address-level2"></div>
+      <div class="field hidden" id="professionField"><label for="profession">Profession</label><input id="profession" type="text" placeholder="Architecte, promoteur, décorateur…"></div>
+      <div class="field"><label for="message">Message <span style="text-transform:none;letter-spacing:0;font-weight:400">(facultatif)</span></label><textarea id="message" placeholder="Contraintes, délais, questions…"></textarea></div>
+      <input class="sr-only" id="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <p class="micro" style="margin-top:12px">Vos coordonnées servent uniquement à ce projet. Transmission chiffrée (HTTPS) vers notre outil interne. Suppression sur demande.</p>
+      <div class="error" data-error="7">Prénom, nom et numéro WhatsApp sont nécessaires pour vous envoyer les rendus.</div>
+    </div>
+  </section>
+
+  <!-- 8 · Final -->
+  <section class="screen" data-screen="8">
+    <div class="stage">
+      <div class="eyebrow">Projet transmis</div>
+      <h2>Vos rendus sont prêts à partager.</h2>
+      <p class="lead" id="finalLead">Un conseiller Deutschconfort reprend contact sur WhatsApp. Vous pouvez aussi nous écrire dès maintenant avec le code de votre projet.</p>
+      <div class="results" id="results"></div>
+      <div class="actions">
+        <a class="btn cta" id="waBtn" href="#" target="_blank" rel="noreferrer">WhatsApp · envoyer mon projet</a>
+        <button class="btn" type="button" id="shareBtn">Partager le rendu</button>
+        <a class="btn ghost" id="rdvBtn" href="#" target="_blank" rel="noreferrer">Prendre rendez-vous au showroom</a>
+        <a class="btn ghost" id="metreBtn" href="#" target="_blank" rel="noreferrer">Demander un métré</a>
+      </div>
+      <div class="showroom">
+        <div class="caps">Showroom</div>
+        <h3>11 Rue Hounaine, Bd d'Anfa, Casablanca</h3>
+        <p>Venez toucher les reliefs et comparer les teintes en vrai. WhatsApp : +212 614 474 221.</p>
+      </div>
+      <div class="resume" id="resumeRow"></div>
+      <div class="btn-row"><button class="link" type="button" id="deleteBtn">Supprimer mes photos et mon projet</button></div>
+    </div>
+  </section>
+</main>
+
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <button class="btn ghost" type="button" id="backBtn" aria-label="Étape précédente">←</button>
+    <button class="btn" type="button" id="nextBtn">Commencer</button>
+  </div>
+</nav>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<footer class="foot"><span>Deutschconfort · depuis 1999 · Casablanca</span><span>Visualisation indicative · rendu à valider sur échantillon</span></footer>
+
+<script src="render.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
