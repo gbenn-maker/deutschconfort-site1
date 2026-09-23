@@ -253,7 +253,7 @@
   }
   async function addPhoto(file, angle) {
     const msg = el('shotMsg'); msg.classList.remove('show');
-    if (state.photos.length >= MAX_PHOTOS && !state.photos.find(p => p.angle === angle)) { toast('Cinq photos maximum.'); return; }
+    if (state.photos.length >= MAX_PHOTOS && !state.photos.find(p => p.angle === angle)) { toast('Cinq photos maximum : reprenez-en une pour la remplacer.'); return; }
     let canvas;
     try { canvas = await fileToCanvas(file, 2048); } catch (e) { msg.textContent = 'Cette image ne peut pas être lue. Réessayez avec une photo JPEG prise depuis l\'appareil photo.'; msg.classList.add('show'); return; }
     const quality = analyse(canvas);
@@ -277,7 +277,7 @@
       const r = await api('/' + state.token + '/photos', { method: 'POST', body: blob, headers: { 'Content-Type': 'application/octet-stream', 'X-Angle': photo.angle, 'X-Quality': JSON.stringify(photo.quality) }, timeout: 60000 });
       const p = r.photo || r;
       photo.id = p.id || null;
-    } catch (e) { console.warn('upload', e.message); toast('Photo conservée sur l\'appareil (envoi impossible).'); }
+    } catch (e) { console.warn('upload', e.message); toast('Connexion indisponible : la photo reste sur votre téléphone et la projection continue ici.'); }
   }
   function defaultGeometry(canvas, angle) {
     const w = canvas.width, h = canvas.height;
@@ -481,7 +481,7 @@
     const txt = el('demandText').value.trim(); if (!txt) return;
     const payload = { category: state.cat, free_text: txt, served: 0, pattern: state.pattern, room_type: state.project.room_type, city: state.project.city, surface_m2: state.project.surface_m2 };
     if (state.token) { try { await api('/' + state.token + '/demand', { method: 'POST', json: payload }); } catch (e) { /* ignore */ } }
-    el('demandText').value = ''; toast('Merci, c\'est noté. Nous en tenons compte.');
+    el('demandText').value = ''; toast('Merci, c’est noté : vos souhaits orientent nos prochaines références.');
   }
 
   /* ---------------------------------------------------- textures */
@@ -651,7 +651,7 @@
     };
     if (state.token) {
       try { state.dossier = await api('/' + state.token + '/contact', { method: 'POST', json: payload, timeout: 30000 }); }
-      catch (e) { console.warn('contact', e.message); toast('Envoi impossible : votre projet part par WhatsApp.'); }
+      catch (e) { console.warn('contact', e.message); toast('Serveur injoignable : votre projet part directement par WhatsApp, rien n’est perdu.'); }
     }
     track('Lead', { content_name: 'visualiseur', city: payload.city });
     el('nextBtn').disabled = false;
@@ -683,10 +683,10 @@
     } catch (e) { /* annulé */ }
   }
   async function deleteProject() {
-    if (!confirm('Supprimer définitivement vos photos, rendus et ce projet ?')) return;
-    if (state.token) { try { await api('/' + state.token, { method: 'DELETE' }); } catch (e) { toast('Suppression impossible pour le moment : écrivez-nous sur WhatsApp.'); return; } }
+    if (!confirm('Supprimer ce projet ? Vos photos, vos rendus et vos coordonnées seront effacés définitivement.')) return;
+    if (state.token) { try { await api('/' + state.token, { method: 'DELETE' }); } catch (e) { toast('Suppression impossible pour le moment : écrivez-nous sur WhatsApp, nous l’effectuons pour vous.'); return; } }
     try { localStorage.removeItem(STORE_KEY); } catch (e) { /* ignore */ }
-    toast('Projet supprimé.'); setTimeout(() => location.replace(location.pathname), 900);
+    toast('Projet supprimé : photos et coordonnées effacées.'); setTimeout(() => location.replace(location.pathname), 900);
   }
   function restart() {
     if (state.step > 0 && !confirm('Recommencer un nouveau projet ? Les photos non envoyées seront perdues.')) return;
@@ -725,7 +725,7 @@
       fillProjectInputs();
       if (sess.status === 'contacted') { renderFinal(); go(8); }
       else if (state.photos.length) go(3); else go(1);
-      toast('Projet repris.');
+      toast('Projet repris là où vous l’aviez laissé.');
       return true;
     } catch (e) { console.warn('reprise', e.message); return false; }
   }
