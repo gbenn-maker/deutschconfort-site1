@@ -3,77 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deutschconfort — Revêtements de sol & mur haut de gamme · Casablanca</title>
-<meta name="description" content="Initiateur de tendances depuis 1999. Deutschconfort distribue des matériaux décoratifs haut de gamme : parquets, panneaux, sols vinyles, moulures. Casablanca.">
+<title>Deutschconfort — Habillage mural & sols haut de gamme · Casablanca</title>
+<meta name="description" content="Solutions architecturales de surfaces depuis 1999. Le Celestone™ : panneaux muraux décoratifs, intérieur & extérieur. Sols, parquets, moulures. Showroom à Casablanca.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css">
+<link rel="preload" as="image" href="images/facade-hero.webp" fetchpriority="high">
 <style>
   /* hero */
-  .hero{position:relative;height:90vh;min-height:640px;overflow:hidden}
+  .hero{position:relative;height:92vh;min-height:560px;overflow:hidden;background:var(--basalte)}
   .hero img{transform:scale(1.04)}
-  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,20,18,.34),rgba(20,20,18,.06) 38%,rgba(20,20,18,.74)),linear-gradient(90deg,rgba(20,20,18,.6),rgba(20,20,18,.18) 44%,transparent 70%)}
-  .hero-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:8vh;color:#F5F2EC}
-  .hero-content .inner{max-width:760px}
+  .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,20,15,.38),rgba(20,20,15,.08) 38%,rgba(20,20,15,.78)),linear-gradient(90deg,rgba(20,20,15,.58),rgba(20,20,15,.16) 44%,transparent 70%)}
+  .hero-content{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:7vh;color:#F5F2EC}
+  .hero-content .inner{max-width:820px}
   .hero-content .eyebrow{opacity:.92}
-  .hero-slogan{font-family:var(--serif);font-weight:400;font-size:clamp(56px,9vw,140px);line-height:.92;letter-spacing:.01em;margin:8px 0 0;text-shadow:0 2px 32px rgba(20,20,18,.5)}
-  .hero-kw{font-family:var(--sans);font-weight:500;font-size:clamp(16px,1.9vw,22px);line-height:1.3;letter-spacing:.06em;margin:18px 0 0;color:#F5F2EC;opacity:.95;max-width:640px;text-shadow:0 1px 18px rgba(20,20,18,.55)}
-  .hero-slogan em{font-style:italic;color:var(--sand)}
-  .hero p{max-width:500px;margin-top:26px;font-size:17px;font-weight:300;opacity:.95;text-shadow:0 1px 18px rgba(20,20,18,.55)}
-  .hero-cta{display:flex;gap:18px;margin-top:36px;flex-wrap:wrap}
+  .hero-slogan{font-family:var(--serif);font-weight:400;font-size:clamp(40px,7.2vw,110px);line-height:1.02;letter-spacing:-.01em;margin:14px 0 0;color:#F5F2EC;text-shadow:0 2px 32px rgba(20,20,15,.5)}
+  .hero-slogan em{font-style:italic;color:var(--sable)}
+  .hero-kicker{font-family:var(--sans);font-weight:400;font-size:clamp(13px,1.6vw,16px);letter-spacing:.24em;text-transform:uppercase;margin:20px 0 0;color:#F5F2EC;opacity:.95;text-shadow:0 1px 18px rgba(20,20,15,.55)}
+  .hero p{max-width:520px;margin-top:18px;font-size:16.5px;font-weight:300;opacity:.95;text-shadow:0 1px 18px rgba(20,20,15,.55)}
+  .hero-cta{display:flex;gap:14px;margin-top:30px;flex-wrap:wrap}
+  .hero-trust{margin-top:26px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;opacity:.75}
+  @media(max-width:560px){
+    .hero{height:88vh}
+    .hero-content{padding-bottom:4vh}
+    .hero p{font-size:15px}
+    .hero-cta{flex-direction:column;align-items:stretch}
+    .hero-cta .btn{justify-content:center}
+    .hero-trust{font-size:10px;letter-spacing:.16em}
+  }
 
   /* manifesto */
-  .manifesto{padding:130px 0 110px;border-bottom:1px solid var(--line)}
+  .manifesto{padding:110px 0 100px;border-bottom:1px solid var(--line)}
   .manifesto .wrap{display:grid;grid-template-columns:1fr 1.35fr;gap:80px;align-items:start}
   .manifesto .eyebrow{color:var(--taupe)}
-  .manifesto h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4vw,58px);line-height:1.08;letter-spacing:.005em}
+  .manifesto h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4vw,56px);line-height:1.12;letter-spacing:-.005em}
   .manifesto h2 em{font-style:italic;color:var(--taupe)}
-  .manifesto .col p{font-size:18px;color:var(--ink-soft);max-width:46ch}
+  .manifesto .col p{font-size:17.5px;color:var(--encre);max-width:48ch}
   .manifesto .col p + p{margin-top:22px}
-  .stats{display:flex;gap:54px;margin-top:46px;flex-wrap:wrap}
-  .stat .n{font-family:var(--serif);font-size:46px;line-height:1}
+  .stats{display:flex;gap:54px;margin-top:44px;flex-wrap:wrap}
+  .stat .n{font-family:var(--serif);font-size:44px;line-height:1;color:var(--basalte)}
   .stat .l{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.6;margin-top:8px}
 
-  /* savoir-faire */
-  .savoir{background:var(--ink);color:var(--paper);margin-top:60px}
-  .savoir .inner{display:grid;grid-template-columns:1fr 1fr;min-height:84vh}
-  .savoir .ph{position:relative;overflow:hidden}
-  .savoir .txt{display:flex;flex-direction:column;justify-content:center;padding:90px clamp(48px,6vw,110px)}
-  .savoir .eyebrow{color:var(--sand)}
-  .savoir h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,4.4vw,62px);line-height:1.05;margin:22px 0 0}
-  .savoir h2 em{font-style:italic;color:var(--sand)}
-  .savoir .txt > p{color:rgba(245,242,236,.74);font-size:17px;margin-top:26px;max-width:44ch}
-  .features{margin-top:48px;border-top:1px solid rgba(245,242,236,.16)}
-  .feat{display:flex;gap:24px;padding:26px 0;border-bottom:1px solid rgba(245,242,236,.16);align-items:baseline}
-  .feat .fn{font-family:var(--serif);font-size:22px;color:var(--sand);min-width:42px}
-  .feat h4{font-size:15px;letter-spacing:.12em;text-transform:uppercase;font-weight:400}
+  /* deux univers */
+  .univers .duo{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding-bottom:44px}
+  .ucard{position:relative;display:block;overflow:hidden;background:var(--calcaire)}
+  .ucard .ph{aspect-ratio:4/3;overflow:hidden}
+  .ucard img{transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .ucard:hover img{transform:scale(1.05)}
+  .ucard .meta{position:absolute;left:0;right:0;bottom:0;padding:36px;color:#F5F2EC;background:linear-gradient(0deg,rgba(20,20,15,.72),transparent)}
+  .ucard .meta .idx{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;opacity:.8}
+  .ucard .meta h3{font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.6vw,38px);line-height:1.08;margin-top:8px;color:#F5F2EC}
+  .ucard .meta p{font-size:13px;letter-spacing:.08em;margin-top:10px;max-width:52ch;opacity:.9}
+  .ucard .go{display:inline-block;margin-top:16px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;border-bottom:1px solid rgba(245,242,236,.7);padding-bottom:3px}
+
+  /* extérieur (objection) */
+  .exterieur{background:var(--basalte);color:var(--chaux)}
+  .exterieur .inner{display:grid;grid-template-columns:1fr 1fr;min-height:80vh}
+  .exterieur .ph{position:relative;overflow:hidden;min-height:340px}
+  .exterieur .txt{display:flex;flex-direction:column;justify-content:center;padding:80px clamp(40px,6vw,110px)}
+  .exterieur .eyebrow{color:var(--sable)}
+  .exterieur h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.4vw,58px);line-height:1.08;margin:20px 0 0;color:var(--chaux)}
+  .exterieur h2 em{font-style:italic;color:var(--sable)}
+  .exterieur .txt > p{color:rgba(245,242,236,.76);font-size:16.5px;margin-top:24px;max-width:46ch}
+  .features{margin-top:42px;border-top:1px solid rgba(245,242,236,.16)}
+  .feat{display:flex;gap:24px;padding:22px 0;border-bottom:1px solid rgba(245,242,236,.16);align-items:baseline}
+  .feat .fn{font-family:var(--serif);font-size:20px;color:var(--sable);min-width:40px}
+  .feat div:last-child{flex:1}
+  .feat h4{font-size:14px;letter-spacing:.12em;text-transform:uppercase;font-weight:400;color:var(--chaux)}
+  .feat p{font-size:14px;color:rgba(245,242,236,.65);margin-top:4px}
+  .exterieur .cta{margin-top:38px;display:flex;gap:14px;flex-wrap:wrap}
+
+  /* visualiseur */
+  .visu{border-bottom:1px solid var(--line)}
+  .visu .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;padding-top:100px;padding-bottom:100px;align-items:center}
+  .visu h2{font-family:var(--serif);font-weight:400;font-size:clamp(32px,4.2vw,58px);line-height:1.1}
+  .visu h2 em{font-style:italic;color:var(--taupe)}
+  .visu .eyebrow{color:var(--taupe)}
+  .visu p{font-size:17px;color:var(--encre);margin-top:22px;max-width:46ch}
+  .visu .cta{display:flex;gap:14px;margin-top:32px;flex-wrap:wrap}
+  .visu .ph{aspect-ratio:4/3;overflow:hidden;background:var(--pierre)}
 
   /* realisations */
-  .realis{padding-bottom:120px}
+  .realis{padding-bottom:110px}
   .rgrid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:300px;gap:6px}
-  .rgrid .r{position:relative;overflow:hidden;background:var(--paper-2);display:block}
+  .rgrid .r{position:relative;overflow:hidden;background:var(--calcaire);display:block}
   .rgrid .r img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
   .rgrid .r:hover img{transform:scale(1.05)}
   .rs7{grid-column:span 7}.rs6{grid-column:span 6}.rs5{grid-column:span 5}.rs4{grid-column:span 4}
-  .card .ph-split{display:grid;grid-template-columns:1fr 1fr;gap:4px;aspect-ratio:4/3;overflow:hidden}
-  .card .ph-split img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
-  .card:hover .ph-split img{transform:scale(1.06)}
   .rcap{position:absolute;left:24px;bottom:22px;color:#F5F2EC;font-size:12px;letter-spacing:.16em;text-transform:uppercase;text-shadow:0 1px 14px rgba(0,0,0,.5)}
 
   /* visit */
-  .visit{background:var(--paper-2);border-top:1px solid var(--line)}
-  .visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;padding:110px 48px;align-items:center}
-  .visit h2{font-family:var(--serif);font-weight:400;font-size:clamp(38px,4.6vw,64px);line-height:1.04}
+  .visit{background:var(--calcaire);border-top:1px solid var(--line)}
+  .visit .wrap{display:grid;grid-template-columns:1fr 1fr;gap:70px;padding:100px 48px;align-items:center}
+  .visit h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.6vw,60px);line-height:1.08}
   .visit h2 em{font-style:italic;color:var(--taupe)}
   .visit .eyebrow{color:var(--taupe)}
-  .visit .lead{font-size:18px;color:var(--ink-soft);margin-top:22px;max-width:42ch}
+  .visit .lead{font-size:17.5px;color:var(--encre);margin-top:22px;max-width:44ch}
   .visit .cta{display:flex;gap:16px;margin-top:34px;flex-wrap:wrap}
 
   @media(max-width:980px){
-    .manifesto .wrap,.savoir .inner,.visit .wrap{grid-template-columns:1fr;gap:40px}
-    .visit .wrap{padding:70px 24px}
+    .manifesto{padding:80px 0 70px}
+    .manifesto .wrap,.exterieur .inner,.visit .wrap,.visu .wrap{grid-template-columns:1fr;gap:40px}
+    .visit .wrap{padding:70px 20px}
+    .visu .wrap{padding-top:70px;padding-bottom:70px}
+    .univers .duo{grid-template-columns:1fr}
+    .rgrid{grid-auto-rows:240px}
     .rgrid .r{grid-column:span 12 !important}
+    .exterieur .txt{padding:60px 20px 70px}
   }
 </style>
 <!-- @seo -->
@@ -87,13 +124,13 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_MA">
 <meta property="og:site_name" content="Deutschconfort">
-<meta property="og:title" content="Deutschconfort — Revêtements de sol & mur haut de gamme · Casablanca">
-<meta property="og:description" content="Initiateur de tendances depuis 1999. Deutschconfort distribue des matériaux décoratifs haut de gamme : parquets, panneaux, sols vinyles, moulures. Casablanca.">
+<meta property="og:title" content="Deutschconfort — Habillage mural & sols haut de gamme · Casablanca">
+<meta property="og:description" content="Solutions architecturales de surfaces depuis 1999. Le Celestone™ : panneaux muraux décoratifs, intérieur & extérieur. Sols, parquets, moulures. Showroom à Casablanca.">
 <meta property="og:url" content="https://deutsch-confort.com/">
 <meta property="og:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Deutschconfort — Revêtements de sol & mur haut de gamme · Casablanca">
-<meta name="twitter:description" content="Initiateur de tendances depuis 1999. Deutschconfort distribue des matériaux décoratifs haut de gamme : parquets, panneaux, sols vinyles, moulures. Casablanca.">
+<meta name="twitter:title" content="Deutschconfort — Habillage mural & sols haut de gamme · Casablanca">
+<meta name="twitter:description" content="Solutions architecturales de surfaces depuis 1999. Le Celestone™ : panneaux muraux décoratifs, intérieur & extérieur. Sols, parquets, moulures. Casablanca.">
 <meta name="twitter:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
 <!-- Meta Pixel Code -->
 <script>
@@ -118,7 +155,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
   <div class="wrap">
     <div class="left">Showroom — 11 Rue Hounaine, Bd d'Anfa · Casablanca</div>
     <div class="right">
-      
+
       <a href="contact.html">Je suis professionnel</a>
       <a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a>
       <a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a>
@@ -128,49 +165,56 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 
 <header>
   <nav class="wrap">
-    <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
+    <a class="brand" href="index.html">Deutschconfort<small>Solutions architecturales de surfaces</small></a>
     <div class="navlinks">
+      <a href="le-celestone.html">Le Celestone™</a>
+      <a href="panneaux-modeles.html">Modèles</a>
       <a href="collections.html">Collections</a>
-      <a href="simulateur.html">Simulateur</a>
-      <a href="visite-virtuelle.html">Visite virtuelle</a>
       <a href="realisations.html">Réalisations</a>
-      <a href="blog.html">Blog</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html">Contact</a>
+      <a href="visualiseur/">Visualiseur</a>
+      <a href="contact.html">Showroom</a>
     </div>
     <div class="navactions">
-      <span class="lang">FR</span>
-      
+      <a class="btn btn-fill" href="devis.html">Estimer mon projet</a>
       <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 </header>
 <div class="mobile-menu">
   <button class="mclose" aria-label="Fermer">×</button>
-  <a href="index.html">Accueil</a>
+  <span class="mgroup">La matière</span>
+  <a href="le-celestone.html">Le Celestone™</a>
+  <a href="panneaux-modeles.html">Tous les modèles</a>
   <a href="collections.html">Collections</a>
-  <a href="simulateur.html">Simulateur</a>
-  <a href="visite-virtuelle.html">Visite virtuelle</a>
+  <span class="mgroup">Votre projet</span>
   <a href="realisations.html">Réalisations</a>
-      <a href="blog.html">Blog</a>
+  <a href="visualiseur/">Visualiseur — votre mur</a>
+  <a href="devis.html">Estimer mon projet</a>
+  <span class="mgroup">La maison</span>
   <a href="a-propos.html">À propos</a>
-  <a href="contact.html">Contact</a>
+  <a href="contact.html">Showroom &amp; contact</a>
+  <a href="faq.html">Questions fréquentes</a>
+  <a href="blog.html">Journal</a>
+  <div class="mcta">
+    <a class="btn btn-fill" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn" href="devis.html">Devis</a>
+  </div>
 </div>
 
 <!-- hero -->
 <section class="hero">
-  <img src="images/facade-hero.jpg" alt="Façade habillée par Deutschconfort — pierre & bois">
+  <img src="images/facade-hero.webp" alt="Façade de villa habillée en panneaux Le Celestone — Deutschconfort, Casablanca" fetchpriority="high">
   <div class="hero-content wrap">
     <div class="inner">
       <div class="eyebrow">Maison de revêtements · Casablanca · Depuis 1999</div>
-      <h1 class="hero-kw">Habillages muraux 
-Habillages sols</h1>
-      <div class="hero-slogan">Initiateur<br>de <em>tendances</em></div>
-      <p>Matériaux décoratifs haut de gamme pour l'agencement des espaces privés et publics. Habillages muraux (panneaux), parquets, plinthes, moulures.</p>
+      <h1 class="hero-slogan">Habiller les murs,<br><em>dedans comme dehors.</em></h1>
+      <p class="hero-kicker">Le Celestone™ — panneaux muraux décoratifs</p>
+      <p>Façades, murs TV, terrasses, salons. Une matière hydrofuge, prête à peindre dans votre teinte, posée avec soin. Et une sélection de sols &amp; parquets européens.</p>
       <div class="hero-cta">
-        <a class="btn btn-light btn-fill" href="collections.html">Découvrir les collections</a>
-        
+        <a class="btn btn-light btn-fill" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">Demander un devis · WhatsApp</a>
+        <a class="btn btn-light" href="panneaux-modeles.html">Voir les modèles</a>
       </div>
+      <div class="hero-trust">Depuis 1999 · +4 800 clients · Showroom Anfa</div>
     </div>
   </div>
 </section>
@@ -183,65 +227,115 @@ Habillages sols</h1>
       <h2>L'art du<br>revêtement,<br><em>depuis 1999.</em></h2>
     </div>
     <div class="col">
-      <p>Experts en revêtements, Deutschconfort distribue des matériaux décoratifs haut de gamme pour l'agencement des espaces privés et publics.</p>
-      <p>Sélectionnés auprès des meilleurs fabricants européens, nos panneaux et habillages muraux, parquets massifs, moulures et plinthes composent un vocabulaire de matières où chaque surface raconte une intention.</p>
+      <p>Depuis 1999, Deutschconfort habille les murs et les sols du Maroc. Notre signature : <strong>Le Celestone™</strong>, un habillage mural décoratif qui vit en intérieur comme en extérieur, présenté au showroom d'Anfa et posé avec soin.</p>
+      <p>À ses côtés, une sélection exigeante de sols — parquets, stratifiés, vinyles — choisis auprès des meilleurs fabricants européens, et des moulures &amp; plinthes prêtes à peindre.</p>
       <div class="stats">
         <div class="stat"><div class="n serif">1999</div><div class="l">Fondée à Casablanca</div></div>
-        <div class="stat"><div class="n serif">4</div><div class="l">Univers de revêtement</div></div>
-        <div class="stat"><div class="n serif">25+</div><div class="l">Années d'expertise</div></div>
+        <div class="stat"><div class="n serif">+4 800</div><div class="l">Clients accompagnés</div></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- collections -->
-<section id="collections">
+<!-- deux univers -->
+<section class="univers" id="collections">
   <div class="wrap">
     <div class="section-head">
       <div>
         <div class="eyebrow">Les collections</div>
-        <h2>Quatre univers<br>de matière</h2>
+        <h2>Deux univers<br>de matière</h2>
       </div>
       <a href="collections.html" class="link-underline">Toutes les collections →</a>
     </div>
-    <div class="collections" style="padding-bottom:40px">
-      <a class="card" href="revetement-mural.html">
-        <div class="ph"><img src="images/realisations/r-salon-ivoire.jpg" alt="Revêtement mural"></div>
-        <div class="meta"><div><div class="idx">01</div><h3 class="serif">Revêtement mural</h3><p>Panneaux &amp; habillages</p></div><span class="go">Découvrir</span></div>
-      </a>
-      <a class="card" href="sol-interieur.html">
-        <div class="ph"><img src="images/parquet/bois/BOIS_13.jpeg" alt="Parquet bois — sol intérieur Deutschconfort"></div>
-        <div class="meta"><div><div class="idx">02</div><h3 class="serif">Sol intérieur</h3><p>Parquets &amp; sols nobles</p></div><span class="go">Découvrir</span></div>
-      </a>
-      <a class="card" href="sol-vinyle.html">
-        <div class="ph"><img src="images/parquet/strat/STRAT_19.jpeg" alt="Sol vinyle aspect bois foncé — Deutschconfort"></div>
-        <div class="meta"><div><div class="idx">03</div><h3 class="serif">Sol vinyle</h3><p>Lames &amp; dalles design</p></div><span class="go">Découvrir</span></div>
-      </a>
-      <a class="card" href="revetement-mural.html#plinthes">
-        <div class="ph-split">
-          <img src="images/moulures.jpg" alt="Moulures décoratives en Polymère Celestone™ prêtes à peindre — Deutschconfort">
-          <img src="images/plinthe-pu.png" alt="Plinthes carrées en Polymère Celestone™ prêtes à peindre — Deutschconfort">
+    <div class="duo">
+      <a class="ucard" href="le-celestone.html">
+        <div class="ph"><img src="images/realisations/bigrock-salle-a-manger.webp" alt="Salle à manger habillée en Le Celestone Big Rock blanc — Deutschconfort" loading="lazy"></div>
+        <div class="meta">
+          <div class="idx">01 · La signature</div>
+          <h3>Le Celestone™</h3>
+          <p>Panneaux muraux décoratifs, moulures &amp; plinthes. Reliefs pierre, béton, bois — hydrofuges, prêts à peindre, en intérieur comme en extérieur.</p>
+          <span class="go">Découvrir la matière</span>
         </div>
-        <div class="meta"><div><div class="idx">04</div><h3 class="serif">Moulures &amp; plinthes</h3><p>Finitions prêtes à peindre</p></div><span class="go">Découvrir</span></div>
+      </a>
+      <a class="ucard" href="sol-interieur.html">
+        <div class="ph"><img src="images/parquet/bois/BOIS_13.webp" alt="Parquet bois — sol intérieur Deutschconfort" loading="lazy"></div>
+        <div class="meta">
+          <div class="idx">02 · La sélection</div>
+          <h3>Sols &amp; parquets</h3>
+          <p>Parquets massifs et contrecollés, stratifiés, vinyles SPC, sols extérieurs — sélectionnés auprès des meilleurs fabricants européens.</p>
+          <span class="go">Découvrir les sols</span>
+        </div>
       </a>
     </div>
   </div>
 </section>
 
-<!-- savoir-faire -->
-<section class="savoir" id="savoir">
+<!-- modèles vedettes -->
+<section class="vedettes">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Les modèles</div>
+        <h2>Les reliefs<br>signatures</h2>
+      </div>
+      <a href="panneaux-modeles.html" class="link-underline">Tous les modèles →</a>
+    </div>
+    <div class="models" style="padding-bottom:44px">
+      <a class="model" href="panneau-big-rock.html">
+        <span class="chip">Vedette</span>
+        <div class="ph"><img src="images/panels/big-rock-product.webp" alt="Le Celestone™ Big Rock — panneau mural relief pierre" loading="lazy"></div>
+        <div class="m-meta"><div class="m-brand">Le Celestone™</div><div class="m-name">Big Rock 240</div><div class="m-dim">240 × 60 &amp; 120 × 60 cm</div></div>
+      </a>
+      <a class="model" href="panneau-moon.html">
+        <div class="ph"><img src="images/panels/moon-product.webp" alt="Le Celestone™ Moon — panneau mural relief lunaire" loading="lazy"></div>
+        <div class="m-meta"><div class="m-brand">Le Celestone™</div><div class="m-name">Moon</div><div class="m-dim">120 × 48 &amp; 200 × 50 cm</div></div>
+      </a>
+      <a class="model" href="panneau-mattoni.html">
+        <div class="ph"><img src="images/panels/mattoni-product.webp" alt="Le Celestone™ Mattoni — panneau mural relief briques" loading="lazy"></div>
+        <div class="m-meta"><div class="m-brand">Le Celestone™</div><div class="m-name">Mattoni</div><div class="m-dim">200 × 50 cm</div></div>
+      </a>
+      <a class="model" href="panneau-cemento.html">
+        <div class="ph"><img src="images/panels/cemento-product.webp" alt="Le Celestone™ Cemento — panneau mural aspect béton banché" loading="lazy"></div>
+        <div class="m-meta"><div class="m-brand">Le Celestone™</div><div class="m-name">Cemento</div><div class="m-dim">120 × 57 cm</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- extérieur : l'objection n°1 -->
+<section class="exterieur" id="exterieur">
   <div class="inner">
-    <div class="ph"><img src="images/parquet/bois/BOIS_06.jpeg" alt="Détail de pose"></div>
+    <div class="ph"><img src="images/realisations/cubo-jardin-piscine.webp" alt="Mur de jardin au bord de la piscine en Le Celestone Cubo blanc — Casablanca" loading="lazy"></div>
     <div class="txt">
-      <div class="eyebrow">Le savoir-faire</div>
-      <h2>Une sélection<br>exigeante, un<br><em>accompagnement</em> sur mesure.</h2>
-      <p>De la sélection de la matière à la finition posée, nous accompagnons particuliers, architectes et prescripteurs à chaque étape du projet.</p>
+      <div class="eyebrow">Intérieur &amp; extérieur</div>
+      <h2>Et dehors,<br><em>ça tient ?</em></h2>
+      <p>C'est précisément ce qui distingue Le Celestone™. La matière n'absorbe pas l'eau : façade, terrasse, mur de jardin, pourtour de piscine — elle vit dehors, sous la lumière marocaine.</p>
       <div class="features">
-        <div class="feat"><div class="fn">01</div><h4>Sélection haut de gamme</h4></div>
-        <div class="feat"><div class="fn">02</div><h4>Conseil &amp; prescription</h4></div>
-        <div class="feat"><div class="fn">03</div><h4>Pose &amp; finitions</h4></div>
+        <div class="feat"><div class="fn">01</div><div><h4>Hydrofuge</h4><p>La matière n'absorbe pas l'eau — pluie, embruns, humidité côtière.</p></div></div>
+        <div class="feat"><div class="fn">02</div><div><h4>Se peint, se repeint</h4><p>Livré prêt à peindre : votre teinte, en acrylique de qualité extérieure.</p></div></div>
+        <div class="feat"><div class="fn">03</div><div><h4>Pose collée-vissée</h4><p>Fixation double, angles traités en onglet, joints repris en finition.</p></div></div>
+      </div>
+      <div class="cta">
+        <a class="btn btn-light btn-fill" href="facade-anti-humidite.html">Façades &amp; extérieur</a>
+        <a class="btn btn-light" href="realisations.html">Voir les réalisations</a>
       </div>
     </div>
+  </div>
+</section>
+
+<!-- visualiseur -->
+<section class="visu">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Le visualiseur</div>
+      <h2>Voyez-le sur <em>votre</em> mur<br>avant de décider.</h2>
+      <p>Envoyez une photo de votre pièce ou de votre façade : notre visualiseur applique les reliefs Le Celestone™ sur vos murs, dans la teinte de votre choix.</p>
+      <div class="cta">
+        <a class="btn btn-fill" href="visualiseur/">Essayer le visualiseur</a>
+        <a class="btn" href="simulateur.html">Ou par WhatsApp</a>
+      </div>
+    </div>
+    <a class="ph" href="visualiseur/"><img src="images/realisations/r-mur-tv-bois.webp" alt="Aperçu du visualiseur Deutschconfort — projection d'un relief sur un mur TV" loading="lazy"></a>
   </div>
 </section>
 
@@ -256,12 +350,30 @@ Habillages sols</h1>
       <a href="realisations.html" class="link-underline">Voir le portfolio →</a>
     </div>
     <div class="rgrid">
-      <a class="r rs7" href="realisations.html"><img src="images/realisations/r-villa-facade.jpg" alt="Façade de villa habillée en panneaux muraux — Deutschconfort, Casablanca" loading="lazy"><span class="rcap">Façade villa · Panneaux</span></a>
-      <a class="r rs5" href="realisations.html"><img src="images/realisations/r-couloir-pierre.jpg" alt="Mur intérieur en parement pierre empilée — Deutschconfort" loading="lazy"><span class="rcap">Mur intérieur · Pierre</span></a>
-      <a class="r rs5" href="realisations.html"><img src="images/realisations/r-mur-tv-bois.jpg" alt="Mur TV en bois et pierre rétroéclairée — Deutschconfort" loading="lazy"><span class="rcap">Mur TV · Bois &amp; pierre</span></a>
-      <a class="r rs7" href="realisations.html"><img src="images/realisations/r-tiara-facade.jpg" alt="Boutique TIARA habillée en pierre texturée — Casablanca" loading="lazy"><span class="rcap">Commerce · Casablanca</span></a>
-      <a class="r rs6" href="realisations.html"><img src="images/realisations/big-rock-04.jpg" alt="Mur d'accent en panneau effet pierre Big Rock — Deutschconfort" loading="lazy"><span class="rcap">Mur d'accent · Pierre</span></a>
-      <a class="r rs6" href="realisations.html"><img src="images/realisations/cemento-02.jpg" alt="Mur en panneau effet béton Cemento — Deutschconfort" loading="lazy"><span class="rcap">Béton · Mur d'accent</span></a>
+      <a class="r rs7" href="realisations.html"><img src="images/realisations/mattoni-facade-villa-800.webp" alt="Villa contemporaine à Casablanca — façade en Le Celestone Mattoni et bois" loading="lazy"><span class="rcap">Façade villa · Le Celestone™ Mattoni</span></a>
+      <a class="r rs5" href="realisations.html"><img src="images/realisations/bigrock-cheminee-salon-800.webp" alt="Cheminée de salon habillée en Le Celestone Big Rock beige" loading="lazy"><span class="rcap">Cheminée · Big Rock</span></a>
+      <a class="r rs5" href="realisations.html"><img src="images/realisations/cubo-jardin-nuit-800.webp" alt="Muret de jardin éclairé la nuit en Le Celestone Cubo noir" loading="lazy"><span class="rcap">Jardin de nuit · Cubo</span></a>
+      <a class="r rs7" href="realisations.html"><img src="images/realisations/bigrock-boutique-tiara-800.webp" alt="Joaillerie TIARA — murs en Le Celestone Big Rock blanc, Casablanca" loading="lazy"><span class="rcap">Joaillerie TIARA · Casablanca</span></a>
+      <a class="r rs6" href="realisations.html"><img src="images/realisations/bigrock-sejour-blanc-800.webp" alt="Séjour lumineux — mur d'accent en Le Celestone Big Rock blanc" loading="lazy"><span class="rcap">Séjour · Big Rock</span></a>
+      <a class="r rs6" href="realisations.html"><img src="images/realisations/cubo-rooftop-soir-800.webp" alt="Rooftop au crépuscule — mur en Le Celestone Cubo noir" loading="lazy"><span class="rcap">Rooftop · Cubo</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- parcours -->
+<section class="parcours" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Votre projet</div>
+        <h2>Quatre étapes,<br>sans détour</h2>
+      </div>
+    </div>
+    <div class="steps" style="padding-bottom:100px">
+      <div class="step"><div class="n">01</div><h3>Envoyez une photo</h3><p>Une photo de votre mur ou façade sur WhatsApp, avec la ville et la surface approximative.</p></div>
+      <div class="step"><div class="n">02</div><h3>Recevez votre devis</h3><p>Un devis personnalisé selon le modèle et la surface, avec le délai précisé au devis.</p></div>
+      <div class="step"><div class="n">03</div><h3>Touchez la matière</h3><p>Au showroom d'Anfa : les reliefs en main, le test de l'eau, les échantillons.</p></div>
+      <div class="step"><div class="n">04</div><h3>La pose</h3><p>Collée-vissée, angles en onglet, finitions reprises. Puis la mise en peinture dans votre teinte.</p></div>
     </div>
   </div>
 </section>
@@ -272,9 +384,9 @@ Habillages sols</h1>
     <div>
       <div class="eyebrow">Le showroom</div>
       <h2>Venez <em>toucher</em><br>la matière.</h2>
-      <p class="lead">Notre showroom sur Casablanca présente l'ensemble des collections. Sur rendez-vous ou en visite libre.</p>
+      <p class="lead">Notre showroom à Casablanca présente les reliefs Le Celestone™ et l'ensemble des collections. Sur rendez-vous ou en visite libre.</p>
       <div class="cta">
-        <a class="btn btn-fill" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">Demander un devis · WhatsApp</a>
+        <a class="btn btn-fill" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20r%C3%A9server%20un%20passage%20au%20showroom." target="_blank" rel="noopener">Réserver un passage · WhatsApp</a>
         <a class="btn" href="contact.html">Nous trouver</a>
       </div>
     </div>
@@ -292,11 +404,11 @@ Habillages sols</h1>
   <div class="wrap">
     <div class="top">
       <div>
-        <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
-        <p class="tag">Initiateur de tendances depuis 1999.</p>
+        <a class="brand" href="index.html">Deutschconfort<small>Solutions architecturales de surfaces</small></a>
+        <p class="tag">Habiller les murs, dedans comme dehors. Depuis 1999.</p>
       </div>
-      <div class="fcol"><h6>Collections</h6><a href="le-celestone.html">Le Celestone</a><a href="revetement-mural.html">Revêtement mural</a><a href="sol-interieur.html">Sol intérieur</a><a href="sol-vinyle.html">Sol vinyle</a><a href="sol-exterieur.html">Sol extérieur</a></div>
-      <div class="fcol"><h6>Solutions déco</h6><a href="habillage-effet-pierre.html">Habillage effet pierre</a><a href="panneau-effet-bois.html">Panneau effet bois</a><a href="panneau-effet-beton.html">Panneau effet béton</a><a href="facade-anti-humidite.html">Façade anti-humidité</a><a href="mur-tv-decoratif.html">Mur TV décoratif</a><a href="panneau-mural-3d.html">Panneau mural 3D</a><a href="moulures-decoratives.html">Moulures décoratives</a><a href="plinthes-pretes-a-peindre.html">Plinthes à peindre</a><a href="pose-installation.html">Pose &amp; installation</a><a href="prescription-architectes.html">Architectes &amp; prescription</a><a href="panneau-effet-marbre.html">Panneau effet marbre</a><a href="alternative-au-bardage.html">Alternative au bardage</a><a href="revetement-exterieur-resistant-soleil.html">Revêtement extérieur anti-UV</a><a href="habillage-mur-interieur-idees.html">Idées habillage intérieur</a></div><div class="fcol"><h6>Maison</h6><a href="a-propos.html">À propos</a><a href="realisations.html">Réalisations</a><a href="devis.html">Demander un devis</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a><a href="contact.html">Je suis professionnel</a></div>
+      <div class="fcol"><h6>Collections</h6><a href="le-celestone.html">Le Celestone™</a><a href="panneaux-modeles.html">Tous les modèles</a><a href="revetement-mural.html">Revêtement mural</a><a href="sol-interieur.html">Sol intérieur</a><a href="sol-vinyle.html">Sol vinyle</a><a href="sol-exterieur.html">Sol extérieur</a></div>
+      <div class="fcol"><h6>Solutions déco</h6><a href="habillage-effet-pierre.html">Habillage effet pierre</a><a href="panneau-effet-bois.html">Panneau effet bois</a><a href="panneau-effet-beton.html">Panneau effet béton</a><a href="facade-anti-humidite.html">Façade anti-humidité</a><a href="mur-tv-decoratif.html">Mur TV décoratif</a><a href="panneau-mural-3d.html">Panneau mural 3D</a><a href="moulures-decoratives.html">Moulures décoratives</a><a href="plinthes-pretes-a-peindre.html">Plinthes à peindre</a><a href="pose-installation.html">Pose &amp; installation</a><a href="prescription-architectes.html">Architectes &amp; prescription</a><a href="panneau-effet-marbre.html">Panneau effet marbre</a><a href="alternative-au-bardage.html">Alternative au bardage</a><a href="revetement-exterieur-resistant-soleil.html">Revêtement extérieur</a><a href="habillage-mur-interieur-idees.html">Idées habillage intérieur</a></div><div class="fcol"><h6>Maison</h6><a href="a-propos.html">À propos</a><a href="realisations.html">Réalisations</a><a href="visualiseur/">Visualiseur</a><a href="devis.html">Estimer mon projet</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="blog.html">Journal</a><a href="contact.html">Je suis professionnel</a></div>
       <div class="fcol"><h6>Suivez-nous</h6><a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a><a href="https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/">Facebook</a><a href="mailto:deutschconfort@gmail.com">Email</a></div>
     </div>
     <div class="bottom">
@@ -306,9 +418,14 @@ Habillages sols</h1>
   </div>
 </footer>
 
+<div class="mobile-cta">
+  <a class="wa" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 1.9.8 2 .1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg>WhatsApp</a>
+  <a class="dv" href="devis.html">Devis</a>
+</div>
+
 <script src="js/site.js"></script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Deutschconfort","image":"https://deutsch-confort.com/images/facade-hero.jpg","url":"https://deutsch-confort.com","telephone":"+212614474221","email":"deutschconfort@gmail.com","priceRange":"$","foundingDate":"1999","address":{"@type":"PostalAddress","streetAddress":"11 Rue Hounaine, Bd d'Anfa","addressLocality":"Casablanca","postalCode":"20100","addressRegion":"Casablanca-Settat","addressCountry":"MA"},"geo":{"@type":"GeoCoordinates","latitude":33.5879,"longitude":-7.6325},"areaServed":"Maroc","sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"19:00"}]}
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Deutschconfort","image":"https://deutsch-confort.com/images/facade-hero.jpg","url":"https://deutsch-confort.com","telephone":"+212614474221","email":"deutschconfort@gmail.com","foundingDate":"1999","address":{"@type":"PostalAddress","streetAddress":"11 Rue Hounaine, Bd d'Anfa","addressLocality":"Casablanca","postalCode":"20100","addressRegion":"Casablanca-Settat","addressCountry":"MA"},"geo":{"@type":"GeoCoordinates","latitude":33.5879,"longitude":-7.6325},"areaServed":"Maroc","sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"09:30","closes":"13:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"15:00","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"10:00","closes":"13:00"}]}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Deutschconfort","url":"https://deutsch-confort.com","logo":"https://deutsch-confort.com/favicon.png","foundingDate":"1999","sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"]}

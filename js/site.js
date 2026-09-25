@@ -16,6 +16,15 @@
       });
     }
 
+    // Mesure : clic WhatsApp = Contact, clic tel = Contact (Meta Pixel)
+    document.addEventListener('click',function(e){
+      var a=e.target.closest&&e.target.closest('a');
+      if(!a||typeof fbq!=='function')return;
+      var h=a.getAttribute('href')||'';
+      if(h.indexOf('wa.me')>-1){fbq('track','Contact',{content_name:'whatsapp'});}
+      else if(h.indexOf('tel:')===0){fbq('track','Contact',{content_name:'tel'});}
+    });
+
     var burger=document.querySelector('.burger');
     var menu=document.querySelector('.mobile-menu');
     if(burger&&menu){

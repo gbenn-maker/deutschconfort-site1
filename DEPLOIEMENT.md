@@ -1,100 +1,38 @@
-# Mise en ligne du site Deutschconfort — stratégie GitHub + Netlify
+# Déploiement — deutsch-confort.com
 
-Site **statique** (HTML/CSS/JS + images). Page d'accueil : `index.html`.
-Deux niveaux : (1) le site en ligne, (2) ton domaine `deutsch-confort.com` qui pointe dessus.
+## Hébergement
+Le site est un site statique déployé sur **GitHub Pages** depuis la branche `main`
+du dépôt `gbenn-maker/deutschconfort-site1`. Le domaine `deutsch-confort.com`
+est configuré via le fichier `CNAME` à la racine.
 
----
+Chaque `git push origin main` déclenche automatiquement la mise en ligne
+(1 à 2 minutes).
 
-## Vue d'ensemble de la stratégie retenue
+## Structure
+- Pages HTML à la racine (une page = un fichier, header/footer dupliqués).
+- `css/site.css` : feuille partagée (charte 2026 — Bodoni Moda + Jost,
+  palette Basalte/Chaux/Sable/Oxyde). Les couleurs et typos se changent ici.
+- `js/site.js` : menu mobile, lien catalogue, tracking Pixel des clics WhatsApp/tel.
+- `images/` : chaque photo existe en `.webp` (max 1600px) et `-800.webp`
+  (grilles). Les originaux jpg/png restent dans le dépôt mais ne sont plus
+  référencés par les pages.
+- `/visualiseur/` : outil de projection (WebGL + API Insta-Pro), design propre.
+- `/projet/` : brief guidé « Mon projet Celestone » (API Insta-Pro).
+- `brief-*.html` : pages commerciales avec prix, en `noindex`, jamais liées.
 
-```
-   Code du site ──▶ GitHub (dépôt)  ──▶ Netlify (héberge + HTTPS auto)  ──▶ deutsch-confort.com
-                     (source)            (redéploie à chaque push)          (DNS pointé vers Netlify)
-```
+## Ajouter une réalisation
+1. Prendre la photo dans Dropbox `4 ARCHIVES/REALISATIONS/<Modèle>`.
+2. La convertir : `ffmpeg -i photo.jpg -vf "scale='min(1600,iw)':-2" -c:v libwebp -q:v 80 images/realisations/nom-seo.webp`
+   et une variante `-800.webp` (scale 800).
+3. Ajouter la carte dans `realisations.html` (bloc `.pcell`, avec `data-cat`
+   et `data-full`), légende « Le Celestone™ <Modèle> · teinte ».
 
-- **GitHub** = l'endroit où vit le code. À chaque mise à jour, on « pousse » sur GitHub.
-- **Netlify** = connecté à GitHub. Dès qu'on pousse, **il redéploie tout seul**. Il gère aussi
-  le certificat **HTTPS** gratuitement.
-- **Domaine** : on laisse le nom chez ton registrar actuel (Wix), on change juste où il *pointe*.
-
-> En attendant, le **glisser-déposer** direct sur Netlify met le site en ligne immédiatement sur
-> une URL `xxx.netlify.app`. On bascule ensuite ce même site sur GitHub pour les mises à jour auto.
-
----
-
-## Étape 1 — Le dépôt GitHub (je le prépare pour toi)
-
-Une fois GitHub autorisé, je crée un dépôt (ex. `deutschconfort-site`) et j'y pousse **tout le
-site**, avec `index.html` à la racine. Tu n'as rien à coder.
-
----
-
-## Étape 2 — Connecter Netlify à GitHub (mises à jour automatiques)
-
-1. Netlify → **Add new site → Import an existing project → GitHub**.
-2. Autorise, choisis le dépôt `deutschconfort-site`.
-3. Réglages de build (site statique, **aucun build**) :
-   - **Build command** : *(laisser vide)*
-   - **Publish directory** : `/` (racine du dépôt)
-4. **Deploy**. Site en ligne sur `xxx.netlify.app`.
-   → Désormais, **chaque modification que je pousse sur GitHub se met en ligne toute seule.**
-
----
-
-## Étape 3 — Brancher `deutsch-confort.com`
-
-### A. Côté Netlify
-**Site → Domain management → Add a custom domain** → `deutsch-confort.com`.
-Netlify affiche les enregistrements DNS exacts (en général) :
-- **A** `@` → `75.2.60.5`
-- **CNAME** `www` → `ton-site.netlify.app`
-
-### B. Côté domaine (aujourd'hui chez Wix)
-Le domaine est géré par Wix. Deux cas :
-
-**Cas 1 — Wix te laisse éditer le DNS**
-Tableau de bord Wix → **Domaines → ton domaine → Avancé → Modifier les enregistrements DNS** :
-- mets l'enregistrement **A** (`@`) sur l'IP Netlify,
-- mets le **CNAME `www`** sur `ton-site.netlify.app`,
-- **déconnecte le domaine du site Wix** (sinon Wix continue de le servir).
-
-**Cas 2 — Wix bloque (le plus fréquent) → passer par Cloudflare (gratuit)**
-1. Crée un compte **Cloudflare**, ajoute `deutsch-confort.com`. Cloudflare te donne **2 nameservers**.
-2. Wix → Domaines → Avancé → **Serveurs de noms (nameservers)** → « utiliser des serveurs
-   externes » → colle ceux de Cloudflare.
-3. Tu gères ensuite les A/CNAME **dans Cloudflare** (vers Netlify), sans la limite Wix.
-
-⏱️ Propagation DNS : **1 à 24 h**. Ensuite, ton domaine sert le nouveau site, en HTTPS.
-
-> **Ordre conseillé, zéro coupure :** d'abord le site en ligne (glisser-déposer ou GitHub) et
-> testé sur l'URL `.netlify.app` → **ensuite seulement** la bascule DNS du domaine.
-
----
-
-## Étape 4 — Les mises à jour, après coup
-
-- Tu me demandes un changement → je modifie le site → **je pousse sur GitHub** → Netlify
-  **redéploie automatiquement** en ~1 min. Rien à refaire à la main.
-- (Sans GitHub, il faudrait re-glisser le dossier sur Netlify à chaque fois.)
-
----
-
-## ⚠️ Images encore hébergées sur Wix (à régler avant de résilier Wix)
-
-Certaines pages affichent des images servies par `static.wixstatic.com`. Elles marchent **tant
-que ton compte Wix existe**. Si tu fermes Wix, elles casseront.
-
-- **100 % autonomes** (images locales) : parquet (bois naturel + stratifié), réalisations,
-  visite virtuelle, simulateur, panneaux muraux.
-- **Encore dépendantes de Wix** : accueil, collections, sol vinyle, sol extérieur, et quelques
-  vignettes de revêtement mural.
-
-➡️ Avant de résilier Wix, demande-moi de **rapatrier ces images en local** (tu me fournis les
-fichiers) pour un site totalement indépendant.
-
----
-
-## Récap des liens vérifiés
-- **Instagram** → instagram.com/deutschconfort
-- **WhatsApp** → +212 614 474 221
-- **Catalogue PDF** → lien Dropbox (boutons « Catalogue »)
+## Règles de marque (obligatoires)
+- Aucun prix public (ni JSON-LD `offers`/`priceRange`). Briefs uniquement.
+- « Polymère Celestone™ », jamais PU/polyuréthane/mousse.
+- Jamais usine/fabrication/production ; « stock de gros » autorisé.
+- Chiffres autorisés : « depuis 1999 » et « +4 800 clients ».
+- Un modèle ne vit jamais seul : « Le Celestone™ Big Rock 240 ».
+- Pas de corniches. Cubo jamais mis en avant.
+- Humidité : « n'absorbe pas l'eau / hydrofuge », jamais « traite/élimine ».
+- Meta Pixel 1750427786411371 sur chaque page.

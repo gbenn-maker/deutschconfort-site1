@@ -4,27 +4,38 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Réalisations — Deutschconfort</title>
-<meta name="description" content="Les espaces que nous habillons : résidences, séjours, plages de piscine et lieux publics à Casablanca et au Maroc. Portfolio Deutschconfort.">
+<meta name="description" content="Les espaces que nous habillons : façades, séjours, jardins, piscines, commerces et hôtellerie à Casablanca et au Maroc. Portfolio Deutschconfort · Le Celestone™.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css">
 <style>
   .filters{display:flex;gap:10px;flex-wrap:wrap;padding:6px 0 50px}
-  .chip{font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:11px 20px;border:1px solid var(--line);background:transparent;color:var(--ink-soft);cursor:pointer;transition:all .2s;font-family:var(--sans)}
-  .chip:hover{border-color:var(--ink)}
-  .chip.active{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+  .fchip{font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:11px 20px;border:1px solid var(--line);background:transparent;color:var(--encre);cursor:pointer;transition:all .2s;font-family:var(--sans);min-height:44px}
+  .fchip:hover{border-color:var(--basalte)}
+  .fchip.active{background:var(--basalte);color:var(--chaux);border-color:var(--basalte)}
   .pgrid{column-count:3;column-gap:8px;padding-bottom:30px}
-  .pcell{position:relative;overflow:hidden;background:var(--paper-2);display:block;break-inside:avoid;margin-bottom:8px;width:100%}
+  .pcell{position:relative;overflow:hidden;background:var(--calcaire);display:block;break-inside:avoid;margin-bottom:8px;width:100%;cursor:zoom-in;border:none;padding:0;text-align:left}
   .pcell img{display:block;width:100%;height:auto;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
   .pcell:hover img{transform:scale(1.05)}
-  .pcell::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,20,18,.5),transparent 55%);opacity:0;transition:opacity .35s}
+  .pcell::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,20,15,.5),transparent 55%);opacity:0;transition:opacity .35s;pointer-events:none}
   .pcell:hover::after{opacity:1}
-  .pcell .cap{position:absolute;left:24px;bottom:20px;right:18px;z-index:2;color:#F5F2EC;opacity:0;transform:translateY(8px);transition:.35s}
+  .pcell .cap{position:absolute;left:24px;bottom:20px;right:18px;z-index:2;color:#F5F2EC;opacity:0;transform:translateY(8px);transition:.35s;pointer-events:none}
   .pcell:hover .cap{opacity:1;transform:none}
-  .pcell .cap .t{font-family:var(--serif);font-size:26px;line-height:1.05}
-  .pcell .cap .c{font-size:11px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;margin-top:6px;display:block}
+  .pcell .cap .t{font-family:var(--serif);font-size:24px;line-height:1.1;display:block}
+  .pcell .cap .c{font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;opacity:.85;margin-top:6px;display:block}
   .pcell.hide{display:none}
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:90;background:rgba(20,20,15,.94);display:none;align-items:center;justify-content:center;flex-direction:column;padding:20px}
+  .lb.open{display:flex}
+  .lb img{max-width:100%;max-height:78vh;width:auto;height:auto;object-fit:contain;box-shadow:0 20px 80px rgba(0,0,0,.5)}
+  .lb .lb-cap{color:#F5F2EC;margin-top:16px;text-align:center}
+  .lb .lb-cap .t{font-family:var(--serif);font-size:22px}
+  .lb .lb-cap .c{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.7;margin-top:5px;display:block}
+  .lb button{position:absolute;background:none;border:none;color:#F5F2EC;cursor:pointer;font-size:34px;line-height:1;width:52px;height:52px;display:flex;align-items:center;justify-content:center}
+  .lb .lb-close{top:14px;right:14px}
+  .lb .lb-prev{left:6px;top:50%;transform:translateY(-50%)}
+  .lb .lb-next{right:6px;top:50%;transform:translateY(-50%)}
   @media(max-width:980px){.pgrid{column-count:2}}
   @media(max-width:560px){
     .pgrid{column-count:1}
@@ -42,13 +53,13 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_MA">
 <meta property="og:site_name" content="Deutschconfort">
-<meta property="og:title" content="Réalisations">
-<meta property="og:description" content="Les espaces que nous habillons : résidences, séjours, plages de piscine et lieux publics à Casablanca et au Maroc. Portfolio Deutschconfort.">
+<meta property="og:title" content="Réalisations — Deutschconfort">
+<meta property="og:description" content="Les espaces que nous habillons : façades, séjours, jardins, piscines, commerces et hôtellerie à Casablanca et au Maroc.">
 <meta property="og:url" content="https://deutsch-confort.com/realisations.html">
 <meta property="og:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Réalisations">
-<meta name="twitter:description" content="Les espaces que nous habillons : résidences, séjours, plages de piscine et lieux publics à Casablanca et au Maroc. Portfolio Deutschconfort.">
+<meta name="twitter:title" content="Réalisations — Deutschconfort">
+<meta name="twitter:description" content="Les espaces que nous habillons : façades, séjours, jardins, piscines, commerces et hôtellerie à Casablanca et au Maroc.">
 <meta name="twitter:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
 <!-- Meta Pixel Code -->
 <script>
@@ -73,7 +84,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
   <div class="wrap">
     <div class="left">Showroom — 11 Rue Hounaine, Bd d'Anfa · Casablanca</div>
     <div class="right">
-      
+
       <a href="contact.html">Je suis professionnel</a>
       <a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a>
       <a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a>
@@ -83,33 +94,40 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 
 <header>
   <nav class="wrap">
-    <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
+    <a class="brand" href="index.html">Deutschconfort<small>Solutions architecturales de surfaces</small></a>
     <div class="navlinks">
+      <a href="le-celestone.html">Le Celestone™</a>
+      <a href="panneaux-modeles.html">Modèles</a>
       <a href="collections.html">Collections</a>
-      <a href="simulateur.html">Simulateur</a>
-      <a href="visite-virtuelle.html">Visite virtuelle</a>
       <a href="realisations.html" class="is-active">Réalisations</a>
-      <a href="blog.html">Blog</a>
-      <a href="a-propos.html">À propos</a>
-      <a href="contact.html">Contact</a>
+      <a href="visualiseur/">Visualiseur</a>
+      <a href="contact.html">Showroom</a>
     </div>
     <div class="navactions">
-      <span class="lang">FR</span>
-      
+      <a class="btn btn-fill" href="devis.html">Estimer mon projet</a>
       <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
 </header>
 <div class="mobile-menu">
   <button class="mclose" aria-label="Fermer">×</button>
-  <a href="index.html">Accueil</a>
+  <span class="mgroup">La matière</span>
+  <a href="le-celestone.html">Le Celestone™</a>
+  <a href="panneaux-modeles.html">Tous les modèles</a>
   <a href="collections.html">Collections</a>
-  <a href="simulateur.html">Simulateur</a>
-  <a href="visite-virtuelle.html">Visite virtuelle</a>
+  <span class="mgroup">Votre projet</span>
   <a href="realisations.html">Réalisations</a>
-      <a href="blog.html">Blog</a>
+  <a href="visualiseur/">Visualiseur — votre mur</a>
+  <a href="devis.html">Estimer mon projet</a>
+  <span class="mgroup">La maison</span>
   <a href="a-propos.html">À propos</a>
-  <a href="contact.html">Contact</a>
+  <a href="contact.html">Showroom &amp; contact</a>
+  <a href="faq.html">Questions fréquentes</a>
+  <a href="blog.html">Journal</a>
+  <div class="mcta">
+    <a class="btn btn-fill" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn" href="devis.html">Devis</a>
+  </div>
 </div>
 
 <section class="phero">
@@ -117,44 +135,48 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     <div class="breadcrumb"><a href="index.html">Accueil</a><span>/</span>Réalisations</div>
     <div class="eyebrow">Nos réalisations</div>
     <h1>Les espaces que<br>nous <em>habillons</em></h1>
-    <p class="lead">Séjours, murs de piscine, façades — chaque projet est une rencontre entre une matière et un lieu. Un aperçu de nos poses à Casablanca et au Maroc.
-Résidences privées, immeubles, Airbnb collectives, hôtels, restaurants.. </p>
+    <p class="lead">Façades, séjours, jardins, piscines, commerces — chaque projet est une rencontre entre une matière et un lieu. Toutes les photos ci-dessous sont de vraies poses, à Casablanca et au Maroc.</p>
   </div>
 </section>
 
 <section style="padding:46px 0 110px">
   <div class="wrap">
     <div class="filters" id="filters">
-      <button class="chip active" data-f="all">Tout</button>
-      <button class="chip" data-f="exterieur">Façades &amp; extérieurs</button>
-      <button class="chip" data-f="interieur">Murs intérieurs</button>
-      <button class="chip" data-f="commerce">Commerces</button>
+      <button class="fchip active" data-f="all">Tout</button>
+      <button class="fchip" data-f="exterieur">Façades &amp; jardins</button>
+      <button class="fchip" data-f="interieur">Intérieurs</button>
+      <button class="fchip" data-f="commerce">Commerces &amp; hôtellerie</button>
     </div>
 
     <div class="pgrid" id="pgrid">
-      <a class="pcell" data-cat="exterieur"><img src="images/realisations/r-villa-facade.jpg" alt="Villa contemporaine — façade en revêtement mural texturé et bois" loading="lazy"><span class="cap"><span class="t">Villa contemporaine</span><span class="c">Façade · Revêtement mural</span></span></a>
-      <a class="pcell" data-cat="interieur"><img src="images/realisations/r-salon-ivoire.jpg" alt="Séjour épuré, mur d'accent blanc texturé rétroéclairé" loading="lazy"><span class="cap"><span class="t">Séjour épuré</span><span class="c">Mur d'accent · Texture ivoire</span></span></a>
-      <a class="pcell" data-cat="commerce"><img src="images/realisations/r-tiara-facade.jpg" alt="Boutique de joaillerie TIARA — façade en pierre texturée" loading="lazy"><span class="cap"><span class="t">Boutique TIARA</span><span class="c">Façade · Pierre texturée</span></span></a>
-      <a class="pcell" data-cat="interieur"><img src="images/realisations/r-cheminee.jpg" alt="Cheminée habillée de pierre sculptée blanche" loading="lazy"><span class="cap"><span class="t">Cheminée</span><span class="c">Pierre sculptée</span></span></a>
-      <a class="pcell" data-cat="exterieur"><img src="images/realisations/r-piscine-tropical.jpg" alt="Mur de jardin clair au bord d'une piscine, plantes tropicales" loading="lazy"><span class="cap"><span class="t">Plage de piscine</span><span class="c">Mur de jardin</span></span></a>
-      <a class="pcell" data-cat="interieur"><img src="images/realisations/r-mur-tv-bois.jpg" alt="Mur TV en noyer avec bande de pierre texturée rétroéclairée" loading="lazy"><span class="cap"><span class="t">Mur TV</span><span class="c">Bois &amp; pierre rétroéclairée</span></span></a>
-      <a class="pcell" data-cat="exterieur"><img src="images/realisations/r-terrasse-sunset.jpg" alt="Terrasse rooftop au crépuscule, mur en pierre texturée" loading="lazy"><span class="cap"><span class="t">Terrasse rooftop</span><span class="c">Mur extérieur · Pierre</span></span></a>
-      <a class="pcell" data-cat="interieur"><img src="images/realisations/r-salle-manger.jpg" alt="Salle à manger, mur texturé clair et suspensions design" loading="lazy"><span class="cap"><span class="t">Salle à manger</span><span class="c">Mur texturé ivoire</span></span></a>
-      <a class="pcell" data-cat="exterieur"><img src="images/realisations/r-villa-beige.jpg" alt="Villa moderne — façade en pierre claire texturée" loading="lazy"><span class="cap"><span class="t">Villa moderne</span><span class="c">Façade · Pierre claire</span></span></a>
-      <a class="pcell" data-cat="commerce"><img src="images/realisations/r-tiara-interieur.jpg" alt="Boutique TIARA — aménagement intérieur en pierre texturée" loading="lazy"><span class="cap"><span class="t">Boutique TIARA</span><span class="c">Aménagement intérieur</span></span></a>
-      <a class="pcell" data-cat="exterieur"><img src="images/realisations/r-jardin-gres.jpg" alt="Mur de jardin en grès clair texturé, massif tropical" loading="lazy"><span class="cap"><span class="t">Mur de jardin</span><span class="c">Grès clair</span></span></a>
-      <a class="pcell" data-cat="interieur"><img src="images/realisations/r-chambre.jpg" alt="Chambre, mur texturé ivoire en tête de lit" loading="lazy"><span class="cap"><span class="t">Chambre</span><span class="c">Mur texturé ivoire</span></span></a>
-      <a class="pcell" data-cat="exterieur"><img src="images/realisations/r-bassin-nuit.jpg" alt="Bassin de nuit, mur d'eau en pierre éclairé" loading="lazy"><span class="cap"><span class="t">Bassin de nuit</span><span class="c">Mur d'eau éclairé</span></span></a>
-      <a class="pcell" data-cat="interieur"><img src="images/realisations/r-couloir-pierre.jpg" alt="Couloir habillé d'un parement en pierre empilée" loading="lazy"><span class="cap"><span class="t">Couloir</span><span class="c">Pierre empilée</span></span></a>
-      <a class="pcell" data-cat="exterieur"><img src="images/realisations/r-piscine-marbre.jpg" alt="Plage de piscine, mur en panneaux de marbre et pierre texturée" loading="lazy"><span class="cap"><span class="t">Plage de piscine</span><span class="c">Marbre &amp; pierre</span></span></a>
-      <a class="pcell" data-cat="interieur"><img src="images/realisations/r-salon-beton.jpg" alt="Salon, mur effet béton banché" loading="lazy"><span class="cap"><span class="t">Salon</span><span class="c">Béton banché</span></span></a>
-      <a class="pcell" data-cat="exterieur"><img src="images/realisations/r-facade-ivoire.jpg" alt="Façade ivoire en revêtement mural texturé" loading="lazy"><span class="cap"><span class="t">Façade ivoire</span><span class="c">Revêtement mural</span></span></a>
-      <a class="pcell" data-cat="exterieur"><img src="images/realisations/r-piscine-tropical2.jpg" alt="Piscine et jardin tropical devant un mur ivoire texturé" loading="lazy"><span class="cap"><span class="t">Piscine tropicale</span><span class="c">Mur ivoire</span></span></a>
-      <a class="pcell" data-cat="interieur"><img src="images/realisations/r-salon-tv.jpg" alt="Mur d'accent intérieur en relief derrière un téléviseur" loading="lazy"><span class="cap"><span class="t">Mur TV</span><span class="c">Mur d'accent intérieur</span></span></a>
-      <a class="pcell" data-cat="exterieur"><img src="images/realisations/r-mur-olivier.jpg" alt="Jardin avec olivier devant un mur anthracite texturé" loading="lazy"><span class="cap"><span class="t">Jardin &amp; olivier</span><span class="c">Mur extérieur</span></span></a>
-      <a class="pcell" data-cat="exterieur"><img src="images/realisations/r-piscine-anthracite.jpg" alt="Mur anthracite texturé au bord d'une piscine, yuccas" loading="lazy"><span class="cap"><span class="t">Piscine &amp; jardin</span><span class="c">Mur anthracite</span></span></a>
+      <button class="pcell" data-cat="exterieur" data-full="images/realisations/mattoni-facade-villa.webp"><img src="images/realisations/mattoni-facade-villa-800.webp" alt="Villa contemporaine à Casablanca — façade en Le Celestone Mattoni gris et bois" loading="lazy"><span class="cap"><span class="t">Villa contemporaine</span><span class="c">Façade · Le Celestone™ Mattoni</span></span></button>
+      <button class="pcell" data-cat="interieur" data-full="images/realisations/bigrock-cheminee-salon.webp"><img src="images/realisations/bigrock-cheminee-salon-800.webp" alt="Cheminée de salon habillée en Le Celestone Big Rock peint beige" loading="lazy"><span class="cap"><span class="t">Cheminée de salon</span><span class="c">Le Celestone™ Big Rock · beige</span></span></button>
+      <button class="pcell" data-cat="exterieur" data-full="images/realisations/cubo-rooftop-soir.webp"><img src="images/realisations/cubo-rooftop-soir-800.webp" alt="Rooftop au crépuscule — mur en Le Celestone Cubo peint noir" loading="lazy"><span class="cap"><span class="t">Rooftop au crépuscule</span><span class="c">Le Celestone™ Cubo · noir</span></span></button>
+      <button class="pcell" data-cat="commerce" data-full="images/realisations/bigrock-boutique-tiara.webp"><img src="images/realisations/bigrock-boutique-tiara-800.webp" alt="Boutique de joaillerie TIARA — murs intérieurs en Le Celestone Big Rock blanc" loading="lazy"><span class="cap"><span class="t">Joaillerie TIARA</span><span class="c">Le Celestone™ Big Rock · blanc</span></span></button>
+      <button class="pcell" data-cat="exterieur" data-full="images/realisations/cubo-jardin-piscine.webp"><img src="images/realisations/cubo-jardin-piscine-800.webp" alt="Mur de jardin au bord de la piscine en Le Celestone Cubo blanc" loading="lazy"><span class="cap"><span class="t">Jardin &amp; piscine</span><span class="c">Le Celestone™ Cubo · blanc</span></span></button>
+      <button class="pcell" data-cat="interieur" data-full="images/realisations/bigrock-sejour-blanc.webp"><img src="images/realisations/bigrock-sejour-blanc-800.webp" alt="Séjour lumineux — mur d'accent en Le Celestone Big Rock vertical blanc" loading="lazy"><span class="cap"><span class="t">Séjour lumineux</span><span class="c">Le Celestone™ Big Rock · blanc</span></span></button>
+      <button class="pcell" data-cat="commerce" data-full="images/realisations/bigrock-salle-de-bain.webp"><img src="images/realisations/bigrock-salle-de-bain-800.webp" alt="Salle de bain d'un restaurant face à la mer — Le Celestone Big Rock beige" loading="lazy"><span class="cap"><span class="t">Restaurant face mer</span><span class="c">Le Celestone™ Big Rock · beige</span></span></button>
+      <button class="pcell" data-cat="interieur" data-full="images/realisations/bigrock-mur-tv.webp"><img src="images/realisations/bigrock-mur-tv-800.webp" alt="Mur TV en Le Celestone Big Rock peint beige" loading="lazy"><span class="cap"><span class="t">Mur TV</span><span class="c">Le Celestone™ Big Rock · beige</span></span></button>
+      <button class="pcell" data-cat="exterieur" data-full="images/realisations/cubo-jardin-nuit.webp"><img src="images/realisations/cubo-jardin-nuit-800.webp" alt="Muret de jardin éclairé la nuit — Le Celestone Cubo peint noir, piscine" loading="lazy"><span class="cap"><span class="t">Jardin de nuit</span><span class="c">Le Celestone™ Cubo · noir</span></span></button>
+      <button class="pcell" data-cat="interieur" data-full="images/realisations/beton-decoffrage-salon.webp"><img src="images/realisations/beton-decoffrage-salon-800.webp" alt="Salon — mur en Le Celestone Béton Décoffrage peint gris" loading="lazy"><span class="cap"><span class="t">Salon</span><span class="c">Le Celestone™ Béton Décoffrage</span></span></button>
+      <button class="pcell" data-cat="commerce" data-full="images/realisations/bigrock-arches-restaurant.webp"><img src="images/realisations/bigrock-arches-restaurant-800.webp" alt="Arches d'un restaurant en Le Celestone Big Rock blanc" loading="lazy"><span class="cap"><span class="t">Arches de restaurant</span><span class="c">Le Celestone™ Big Rock · blanc</span></span></button>
+      <button class="pcell" data-cat="interieur" data-full="images/realisations/bigrock-tete-de-lit.webp"><img src="images/realisations/bigrock-tete-de-lit-800.webp" alt="Tête de lit en Le Celestone Big Rock peint blanc" loading="lazy"><span class="cap"><span class="t">Tête de lit</span><span class="c">Le Celestone™ Big Rock · blanc</span></span></button>
+      <button class="pcell" data-cat="exterieur" data-full="images/realisations/mattoni-piscine.webp"><img src="images/realisations/mattoni-piscine-800.webp" alt="Mur de piscine en Le Celestone Mattoni anthracite" loading="lazy"><span class="cap"><span class="t">Piscine</span><span class="c">Le Celestone™ Mattoni · anthracite</span></span></button>
+      <button class="pcell" data-cat="interieur" data-full="images/realisations/cemento-home-cinema.webp"><img src="images/realisations/cemento-home-cinema-800.webp" alt="Home cinéma — mur en Le Celestone Cemento gris" loading="lazy"><span class="cap"><span class="t">Home cinéma</span><span class="c">Le Celestone™ Cemento · gris</span></span></button>
+      <button class="pcell" data-cat="interieur" data-full="images/realisations/bois-cubo-interieur.webp"><img src="images/realisations/bois-cubo-interieur-800.webp" alt="Relief en Le Celestone Bois Cubo peint marron" loading="lazy"><span class="cap"><span class="t">Relief bois</span><span class="c">Le Celestone™ Bois Cubo</span></span></button>
+      <button class="pcell" data-cat="commerce" data-full="images/realisations/cubo-restaurant.webp"><img src="images/realisations/cubo-restaurant-800.webp" alt="Salle de restaurant — mur en Le Celestone Cubo blanc" loading="lazy"><span class="cap"><span class="t">Restaurant</span><span class="c">Le Celestone™ Cubo · blanc</span></span></button>
+      <button class="pcell" data-cat="interieur" data-full="images/realisations/brick-noir-bibliotheque.webp"><img src="images/realisations/brick-noir-bibliotheque-800.webp" alt="Mur en Le Celestone Brick peint noir derrière une bibliothèque colorée" loading="lazy"><span class="cap"><span class="t">Coin bibliothèque</span><span class="c">Le Celestone™ Brick · noir</span></span></button>
+      <button class="pcell" data-cat="exterieur" data-full="images/realisations/bigrock-facade-jardin-verte.webp"><img src="images/realisations/bigrock-facade-jardin-verte-800.webp" alt="Façade de villa en Le Celestone Big Rock peint vert, jardin" loading="lazy"><span class="cap"><span class="t">Villa &amp; jardin</span><span class="c">Le Celestone™ Big Rock · vert</span></span></button>
+      <button class="pcell" data-cat="interieur" data-full="images/realisations/bigrock-salle-a-manger.webp"><img src="images/realisations/bigrock-salle-a-manger-800.webp" alt="Salle à manger — mur en Le Celestone Big Rock blanc, suspensions design" loading="lazy"><span class="cap"><span class="t">Salle à manger</span><span class="c">Le Celestone™ Big Rock · blanc</span></span></button>
+      <button class="pcell" data-cat="exterieur" data-full="images/realisations/bigrock-mur-jardin.webp"><img src="images/realisations/bigrock-mur-jardin-800.webp" alt="Mur de jardin en Le Celestone Big Rock peint beige, pelouse" loading="lazy"><span class="cap"><span class="t">Mur de jardin</span><span class="c">Le Celestone™ Big Rock · beige</span></span></button>
+      <button class="pcell" data-cat="interieur" data-full="images/realisations/moon-tete-de-lit.webp"><img src="images/realisations/moon-tete-de-lit-800.webp" alt="Tête de lit en Le Celestone Moon peint blanc" loading="lazy"><span class="cap"><span class="t">Chambre</span><span class="c">Le Celestone™ Moon · blanc</span></span></button>
+      <button class="pcell" data-cat="exterieur" data-full="images/realisations/bigrock-double-facade.webp"><img src="images/realisations/bigrock-double-facade-800.webp" alt="Double façade de villa en Le Celestone Big Rock blanc" loading="lazy"><span class="cap"><span class="t">Double façade</span><span class="c">Le Celestone™ Big Rock · blanc</span></span></button>
+      <button class="pcell" data-cat="interieur" data-full="images/realisations/r-mur-tv-bois.webp"><img src="images/realisations/r-mur-tv-bois-800.webp" alt="Mur TV en noyer avec bande de relief pierre rétroéclairée" loading="lazy"><span class="cap"><span class="t">Mur TV</span><span class="c">Bois &amp; relief rétroéclairé</span></span></button>
+      <button class="pcell" data-cat="commerce" data-full="images/realisations/bigrock-devanture-tiara.webp"><img src="images/realisations/bigrock-devanture-tiara-800.webp" alt="Devanture de la joaillerie TIARA en Le Celestone Big Rock greige" loading="lazy"><span class="cap"><span class="t">Devanture TIARA</span><span class="c">Le Celestone™ Big Rock · greige</span></span></button>
+      <button class="pcell" data-cat="interieur" data-full="images/realisations/r-couloir-pierre.webp"><img src="images/realisations/r-couloir-pierre-800.webp" alt="Couloir habillé d'un parement en pierre empilée" loading="lazy"><span class="cap"><span class="t">Couloir</span><span class="c">Parement pierre</span></span></button>
+      <button class="pcell" data-cat="commerce" data-full="images/realisations/showroom-facade.webp"><img src="images/realisations/showroom-facade-800.webp" alt="Façade du showroom Deutschconfort à Casablanca en Le Celestone Big Rock blanc" loading="lazy"><span class="cap"><span class="t">Notre showroom · Anfa</span><span class="c">Le Celestone™ Big Rock · blanc</span></span></button>
     </div>
-    <p style="font-size:13.5px;letter-spacing:.02em;color:var(--ink-soft);text-align:center;margin-top:34px;max-width:60ch;margin-left:auto;margin-right:auto;line-height:1.6">Ceci n'est qu'un aperçu — nous réalisons bien d'autres chantiers à Casablanca et au Maroc. <strong>Vous souhaitez voir plus de réalisations d'un modèle précis ?</strong> <a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20voir%20plus%20de%20photos%20de%20vos%20r%C3%A9alisations." target="_blank" rel="noopener" class="link-underline" style="border-color:var(--ink)">Demandez-les-nous sur WhatsApp</a> — nous vous envoyons davantage de photos.</p>
+    <p style="font-size:13.5px;letter-spacing:.02em;color:var(--encre);text-align:center;margin-top:34px;max-width:60ch;margin-left:auto;margin-right:auto;line-height:1.6">Ceci n'est qu'un aperçu. <strong>Vous souhaitez voir plus de réalisations d'un modèle précis ?</strong> <a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20voir%20plus%20de%20photos%20de%20vos%20r%C3%A9alisations." target="_blank" rel="noopener" class="link-underline" style="border-color:var(--basalte)">Demandez-les-nous sur WhatsApp</a> — nous vous envoyons davantage de photos.</p>
   </div>
 </section>
 
@@ -165,7 +187,7 @@ Résidences privées, immeubles, Airbnb collectives, hôtels, restaurants.. </p
     <p>Particulier, architecte ou prescripteur — racontez-nous votre projet, nous le mettons en matière.</p>
     <div class="cta">
       <a class="btn btn-light btn-fill" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">Demander un devis · WhatsApp</a>
-      <a class="btn btn-light" href="contact.html">Nous contacter</a>
+      <a class="btn btn-light" href="visualiseur/">Essayer sur mon mur</a>
     </div>
   </div>
 </section>
@@ -174,11 +196,11 @@ Résidences privées, immeubles, Airbnb collectives, hôtels, restaurants.. </p
   <div class="wrap">
     <div class="top">
       <div>
-        <a class="brand" href="index.html">Deutschconfort<small>Revêtements · Casablanca</small></a>
-        <p class="tag">Initiateur de tendances depuis 1999.</p>
+        <a class="brand" href="index.html">Deutschconfort<small>Solutions architecturales de surfaces</small></a>
+        <p class="tag">Habiller les murs, dedans comme dehors. Depuis 1999.</p>
       </div>
-      <div class="fcol"><h6>Collections</h6><a href="le-celestone.html">Le Celestone</a><a href="revetement-mural.html">Revêtement mural</a><a href="sol-interieur.html">Sol intérieur</a><a href="sol-vinyle.html">Sol vinyle</a><a href="sol-exterieur.html">Sol extérieur</a></div>
-      <div class="fcol"><h6>Solutions déco</h6><a href="habillage-effet-pierre.html">Habillage effet pierre</a><a href="panneau-effet-bois.html">Panneau effet bois</a><a href="panneau-effet-beton.html">Panneau effet béton</a><a href="facade-anti-humidite.html">Façade anti-humidité</a><a href="mur-tv-decoratif.html">Mur TV décoratif</a><a href="panneau-mural-3d.html">Panneau mural 3D</a><a href="moulures-decoratives.html">Moulures décoratives</a><a href="plinthes-pretes-a-peindre.html">Plinthes à peindre</a><a href="pose-installation.html">Pose &amp; installation</a><a href="prescription-architectes.html">Architectes &amp; prescription</a><a href="panneau-effet-marbre.html">Panneau effet marbre</a><a href="alternative-au-bardage.html">Alternative au bardage</a><a href="revetement-exterieur-resistant-soleil.html">Revêtement extérieur anti-UV</a><a href="habillage-mur-interieur-idees.html">Idées habillage intérieur</a></div><div class="fcol"><h6>Maison</h6><a href="a-propos.html">À propos</a><a href="realisations.html">Réalisations</a><a href="devis.html">Demander un devis</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="blog.html">Blog</a><a href="contact.html">Je suis professionnel</a></div>
+      <div class="fcol"><h6>Collections</h6><a href="le-celestone.html">Le Celestone™</a><a href="panneaux-modeles.html">Tous les modèles</a><a href="revetement-mural.html">Revêtement mural</a><a href="sol-interieur.html">Sol intérieur</a><a href="sol-vinyle.html">Sol vinyle</a><a href="sol-exterieur.html">Sol extérieur</a></div>
+      <div class="fcol"><h6>Solutions déco</h6><a href="habillage-effet-pierre.html">Habillage effet pierre</a><a href="panneau-effet-bois.html">Panneau effet bois</a><a href="panneau-effet-beton.html">Panneau effet béton</a><a href="facade-anti-humidite.html">Façade anti-humidité</a><a href="mur-tv-decoratif.html">Mur TV décoratif</a><a href="panneau-mural-3d.html">Panneau mural 3D</a><a href="moulures-decoratives.html">Moulures décoratives</a><a href="plinthes-pretes-a-peindre.html">Plinthes à peindre</a><a href="pose-installation.html">Pose &amp; installation</a><a href="prescription-architectes.html">Architectes &amp; prescription</a><a href="panneau-effet-marbre.html">Panneau effet marbre</a><a href="alternative-au-bardage.html">Alternative au bardage</a><a href="revetement-exterieur-resistant-soleil.html">Revêtement extérieur</a><a href="habillage-mur-interieur-idees.html">Idées habillage intérieur</a></div><div class="fcol"><h6>Maison</h6><a href="a-propos.html">À propos</a><a href="realisations.html">Réalisations</a><a href="visualiseur/">Visualiseur</a><a href="devis.html">Estimer mon projet</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="blog.html">Journal</a><a href="contact.html">Je suis professionnel</a><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a></div>
       <div class="fcol"><h6>Suivez-nous</h6><a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener">WhatsApp</a><a href="https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/">Facebook</a><a href="mailto:deutschconfort@gmail.com">Email</a></div>
     </div>
     <div class="bottom">
@@ -188,26 +210,66 @@ Résidences privées, immeubles, Airbnb collectives, hôtels, restaurants.. </p
   </div>
 </footer>
 
+<div class="mobile-cta">
+  <a class="wa" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis." target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 1.9.8 2 .1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg>WhatsApp</a>
+  <a class="dv" href="devis.html">Devis</a>
+</div>
+
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo en grand">
+  <button class="lb-close" aria-label="Fermer">×</button>
+  <button class="lb-prev" aria-label="Photo précédente">‹</button>
+  <img id="lb-img" src="" alt="">
+  <div class="lb-cap"><span class="t" id="lb-t"></span><span class="c" id="lb-c"></span></div>
+  <button class="lb-next" aria-label="Photo suivante">›</button>
+</div>
+
 <script src="js/site.js"></script>
 <script>
   (function(){
-    var chips=document.querySelectorAll('#filters .chip');
-    var cells=document.querySelectorAll('#pgrid .pcell');
+    var chips=document.querySelectorAll('#filters .fchip');
+    var cells=Array.prototype.slice.call(document.querySelectorAll('#pgrid .pcell'));
     chips.forEach(function(ch){
       ch.addEventListener('click',function(){
         chips.forEach(function(c){c.classList.remove('active')});
         ch.classList.add('active');
         var f=ch.dataset.f;
         cells.forEach(function(cell){
-          var show=(f==='all'||cell.dataset.cat===f);
-          cell.classList.toggle('hide',!show);
+          cell.classList.toggle('hide',!(f==='all'||cell.dataset.cat===f));
         });
       });
+    });
+    // lightbox
+    var lb=document.getElementById('lb'),im=document.getElementById('lb-img'),
+        tt=document.getElementById('lb-t'),cc=document.getElementById('lb-c'),cur=-1;
+    function visible(){return cells.filter(function(c){return !c.classList.contains('hide')});}
+    function show(i){
+      var v=visible(); if(!v.length)return;
+      cur=(i+v.length)%v.length;
+      var cell=v[cur];
+      im.src=cell.dataset.full;
+      im.alt=cell.querySelector('img').alt;
+      tt.textContent=cell.querySelector('.t').textContent;
+      cc.textContent=cell.querySelector('.c').textContent;
+      lb.classList.add('open');document.body.style.overflow='hidden';
+    }
+    function hide(){lb.classList.remove('open');document.body.style.overflow='';}
+    cells.forEach(function(cell){
+      cell.addEventListener('click',function(){show(visible().indexOf(cell));});
+    });
+    lb.querySelector('.lb-close').addEventListener('click',hide);
+    lb.querySelector('.lb-prev').addEventListener('click',function(e){e.stopPropagation();show(cur-1);});
+    lb.querySelector('.lb-next').addEventListener('click',function(e){e.stopPropagation();show(cur+1);});
+    lb.addEventListener('click',function(e){if(e.target===lb)hide();});
+    document.addEventListener('keydown',function(e){
+      if(!lb.classList.contains('open'))return;
+      if(e.key==='Escape')hide();
+      if(e.key==='ArrowLeft')show(cur-1);
+      if(e.key==='ArrowRight')show(cur+1);
     });
   })();
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Deutschconfort","image":"https://deutsch-confort.com/images/facade-hero.jpg","url":"https://deutsch-confort.com","telephone":"+212614474221","email":"deutschconfort@gmail.com","priceRange":"$","foundingDate":"1999","address":{"@type":"PostalAddress","streetAddress":"11 Rue Hounaine, Bd d'Anfa","addressLocality":"Casablanca","postalCode":"20100","addressRegion":"Casablanca-Settat","addressCountry":"MA"},"geo":{"@type":"GeoCoordinates","latitude":33.5879,"longitude":-7.6325},"areaServed":"Maroc","sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"],"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"19:00"}]}
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","name":"Deutschconfort","image":"https://deutsch-confort.com/images/facade-hero.jpg","url":"https://deutsch-confort.com","telephone":"+212614474221","email":"deutschconfort@gmail.com","foundingDate":"1999","address":{"@type":"PostalAddress","streetAddress":"11 Rue Hounaine, Bd d'Anfa","addressLocality":"Casablanca","postalCode":"20100","addressRegion":"Casablanca-Settat","addressCountry":"MA"},"geo":{"@type":"GeoCoordinates","latitude":33.5879,"longitude":-7.6325},"areaServed":"Maroc","sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"]}
 </script>
 </body>
 </html>
