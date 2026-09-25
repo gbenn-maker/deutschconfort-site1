@@ -19,7 +19,7 @@
   .hero-content .inner{max-width:1000px}
   .hero-eyebrow{font-size:11px;letter-spacing:.34em;text-transform:uppercase;opacity:.7}
   .hero-slogan{font-family:var(--serif);font-weight:400;font-size:clamp(52px,9vw,136px);line-height:1.0;letter-spacing:-.012em;margin:18px 0 0;color:#F5F2EC}
-  .hero-slogan em{font-style:italic;color:var(--sable)}
+  .hero-slogan em{font-style:italic;color:#F5F2EC}
   .hero-cta{display:flex;gap:14px;margin-top:44px;flex-wrap:wrap}
   @media(max-width:560px){
     .hero{height:90vh}
@@ -28,6 +28,17 @@
     .hero-cta{flex-direction:column;align-items:stretch;margin-top:32px}
     .hero-cta .btn{justify-content:center}
   }
+
+  /* vedettes — bande sombre, films produit */
+  .vedettes.dark{background:var(--basalte)}
+  .vedettes.dark .section-head{padding-top:90px}
+  .vedettes.dark .model{background:transparent}
+  .vedettes.dark .model .ph{background:#0A0A08;aspect-ratio:3/4;overflow:hidden}
+  .vedettes.dark .model .ph video,.vedettes.dark .model .ph img{width:100%;height:100%;object-fit:cover;display:block}
+  .vedettes.dark .m-name{color:var(--chaux)}
+  .vedettes.dark .m-brand{color:rgba(245,242,236,.55)}
+  .vedettes.dark .m-dim{color:rgba(245,242,236,.5)}
+  .vchip{position:absolute;top:12px;left:12px;z-index:2;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;padding:5px 10px;background:var(--chaux);color:var(--basalte)}
 
   /* manifesto */
   .manifesto{padding:110px 0 100px;border-bottom:1px solid var(--line)}
@@ -58,13 +69,13 @@
   .exterieur .inner{display:grid;grid-template-columns:1fr 1fr;min-height:80vh}
   .exterieur .ph{position:relative;overflow:hidden;min-height:340px}
   .exterieur .txt{display:flex;flex-direction:column;justify-content:center;padding:80px clamp(40px,6vw,110px)}
-  .exterieur .eyebrow{color:var(--sable)}
+  .exterieur .eyebrow{color:#F5F2EC}
   .exterieur h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,4.4vw,58px);line-height:1.08;margin:20px 0 0;color:var(--chaux)}
-  .exterieur h2 em{font-style:italic;color:var(--sable)}
+  .exterieur h2 em{font-style:italic;color:#F5F2EC}
   .exterieur .txt > p{color:rgba(245,242,236,.76);font-size:16.5px;margin-top:24px;max-width:46ch}
   .features{margin-top:42px;border-top:1px solid rgba(245,242,236,.16)}
   .feat{display:flex;gap:24px;padding:22px 0;border-bottom:1px solid rgba(245,242,236,.16);align-items:baseline}
-  .feat .fn{font-family:var(--serif);font-size:20px;color:var(--sable);min-width:40px}
+  .feat .fn{font-family:var(--serif);font-size:20px;color:#F5F2EC;min-width:40px}
   .feat div:last-child{flex:1}
   .feat h4{font-size:14px;letter-spacing:.12em;text-transform:uppercase;font-weight:400;color:var(--chaux)}
   .feat p{font-size:14px;color:rgba(245,242,236,.65);margin-top:4px}
@@ -213,32 +224,32 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 </section>
 
 <!-- modèles vedettes -->
-<section class="vedettes">
+<section class="vedettes dark">
   <div class="wrap">
     <div class="section-head">
       <div>
-        <div class="eyebrow">Les modèles</div>
-        <h2>Les reliefs<br>signatures</h2>
+        <div class="eyebrow" style="color:rgba(245,242,236,.75)">Les modèles</div>
+        <h2 style="color:var(--chaux)">Les reliefs<br>signatures</h2>
       </div>
-      <a href="panneaux-modeles.html" class="link-underline">Tous les modèles →</a>
+      <a href="panneaux-modeles.html" class="link-underline" style="border-color:rgba(245,242,236,.7);color:var(--chaux)">Tous les modèles →</a>
     </div>
-    <div class="models" style="padding-bottom:44px">
+    <div class="models" style="padding-bottom:100px">
       <a class="model" href="panneau-big-rock.html">
-        <span class="mchip">Vedette</span>
-        <div class="ph"><img src="images/panels/big-rock-product.webp" alt="Le Celestone™ Big Rock — panneau mural relief pierre" loading="lazy"></div>
+        <span class="vchip">Vedette</span>
+        <div class="ph"><video src="media/pk-big-rock.mp4" poster="media/pk-big-rock-poster.webp" muted loop playsinline preload="none" aria-label="Le Celestone Big Rock — film produit"></video></div>
         <div class="m-meta"><div class="m-brand">Le Celestone™</div><div class="m-name">Big Rock 240</div><div class="m-dim">240 × 60 &amp; 120 × 60 cm</div></div>
       </a>
-      <a class="model" href="panneau-moon.html">
-        <div class="ph"><img src="images/panels/moon-product.webp" alt="Le Celestone™ Moon — panneau mural relief lunaire" loading="lazy"></div>
-        <div class="m-meta"><div class="m-brand">Le Celestone™</div><div class="m-name">Moon</div><div class="m-dim">120 × 48 &amp; 200 × 50 cm</div></div>
+      <a class="model" href="panneau-beton-brut.html">
+        <div class="ph"><video src="media/pk-beton-brut.mp4" poster="media/pk-beton-brut-poster.webp" muted loop playsinline preload="none" aria-label="Le Celestone Béton Brut — film produit"></video></div>
+        <div class="m-meta"><div class="m-brand">Le Celestone™</div><div class="m-name">Béton Brut</div><div class="m-dim">120 × 80 cm</div></div>
+      </a>
+      <a class="model" href="panneau-cubo.html">
+        <div class="ph"><video src="media/pk-cubo.mp4" poster="media/pk-cubo-poster.webp" muted loop playsinline preload="none" aria-label="Le Celestone Cubo — film produit"></video></div>
+        <div class="m-meta"><div class="m-brand">Le Celestone™</div><div class="m-name">Cubo</div><div class="m-dim">240 × 50 cm</div></div>
       </a>
       <a class="model" href="panneau-mattoni.html">
-        <div class="ph"><img src="images/panels/mattoni-product.webp" alt="Le Celestone™ Mattoni — panneau mural relief briques" loading="lazy"></div>
+        <div class="ph"><video src="media/pk-mattoni.mp4" poster="media/pk-mattoni-poster.webp" muted loop playsinline preload="none" aria-label="Le Celestone Mattoni — film produit"></video></div>
         <div class="m-meta"><div class="m-brand">Le Celestone™</div><div class="m-name">Mattoni</div><div class="m-dim">200 × 50 cm</div></div>
-      </a>
-      <a class="model" href="panneau-cemento.html">
-        <div class="ph"><img src="images/panels/cemento-product.webp" alt="Le Celestone™ Cemento — panneau mural aspect béton banché" loading="lazy"></div>
-        <div class="m-meta"><div class="m-brand">Le Celestone™</div><div class="m-name">Cemento</div><div class="m-dim">120 × 57 cm</div></div>
       </a>
     </div>
   </div>
@@ -274,7 +285,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     </div>
     <div class="duo">
       <a class="ucard" href="le-celestone.html">
-        <div class="ph"><img src="images/realisations/bigrock-salle-a-manger.webp" alt="Salle à manger habillée en Le Celestone Big Rock blanc — Deutschconfort" loading="lazy"></div>
+        <div class="ph"><img src="images/realisations/celestone-jardin-nuit-spot.webp" alt="Mur de jardin en relief Le Celestone éclairé la nuit, au bord de la piscine" loading="lazy"></div>
         <div class="meta">
           <div class="idx">01 · La signature</div>
           <h3>Le Celestone™</h3>
@@ -329,28 +340,16 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
         <a class="btn" href="simulateur.html">Ou par WhatsApp</a>
       </div>
     </div>
-    <a class="ph" href="visualiseur/"><img src="images/realisations/r-mur-tv-bois.webp" alt="Aperçu du visualiseur Deutschconfort — projection d'un relief sur un mur TV" loading="lazy"></a>
+    <a class="ph" href="visualiseur/"><img src="images/realisations/mur-anthracite-yucca.webp" alt="Mur de jardin en relief pierre anthracite Le Celestone, yuccas — Deutschconfort" loading="lazy"></a>
   </div>
 </section>
 
-<!-- realisations -->
-<section class="realis" id="realisations">
-  <div class="wrap">
-    <div class="section-head">
-      <div>
-        <div class="eyebrow">Nos réalisations</div>
-        <h2>Les espaces<br>que nous habillons</h2>
-      </div>
-      <a href="realisations.html" class="link-underline">Voir le portfolio →</a>
-    </div>
-    <div class="rgrid">
-      <a class="r rs7" href="realisations.html"><img src="images/realisations/mattoni-facade-villa-800.webp" alt="Villa contemporaine à Casablanca — façade en Le Celestone Mattoni et bois" loading="lazy"><span class="rcap">Façade villa · Le Celestone™ Mattoni</span></a>
-      <a class="r rs5" href="realisations.html"><img src="images/realisations/bigrock-cheminee-salon-800.webp" alt="Cheminée de salon habillée en Le Celestone Big Rock beige" loading="lazy"><span class="rcap">Cheminée · Big Rock</span></a>
-      <a class="r rs5" href="realisations.html"><img src="images/realisations/cubo-jardin-nuit-800.webp" alt="Muret de jardin éclairé la nuit en Le Celestone Cubo noir" loading="lazy"><span class="rcap">Jardin de nuit · Cubo</span></a>
-      <a class="r rs7" href="realisations.html"><img src="images/realisations/bigrock-boutique-tiara-800.webp" alt="Joaillerie TIARA — murs en Le Celestone Big Rock blanc, Casablanca" loading="lazy"><span class="rcap">Joaillerie TIARA · Casablanca</span></a>
-      <a class="r rs6" href="realisations.html"><img src="images/realisations/bigrock-sejour-blanc-800.webp" alt="Séjour lumineux — mur d'accent en Le Celestone Big Rock blanc" loading="lazy"><span class="rcap">Séjour · Big Rock</span></a>
-      <a class="r rs6" href="realisations.html"><img src="images/realisations/cubo-rooftop-soir-800.webp" alt="Rooftop au crépuscule — mur en Le Celestone Cubo noir" loading="lazy"><span class="rcap">Rooftop · Cubo</span></a>
-    </div>
+<!-- galerie -->
+<section id="realisations" style="border-top:1px solid var(--line)">
+  <div class="wrap" style="padding-top:clamp(70px,10vw,110px);padding-bottom:clamp(70px,10vw,110px);text-align:center">
+    <div class="eyebrow" style="color:var(--taupe)">Nos réalisations</div>
+    <h2 class="serif" style="font-weight:400;font-size:clamp(32px,4.6vw,62px);line-height:1.08;margin-top:16px">Les espaces parlent<br>mieux que nous.</h2>
+    <div style="margin-top:36px"><a class="btn btn-fill" href="realisations.html">Voir la galerie</a></div>
   </div>
 </section>
 
@@ -419,27 +418,17 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 
 <script src="js/site.js"></script>
 <script>
-  // Hero vivant : vraie vidéo de chantier (mobile 9:16) / plan caméra (desktop 16:9),
-  // chargée après le rendu initial ; jamais si reduced-motion ou économie de données.
   (function(){
-    var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var saveData=navigator.connection&&navigator.connection.saveData;
-    if(reduced||saveData)return;
-    var src='media/hero-desktop.mp4';
-    var poster='images/facade-hero.webp';
-    window.addEventListener('load',function(){
-      fetch(src,{method:'HEAD'}).then(function(r){
-        if(!r.ok)return;
-        var v=document.createElement('video');
-        v.src=src;v.poster=poster;v.muted=true;v.loop=true;v.autoplay=true;
-        v.setAttribute('playsinline','');v.setAttribute('muted','');v.setAttribute('aria-hidden','true');
-        v.style.opacity='0';v.style.transition='opacity 1.2s ease';
-        var hero=document.querySelector('.hero');
-        var img=document.getElementById('heroMedia');
-        hero.insertBefore(v,img.nextSibling);
-        v.addEventListener('canplay',function(){v.style.opacity='1';var p=v.play();if(p&&p.catch)p.catch(function(){});});
-      }).catch(function(){});
-    });
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+    var vids=document.querySelectorAll('.vedettes video');
+    if(!vids.length)return;
+    function play(v){var p=v.play();if(p&&p.catch)p.catch(function(){});}
+    if('IntersectionObserver' in window){
+      var io=new IntersectionObserver(function(es){
+        es.forEach(function(e){e.isIntersecting?play(e.target):e.target.pause();});
+      },{rootMargin:'120px'});
+      vids.forEach(function(v){io.observe(v);});
+    }else{vids.forEach(play);}
   })();
 </script>
 <script type="application/ld+json">
