@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#171512">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://deutsch-confort.com https://www.deutsch-confort.com; connect-src https://insta-pro-deutschconfort-production-a767.up.railway.app; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://deutsch-confort.com https://www.deutsch-confort.com https://www.facebook.com; connect-src https://insta-pro-deutschconfort-production-a767.up.railway.app https://connect.facebook.net https://www.facebook.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
   <title>Mon projet Celestone · Deutschconfort</title>
   <meta name="description" content="Créez votre dossier projet Celestone en 2 minutes : usage, surface, style, photos et prochaine étape.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -138,6 +138,22 @@
       .top-in{padding:12px 14px;flex-wrap:wrap;row-gap:8px}.top-in .btn{min-width:0;padding:9px 12px}.progress-wrap{width:100%;margin-left:0}.brand small{display:none}.main{padding:22px 14px 110px}.grid,.recs,.summary,.inline,.proof-grid,.date-grid{grid-template-columns:1fr}.choice{min-height:auto}.hero-card{grid-template-columns:1fr;padding:8px}.hero-card div{padding:10px}.stage{min-height:calc(100vh - 170px)}.nav{padding-left:14px;padding-right:14px}.nav-in{justify-content:space-between}.nav-in .btn{flex:1}.progress-wrap{width:42vw}.rec{display:grid;grid-template-columns:118px 1fr}.model-photo{height:100%;min-height:128px}
     }
   </style>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1750427786411371');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
 </head>
 <body>
 <div class="shell">
@@ -541,6 +557,18 @@
   var syncTimer=null;
   function queueSync(){ clearTimeout(syncTimer); syncTimer=setTimeout(function(){sync();},350); }
 
+  // Meta Pixel : un seul Lead par dossier (étape finale atteinte)
+  function fireLead(){
+    try{
+      var key='dc_lead_'+(state.code||state.token||'local');
+      if(localStorage.getItem(key))return;
+      if(typeof fbq==='function'){
+        fbq('track','Lead',{content_name:'projet_celestone',content_category:state.answers.project_type||''});
+        localStorage.setItem(key,'1');
+      }
+    }catch(e){}
+  }
+
   function bindInputs(){
     document.querySelectorAll('[data-field][data-value]').forEach(function(b){
       b.addEventListener('click',function(){
@@ -677,7 +705,7 @@
     el('photoState').textContent=state.photo_count?state.photo_count+' photo(s) ajoutée(s) au dossier':'Aucune photo ajoutée';
     if(state.step===7){renderRecommendations();renderCollection();}
     if(state.step===8)renderReassurance();
-    if(state.step===10)renderSummary();
+    if(state.step===10){renderSummary();fireLead();}
     localSave();
   }
 
