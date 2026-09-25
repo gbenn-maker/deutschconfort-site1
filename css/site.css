@@ -87,7 +87,8 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:84
 .mobile-menu a{font-family:var(--serif);font-size:26px;padding:14px 0;border-bottom:1px solid var(--line);color:var(--basalte)}
 .mobile-menu .mgroup{font-family:var(--sans);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--taupe);border-bottom:none;padding:26px 0 4px}
 .mobile-menu .mcta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
-.mobile-menu .mcta .btn{font-size:11px;padding:14px 10px}
+.mobile-menu .mcta .btn{font-size:11px;padding:14px 10px;font-family:var(--sans);border-bottom:none;color:var(--basalte)}
+.mobile-menu .mcta .btn-fill{color:var(--chaux)}
 
 /* barre d'action mobile (sticky bas d'écran) */
 .mobile-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:65;background:var(--basalte);padding:10px 14px calc(10px + env(safe-area-inset-bottom));grid-template-columns:1.25fr 1fr;gap:10px;box-shadow:0 -6px 24px rgba(20,20,15,.18)}
@@ -134,8 +135,8 @@ body.has-mobile-cta{padding-bottom:0}
 .model .m-name{font-family:var(--sans);font-weight:400;font-size:13px;letter-spacing:.2em;text-transform:uppercase;color:var(--basalte)}
 .model .m-brand{font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--taupe);margin-bottom:5px}
 .model .m-dim{font-size:12px;color:var(--taupe);margin-top:4px}
-.chip{display:inline-block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;padding:5px 10px;background:var(--basalte);color:var(--chaux);position:absolute;top:12px;left:12px;z-index:2}
-.chip.ox{background:var(--oxyde)}
+.mchip{display:inline-block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;padding:5px 10px;background:var(--basalte);color:var(--chaux);position:absolute;top:12px;left:12px;z-index:2}
+.mchip.ox{background:var(--oxyde)}
 
 /* étapes parcours */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
