@@ -35,6 +35,9 @@ Chaque `git push origin main` déclenche automatiquement la mise en ligne
 - Modèles : le nom du design seul (« Big Rock », « Mattoni »), sans « Le Celestone™ » devant (décision du 29/09/2026).
 - Pas de corniches. Cubo peut rester en vedette ; Moon n'est pas ajouté aux vedettes de l'accueil (29/09/2026).
 - Humidité : « n'absorbe pas l'eau / hydrofuge », jamais « traite/élimine ».
+- « Sur mesure » : interdit, sauf sur la page plinthes (« hauteur personnalisable sur demande »), validé par Ghali le 29/09/2026.
+- « Résiste au sel marin » : laissé sur les pages où il figure (Ghali, 29/09/2026) ; pas ajouté ailleurs.
+- Supports de pose : toute surface plane, en règle générale ; déjà posé sur bois, marbre, BA13, et enduit selon l'épaisseur du modèle (Ghali, 29/09/2026).
 - Meta Pixel 1750427786411371 sur chaque page (sauf les pages de redirection).
 - Petits libellés (sur-titres, fil d'Ariane, étiquettes, en-têtes de tableau) : Encre sur fond clair, jamais Taupe (charte §5 : 3,7:1). Taupe seulement ≥ 24 px.
 - Chaque lien WhatsApp finit par « Réf W-XXX » et chaque lien vers /projet/ porte ?src=W-XXX (code de la page, voir CODES_WHATSAPP_SITE.md).

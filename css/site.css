@@ -59,7 +59,7 @@ a{color:inherit;text-decoration:none}
 /* utility bar */
 .util{border-bottom:1px solid var(--line);font-size:11px;letter-spacing:.18em;text-transform:uppercase;background:var(--chaux)}
 .util .wrap{display:flex;justify-content:space-between;align-items:center;height:42px}
-.util a{opacity:.7;transition:opacity .2s}
+.util a{opacity:.78;transition:opacity .2s}
 .util a:hover{opacity:1}
 .util .right{display:flex;gap:26px;align-items:center}
 
@@ -67,7 +67,7 @@ a{color:inherit;text-decoration:none}
 header{position:sticky;top:0;z-index:60;background:rgba(245,242,236,.88);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 nav.wrap{display:flex;align-items:center;justify-content:space-between;height:84px;gap:24px}
 .brand{font-family:var(--serif);font-weight:500;font-size:22px;letter-spacing:.12em;line-height:1;text-transform:uppercase;color:var(--basalte);white-space:nowrap}
-.brand small{display:block;font-family:var(--sans);font-size:8.5px;letter-spacing:.34em;text-transform:uppercase;opacity:.55;margin-top:5px;font-weight:400}
+.brand small{display:block;font-family:var(--sans);font-size:8.5px;letter-spacing:.34em;text-transform:uppercase;opacity:.65;margin-top:5px;font-weight:400}
 .navlinks{display:flex;gap:34px;font-size:12.5px;letter-spacing:.14em;text-transform:uppercase}
 .navlinks a{position:relative;padding:4px 0;opacity:.78;transition:opacity .2s;white-space:nowrap}
 .navlinks a:hover{opacity:1}
@@ -160,7 +160,7 @@ body.has-mobile-cta{padding-bottom:0}
 
 /* info grid */
 .infogrid{display:grid;grid-template-columns:1fr 1fr;gap:36px 40px}
-.info h5{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.55;margin-bottom:10px}
+.info h5{font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.8;margin-bottom:10px}
 .info p{font-size:16px;color:var(--encre);line-height:1.7}
 .info a{border-bottom:1px solid var(--line)}
 
@@ -225,7 +225,7 @@ footer.site .bottom{display:flex;justify-content:space-between;align-items:cente
 @media(max-width:980px){.hcall{display:inline-flex}}
 @media(min-width:561px) and (max-width:980px){.hcall span{display:inline}}
 footer.site .fnap{font-style:normal;font-size:14px;line-height:1.75;color:rgba(245,242,236,.75);margin-top:26px}
-footer.site .fnap-h{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.6;margin-bottom:8px}
+footer.site .fnap-h{display:block;font-size:11px;letter-spacing:.2em;text-transform:uppercase;opacity:.7;margin-bottom:8px}
 footer.site .fnap a{color:rgba(245,242,236,.9);border-bottom:1px solid rgba(245,242,236,.3)}
 /* Lot 2 — en-tête mobile : le bouton d'appel + le menu tiennent jusqu'à 320 px */
 @media(max-width:560px){nav.wrap{gap:12px}.navactions{gap:6px}.hcall{min-width:40px;height:40px;padding:0 9px}.burger{margin-right:-12px}}
