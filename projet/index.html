@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#171512">
   <meta name="robots" content="noindex,nofollow,noarchive">
   <meta name="referrer" content="no-referrer">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://connect.facebook.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://deutsch-confort.com https://www.deutsch-confort.com https://www.facebook.com; connect-src https://insta-pro-deutschconfort-production-a767.up.railway.app https://connect.facebook.net https://www.facebook.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://connect.facebook.net https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data: blob: https://deutsch-confort.com https://www.deutsch-confort.com https://www.facebook.com https://*.google-analytics.com https://www.googletagmanager.com; connect-src https://insta-pro-deutschconfort-production-a767.up.railway.app https://connect.facebook.net https://www.facebook.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
   <title>Mon projet Celestone · Deutschconfort</title>
   <meta name="description" content="Créez votre dossier projet Celestone en 2 minutes : usage, surface, style, photos et prochaine étape.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -154,6 +154,7 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->
+<script src="../js/mesure.js"></script>
 </head>
 <body>
 <div class="shell">
@@ -315,7 +316,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
           <h3>Un relief architectural fort, sans les contraintes d’un parement lourd.</h3>
           <p>Celestone est un revêtement en <strong>polyuréthane rigide haute densité à cœur massif</strong>. Cette construction permet d’obtenir des panneaux légers, rigides et résistants aux chocs, tout en conservant un relief marqué. Le matériau est hydrophobe et conçu pour résister à l’eau et à l’humidité ; pour l’usage extérieur, la formulation intègre des additifs anti-UV. Les panneaux sont destinés à l’intérieur comme à l’extérieur lorsque le support et la mise en œuvre sont adaptés.</p>
           <div class="proof-grid">
-            <div class="proof"><b>Composition & solidité</b><span>PU rigide haute densité à cœur massif : structure légère, rigide et conçue pour bien encaisser les chocs du quotidien.</span></div>
+            <div class="proof"><b>Composition & solidité</b><span>Polymère Celestone™ haute densité à cœur massif : structure légère, rigide et conçue pour bien encaisser les chocs du quotidien.</span></div>
             <div class="proof"><b>Humidité & extérieur</b><span>Matériau hydrophobe, résistant à l’humidité, avec protection anti-UV prévue pour les applications extérieures.</span></div>
             <div class="proof"><b>Pose plus simple</b><span>Le faible poids facilite la manutention, notamment en hauteur. La mise en œuvre se fait par collage et vissage sur un support correctement préparé.</span></div>
             <div class="proof"><b>Finition maîtrisée</b><span>Les panneaux sont fournis avec un primaire prêt à peindre. Une peinture acrylique à l’eau est recommandée pour une bonne adhérence et une finition durable.</span></div>
@@ -569,6 +570,18 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     }catch(e){}
   }
 
+  // GA4 : un seul dossier_projet par dossier (étape finale atteinte)
+  function fireGaDossier(){
+    try{
+      var key='dc_ga_dossier_'+(state.code||state.token||'local');
+      if(localStorage.getItem(key))return;
+      if(typeof gtag==='function'){
+        gtag('event','dossier_projet',{page_name:'projet',project_type:state.answers.project_type||''});
+        localStorage.setItem(key,'1');
+      }
+    }catch(e){}
+  }
+
   function bindInputs(){
     document.querySelectorAll('[data-field][data-value]').forEach(function(b){
       b.addEventListener('click',function(){
@@ -705,7 +718,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     el('photoState').textContent=state.photo_count?state.photo_count+' photo(s) ajoutée(s) au dossier':'Aucune photo ajoutée';
     if(state.step===7){renderRecommendations();renderCollection();}
     if(state.step===8)renderReassurance();
-    if(state.step===10){renderSummary();fireLead();}
+    if(state.step===10){renderSummary();fireLead();fireGaDossier();}
     localSave();
   }
 
@@ -881,7 +894,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
   }
 
   function localWa(){
-    var msg='Bonjour, je viens de compléter mon dossier Celestone '+(state.code||'')+'.\n\n'+recap();
+    var msg='Bonjour, je viens de compléter mon dossier Celestone '+(state.code||'')+'.\n\n'+recap()+'\nRéf W-PRJ';
     return 'https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(msg);
   }
 
