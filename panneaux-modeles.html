@@ -47,6 +47,7 @@
   .pcard-ref{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--encre);white-space:nowrap}
   .pcard-desc{font-size:12.5px;letter-spacing:.04em;color:var(--ink-soft);opacity:.7;margin-top:4px}
   .pcard.hide{display:none}
+  @media(max-width:480px){.pcard-info{flex-wrap:wrap;row-gap:4px}}
   .pcard-duo{cursor:default}
   .pcard-duo .duo{position:relative;width:86%;aspect-ratio:1/1;filter:drop-shadow(0 14px 18px rgba(20,20,15,.18))}
   .pcard-duo .duo-a{position:absolute;inset:0;display:block;overflow:hidden}
@@ -286,16 +287,16 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       </a>
       <!-- FAMILLE : Moulures & plinthes -->
       <div class="fam-head" data-fam="finitions"><h2 class="serif">Moulures &amp; plinthes</h2><span class="fl">Prêtes à peindre</span></div>
-      <div class="pcard pcard-duo" data-cat="finitions" data-name="Moulures &amp; Plinthes">
-        <div class="pcard-ph">
-          <div class="duo">
-            <a class="duo-a duo-m" href="moulures-decoratives.html" aria-label="Voir les moulures"><img src="images/moulures-800.webp" alt="Moulures décoratives prêtes à peindre" loading="lazy"><span>Moulures</span></a>
-            <a class="duo-a duo-p" href="plinthes-pretes-a-peindre.html" aria-label="Voir les plinthes"><img src="images/plinthe-carree-hero-800.webp" alt="Plinthe carrée prête à peindre" loading="lazy"><span>Plinthes</span></a>
-          </div>
-        </div>
-        <div class="pcard-info"><span class="pcard-name">Moulures &amp; Plinthes</span><span class="pcard-ref">Prêtes à peindre</span></div>
-        <div class="pcard-desc"><a href="moulures-decoratives.html">Moulures 195 cm × 28 / 38 mm</a> · <a href="plinthes-pretes-a-peindre.html">Plinthes carrées 2,20 m × 10 / 8 / 7 cm</a></div>
-      </div>
+      <a class="pcard" data-cat="finitions" data-name="Moulures" href="moulures-decoratives.html">
+        <div class="pcard-ph"><img src="images/moulures-800.webp" alt="Mur habillé de moulures décoratives prêtes à peindre" loading="lazy" style="object-fit:cover;width:100%;height:100%"><span class="req"><span>Voir les modèles</span></span></div>
+        <div class="pcard-info"><span class="pcard-name">Moulures</span><span class="pcard-ref">2 modèles</span></div>
+        <div class="pcard-desc">195 cm × 28 mm · 195 cm × 38 mm</div>
+      </a>
+      <a class="pcard" data-cat="finitions" data-name="Plinthes carrées" href="plinthes-pretes-a-peindre.html">
+        <div class="pcard-ph"><img src="images/plinthe-carree-hero-800.webp" alt="Plinthe carrée prête à peindre au pied d'un mur" loading="lazy" style="object-fit:cover;width:100%;height:100%"><span class="req"><span>Voir les modèles</span></span></div>
+        <div class="pcard-info"><span class="pcard-name">Plinthes carrées</span><span class="pcard-ref">2 modèles</span></div>
+        <div class="pcard-desc">2,20 m · hauteurs 10 / 8 / 7 cm</div>
+      </a>
 
 
     </div>
