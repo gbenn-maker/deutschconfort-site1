@@ -24,17 +24,17 @@
   /* lead / intro */
   .svc-lead{padding:90px 0 30px}
   .svc-lead .wrap{display:grid;grid-template-columns:1fr 1.3fr;gap:70px;align-items:start}
-  .svc-lead .eyebrow{color:var(--taupe)}
+  .svc-lead .eyebrow{color:var(--encre)}
   .svc-lead h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.4vw,50px);line-height:1.08}
   .svc-lead h2 em{font-style:italic;color:var(--taupe)}
   .svc-lead p{font-size:18px;color:var(--ink-soft)}
   .svc-lead p + p{margin-top:18px}
 
   /* steps */
-  .steps{padding:80px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:60px}
-  .steps .head{max-width:680px;margin-bottom:50px}
-  .steps h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.2vw,46px);line-height:1.08}
-  .steps .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line)}
+  .pose-steps{padding:80px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-top:60px}
+  .pose-steps .head{max-width:680px;margin-bottom:50px}
+  .pose-steps h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.2vw,46px);line-height:1.08}
+  .pose-steps .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line)}
   .step{background:var(--paper);padding:34px 30px}
   .step .n{font-family:var(--serif);font-size:40px;color:#F5F2EC;line-height:1}
   .step h3{font-size:15px;letter-spacing:.06em;text-transform:uppercase;font-weight:500;margin:16px 0 10px}
@@ -74,7 +74,7 @@
   @media(max-width:980px){
     .svc-lead .wrap,.why .wrap{grid-template-columns:1fr;gap:36px}
     .why .wrap{padding:64px 24px}
-    .steps .grid{grid-template-columns:1fr}
+    .pose-steps .grid{grid-template-columns:1fr}
   }
 </style>
 <!-- @seo -->
@@ -138,8 +138,8 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       <a href="contact.html">Showroom</a>
     </div>
     <div class="navactions">
-      <a class="btn btn-fill" href="projet/">Demander un devis</a>
-      <a class="hcall" href="tel:+212614474221" aria-label="Appeler DeutschConfort au +212 614 474 221"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.6 3.5h2.6l1.5 4.2-2 1.4a12 12 0 0 0 6.2 6.2l1.4-2 4.2 1.5v2.6a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg><span>Appeler</span></a>
+      <a class="btn btn-fill" href="projet/?src=W-POS">Demander un devis</a>
+      <a class="hcall" href="tel:+212614474221" aria-label="Appeler Deutschconfort au +212 614 474 221"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.6 3.5h2.6l1.5 4.2-2 1.4a12 12 0 0 0 6.2 6.2l1.4-2 4.2 1.5v2.6a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg><span>Appeler</span></a>
       <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
@@ -152,7 +152,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
   <a href="collections.html">Collections</a>
   <span class="mgroup">Votre projet</span>
   <a href="realisations.html">Réalisations</a>
-  <a href="projet/">Demander un devis</a>
+  <a href="projet/?src=W-POS">Demander un devis</a>
   <span class="mgroup">La maison</span>
   <a href="a-propos.html">À propos</a>
   <a href="contact.html">Showroom &amp; contact</a>
@@ -201,10 +201,10 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 </section>
 
 <!-- steps -->
-<section class="steps">
+<section class="pose-steps">
   <div class="wrap">
     <div class="head">
-      <div class="eyebrow" style="color:var(--taupe)">La méthode</div>
+      <div class="eyebrow" style="color:var(--encre)">La méthode</div>
       <h2>Comment se déroule la pose de votre revêtement mural</h2>
     </div>
     <div class="grid">
@@ -262,7 +262,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 <!-- zones -->
 <section class="zones">
   <div class="wrap">
-    <div class="eyebrow" style="color:var(--taupe)">Zones d'intervention</div>
+    <div class="eyebrow" style="color:var(--encre)">Zones d'intervention</div>
     <h2>La pose de revêtement mural à Casablanca et dans tout le Maroc</h2>
     <p>Notre showroom est à Casablanca, Boulevard d'Anfa. Nos équipes interviennent sur l'ensemble du Grand Casablanca et accompagnent les projets résidentiels, hôteliers et commerciaux partout au Maroc — du littoral exposé au sel marin aux climats secs de l'intérieur.</p>
     <div class="tags">
@@ -283,7 +283,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 <section class="faq">
   <div class="wrap">
     <div class="head">
-      <div class="eyebrow" style="color:var(--taupe)">Questions fréquentes</div>
+      <div class="eyebrow" style="color:var(--encre)">Questions fréquentes</div>
       <h2>La pose, en clair</h2>
     </div>
     <details open>
@@ -332,7 +332,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
         <address class="fnap"><span class="fnap-h">Showroom</span>11 Rue Hounaine, Bd d'Anfa<br>Casablanca 20100<br>Lun–Ven 10h30–13h / 15h30–19h<br>Samedi 11h–13h<br><a href="tel:+212614474221">+212 614 474 221</a></address>
       </div>
       <div class="fcol"><h6>Collections</h6><a href="le-celestone.html">Le Celestone™</a><a href="panneaux-modeles.html">Tous les modèles</a><a href="revetement-mural.html">Revêtement mural</a><a href="sol-interieur.html">Sol intérieur</a><a href="sol-vinyle.html">Sol vinyle</a><a href="sol-exterieur.html">Sol extérieur</a></div>
-      <div class="fcol"><h6>Solutions déco</h6><a href="habillage-effet-pierre.html">Habillage effet pierre</a><a href="panneau-effet-bois.html">Panneau effet bois</a><a href="panneau-effet-beton.html">Panneau effet béton</a><a href="facade-anti-humidite.html">Façade anti-humidité</a><a href="mur-tv-decoratif.html">Mur TV décoratif</a><a href="panneau-mural-3d.html">Panneau mural 3D</a><a href="moulures-decoratives.html">Moulures décoratives</a><a href="plinthes-pretes-a-peindre.html">Plinthes à peindre</a><a href="pose-installation.html">Pose &amp; installation</a><a href="prescription-architectes.html">Architectes &amp; prescription</a><a href="panneau-effet-marbre.html">Panneau effet marbre</a><a href="alternative-au-bardage.html">Alternative au bardage</a><a href="revetement-exterieur-resistant-soleil.html">Revêtement extérieur</a><a href="habillage-mur-interieur-idees.html">Idées habillage intérieur</a></div><div class="fcol"><h6>Maison</h6><a href="a-propos.html">À propos</a><a href="realisations.html">Réalisations</a><a href="devis.html">Estimer mon projet</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="blog.html">Journal</a><a href="contact.html">Je suis professionnel</a><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a></div>
+      <div class="fcol"><h6>Solutions déco</h6><a href="habillage-effet-pierre.html">Habillage effet pierre</a><a href="panneau-effet-bois.html">Panneau effet bois</a><a href="panneau-effet-beton.html">Panneau effet béton</a><a href="facade-anti-humidite.html">Façade de villa</a><a href="mur-tv-decoratif.html">Mur TV décoratif</a><a href="panneau-mural-3d.html">Panneau mural 3D</a><a href="moulures-decoratives.html">Moulures décoratives</a><a href="plinthes-pretes-a-peindre.html">Plinthes à peindre</a><a href="pose-installation.html">Pose &amp; installation</a><a href="prescription-architectes.html">Architectes &amp; prescription</a><a href="panneau-effet-marbre.html">Panneau effet marbre</a><a href="alternative-au-bardage.html">Alternative au bardage</a><a href="habillage-mur-interieur-idees.html">Idées habillage intérieur</a></div><div class="fcol"><h6>Maison</h6><a href="a-propos.html">À propos</a><a href="realisations.html">Réalisations</a><a href="devis.html">Estimer mon projet</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="blog.html">Journal</a><a href="contact.html">Je suis professionnel</a><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a></div>
       <div class="fcol"><h6>Suivez-nous</h6><a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis.%0AR%C3%A9f%20W-POS" target="_blank" rel="noopener">WhatsApp</a><a href="https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/">Facebook</a><a href="mailto:gbenn@deutsch-confort.com">Email</a></div>
     </div>
     <div class="bottom">
@@ -344,13 +344,13 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 
 <div class="mobile-cta">
   <a class="wa" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis.%0AR%C3%A9f%20W-POS" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 1.9.8 2 .1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg>WhatsApp</a>
-  <a class="dv" href="projet/">Devis</a>
+  <a class="dv" href="projet/?src=W-POS">Devis</a>
 </div>
 
 <script src="js/site.js"></script>
 <script src="js/mesure.js"></script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Service","name":"Pose et installation de revêtement mural","serviceType":"Pose de revêtement mural décoratif","description":"Pose et installation de revêtement mural décoratif (Le Celestone, moulures et plinthes) par des poseurs experts à Casablanca et dans tout le Maroc, en intérieur comme en façade.","areaServed":[{"@type":"City","name":"Casablanca"},{"@type":"Country","name":"Maroc"}],"provider":{"@type":"HomeAndConstructionBusiness","@id":"https://deutsch-confort.com/#showroom","name":"DeutschConfort"},"url":"https://deutsch-confort.com/pose-installation.html"}
+{"@context":"https://schema.org","@type":"Service","name":"Pose et installation de revêtement mural","serviceType":"Pose de revêtement mural décoratif","description":"Pose et installation de revêtement mural décoratif (Le Celestone, moulures et plinthes) par des poseurs experts à Casablanca et dans tout le Maroc, en intérieur comme en façade.","areaServed":[{"@type":"City","name":"Casablanca"},{"@type":"Country","name":"Maroc"}],"provider":{"@type":"HomeAndConstructionBusiness","@id":"https://deutsch-confort.com/#showroom","name":"Deutschconfort"},"url":"https://deutsch-confort.com/pose-installation.html"}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Faut-il préparer le mur avant la pose ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Nos poseurs commencent par inspecter le support : il doit être sain, sec et propre. Une ancienne peinture écaillée est décapée et les défauts sont traités avant la pose, pour garantir l'adhérence et la tenue du revêtement dans le temps."}},{"@type":"Question","name":"Peut-on poser un revêtement mural en façade et en extérieur ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Le Celestone est un Polymère Celestone™ à cœur massif haute densité qui n'absorbe pas l'eau et résiste aux intempéries comme aux variations climatiques. C'est l'usage façade, terrasse et mur de jardin qui le distingue d'un panneau décoratif d'intérieur classique."}},{"@type":"Question","name":"Comment les panneaux sont-ils fixés ?","acceptedAnswer":{"@type":"Answer","text":"Par collage en cordons réguliers à l'arrière du panneau, complété d'un vissage. La pose est ajustée à la règle de nivelage pour un alignement parfait, puis les joints et têtes de vis sont repris au mastic acrylique pour une surface continue."}},{"@type":"Question","name":"Le revêtement est-il prêt à peindre ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Le revêtement est livré en finition primaire, prêt à peindre dans la couleur de votre choix, pour une finition entièrement personnalisée."}},{"@type":"Question","name":"Puis-je obtenir un devis pour la pose ?","acceptedAnswer":{"@type":"Answer","text":"Oui. Décrivez votre projet par WhatsApp au +212 614 474 221, ou passez au showroom de Casablanca pour toucher la matière et être conseillé."}}]}
@@ -362,7 +362,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 {"@context":"https://schema.org","@type":"Organization","name":"Deutschconfort","url":"https://deutsch-confort.com","logo":"https://deutsch-confort.com/favicon.png","foundingDate":"1999","sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"]}
 </script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","@id":"https://deutsch-confort.com/#showroom","name":"DeutschConfort","alternateName":["Deutsch Confort","Deutschconfort"],"description":"Showroom DeutschConfort à Casablanca : habillage mural Le Celestone™ pour l'intérieur et l'extérieur, pose par nos équipes. Depuis 1999.","url":"https://deutsch-confort.com/","image":"https://deutsch-confort.com/images/facade-hero.jpg","logo":"https://deutsch-confort.com/favicon.png","telephone":"+212614474221","email":"gbenn@deutsch-confort.com","foundingDate":"1999","address":{"@type":"PostalAddress","streetAddress":"11 Rue Hounaine, Bd d'Anfa","addressLocality":"Casablanca","postalCode":"20100","addressRegion":"Casablanca-Settat","addressCountry":"MA"},"geo":{"@type":"GeoCoordinates","latitude":33.5883641,"longitude":-7.6411964},"hasMap":"https://www.google.com/maps/search/?api=1&query=DeutschConfort+11+Rue+Hounaine%2C+Boulevard+d%27Anfa%2C+Casablanca","areaServed":"Maroc","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:30","closes":"13:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"15:30","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"11:00","closes":"13:00"}],"sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"]}
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","@id":"https://deutsch-confort.com/#showroom","name":"Deutschconfort","alternateName":["Deutsch Confort","DeutschConfort"],"description":"Showroom Deutschconfort à Casablanca : habillage mural Le Celestone™ pour l'intérieur et l'extérieur, pose par nos équipes. Depuis 1999.","url":"https://deutsch-confort.com/","image":"https://deutsch-confort.com/images/facade-hero.jpg","logo":"https://deutsch-confort.com/favicon.png","telephone":"+212614474221","email":"gbenn@deutsch-confort.com","foundingDate":"1999","address":{"@type":"PostalAddress","streetAddress":"11 Rue Hounaine, Bd d'Anfa","addressLocality":"Casablanca","postalCode":"20100","addressRegion":"Casablanca-Settat","addressCountry":"MA"},"geo":{"@type":"GeoCoordinates","latitude":33.5883641,"longitude":-7.6411964},"hasMap":"https://www.google.com/maps/search/?api=1&query=Deutsch+Confort+11+Rue+Hounaine%2C+Boulevard+d%27Anfa%2C+Casablanca","areaServed":"Maroc","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:30","closes":"13:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"15:30","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"11:00","closes":"13:00"}],"sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"]}
 </script>
 </body>
 </html>

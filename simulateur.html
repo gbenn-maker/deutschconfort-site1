@@ -3,15 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Simulation photo — Voyez nos designs chez vous · Deutschconfort</title>
-<meta name="description" content="Envoyez-nous une photo de votre mur ou de votre sol sur WhatsApp, choisissez un décor Deutschconfort, et recevez votre simulation en image sous 24 h. Gratuit, sans engagement.">
+<title>Simulation photo gratuite sous 24 h · Deutschconfort</title>
+<meta name="description" content="Envoyez une photo de votre mur ou de votre sol sur WhatsApp, choisissez un décor Deutschconfort : votre simulation en image sous 24 h. Gratuit.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/site.css">
 <style>
   .shero{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(40px,5vw,84px);align-items:center;padding:54px 0 92px}
-  .shero .idx{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--taupe);margin-bottom:20px}
+  .shero .idx{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--encre);margin-bottom:20px}
   .shero h1{font-family:var(--serif);font-weight:400;font-size:clamp(48px,6vw,98px);line-height:.94}
   .shero h1 em{font-style:italic;color:var(--taupe)}
   .shero p.lead{font-size:18px;color:var(--ink-soft);margin-top:24px;max-width:48ch}
@@ -21,24 +21,24 @@
   .wa-cta{display:inline-flex;align-items:center;gap:12px;margin-top:34px;background:var(--ink);color:var(--paper);font-family:var(--sans);font-size:13px;letter-spacing:.14em;text-transform:uppercase;padding:18px 28px;transition:opacity .2s}
   .wa-cta:hover{opacity:.9}
   .wa-cta svg{width:19px;height:19px;fill:currentColor}
-  .shero .sub{font-size:12.5px;color:var(--taupe);margin-top:14px}
+  .shero .sub{font-size:12.5px;color:var(--encre);margin-top:14px}
 
   .shero .ph{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--paper-2)}
   .shero .ph img{width:100%;height:100%;object-fit:cover}
   .shero .ph .tagimg{position:absolute;left:18px;bottom:18px;background:rgba(245,242,236,.92);color:var(--ink);font-size:11px;letter-spacing:.16em;text-transform:uppercase;padding:9px 14px}
 
-  .steps{background:var(--ink);color:var(--paper);padding:100px 0}
-  .steps .head{text-align:center;max-width:720px;margin:0 auto 56px}
-  .steps .head .eyebrow{color:#F5F2EC;margin-bottom:18px}
-  .steps .head h2{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.6vw,50px);line-height:1.05}
-  .steps .head h2 em{font-style:italic;color:#F5F2EC}
+  .sim-steps{background:var(--ink);color:var(--paper);padding:100px 0}
+  .sim-steps .head{text-align:center;max-width:720px;margin:0 auto 56px}
+  .sim-steps .head .eyebrow{color:#F5F2EC;margin-bottom:18px}
+  .sim-steps .head h2{color:var(--chaux);font-family:var(--serif);font-weight:400;font-size:clamp(30px,3.6vw,50px);line-height:1.05}
+  .sim-steps .head h2 em{font-style:italic;color:#F5F2EC}
   .sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(28px,4vw,60px)}
-  .step .n{font-family:var(--serif);font-size:30px;color:#F5F2EC;padding-bottom:18px;border-bottom:1px solid rgba(245,242,236,.18);margin-bottom:18px}
-  .step h3{font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-weight:400;margin-bottom:12px}
-  .step p{font-size:14.5px;color:rgba(245,242,236,.66);line-height:1.55}
+  .sim-step .n{font-family:var(--serif);font-size:30px;color:#F5F2EC;padding-bottom:18px;border-bottom:1px solid rgba(245,242,236,.18);margin-bottom:18px}
+  .sim-step h3{color:var(--chaux);font-size:15px;letter-spacing:.08em;text-transform:uppercase;font-weight:400;margin-bottom:12px}
+  .sim-step p{font-size:14.5px;color:rgba(245,242,236,.66);line-height:1.55}
 
   .designs{padding:96px 0 30px;text-align:center}
-  .designs .eyebrow{color:var(--taupe);margin-bottom:16px}
+  .designs .eyebrow{color:var(--encre);margin-bottom:16px}
   .designs h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.2vw,44px)}
   .designs p{font-size:15px;color:var(--ink-soft);margin:14px auto 36px;max-width:52ch}
   .dchips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
@@ -63,12 +63,12 @@
 <meta property="og:locale" content="fr_MA">
 <meta property="og:site_name" content="Deutschconfort">
 <meta property="og:title" content="Simulation photo — Voyez nos designs chez vous">
-<meta property="og:description" content="Envoyez-nous une photo de votre mur ou de votre sol sur WhatsApp, choisissez un décor Deutschconfort, et recevez votre simulation en image sous 24 h. Gratuit, sans engagement.">
+<meta property="og:description" content="Envoyez une photo de votre mur ou de votre sol sur WhatsApp, choisissez un décor Deutschconfort : votre simulation en image sous 24 h. Gratuit.">
 <meta property="og:url" content="https://deutsch-confort.com/simulateur.html">
 <meta property="og:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Simulation photo — Voyez nos designs chez vous">
-<meta name="twitter:description" content="Envoyez-nous une photo de votre mur ou de votre sol sur WhatsApp, choisissez un décor Deutschconfort, et recevez votre simulation en image sous 24 h. Gratuit, sans engagement.">
+<meta name="twitter:description" content="Envoyez une photo de votre mur ou de votre sol sur WhatsApp, choisissez un décor Deutschconfort : votre simulation en image sous 24 h. Gratuit.">
 <meta name="twitter:image" content="https://deutsch-confort.com/images/facade-hero.jpg">
 <!-- Meta Pixel Code -->
 <script>
@@ -112,8 +112,8 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       <a href="contact.html">Showroom</a>
     </div>
     <div class="navactions">
-      <a class="btn btn-fill" href="projet/">Demander un devis</a>
-      <a class="hcall" href="tel:+212614474221" aria-label="Appeler DeutschConfort au +212 614 474 221"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.6 3.5h2.6l1.5 4.2-2 1.4a12 12 0 0 0 6.2 6.2l1.4-2 4.2 1.5v2.6a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg><span>Appeler</span></a>
+      <a class="btn btn-fill" href="projet/?src=W-SIM">Demander un devis</a>
+      <a class="hcall" href="tel:+212614474221" aria-label="Appeler Deutschconfort au +212 614 474 221"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.6 3.5h2.6l1.5 4.2-2 1.4a12 12 0 0 0 6.2 6.2l1.4-2 4.2 1.5v2.6a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg><span>Appeler</span></a>
       <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </nav>
@@ -126,7 +126,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
   <a href="collections.html">Collections</a>
   <span class="mgroup">Votre projet</span>
   <a href="realisations.html">Réalisations</a>
-  <a href="projet/">Demander un devis</a>
+  <a href="projet/?src=W-SIM">Demander un devis</a>
   <span class="mgroup">La maison</span>
   <a href="a-propos.html">À propos</a>
   <a href="contact.html">Showroom &amp; contact</a>
@@ -165,24 +165,24 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 </section>
 
 <!-- STEPS -->
-<section class="steps">
+<section class="sim-steps">
   <div class="wrap">
     <div class="head">
       <div class="eyebrow">Comment ça marche</div>
       <h2>Trois étapes, <em>une simulation</em></h2>
     </div>
     <div class="sgrid">
-      <div class="step">
+      <div class="sim-step">
         <div class="n">01</div>
         <h3>Envoyez votre photo</h3>
         <p>Prenez en photo le mur, la façade ou le sol que vous souhaitez habiller, et envoyez-la-nous sur WhatsApp. Une photo nette, de face, suffit.</p>
       </div>
-      <div class="step">
+      <div class="sim-step">
         <div class="n">02</div>
         <h3>Choisissez un décor</h3>
         <p>Indiquez le modèle qui vous plaît — panneau mural ou parquet — ou laissez nos conseillers vous orienter selon votre style et votre lumière.</p>
       </div>
-      <div class="step">
+      <div class="sim-step">
         <div class="n">03</div>
         <h3>Recevez votre simulation</h3>
         <p>Notre équipe réalise le montage et vous renvoie votre espace en image, avec votre décor en place — sous 24 heures, gratuitement.</p>
@@ -229,7 +229,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
         <address class="fnap"><span class="fnap-h">Showroom</span>11 Rue Hounaine, Bd d'Anfa<br>Casablanca 20100<br>Lun–Ven 10h30–13h / 15h30–19h<br>Samedi 11h–13h<br><a href="tel:+212614474221">+212 614 474 221</a></address>
       </div>
       <div class="fcol"><h6>Collections</h6><a href="le-celestone.html">Le Celestone™</a><a href="panneaux-modeles.html">Tous les modèles</a><a href="revetement-mural.html">Revêtement mural</a><a href="sol-interieur.html">Sol intérieur</a><a href="sol-vinyle.html">Sol vinyle</a><a href="sol-exterieur.html">Sol extérieur</a></div>
-      <div class="fcol"><h6>Solutions déco</h6><a href="habillage-effet-pierre.html">Habillage effet pierre</a><a href="panneau-effet-bois.html">Panneau effet bois</a><a href="panneau-effet-beton.html">Panneau effet béton</a><a href="facade-anti-humidite.html">Façade anti-humidité</a><a href="mur-tv-decoratif.html">Mur TV décoratif</a><a href="panneau-mural-3d.html">Panneau mural 3D</a><a href="moulures-decoratives.html">Moulures décoratives</a><a href="plinthes-pretes-a-peindre.html">Plinthes à peindre</a><a href="pose-installation.html">Pose &amp; installation</a><a href="prescription-architectes.html">Architectes &amp; prescription</a><a href="panneau-effet-marbre.html">Panneau effet marbre</a><a href="alternative-au-bardage.html">Alternative au bardage</a><a href="revetement-exterieur-resistant-soleil.html">Revêtement extérieur</a><a href="habillage-mur-interieur-idees.html">Idées habillage intérieur</a></div><div class="fcol"><h6>Maison</h6><a href="a-propos.html">À propos</a><a href="realisations.html">Réalisations</a><a href="devis.html">Estimer mon projet</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="blog.html">Journal</a><a href="contact.html">Je suis professionnel</a><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a></div>
+      <div class="fcol"><h6>Solutions déco</h6><a href="habillage-effet-pierre.html">Habillage effet pierre</a><a href="panneau-effet-bois.html">Panneau effet bois</a><a href="panneau-effet-beton.html">Panneau effet béton</a><a href="facade-anti-humidite.html">Façade de villa</a><a href="mur-tv-decoratif.html">Mur TV décoratif</a><a href="panneau-mural-3d.html">Panneau mural 3D</a><a href="moulures-decoratives.html">Moulures décoratives</a><a href="plinthes-pretes-a-peindre.html">Plinthes à peindre</a><a href="pose-installation.html">Pose &amp; installation</a><a href="prescription-architectes.html">Architectes &amp; prescription</a><a href="panneau-effet-marbre.html">Panneau effet marbre</a><a href="alternative-au-bardage.html">Alternative au bardage</a><a href="habillage-mur-interieur-idees.html">Idées habillage intérieur</a></div><div class="fcol"><h6>Maison</h6><a href="a-propos.html">À propos</a><a href="realisations.html">Réalisations</a><a href="devis.html">Estimer mon projet</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="blog.html">Journal</a><a href="contact.html">Je suis professionnel</a><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a></div>
       <div class="fcol"><h6>Suivez-nous</h6><a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis.%0AR%C3%A9f%20W-SIM" target="_blank" rel="noopener">WhatsApp</a><a href="https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/">Facebook</a><a href="mailto:gbenn@deutsch-confort.com">Email</a></div>
     </div>
     <div class="bottom">
@@ -241,13 +241,13 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 
 <div class="mobile-cta">
   <a class="wa" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis.%0AR%C3%A9f%20W-SIM" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 1.9.8 2 .1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg>WhatsApp</a>
-  <a class="dv" href="projet/">Devis</a>
+  <a class="dv" href="projet/?src=W-SIM">Devis</a>
 </div>
 
 <script src="js/site.js"></script>
 <script src="js/mesure.js"></script>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","@id":"https://deutsch-confort.com/#showroom","name":"DeutschConfort","alternateName":["Deutsch Confort","Deutschconfort"],"description":"Showroom DeutschConfort à Casablanca : habillage mural Le Celestone™ pour l'intérieur et l'extérieur, pose par nos équipes. Depuis 1999.","url":"https://deutsch-confort.com/","image":"https://deutsch-confort.com/images/facade-hero.jpg","logo":"https://deutsch-confort.com/favicon.png","telephone":"+212614474221","email":"gbenn@deutsch-confort.com","foundingDate":"1999","address":{"@type":"PostalAddress","streetAddress":"11 Rue Hounaine, Bd d'Anfa","addressLocality":"Casablanca","postalCode":"20100","addressRegion":"Casablanca-Settat","addressCountry":"MA"},"geo":{"@type":"GeoCoordinates","latitude":33.5883641,"longitude":-7.6411964},"hasMap":"https://www.google.com/maps/search/?api=1&query=DeutschConfort+11+Rue+Hounaine%2C+Boulevard+d%27Anfa%2C+Casablanca","areaServed":"Maroc","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:30","closes":"13:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"15:30","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"11:00","closes":"13:00"}],"sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"]}
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","@id":"https://deutsch-confort.com/#showroom","name":"Deutschconfort","alternateName":["Deutsch Confort","DeutschConfort"],"description":"Showroom Deutschconfort à Casablanca : habillage mural Le Celestone™ pour l'intérieur et l'extérieur, pose par nos équipes. Depuis 1999.","url":"https://deutsch-confort.com/","image":"https://deutsch-confort.com/images/facade-hero.jpg","logo":"https://deutsch-confort.com/favicon.png","telephone":"+212614474221","email":"gbenn@deutsch-confort.com","foundingDate":"1999","address":{"@type":"PostalAddress","streetAddress":"11 Rue Hounaine, Bd d'Anfa","addressLocality":"Casablanca","postalCode":"20100","addressRegion":"Casablanca-Settat","addressCountry":"MA"},"geo":{"@type":"GeoCoordinates","latitude":33.5883641,"longitude":-7.6411964},"hasMap":"https://www.google.com/maps/search/?api=1&query=Deutsch+Confort+11+Rue+Hounaine%2C+Boulevard+d%27Anfa%2C+Casablanca","areaServed":"Maroc","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:30","closes":"13:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"15:30","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"11:00","closes":"13:00"}],"sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"]}
 </script>
 </body>
 </html>

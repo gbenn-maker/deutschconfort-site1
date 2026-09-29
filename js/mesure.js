@@ -1,4 +1,4 @@
-/* DeutschConfort — mesure d'audience GA4 + consentement cookies (loi 09-08)
+/* Deutschconfort — mesure d'audience GA4 + consentement cookies (loi 09-08)
    Chargé sur toutes les pages publiques (pas sur /visualiseur/ ni les briefs).
    Le Meta Pixel n'est PAS piloté par ce fichier (il reste tel quel dans chaque page). */
 (function(){

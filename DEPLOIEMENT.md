@@ -25,14 +25,16 @@ Chaque `git push origin main` déclenche automatiquement la mise en ligne
 2. La convertir : `ffmpeg -i photo.jpg -vf "scale='min(1600,iw)':-2" -c:v libwebp -q:v 80 images/realisations/nom-seo.webp`
    et une variante `-800.webp` (scale 800).
 3. Ajouter la carte dans `realisations.html` (bloc `.pcell`, avec `data-cat`
-   et `data-full`), légende « Le Celestone™ <Modèle> · teinte ».
+   et `data-full`), légende « <Modèle> · teinte · surface » (ex. « Big Rock · greige · 15 m² »).
 
 ## Règles de marque (obligatoires)
 - Aucun prix public (ni JSON-LD `offers`/`priceRange`). Briefs uniquement.
 - « Polymère Celestone™ », jamais PU/polyuréthane/mousse.
 - Jamais usine/fabrication/production ; « stock de gros » autorisé.
 - Chiffres autorisés : « depuis 1999 » et « +4 800 clients ».
-- Un modèle ne vit jamais seul : « Le Celestone™ Big Rock 240 ».
-- Pas de corniches. Cubo jamais mis en avant.
+- Modèles : le nom du design seul (« Big Rock », « Mattoni »), sans « Le Celestone™ » devant (décision du 29/09/2026).
+- Pas de corniches. Cubo peut rester en vedette ; Moon n'est pas ajouté aux vedettes de l'accueil (29/09/2026).
 - Humidité : « n'absorbe pas l'eau / hydrofuge », jamais « traite/élimine ».
-- Meta Pixel 1750427786411371 sur chaque page.
+- Meta Pixel 1750427786411371 sur chaque page (sauf les pages de redirection).
+- Petits libellés (sur-titres, fil d'Ariane, étiquettes, en-têtes de tableau) : Encre sur fond clair, jamais Taupe (charte §5 : 3,7:1). Taupe seulement ≥ 24 px.
+- Chaque lien WhatsApp finit par « Réf W-XXX » et chaque lien vers /projet/ porte ?src=W-XXX (code de la page, voir CODES_WHATSAPP_SITE.md).

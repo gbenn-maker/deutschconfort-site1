@@ -439,6 +439,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     }catch(e){}
   }
   function qs(name){ return new URLSearchParams(location.search).get(name); }
+  function srcCode(){ var c=(qs('src')||'').toUpperCase(); return /^W-[A-Z0-9]{2,4}$/.test(c)?c:''; }
 
   function hydrate(d){
     if(!d)return;
@@ -576,7 +577,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       var key='dc_ga_dossier_'+(state.code||state.token||'local');
       if(localStorage.getItem(key))return;
       if(typeof gtag==='function'){
-        gtag('event','dossier_projet',{page_name:'projet',project_type:state.answers.project_type||''});
+        gtag('event','dossier_projet',{page_name:'projet',code_source:srcCode(),project_type:state.answers.project_type||''});
         localStorage.setItem(key,'1');
       }
     }catch(e){}
@@ -894,7 +895,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
   }
 
   function localWa(){
-    var msg='Bonjour, je viens de compléter mon dossier Celestone '+(state.code||'')+'.\n\n'+recap()+'\nRéf W-PRJ';
+    var msg='Bonjour, je viens de compléter mon dossier Celestone '+(state.code||'')+'.\n\n'+recap()+'\nRéf W-PRJ'+(srcCode()?' · '+srcCode():'');
     return 'https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(msg);
   }
 
