@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Béton Décoffrage — Panneau mural effet décoffrage · Deutschconfort</title>
+<meta name="description" content="Béton Décoffrage : panneau mural effet béton de décoffrage, lames horizontales et joints de coffrage. Façades, murs d'accent, intérieur et extérieur. Deutschconfort, Casablanca.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/site.css">
+<style>
+  /* product hero */
+  .prod{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,5vw,80px);align-items:center;padding:48px 0 90px}
+  .prod .txt .fam{font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:var(--encre);margin-bottom:20px}
+  .prod .txt h1{font-family:var(--serif);font-weight:400;font-size:clamp(58px,8vw,128px);line-height:.9}
+  .prod .txt .ref{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--encre);margin-top:18px}
+  .prod .txt p{font-size:18px;color:var(--ink-soft);margin-top:26px;max-width:46ch}
+  .prod .txt .cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap}
+  .prod .shot{position:relative;background:transparent;overflow:visible;aspect-ratio:4/5;cursor:zoom-in;display:flex;align-items:center;justify-content:center}
+  .prod .shot{aspect-ratio:4/3}
+  .prod .shot img{filter:drop-shadow(0 18px 22px rgba(20,20,15,.28));transition:transform .9s cubic-bezier(.2,.7,.2,1);object-fit:contain;padding:4%}
+  .prod .shot:hover img{transform:scale(1.04)}
+  .prod .shot .cap{position:absolute;left:18px;bottom:16px;background:rgba(245,242,236,.9);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);padding:8px 13px}
+
+  /* full-bleed showcase */
+  .showcase{position:relative;height:78vh;min-height:520px;overflow:hidden}
+  .showcase img{transform:scale(1.03)}
+  .showcase::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,20,18,.5),transparent 45%)}
+  .showcase .cap{position:absolute;left:0;right:0;bottom:0;z-index:2;color:#F5F2EC}
+  .showcase .cap .wrap{padding-bottom:40px}
+  .showcase .cap .eyebrow{color:#F5F2EC;margin-bottom:14px}
+  .showcase .cap h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.4vw,48px);line-height:1.05;max-width:20ch}
+
+  /* specs */
+  .specs{padding:96px 0}
+  .specs .wrap{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,90px);align-items:start}
+  .specs .lead{font-family:var(--serif);font-style:italic;font-size:clamp(26px,3vw,40px);line-height:1.18;color:var(--ink)}
+  .specs .lead .t{color:var(--taupe)}
+  .speclist{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
+  .spec{padding:24px 0;border-top:1px solid var(--line)}
+  .spec .n{font-family:var(--serif);font-size:22px;color:var(--encre)}
+  .spec h4{font-size:13px;letter-spacing:.1em;text-transform:uppercase;margin-top:9px;font-weight:400}
+  .spec p{font-size:14px;color:var(--ink-soft);margin-top:6px}
+
+  /* finishing facts strip */
+  .facts{background:var(--paper-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .facts .wrap{display:flex;flex-wrap:wrap;gap:50px;padding:42px 48px}
+  .fact .l{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--encre)}
+  .fact .v{font-family:var(--serif);font-size:26px;margin-top:6px}
+
+  /* gallery (réalisations) */
+  .gal{padding:96px 0 110px}
+  .gal .section-head{padding:0 0 40px}
+  .masonry{column-count:3;column-gap:14px}
+  .masonry .mitem{break-inside:avoid;margin-bottom:14px;position:relative;overflow:hidden;cursor:zoom-in;background:var(--paper-2);display:block}
+  .masonry .mitem img{width:100%;height:auto;transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+  .masonry .mitem:hover img{transform:scale(1.05)}
+  .masonry .mitem::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(20,20,18,.46),transparent 50%);opacity:0;transition:opacity .35s}
+  .masonry .mitem:hover::after{opacity:1}
+  .masonry .mitem .cap{position:absolute;left:18px;bottom:15px;z-index:2;color:#F5F2EC;font-size:11px;letter-spacing:.14em;text-transform:uppercase;opacity:0;transform:translateY(6px);transition:.35s}
+  .masonry .mitem:hover .cap{opacity:1;transform:none}
+
+  /* lightbox */
+  .lb{position:fixed;inset:0;z-index:200;background:rgba(16,15,13,.94);display:none;align-items:center;justify-content:center}
+  .lb.open{display:flex}
+  .lb img{max-width:92vw;max-height:86vh;object-fit:contain;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+  .lb .x{position:absolute;top:22px;right:26px;color:#F5F2EC;font-size:34px;cursor:pointer;line-height:1;background:none;border:none}
+  .lb .nav{position:absolute;top:50%;transform:translateY(-50%);color:#F5F2EC;font-size:30px;cursor:pointer;background:none;border:none;padding:20px;opacity:.8;transition:opacity .2s}
+  .lb .nav:hover{opacity:1}
+  .lb .prev{left:8px}.lb .next{right:8px}
+  .lb .count{position:absolute;bottom:24px;left:0;right:0;text-align:center;color:rgba(245,242,236,.7);font-size:12px;letter-spacing:.18em}
+
+  @media(max-width:900px){
+    .prod{grid-template-columns:1fr;padding:32px 0 56px}
+    .specs .wrap{grid-template-columns:1fr;gap:36px}
+    .masonry{column-count:2}
+  }
+  @media(max-width:560px){
+    .masonry{column-count:1}
+    .speclist{grid-template-columns:1fr}
+    .facts .wrap{gap:28px}
+  }
+</style>
+<!-- @seo -->
+<meta name="geo.region" content="MA-CAS">
+<meta name="geo.placename" content="Casablanca">
+<meta name="geo.position" content="33.5883641;-7.6411964">
+<meta name="ICBM" content="33.5883641, -7.6411964">
+<link rel="canonical" href="https://deutsch-confort.com/panneau-beton-decoffrage.html">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_MA">
+<meta property="og:site_name" content="Deutschconfort">
+<meta property="og:title" content="Béton Décoffrage — Panneau mural effet décoffrage">
+<meta property="og:description" content="Béton Décoffrage : panneau mural effet béton de décoffrage, lames horizontales et joints de coffrage. Façades, murs d'accent, intérieur et extérieur. Deutschconfort, Casablanca.">
+<meta property="og:url" content="https://deutsch-confort.com/panneau-beton-decoffrage.html">
+<meta property="og:image" content="https://deutsch-confort.com/images/panels/beton-decoffrage-panel.webp">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Béton Décoffrage — Panneau mural effet décoffrage">
+<meta name="twitter:description" content="Béton Décoffrage : panneau mural effet béton de décoffrage, lames horizontales et joints de coffrage. Façades, murs d'accent, intérieur et extérieur. Deutschconfort, Casablanca.">
+<meta name="twitter:image" content="https://deutsch-confort.com/images/panels/beton-decoffrage-panel.webp">
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1750427786411371');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+</head>
+<body>
+
+<div class="util">
+  <div class="wrap">
+    <div class="left">Showroom — 11 Rue Hounaine, Bd d'Anfa · Casablanca</div>
+    <div class="right">
+      <a href="contact.html" data-catalogue>Télécharger le catalogue</a>
+      <a href="contact.html">Je suis professionnel</a>
+      <a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis.%0AR%C3%A9f%20W-MBD" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a>
+    </div>
+  </div>
+</div>
+
+<header>
+  <nav class="wrap">
+    <a class="brand" href="index.html">Deutschconfort<small>Solutions architecturales de surfaces</small></a>
+    <div class="navlinks">
+      <a href="le-celestone.html">Le Celestone™</a>
+      <a href="panneaux-modeles.html" class="is-active">Modèles</a>
+      <a href="collections.html">Collections</a>
+      <a href="realisations.html">Réalisations</a>
+      <a href="contact.html">Showroom</a>
+    </div>
+    <div class="navactions">
+      <a class="btn btn-fill" href="projet/?src=W-MBD">Demander un devis</a>
+      <a class="hcall" href="tel:+212614474221" aria-label="Appeler Deutschconfort au +212 614 474 221"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.6 3.5h2.6l1.5 4.2-2 1.4a12 12 0 0 0 6.2 6.2l1.4-2 4.2 1.5v2.6a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg><span>Appeler</span></a>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+</header>
+<div class="mobile-menu">
+  <button class="mclose" aria-label="Fermer">×</button>
+  <span class="mgroup">La matière</span>
+  <a href="le-celestone.html">Le Celestone™</a>
+  <a href="panneaux-modeles.html">Tous les modèles</a>
+  <a href="collections.html">Collections</a>
+  <span class="mgroup">Votre projet</span>
+  <a href="realisations.html">Réalisations</a>
+  <a href="projet/?src=W-MBD">Demander un devis</a>
+  <span class="mgroup">La maison</span>
+  <a href="a-propos.html">À propos</a>
+  <a href="contact.html">Showroom &amp; contact</a>
+  <a href="faq.html">Questions fréquentes</a>
+  <a href="blog.html">Journal</a>
+  <div class="mcta">
+    <a class="btn btn-fill" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis.%0AR%C3%A9f%20W-MBD" target="_blank" rel="noopener">WhatsApp</a>
+    <a class="btn" href="devis.html">Devis</a>
+  </div>
+</div>
+
+<!-- product hero -->
+<section class="wrap">
+  <div class="breadcrumb" style="margin-top:40px"><a href="index.html">Accueil</a><span>/</span><a href="collections.html">Collections</a><span>/</span><a href="revetement-mural.html">Revêtement mural</a><span>/</span><a href="panneaux-modeles.html">Modèles</a><span>/</span>Béton Décoffrage</div>
+  <div class="prod">
+    <div class="txt">
+      <div class="fam">Ciment / Béton · Décoffrage</div>
+      <h1>Béton Décoffrage</h1>
+      <div class="ref" style="margin-top:10px;color:var(--ink-soft)">230 × 50 cm · 1,15 m² par panneau · posé à l'horizontale</div>
+      <p>L'empreinte du béton coulé en coffrage : de longues lames horizontales, la matière minérale et le joint des planches. Posé à l'horizontale, il étire le mur — l'esprit architecte et industriel, en léger.</p>
+      <div class="cta">
+        <a class="btn btn-fill" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20panneau%20B%C3%A9ton%20D%C3%A9coffrage.%20Pouvez-vous%20m'envoyer%20plus%20d'informations%20et%20un%20devis%20%3F%0AR%C3%A9f%20W-MBD" target="_blank" rel="noopener">Demander un devis · WhatsApp</a>
+        <a class="btn" href="contact.html">Voir au showroom</a>
+      </div>
+    </div>
+    <div class="shot" data-full="images/panels/beton-decoffrage-panel.webp">
+      <img src="images/panels/beton-decoffrage-panel.webp" alt="Panneau Béton Décoffrage — packshot, panneau posé à l'horizontale">
+      <span class="cap">Le panneau · posé à l'horizontale</span>
+    </div>
+  </div>
+</section>
+
+<!-- full-bleed showcase -->
+<section class="showcase">
+  <img src="images/realisations/beton-decoffrage-salon.webp" alt="Béton Décoffrage — mur de salon peint gris">
+  <div class="cap">
+    <div class="wrap">
+      <div class="eyebrow">En situation</div>
+      <h2>Le coffrage, à l'échelle d'un mur.</h2>
+    </div>
+  </div>
+</section>
+
+<!-- specs -->
+<section class="specs">
+  <div class="wrap">
+    <div>
+      <p class="lead">Le <span class="t">béton de décoffrage</span>, sa matière et ses joints, en léger.</p>
+    </div>
+    <div class="speclist">
+      <div class="spec"><div class="n">01</div><h4>Effet décoffrage</h4><p>La texture minérale et les joints des planches de coffrage, fidèlement.</p></div>
+      <div class="spec"><div class="n">02</div><h4>Lames horizontales</h4><p>Des panneaux de 230 × 50 cm posés sur leur longueur : un calepinage linéaire qui étire le mur.</p></div>
+      <div class="spec"><div class="n">03</div><h4>Léger</h4><p>Le caractère du béton sans sa masse — pose murale facilitée, sans structure.</p></div>
+      <div class="spec"><div class="n">04</div><h4>Intérieur & extérieur</h4><p>Façades, clôtures, murs d'accent et espaces à l'esprit industriel.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="facts">
+  <div class="wrap">
+    <div class="fact"><div class="l">Aspect</div><div class="v serif">Béton de décoffrage</div></div>
+    <div class="fact"><div class="l">Pose</div><div class="v serif">Collée &amp; vissée</div></div>
+    <div class="fact"><div class="l">Usage</div><div class="v serif">Int. & Ext.</div></div>
+    <div class="fact"><div class="l">Format</div><div class="v serif">230 × 50 cm</div></div>
+  </div>
+</div>
+
+<!-- gallery -->
+<section class="gal">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow" style="color:var(--encre);margin-bottom:18px">Réalisations · Béton Décoffrage</div>
+        <h2 class="serif" style="font-weight:400">Vu chez nos clients</h2>
+      </div>
+      <a href="realisations.html" class="link-underline">Tout le portfolio →</a>
+    </div>
+
+    <div class="masonry" id="gal">
+      <a class="mitem" data-full="images/realisations/beton-decoffrage-restaurant-01.webp"><img src="images/realisations/beton-decoffrage-restaurant-01-800.webp" alt="Béton Décoffrage — mur de restaurant, teinte grise" loading="lazy"><span class="cap">Restaurant · gris</span></a>
+      <a class="mitem" data-full="images/realisations/beton-decoffrage-salon.webp"><img src="images/realisations/beton-decoffrage-salon-800.webp" alt="Béton Décoffrage — mur de salon peint gris" loading="lazy"><span class="cap">Salon · gris</span></a>
+      <a class="mitem" data-full="images/realisations/beton-decoffrage-restaurant-02.webp"><img src="images/realisations/beton-decoffrage-restaurant-02-800.webp" alt="Béton Décoffrage — salle de restaurant" loading="lazy"><span class="cap">Salle de restaurant</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="ctaband">
+  <div class="wrap">
+    <div class="eyebrow">Ce modèle vous plaît ?</div>
+    <h2>Mettez du <em>Béton Décoffrage</em> chez vous.</h2>
+    <p>Demandez un devis ou passez au showroom pour voir et toucher le panneau, échantillon en main.</p>
+    <div class="cta">
+      <a class="btn btn-light btn-fill" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20suis%20int%C3%A9ress%C3%A9(e)%20par%20le%20panneau%20B%C3%A9ton%20D%C3%A9coffrage.%20Pouvez-vous%20m'envoyer%20plus%20d'informations%20et%20un%20devis%20%3F%0AR%C3%A9f%20W-MBD" target="_blank" rel="noopener">Demander un devis · WhatsApp</a>
+      <a class="btn btn-light" href="panneaux-modeles.html">Voir d'autres modèles</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="top">
+      <div>
+        <a class="brand" href="index.html">Deutschconfort<small>Solutions architecturales de surfaces</small></a>
+        <p class="tag">Habiller les murs, dedans comme dehors. Depuis 1999.</p>
+        <address class="fnap"><span class="fnap-h">Showroom</span>11 Rue Hounaine, Bd d'Anfa<br>Casablanca 20100<br>Lun–Ven 10h30–13h / 15h30–19h<br>Samedi 11h–13h<br><a href="tel:+212614474221">+212 614 474 221</a></address>
+      </div>
+      <div class="fcol"><h6>Collections</h6><a href="le-celestone.html">Le Celestone™</a><a href="panneaux-modeles.html">Tous les modèles</a><a href="revetement-mural.html">Revêtement mural</a><a href="sol-interieur.html">Sol intérieur</a><a href="sol-vinyle.html">Sol vinyle</a><a href="sol-exterieur.html">Sol extérieur</a></div>
+      <div class="fcol"><h6>Solutions déco</h6><a href="habillage-effet-pierre.html">Habillage effet pierre</a><a href="panneau-effet-bois.html">Panneau effet bois</a><a href="panneau-effet-beton.html">Panneau effet béton</a><a href="facade-anti-humidite.html">Façade de villa</a><a href="mur-tv-decoratif.html">Mur TV décoratif</a><a href="panneau-mural-3d.html">Panneau mural 3D</a><a href="moulures-decoratives.html">Moulures décoratives</a><a href="plinthes-pretes-a-peindre.html">Plinthes à peindre</a><a href="pose-installation.html">Pose &amp; installation</a><a href="prescription-architectes.html">Architectes &amp; prescription</a><a href="panneau-effet-marbre.html">Panneau effet marbre</a><a href="alternative-au-bardage.html">Alternative au bardage</a><a href="habillage-mur-interieur-idees.html">Idées habillage intérieur</a></div><div class="fcol"><h6>Maison</h6><a href="a-propos.html">À propos</a><a href="realisations.html">Réalisations</a><a href="devis.html">Estimer mon projet</a><a href="contact.html">Contact</a><a href="faq.html">FAQ</a><a href="blog.html">Journal</a><a href="contact.html">Je suis professionnel</a><a href="mentions-legales.html">Mentions légales</a><a href="confidentialite.html">Confidentialité</a></div>
+      <div class="fcol"><h6>Suivez-nous</h6><a href="https://www.instagram.com/deutschconfort/" target="_blank" rel="noopener">Instagram</a><a href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis.%0AR%C3%A9f%20W-MBD" target="_blank" rel="noopener">WhatsApp</a><a href="https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/">Facebook</a><a href="mailto:gbenn@deutsch-confort.com">Email</a></div>
+    </div>
+    <div class="bottom">
+      <span>© 2026 Deutschconfort · Tous droits réservés</span>
+      <span>Casablanca · Maroc</span>
+    </div>
+  </div>
+</footer>
+
+<!-- lightbox -->
+<div class="lb" id="lb">
+  <button class="x" aria-label="Fermer">×</button>
+  <button class="nav prev" aria-label="Précédent">‹</button>
+  <img alt="">
+  <button class="nav next" aria-label="Suivant">›</button>
+  <div class="count" id="lbcount"></div>
+</div>
+
+<div class="mobile-cta">
+  <a class="wa" href="https://wa.me/212614474221?text=Bonjour%20Deutschconfort%2C%20je%20souhaite%20demander%20un%20devis.%0AR%C3%A9f%20W-MBD" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 1.9.8 2 .1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg>WhatsApp</a>
+  <a class="dv" href="projet/?src=W-MBD">Devis</a>
+</div>
+
+<script src="js/site.js"></script>
+<script src="js/mesure.js"></script>
+<script>
+  (function(){
+    var items=[].slice.call(document.querySelectorAll('[data-full]'));
+    var srcs=items.map(function(e){return e.dataset.full;});
+    var lb=document.getElementById('lb'), img=lb.querySelector('img'), count=document.getElementById('lbcount');
+    var i=0;
+    function show(n){i=(n+srcs.length)%srcs.length;img.src=srcs[i];count.textContent=(i+1)+' / '+srcs.length;}
+    function open(n){show(n);lb.classList.add('open');document.body.style.overflow='hidden';}
+    function close(){lb.classList.remove('open');document.body.style.overflow='';}
+    items.forEach(function(el,n){el.addEventListener('click',function(e){e.preventDefault();open(n);});});
+    lb.querySelector('.x').addEventListener('click',close);
+    lb.querySelector('.prev').addEventListener('click',function(){show(i-1);});
+    lb.querySelector('.next').addEventListener('click',function(){show(i+1);});
+    lb.addEventListener('click',function(e){if(e.target===lb)close();});
+    document.addEventListener('keydown',function(e){
+      if(!lb.classList.contains('open'))return;
+      if(e.key==='Escape')close();
+      else if(e.key==='ArrowLeft')show(i-1);
+      else if(e.key==='ArrowRight')show(i+1);
+    });
+  })();
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"HomeAndConstructionBusiness","@id":"https://deutsch-confort.com/#showroom","name":"Deutschconfort","alternateName":["Deutsch Confort","DeutschConfort"],"description":"Showroom Deutschconfort à Casablanca : habillage mural Le Celestone™ pour l'intérieur et l'extérieur, pose par nos équipes. Depuis 1999.","url":"https://deutsch-confort.com/","image":"https://deutsch-confort.com/images/facade-hero.jpg","logo":"https://deutsch-confort.com/favicon.png","telephone":"+212614474221","email":"gbenn@deutsch-confort.com","foundingDate":"1999","address":{"@type":"PostalAddress","streetAddress":"11 Rue Hounaine, Bd d'Anfa","addressLocality":"Casablanca","postalCode":"20100","addressRegion":"Casablanca-Settat","addressCountry":"MA"},"geo":{"@type":"GeoCoordinates","latitude":33.5883641,"longitude":-7.6411964},"hasMap":"https://www.google.com/maps/search/?api=1&query=Deutsch+Confort+11+Rue+Hounaine%2C+Boulevard+d%27Anfa%2C+Casablanca","areaServed":"Maroc","openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"10:30","closes":"13:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"15:30","closes":"19:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":"Saturday","opens":"11:00","closes":"13:00"}],"sameAs":["https://www.instagram.com/deutschconfort/","https://web.facebook.com/Deutsch-Confort-Sols-et-Parquets-783445241666810/"]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Product","name":"Béton Décoffrage — Panneau mural effet décoffrage","image":"https://deutsch-confort.com/images/panels/beton-decoffrage-panel.webp","description":"Béton Décoffrage : panneau mural effet béton de décoffrage, lames horizontales et joints de coffrage. Façades, murs d'accent, intérieur et extérieur. Deutschconfort, Casablanca.","brand":{"@type":"Brand","name":"Deutschconfort"},"category":"Panneau mural décoratif","material":"Polymère Celestone™"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Accueil","item":"https://deutsch-confort.com/"},{"@type":"ListItem","position":2,"name":"Collections","item":"https://deutsch-confort.com/collections.html"},{"@type":"ListItem","position":3,"name":"Revêtement mural","item":"https://deutsch-confort.com/revetement-mural.html"},{"@type":"ListItem","position":4,"name":"Béton Décoffrage — Panneau mural effet décoffrage"}]}
+</script>
+</body>
+</html>
