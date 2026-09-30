@@ -40,4 +40,5 @@ Chaque `git push origin main` déclenche automatiquement la mise en ligne
 - Supports de pose : toute surface plane, en règle générale ; déjà posé sur bois, marbre, BA13, et enduit selon l'épaisseur du modèle (Ghali, 29/09/2026).
 - Meta Pixel 1750427786411371 sur chaque page (sauf les pages de redirection).
 - Petits libellés (sur-titres, fil d'Ariane, étiquettes, en-têtes de tableau) : Encre sur fond clair, jamais Taupe (charte §5 : 3,7:1). Taupe seulement ≥ 24 px.
+- Pages comparatives (pierre de Taza, carrelage/zellige, bardage) : faits externes sourcés en bas de tableau, aucun concurrent ni enseigne nommés, aucun prix ; on dit honnêtement où l'autre matériau reste le meilleur choix (sols, douche, bassin) (décision de Ghali du 30/09/2026 : capter les recherches de substituts).
 - Chaque lien WhatsApp finit par « Réf W-XXX » et chaque lien vers /projet/ porte ?src=W-XXX (code de la page, voir CODES_WHATSAPP_SITE.md).
