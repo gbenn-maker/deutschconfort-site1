@@ -7,7 +7,7 @@
   //  Collez ici l'ID de mesure GA4 (format 'G-XXXXXXXXXX').
   //  Laissé vide ('') : GA4 est inactif, aucune bannière n'est affichée,
   //  aucun cookie Google n'est déposé. Les événements restent en file locale.
-  var GA4_ID = ''; // ← [À REMPLIR PAR GHALI] ex. 'G-AB12CD34EF'
+  var GA4_ID = 'G-K3463B8J7W'; // propriété GA4 « deutsch-confort.com », flux Web (Ghali, 30/09/2026)
   // =====================================================================
 
   var KEY = 'dc_consent_ga4';        // choix mémorisé dans ce navigateur
