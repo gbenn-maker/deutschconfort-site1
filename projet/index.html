@@ -630,7 +630,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 
   /* ---------- état ---------- */
   function freshAnswers(){return {project_type:'',measurement_mode:'',surface_m2:null,wall_length:null,wall_height:null,measurement_date_options:[],measurement_address:'',style_family:'',city:'',timeframe:'',selected_model:'',selected_models:[],collection_opened:false,reassurance_requested:''};}
-  var state={token:null,code:null,stage:1,photo_count:0,photos_pending:0,completed:false,saved_at:0,answers:freshAnswers(),contact:{full_name:'',phone:'',email:''},lastSyncOk:false};
+  var state={token:null,code:null,stage:1,photo_count:0,photos_pending:0,completed:false,finalizedOk:false,saved_at:0,answers:freshAnswers(),contact:{full_name:'',phone:'',email:''},lastSyncOk:false};
   var cityChoice='';   // puce active ('' | ville | '__other')
   var thumbs=[];        // aperçus locaux (data URL réduits)
   var stagesSeen={};
@@ -654,10 +654,17 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
   function localClear(){try{localStorage.removeItem(STATE_KEY);localStorage.removeItem(TOKEN_KEY);}catch(e){}}
 
   /* ---------- API ---------- */
-  async function api(path,opt){
-    var res=await fetch(API_ROOT+path,Object.assign({headers:{'Content-Type':'application/json'}},opt||{}));
-    if(!res.ok){var b={};try{b=await res.json();}catch(e){}var err=new Error(b.error||('HTTP '+res.status));err.status=res.status;throw err;}
-    return res.json();
+  async function api(path,opt,timeoutMs){
+    // Délai maximal : l'interface ne reste jamais suspendue à une réponse serveur lente
+    var ctrl=(typeof AbortController==='function')?new AbortController():null;
+    var timer=ctrl?setTimeout(function(){ctrl.abort();},timeoutMs||15000):null;
+    try{
+      var init=Object.assign({headers:{'Content-Type':'application/json'}},opt||{});
+      if(ctrl)init.signal=ctrl.signal;
+      var res=await fetch(API_ROOT+path,init);
+      if(!res.ok){var b={};try{b=await res.json();}catch(e){}var err=new Error(b.error||('HTTP '+res.status));err.status=res.status;throw err;}
+      return await res.json();
+    }finally{if(timer)clearTimeout(timer);}
   }
   function utm(){
     var p=new URLSearchParams(location.search),o={};
@@ -700,9 +707,13 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       website:$('website')?$('website').value:''
     };
     if(extra)Object.keys(extra).forEach(function(k){payload[k]=extra[k];});
+    // Une fois le projet envoyé, chaque mise à jour reste « complétée » (aucune régression de statut côté Insta-Pro)
+    if(state.completed)payload.completed=true;
     try{
-      var data=await api('/'+encodeURIComponent(state.token),{method:'PATCH',body:JSON.stringify(payload)});
-      hydrate(data.dossier);state.lastSyncOk=true;return data;
+      var data=await api('/'+encodeURIComponent(state.token),{method:'PATCH',body:JSON.stringify(payload)},state.completed?20000:15000);
+      hydrate(data.dossier);state.lastSyncOk=true;
+      if(data.dossier&&data.dossier.status==='completed')state.finalizedOk=true;
+      return data;
     }catch(e){state.lastSyncOk=false;return null;}
   }
   async function ensureDossier(){
@@ -764,7 +775,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       state.lastSyncOk=true;
       localSave();
       if(explicit||state.completed){render();}
-      if(!state.completed)sync();
+      if(!state.completed||d.status!=='completed')sync();
     }catch(e){
       state.lastSyncOk=false;
       if(!state.code)state.code='LOCAL-'+String(Date.now()).slice(-5);
@@ -1138,17 +1149,17 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
   async function next(){
     if(!validate(state.stage))return;
     if(state.stage<4){go(state.stage+1);return;}
-    // envoi final
+    // envoi final : l'écran « Votre projet est prêt » s'affiche tout de suite ;
+    // l'envoi vers Insta-Pro se fait en arrière-plan (réessai automatique), le message
+    // WhatsApp est construit localement et ne dépend pas du serveur.
     var nx=$('nextBtn');nx.disabled=true;nx.textContent='Envoi…';
+    clearTimeout(syncTimer);
     await ensureDossier();
-    var data=await sync({completed:true});
-    if(!data&&state.token){
-      // seconde tentative (réseau mobile capricieux) avant de basculer en mode local
-      data=await sync({completed:true});
-    }
     state.completed=true;
     localSave();
-    go(5);
+    go(5); // go() déclenche sync() → PATCH completed:true
+    setTimeout(function(){if(!state.finalizedOk)sync();},6000);
+    setTimeout(function(){if(!state.finalizedOk)sync();},25000);
   }
   function restart(){
     localClear();
