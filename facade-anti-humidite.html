@@ -111,6 +111,14 @@
     .endcta .cta{flex-direction:column;align-items:stretch;padding:0 4px}
     .endcta h2 br{display:none}
   }
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .ba.ba3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .ba figure{margin:0;position:relative;overflow:hidden;aspect-ratio:16/9;background:var(--calcaire)}
+  .ba img{width:100%;height:100%;object-fit:cover;display:block}
+  .ba .tag{position:absolute;top:14px;left:14px;font-family:var(--sans);font-style:normal;font-weight:400;line-height:1.2;margin:0;background:rgba(245,242,236,.94);color:var(--basalte);font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:7px 12px}
+  .ba-cap{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--encre);margin-top:12px}
+  @media(max-width:980px){.ba.ba3{grid-template-columns:minmax(0,1fr)}}
+  @media(max-width:700px){.ba{grid-template-columns:1fr}}
 </style>
 <meta name="geo.region" content="MA-CAS">
 <meta name="geo.placename" content="Casablanca">
@@ -242,6 +250,22 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       <div><span class="n">03</span><h3>Votre teinte, en Jotashield</h3><p>Livré en primaire, prêt à peindre. En façade, on le peint en Jotun Jotashield, l'acrylique extérieure de Jotun, dans la teinte que vous choisissez. Il se repeint le jour où vous voulez changer.</p></div>
       <div><span class="n">04</span><h3>Presque pas d'entretien</h3><p>Un coup de jet d'eau de temps en temps. C'est tout.</p></div>
     </div>
+  </div>
+</section>
+
+<section class="fx-sec">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Avant / pendant / après</div>
+      <h2>La même façade, avant, pendant et après la pose</h2>
+      <p>Une villa d'Aïn Diab, livrée en enduit brut. Pendant le chantier, la façade est habillée panneau par panneau&nbsp;: à gauche, le relief est déjà posé, à droite le mur attend encore. Après la pose, le volume de l'étage est habillé en Mattoni et peint en gris anthracite.</p>
+    </div>
+    <div class="ba ba3">
+      <figure><img src="images/realisations/avant-facade-villa-enduit-ain-diab-800.webp" srcset="images/realisations/avant-facade-villa-enduit-ain-diab-800.webp 800w, images/realisations/avant-facade-villa-enduit-ain-diab.webp 1170w" sizes="(max-width:980px) 100vw, 33vw" alt="Avant : façade de villa à Aïn Diab en enduit brut, pendant les travaux" loading="lazy"><span class="tag">Avant</span></figure>
+      <figure><img src="images/realisations/pendant-pose-facade-mattoni-ain-diab-800.webp" srcset="images/realisations/pendant-pose-facade-mattoni-ain-diab-800.webp 800w, images/realisations/pendant-pose-facade-mattoni-ain-diab.webp 1061w" sizes="(max-width:980px) 100vw, 33vw" alt="Pendant la pose : la partie gauche de la façade est déjà habillée en Mattoni, le reste est encore en enduit" loading="lazy"><span class="tag">Pendant</span></figure>
+      <figure><img src="images/realisations/apres-facade-villa-mattoni-anthracite-ain-diab-800.webp" srcset="images/realisations/apres-facade-villa-mattoni-anthracite-ain-diab-800.webp 800w, images/realisations/apres-facade-villa-mattoni-anthracite-ain-diab.webp 1280w" sizes="(max-width:980px) 100vw, 33vw" alt="Après : la même façade habillée en Mattoni et peinte en gris anthracite" loading="lazy"><span class="tag">Après</span></figure>
+    </div>
+    <p class="ba-cap">Villa contemporaine, Aïn Diab · Mattoni · anthracite · 60 m²</p>
   </div>
 </section>
 

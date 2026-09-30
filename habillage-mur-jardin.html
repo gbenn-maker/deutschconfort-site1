@@ -139,6 +139,12 @@
   .show .tints span{font-size:13px;border:1px solid var(--line);padding:8px 16px;border-radius:40px;color:var(--encre)}
   .show .links{margin-top:22px;font-size:15px}
   .show .links a{border-bottom:1px solid var(--line);margin-right:18px;white-space:nowrap}
+  .ba{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+  .ba figure{margin:0;position:relative;overflow:hidden;aspect-ratio:16/9;background:var(--calcaire)}
+  .ba img{width:100%;height:100%;object-fit:cover;display:block}
+  .ba .tag{position:absolute;top:14px;left:14px;font-family:var(--sans);font-style:normal;font-weight:400;line-height:1.2;margin:0;background:rgba(245,242,236,.94);color:var(--basalte);font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:7px 12px}
+  .ba-cap{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--encre);margin-top:12px}
+  @media(max-width:700px){.ba{grid-template-columns:1fr}}
   .pose-fig{margin:44px 0 0}
   .pose-fig img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;background:var(--calcaire)}
   .pose-fig figcaption{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--encre);margin-top:12px}
@@ -267,6 +273,21 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       <div><h3>Muret et terrasse</h3><p>Un muret, un soubassement, un mur de terrasse&nbsp;: le même relief, à plus petite échelle.</p></div>
       <div><h3>Avec la façade</h3><p>Clôture et façade dans le même relief et la même teinte&nbsp;: depuis la rue, la maison paraît d'un seul bloc. Voir le <a href="facade-anti-humidite.html">revêtement de façade</a>.</p></div>
     </div>
+  </div>
+</section>
+
+<section class="fx-sec">
+  <div class="wrap">
+    <div class="head">
+      <div class="eyebrow">Avant / après</div>
+      <h2>Le même mur de jardin, avant et après</h2>
+      <p>Au bord d'une piscine, un mur en enduit taché et fatigué. Après la pose, le même mur est habillé en Mattoni et peint en gris anthracite.</p>
+    </div>
+    <div class="ba">
+      <figure><img src="images/realisations/avant-mur-jardin-enduit-piscine-800.webp" srcset="images/realisations/avant-mur-jardin-enduit-piscine-800.webp 800w, images/realisations/avant-mur-jardin-enduit-piscine.webp 1179w" sizes="(max-width:700px) 100vw, 50vw" alt="Avant : mur de jardin en enduit blanc taché, au bord d'une piscine" loading="lazy"><span class="tag">Avant</span></figure>
+      <figure><img src="images/realisations/apres-mur-jardin-mattoni-anthracite-800.webp" srcset="images/realisations/apres-mur-jardin-mattoni-anthracite-800.webp 800w, images/realisations/apres-mur-jardin-mattoni-anthracite.webp 1167w" sizes="(max-width:700px) 100vw, 50vw" alt="Après : le même mur de jardin habillé en Mattoni peint gris anthracite" loading="lazy"><span class="tag">Après</span></figure>
+    </div>
+    <p class="ba-cap">Mur de jardin et piscine · Mattoni · anthracite</p>
   </div>
 </section>
 

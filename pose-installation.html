@@ -71,10 +71,25 @@
   .faq details[open] summary::after{content:"–"}
   .faq details p{color:var(--ink-soft);font-size:16px;margin-top:14px;max-width:74ch}
 
+  /* vidéo de pose */
+  .pose-film{padding:90px 0}
+  .pose-film .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,330px);gap:90px;align-items:center;max-width:1100px}
+  .pose-film .eyebrow{color:var(--encre)}
+  .pose-film h2{font-family:var(--serif);font-weight:400;font-size:clamp(28px,3.2vw,46px);line-height:1.08;margin-top:18px}
+  .pose-film p{font-size:17px;color:var(--ink-soft);max-width:52ch;margin-top:18px}
+  .pose-film ol{list-style:none;margin:26px 0 0;padding:0;counter-reset:pf;max-width:52ch}
+  .pose-film li{counter-increment:pf;display:flex;gap:18px;align-items:baseline;padding:14px 0;border-top:1px solid var(--line);font-size:16px;color:var(--ink)}
+  .pose-film li:last-child{border-bottom:1px solid var(--line)}
+  .pose-film li::before{content:counter(pf,decimal-leading-zero);font-family:var(--serif);font-size:20px;color:var(--encre);min-width:30px}
+  .pose-film video{width:100%;height:auto;aspect-ratio:9/16;display:block;background:var(--basalte);object-fit:cover}
+  .pose-film .pf-cap{font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--encre);margin-top:12px;max-width:none}
+
   @media(max-width:980px){
     .svc-lead .wrap,.why .wrap{grid-template-columns:1fr;gap:36px}
     .why .wrap{padding:64px 24px}
     .pose-steps .grid{grid-template-columns:1fr}
+    .pose-film .wrap{grid-template-columns:minmax(0,1fr);gap:36px}
+    .pose-film .pf-media{max-width:400px;width:100%;margin:0 auto}
   }
 </style>
 <!-- @seo -->
@@ -112,6 +127,9 @@ fbq('track', 'PageView');
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></noscript>
 <!-- End Meta Pixel Code -->
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"VideoObject","name":"Pose de panneaux Le Celestone™ sur un mur intérieur","description":"Pose de panneaux Le Celestone™ par les équipes Deutschconfort sur le mur intérieur d'un restaurant : encollage en cordons, mise en place, vissage, contrôle au niveau, mesure et découpe.","thumbnailUrl":"https://deutsch-confort.com/images/realisations/pose-panneaux-interieur-poster.webp","uploadDate":"2026-09-30T12:00:00+01:00","duration":"PT25S","contentUrl":"https://deutsch-confort.com/media/pose-panneaux-interieur.mp4"}
+</script>
 </head>
 <body>
 
@@ -238,6 +256,29 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
         <h3>Finition prête à peindre</h3>
         <p>Le revêtement est livré en primaire prêt à peindre. Mise en peinture dans la teinte choisie pour une finition signée, durable.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- vidéo de pose -->
+<section class="pose-film">
+  <div class="wrap">
+    <div class="pf-txt">
+      <div class="eyebrow">En vidéo</div>
+      <h2>La pose, filmée sur un chantier</h2>
+      <p>Vingt-cinq secondes sur le chantier d'un restaurant, où nos équipes habillent un mur intérieur en Le Celestone™. On y retrouve les gestes décrits plus haut.</p>
+      <ol>
+        <li>Cordons de colle au dos du panneau</li>
+        <li>Mise en place du panneau contre le mur</li>
+        <li>Vissage et contrôle au niveau</li>
+        <li>Mesure et découpe à la scie des derniers panneaux</li>
+      </ol>
+    </div>
+    <div class="pf-media">
+      <video controls preload="none" playsinline width="720" height="1280" poster="images/realisations/pose-panneaux-interieur-poster.webp" aria-label="Pose de panneaux Le Celestone™ sur un mur intérieur de restaurant">
+        <source src="media/pose-panneaux-interieur.mp4" type="video/mp4">
+      </video>
+      <p class="pf-cap">Chantier d'un restaurant · vidéo sans son · 25&nbsp;s</p>
     </div>
   </div>
 </section>
