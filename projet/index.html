@@ -796,6 +796,9 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       state.answers.selected_model=state.answers.selected_models[0];
     }
     if(qs('mesure')==='1'&&!state.answers.measurement_mode)state.answers.measurement_mode='visit';
+    // ?produit=… : produit demandé depuis une carte du site (sols, parquets…) → retenu dans le projet
+    var pr=String(qs('produit')||'').replace(/[<>"]/g,'').trim().slice(0,80);
+    if(pr&&state.answers.selected_models.indexOf(pr)<0){state.answers.selected_models.push(pr);state.answers.selected_model=state.answers.selected_models[0];}
   }
 
   /* ---------- liaisons ---------- */

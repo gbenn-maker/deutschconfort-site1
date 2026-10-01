@@ -21,7 +21,7 @@ Chaque `git push origin main` déclenche automatiquement la mise en ligne
   que le site (`css/site.css`), API Insta-Pro `/api/public/web-projects` inchangée (dossier, photos, WhatsApp).
   Paramètres d'URL : `?src=W-XXX` (page d'origine), `?type=facade|jardin|interieur|commerce` (usage présélectionné),
   `?modele=big-rock|mattoni|cubo|cemento|beton-brut|beton-decoffrage|moon|bois-cubo|travertin|brick` (modèle retenu),
-  `?mesure=1` (prise de mesures présélectionnée), `?new=1` (nouveau projet), `?d=<token>` (reprise d'un dossier).
+  `?mesure=1` (prise de mesures présélectionnée), `?produit=<nom>` (produit retenu, ex. parquet), `?new=1` (nouveau projet), `?d=<token>` (reprise d'un dossier).
   Un projet commencé ou envoyé depuis moins de 24 h est réaffiché tel quel sur le même appareil (aucune coordonnée
   n'est gardée dans le navigateur). Événements : Meta Pixel `Lead` + `Contact`, GA4 `projet_etape` (1–5),
   `dossier_projet`, `clic_whatsapp` (Réf W-PRJ · W-XXX).
@@ -53,6 +53,9 @@ Chaque `git push origin main` déclenche automatiquement la mise en ligne
 - Conversion (décision de Ghali du 30/09/2026) : toute demande de devis / d'estimation passe par `/projet/` —
   les boutons « Demander un devis », « Estimer mon projet », « Devis », les anciens CTA WhatsApp « devis / simulation
   photo / envoyer ma photo » pointent vers `projet/?src=W-XXX` (+ `type=` sur les pages façade, jardin, intérieur ;
-  + `modele=` sur les fiches modèles ; + `mesure=1` sur « Réserver une visite et un métré »). Les liens libellés
-  « WhatsApp » (contact direct, showroom, question) restent des liens WhatsApp. Exceptions : pages sols / parquets
-  (le configurateur concerne les murs) et briefs commerciaux B2B.
+  + `modele=` sur les fiches modèles ; + `mesure=1` sur « Réserver une visite et un métré » ; + `produit=` sur les
+  cartes produit sols / parquets et « Demander ce modèle » de la page Modèles). Depuis le 01/10/2026, cela vaut
+  aussi pour les pages sols / parquets, le guide (« Être conseillé ») et la FAQ (« Parler de mon projet »).
+  Seuls restent en WhatsApp direct : les liens libellés « WhatsApp » (barre du haut, pied de page, barre mobile,
+  menu mobile, page contact), « Réserver un passage », « Une question sur la pose ? », « Demandez-les-nous »
+  (photos), le formulaire de la page Contact, et les briefs commerciaux B2B (`brief-*.html`).

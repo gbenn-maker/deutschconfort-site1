@@ -380,15 +380,13 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 <script src="js/mesure.js"></script>
 <script>
   (function(){
-    var WA='https://wa.me/212614474221?text=';
-    // pre-fill WhatsApp per model
+    // lien par modèle sans fiche produit
     document.querySelectorAll('.pcard').forEach(function(c){
       if(c.tagName!=='A'||c.getAttribute('href')) return; // garde les liens vers une page produit
-      var name=c.dataset.name||'un modèle';
-      var ref=c.dataset.ref||'';
-      var msg='Bonjour Deutschconfort, je suis intéressé(e) par le panneau mural : '+name+(ref?(' ('+ref+')'):'')+'. Pouvez-vous m\'envoyer plus d\'informations et un devis ?\nRéf W-MOD';
-      c.setAttribute('href', WA+encodeURIComponent(msg));
-      c.setAttribute('target','_blank'); c.setAttribute('rel','noopener');
+      // « Demander ce modèle » → configurateur /projet avec le modèle retenu (décision du 30/09/2026)
+      var name=c.dataset.name||'';
+      var id=name.toLowerCase().replace(/é/g,'e').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+      c.setAttribute('href','projet/?src=W-MOD'+(id?'&modele='+encodeURIComponent(id):''));
     });
     // filter
     var chips=document.querySelectorAll('.filterbar .chip');
