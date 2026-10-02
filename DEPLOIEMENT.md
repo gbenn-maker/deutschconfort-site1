@@ -26,7 +26,7 @@ Chaque `git push origin main` déclenche automatiquement la mise en ligne
   n'est gardée dans le navigateur). Événements : Meta Pixel `Lead` + `Contact`, GA4 `projet_etape` (1–5),
   `dossier_projet`, `clic_whatsapp` (Réf W-PRJ · W-XXX).
 - `/devis.html` : redirection vers `/projet/?src=W-DEV` (hors sitemap) depuis le 30/09/2026.
-- `brief-*.html` : pages commerciales avec prix, en `noindex`, jamais liées.
+- `brief-*.html` : pages commerciales avec prix, en `noindex`, jamais liées. `brief-architecte.html` et `brief-promoteurs-construction.html` ont été supprimées le 02/10/2026 (demande de Ghali, nouvelle grille au kilo) : il ne reste que `brief-celestone.html`.
 
 ## Ajouter une réalisation
 1. Prendre la photo dans Dropbox `4 ARCHIVES/REALISATIONS/<Modèle>`.
