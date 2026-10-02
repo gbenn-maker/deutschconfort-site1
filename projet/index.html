@@ -34,7 +34,7 @@
     .pj-tel svg{width:15px;height:15px}
     .pj-head .hcall{display:none}
 
-    /* fil d'étapes : 01 — Projet · 02 — Espace · 03 — Style · 04 — Coordonnées */
+    /* fil d'étapes : 01 — Projet · 02 — Espace · 03 — Modèle · 04 — Coordonnées */
     .pj-progress{border-bottom:1px solid var(--line);background:var(--chaux)}
     .pj-progress .pj-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
     .pj-step{position:relative;padding:16px 0 15px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--encre);opacity:.42;transition:opacity .3s;white-space:nowrap}
@@ -138,58 +138,39 @@
     .pj-photo-state.ok{color:var(--basalte)}
     .pj-photo-state.err{color:var(--oxyde)}
 
-    /* tuiles matière (style) */
-    .pj-styles{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}
-    .pj-style{position:relative;display:block;padding:0;border:0;background:var(--calcaire);text-align:left;overflow:hidden}
-    .pj-style .ph{aspect-ratio:3/4;overflow:hidden;background:var(--pierre)}
-    .pj-style .ph img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .9s cubic-bezier(.2,.7,.2,1),filter .5s}
-    .pj-style:hover .ph img{transform:scale(1.05)}
-    .pj-style .meta{position:absolute;left:0;right:0;bottom:0;padding:16px 14px;background:linear-gradient(0deg,rgba(20,20,15,.7),rgba(20,20,15,0));color:#F5F2EC}
-    .pj-style .meta h3{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.05;color:#F5F2EC}
-    .pj-style::before{content:"";position:absolute;inset:0;z-index:1;border:2px solid var(--basalte);opacity:0;transition:opacity .25s;pointer-events:none}
-    .pj-style[aria-pressed="true"]::before{opacity:1}
-    .pj-style .tick{position:absolute;top:10px;left:10px;z-index:2;width:26px;height:26px;background:var(--chaux);color:var(--basalte);display:grid;place-items:center;opacity:0;transform:scale(.6);transition:.3s cubic-bezier(.2,.7,.2,1)}
-    .pj-style .tick svg{width:12px;height:12px}
-    .pj-style[aria-pressed="true"] .tick{opacity:1;transform:none}
-    .pj-style.adv{background:var(--basalte);color:var(--chaux)}
-    .pj-style.adv .ph{display:flex;flex-direction:column;justify-content:flex-end;padding:16px 14px;background:var(--basalte)}
-    .pj-style.adv h3{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.08;color:var(--chaux)}
-    .pj-style.adv p{font-size:11.5px;letter-spacing:.06em;color:rgba(245,242,236,.72);margin-top:8px}
-    .pj-style.adv::before{border-color:var(--sable)}
-    .pj-style.adv .tick{background:var(--sable)}
-    .pj-styles.has-choice .pj-style:not(.adv):not([aria-pressed="true"]) .ph img{filter:saturate(.7) brightness(.86)}
-    .pj-styles.has-choice .pj-style:not([aria-pressed="true"]):hover .ph img{filter:none}
-
-    /* modèles — même carte que « Les reliefs signatures » de l'accueil */
-    .pj-models-wrap{display:none;margin-top:40px}
-    .pj-models-wrap.is-on{display:block;animation:pjIn .4s}
-    .pj-models-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:16px}
-    .pj-models-head p{font-size:13.5px;color:var(--encre);max-width:52ch;margin-top:6px}
-    .pj-models{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
-    .pj-model{position:relative;display:block;padding:0;border:0;background:var(--calcaire);text-align:left;overflow:hidden}
-    .pj-model .ph{aspect-ratio:3/4;overflow:hidden;background:var(--calcaire);position:relative}
-    .pj-model .ph img{width:100%;height:100%;object-fit:contain;padding:9% 9% 6%;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1);will-change:transform}
-    .pj-model .ph img.cover{object-fit:cover;padding:0}
-    .pj-model:hover .ph img{transform:scale(1.04)}
-    .pj-model[aria-pressed="true"] .ph img{transform:scale(1.05) translateY(-1%)}
+    /* modèles — les packshots de la page Modèles du site, choix direct (plusieurs possibles) */
+    .pj-models{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:30px 18px}
+    .pj-model{position:relative;display:block;width:100%;padding:0;border:0;background:transparent;text-align:left;cursor:pointer;color:inherit;font:inherit}
+    .pj-model .ph{position:relative;aspect-ratio:3/4;overflow:hidden;background:#fff;display:flex;align-items:center;justify-content:center}
+    .pj-model .ph img{width:100%;height:100%;object-fit:contain;padding:6%;display:block;transition:transform .9s cubic-bezier(.2,.7,.2,1);will-change:transform}
+    .pj-model .ph img.flat{padding:10%;filter:drop-shadow(0 12px 14px rgba(20,20,15,.25))}
+    .pj-model:hover .ph img{transform:scale(1.05)}
+    .pj-model[aria-pressed="true"] .ph img{transform:scale(1.05)}
+    /* cadre de sélection */
+    .pj-model .ph::before{content:"";position:absolute;inset:0;z-index:2;border:2px solid var(--basalte);opacity:0;transition:opacity .25s;pointer-events:none}
+    .pj-model[aria-pressed="true"] .ph::before{opacity:1}
     /* animation packshot : un passage de lumière rasante à la sélection */
-    .pj-model .ph::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:45%;background:linear-gradient(105deg,rgba(245,242,236,0) 0%,rgba(245,242,236,.55) 50%,rgba(245,242,236,0) 100%);transform:skewX(-14deg);opacity:0;pointer-events:none}
+    .pj-model .ph::after{content:"";position:absolute;top:-20%;bottom:-20%;left:-60%;width:45%;background:linear-gradient(105deg,rgba(245,242,236,0) 0%,rgba(245,242,236,.55) 50%,rgba(245,242,236,0) 100%);transform:skewX(-14deg);opacity:0;pointer-events:none;z-index:1}
     .pj-model.is-flash .ph::after{animation:pjSweep .9s cubic-bezier(.4,0,.2,1)}
     @keyframes pjSweep{0%{left:-60%;opacity:0}15%{opacity:1}100%{left:130%;opacity:0}}
-    .pj-model .m-meta{padding:14px 16px 18px;border-top:1px solid var(--line-soft)}
-    .pj-model .m-name{font-size:12.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--basalte);font-weight:400}
-    .pj-model .m-dim{font-size:12.5px;color:var(--encre);margin-top:4px}
-    .pj-model .m-why{font-size:13px;color:var(--encre);margin-top:8px;line-height:1.5}
-    .pj-model::before{content:"";position:absolute;inset:0;z-index:1;border:2px solid var(--basalte);opacity:0;transition:opacity .25s;pointer-events:none}
-    .pj-model[aria-pressed="true"]::before{opacity:1}
-    .pj-model .mchip{display:none;top:12px;left:12px}
+    .pj-model .mchip{display:none;z-index:3}
     .pj-model[aria-pressed="true"] .mchip{display:inline-block;animation:pjIn .3s}
-    .pj-more{margin-top:24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
-    .pj-more .sel{font-size:13px;color:var(--encre)}
-    .pj-more button{background:none;border:0;padding:0;color:var(--basalte)}
-    .pj-all{display:none;margin-top:6px}
-    .pj-all.is-on{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;animation:pjIn .4s}
-    .pj-adv-note{display:none;margin-top:28px;padding:22px 24px;background:var(--calcaire);font-size:15px;color:var(--encre);max-width:64ch}
+    .pj-model .m-meta{padding:14px 2px 0;border-top:1px solid var(--line-soft)}
+    .pj-model .m-name{font-family:var(--serif);font-weight:400;font-size:21px;line-height:1.1;color:var(--basalte)}
+    .pj-model .m-dim{font-size:12.5px;letter-spacing:.04em;color:var(--encre);opacity:.75;margin-top:4px}
+    .pj-sel{min-height:20px;margin-top:26px;font-size:13px;color:var(--encre)}
+    /* « Je veux être conseillé » : une option à part, sous les modèles */
+    .pj-advise{position:relative;display:flex;align-items:center;gap:18px;width:100%;margin-top:14px;padding:20px 24px;border:1px solid var(--line);background:transparent;color:var(--basalte);text-align:left;cursor:pointer;font:inherit;transition:background .25s,color .25s,border-color .25s}
+    .pj-advise .t{flex:1;min-width:0}
+    .pj-advise b{display:block;font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.1}
+    .pj-advise .t span{display:block;font-size:13px;color:var(--encre);margin-top:4px;transition:color .25s}
+    .pj-advise .box{flex:none;width:26px;height:26px;border:1px solid var(--line);display:grid;place-items:center;color:transparent;transition:.25s}
+    .pj-advise .box svg{width:12px;height:12px}
+    .pj-advise:hover{border-color:var(--basalte)}
+    .pj-advise[aria-pressed="true"]{background:var(--basalte);border-color:var(--basalte);color:var(--chaux)}
+    .pj-advise[aria-pressed="true"] .t span{color:rgba(245,242,236,.72)}
+    .pj-advise[aria-pressed="true"] .box{background:var(--chaux);border-color:var(--chaux);color:var(--basalte)}
+    .pj-adv-note{display:none;margin-top:14px;padding:22px 24px;background:var(--calcaire);font-size:15px;color:var(--encre);max-width:64ch}
     .pj-adv-note.is-on{display:block;animation:pjIn .35s}
     .pj-adv-note b{display:block;font-family:var(--serif);font-weight:400;font-size:22px;color:var(--basalte);margin-bottom:6px}
 
@@ -260,7 +241,8 @@
     /* ---------- responsive ---------- */
     @media(max-width:1100px){
       .pj-tiles{grid-template-columns:repeat(4,1fr)}
-      .pj-styles{grid-template-columns:repeat(3,1fr)}
+      .pj-models{gap:26px 14px}
+      .pj-model .m-name{font-size:19px}
     }
     @media(max-width:980px){
       .pj-wrap,.pj-bar{padding-left:20px;padding-right:20px}
@@ -273,6 +255,9 @@
       .pj-done .acts{margin-top:26px}
       .pj-done .acts .btn{display:none} /* l'action est dans la barre fixe, sous le pouce */
       .pj-bar .hint{display:none}
+    }
+    @media(max-width:760px){
+      .pj-models{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}
     }
     @media(max-width:640px){
       .pj-progress .pj-wrap{grid-template-columns:repeat(4,auto);justify-content:start;gap:22px}
@@ -294,15 +279,10 @@
       #dayChips{flex-wrap:nowrap;overflow-x:auto;scroll-snap-type:x proximity;padding-bottom:6px;margin-right:-20px;padding-right:20px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
       #dayChips::-webkit-scrollbar{display:none}
       #dayChips .pj-chip{flex:none;scroll-snap-align:start}
-      .pj-styles{grid-template-columns:repeat(2,1fr)}
-      .pj-style .ph{aspect-ratio:4/3}
-      .pj-style .meta h3{font-size:20px}
-      .pj-style.adv h3{font-size:20px}
-      .pj-models,.pj-all.is-on{grid-template-columns:1fr 1fr}
-      .pj-model .ph img{padding:6%}
-      .pj-model .m-meta{padding:12px 12px 14px}
-      .pj-model .m-why{display:none}
-      .pj-models-head{flex-direction:column;align-items:flex-start;gap:8px}
+      .pj-model .m-name{font-size:19px}
+      .pj-model .m-dim{font-size:12px}
+      .pj-advise{padding:18px 18px}
+      .pj-advise b{font-size:20px}
       .pj-recap{margin-bottom:30px}
       .pj-bar{padding:10px 16px calc(10px + env(safe-area-inset-bottom))}
       .pj-back{padding:12px 6px 12px 0}
@@ -324,8 +304,10 @@
       .pj-chip:hover{border-color:var(--line)}
       .pj-chip[aria-pressed="true"]:hover{border-color:var(--basalte)}
       .pj-opt:hover b{text-decoration:none}
-      .pj-tile:hover .ph img,.pj-style:hover .ph img,.pj-model:hover .ph img{transform:none}
-      .pj-model[aria-pressed="true"]:hover .ph img{transform:scale(1.05) translateY(-1%)}
+      .pj-tile:hover .ph img,.pj-model:hover .ph img{transform:none}
+      .pj-model[aria-pressed="true"]:hover .ph img{transform:scale(1.05)}
+      .pj-advise:hover{border-color:var(--line)}
+      .pj-advise[aria-pressed="true"]:hover{border-color:var(--basalte)}
       .pj-upload:hover{background:var(--calcaire)}
     }
     @media(prefers-reduced-motion:reduce){.pj-model.is-flash .ph::after{animation:none}}
@@ -366,7 +348,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
   <div class="pj-wrap">
     <div class="pj-step" data-step="1"><span class="n">01</span>Projet</div>
     <div class="pj-step" data-step="2"><span class="n">02</span>Espace</div>
-    <div class="pj-step" data-step="3"><span class="n">03</span>Style</div>
+    <div class="pj-step" data-step="3"><span class="n">03</span>Modèle</div>
     <div class="pj-step" data-step="4"><span class="n">04</span>Coordonnées</div>
   </div>
 </div>
@@ -487,38 +469,21 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       </div>
     </section>
 
-    <!-- 03 · STYLE -->
+    <!-- 03 · MODÈLE -->
     <section class="pj-stage" data-stage="3">
       <div class="pj-title">
-        <div class="eyebrow">Votre style</div>
-        <h2>Quelle matière<br>vous <em>attire ?</em></h2>
-        <p class="lead">Nous vous proposons ensuite les modèles les plus adaptés.</p>
+        <div class="eyebrow">Votre modèle</div>
+        <h2>Quel modèle<br>vous <em>plaît ?</em></h2>
+        <p class="lead">Choisissez un ou plusieurs modèles.</p>
       </div>
 
       <div class="pj-block pj-first">
-        <div class="pj-styles" id="styleTiles">
-          <button type="button" class="pj-style" data-field="style_family" data-value="pierre" aria-pressed="false"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div class="ph"><img src="../images/panels/big-rock-800.webp" alt="Relief pierre Big Rock" loading="lazy"></div><div class="meta"><h3>Pierre</h3></div></button>
-          <button type="button" class="pj-style" data-field="style_family" data-value="brique" aria-pressed="false"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div class="ph"><img src="../images/realisations/mattoni-02-800.webp" alt="Relief brique Mattoni" loading="lazy"></div><div class="meta"><h3>Brique</h3></div></button>
-          <button type="button" class="pj-style" data-field="style_family" data-value="beton" aria-pressed="false"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div class="ph"><img src="../images/realisations/beton-brut-02-800.webp" alt="Aspect béton texturé" loading="lazy"></div><div class="meta"><h3>Béton</h3></div></button>
-          <button type="button" class="pj-style" data-field="style_family" data-value="bois" aria-pressed="false"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div class="ph"><img src="../images/realisations/bois-cubo-relief-portrait-800.webp" alt="Relief effet bois Bois Cubo" loading="lazy"></div><div class="meta"><h3>Bois</h3></div></button>
-          <button type="button" class="pj-style" data-field="style_family" data-value="graphique" aria-pressed="false"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div class="ph"><img src="../images/realisations/moon-02-800.webp" alt="Relief sculpté Moon" loading="lazy"></div><div class="meta"><h3>Relief 3D</h3></div></button>
-          <button type="button" class="pj-style adv" data-field="style_family" data-value="surprise" aria-pressed="false"><span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><div class="ph"><h3>Je veux être conseillé</h3><p>Nous choisissons pour vous.</p></div></button>
-        </div>
-        <div class="pj-err" data-err="style">Choisissez une matière, ou laissez-nous vous conseiller.</div>
+        <div class="pj-models" id="modelGrid" role="group" aria-label="Modèles Le Celestone™"></div>
+        <div class="pj-sel" id="selNote" aria-live="polite"></div>
 
+        <button type="button" class="pj-advise" id="adviseBtn" aria-pressed="false"><span class="t"><b>Je veux être conseillé</b><span>Nous choisissons pour vous.</span></span><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span></button>
         <div class="pj-adv-note" id="advNote"><b>Bien noté.</b>Nous sélectionnons pour vous les modèles les plus adaptés à votre projet et vous les présentons sur WhatsApp.</div>
-
-        <div class="pj-models-wrap" id="modelsWrap">
-          <div class="pj-models-head">
-            <div><div class="eyebrow" style="color:var(--encre)">Nos suggestions</div><p>Facultatif : retenez un ou plusieurs modèles, ou laissez-nous vous conseiller.</p></div>
-          </div>
-          <div class="pj-models" id="recModels"></div>
-          <div class="pj-more">
-            <span class="sel" id="selNote"></span>
-            <button type="button" class="link-underline" id="moreBtn">Voir d'autres modèles</button>
-          </div>
-          <div class="pj-all" id="allModels"></div>
-        </div>
+        <div class="pj-err" data-err="style">Choisissez un modèle, ou laissez-nous vous conseiller.</div>
 
         <details class="pj-why" id="whyBox">
           <summary>Pourquoi Le Celestone™ ?<span class="pl"></span></summary>
@@ -596,37 +561,31 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
   var MAX_PHOTOS=4;
   var STEP_MAP={1:2,2:4,3:7,4:9,5:10}; // étapes visibles → current_step Insta-Pro (échelle historique 1–10)
 
-  /* ---------- catalogue (formats = page Modèles du site) ---------- */
+  /* ---------- catalogue : ordre, noms, formats et packshots = page Modèles du site ---------- */
   var IMG='../images/';
+  // family : valeur style_family transmise à Insta-Pro (déduite du modèle choisi, jamais affichée)
   var MODELS=[
-    {id:'big-rock',name:'Big Rock',family:'pierre',size:'240 × 60 & 120 × 60 cm',img:'panels/big-rock-product-800.webp',why:'Relief pierre puissant. Façade, jardin, murs signature.'},
-    {id:'travertin',name:'Travertin',family:'pierre',size:'120 × 57 cm',img:'panels/travertin-product-800.webp',why:'Lecture minérale régulière, élégante et lumineuse.'},
-    {id:'brick',name:'Brick',family:'brique',size:'217 × 28 cm',img:'panels/brick-product-800.webp',why:'Lame de briques en relief, pierre éclatée.'},
-    {id:'mattoni',name:'Mattoni',family:'brique',size:'200 × 50 cm',img:'panels/mattoni-product-800.webp',why:'Brique XL contemporaine, rythme les grandes surfaces.'},
-    {id:'cemento',name:'Cemento',family:'beton',size:'120 × 57 cm',img:'panels/cemento-product-800.webp',why:'Béton texturé, sobre et architectural.'},
-    {id:'beton-brut',name:'Béton Brut',family:'beton',size:'120 × 80 cm',img:'panels/beton-brut-product-800.webp',why:'Aspect brut et minimal pour une architecture épurée.'},
-    {id:'beton-decoffrage',name:'Béton Décoffrage',family:'beton',size:'230 × 50 cm',img:'realisations/beton-decoffrage-salon-800.webp',cover:true,why:'Trame de coffrage graphique, idéale sur les grands pans de mur.'},
-    {id:'cubo',name:'Cubo',family:'graphique',size:'240 × 50 cm',img:'panels/cubo-product-800.webp',why:'Relief 3D géométrique pour un mur décoratif fort.'},
-    {id:'moon',name:'Moon',family:'graphique',size:'120 × 48 cm',img:'panels/moon-product-800.webp',why:'Ondulation sculpturale, beaucoup de profondeur.'},
-    {id:'bois-cubo',name:'Bois Cubo',family:'bois',size:'120 × 39 cm',img:'realisations/bois-cubo-relief-portrait-800.webp',cover:true,why:'Damier effet bois pour apporter chaleur et matière.'}
+    {id:'moon',name:'Moon 1',family:'graphique',size:'120 × 48 cm · 0,57 m²',img:'panels/moon-product-800.webp'},
+    {id:'big-rock',name:'Big Rock',family:'pierre',size:'120 × 60 & 240 × 60 cm',img:'panels/big-rock-product-800.webp'},
+    {id:'cubo',name:'Cubo',family:'graphique',size:'240 × 50 cm · 1,20 m²',img:'panels/cubo-product-800.webp'},
+    {id:'mattoni',name:'Mattoni',family:'brique',size:'200 × 50 cm · 1,00 m²',img:'panels/mattoni-product-800.webp'},
+    {id:'travertin',name:'Travertin',family:'pierre',size:'120 × 57 cm · 0,68 m²',img:'panels/travertin-product-800.webp'},
+    {id:'brick',name:'Brick',family:'brique',size:'217 × 28 cm · 0,61 m²',img:'panels/brick-product-800.webp'},
+    {id:'cemento',name:'Cemento',family:'beton',size:'120 × 57 cm · 0,68 m²',img:'panels/cemento-product-800.webp'},
+    {id:'beton-brut',name:'Béton Brut',family:'beton',size:'120 × 80 cm · 0,96 m²',img:'panels/beton-brut-product-800.webp'},
+    {id:'beton-decoffrage',name:'Béton Décoffrage',family:'beton',size:'230 × 50 cm · 1,15 m²',img:'panels/beton-decoffrage-panel-800.webp',flat:true},
+    {id:'bois-cubo',name:'Bois Cubo',family:'bois',size:'120 × 39 cm · 0,47 m²',img:'panels/bois-cubo-product-800.webp'}
   ];
-  var RECO={
-    pierre:['big-rock','travertin','brick'],
-    brique:['mattoni','brick','beton-decoffrage'],
-    beton:['cemento','beton-brut','beton-decoffrage'],
-    bois:['bois-cubo','big-rock','cemento'],
-    graphique:['cubo','moon','big-rock'],
-    surprise:['big-rock','mattoni','cubo']
-  };
   var TYPE_META={
     'Façade extérieure':{label:'Façade',img:'realisations/mattoni-facade-villa-800.webp',note:'Léger, hydrofuge, posé collé-vissé : conçu pour la façade.',key:'facade'},
     'Jardin / piscine':{label:'Jardin & piscine',img:'realisations/cubo-jardin-piscine-800.webp',note:'Conçu pour l\'extérieur et les environnements humides.',key:'jardin'},
     'Intérieur':{label:'Intérieur',img:'realisations/bigrock-sejour-blanc-800.webp',note:'Prêt à peindre, relief marqué, même sur un petit mur.',key:'interieur'},
     'Commerce / hôtel':{label:'Commerce & hôtel',img:'realisations/bigrock-arches-restaurant-800.webp',note:'Résistant aux chocs, entretien d\'un simple chiffon.',key:'commerce'}
   };
-  var STYLE_LABEL={pierre:'Pierre',brique:'Brique',beton:'Béton',bois:'Bois',graphique:'Relief 3D',surprise:'Conseillé par Deutschconfort'};
+  var ADVISED='Conseillé par Deutschconfort';
   var MODEL_BY_ID={},MODEL_BY_NAME={};
   MODELS.forEach(function(m){MODEL_BY_ID[m.id]=m;MODEL_BY_NAME[m.name]=m;});
+  MODEL_BY_NAME['Moon']=MODEL_BY_ID['moon']; // ancien libellé (dossiers repris)
 
   /* ---------- état ---------- */
   function freshAnswers(){return {project_type:'',measurement_mode:'',surface_m2:null,wall_length:null,wall_height:null,measurement_date_options:[],measurement_address:'',style_family:'',city:'',timeframe:'',selected_model:'',selected_models:[],collection_opened:false,reassurance_requested:''};}
@@ -791,9 +750,10 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     var m=(qs('modele')||'').toLowerCase();
     if(m&&MODEL_BY_ID[m]){
       var mod=MODEL_BY_ID[m];
-      if(!state.answers.style_family)state.answers.style_family=mod.family;
       if(state.answers.selected_models.indexOf(mod.name)<0)state.answers.selected_models.push(mod.name);
       state.answers.selected_model=state.answers.selected_models[0];
+      if(state.answers.style_family==='surprise')state.answers.style_family='';
+      syncFamily();
     }
     if(qs('mesure')==='1'&&!state.answers.measurement_mode)state.answers.measurement_mode='visit';
     // ?produit=… : produit demandé depuis une carte du site (sols, parquets…) → retenu dans le projet
@@ -833,15 +793,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     // photos
     $('photos').addEventListener('change',uploadPhotos);
     // style
-    $$('#styleTiles .pj-style').forEach(function(b){b.addEventListener('click',function(){
-      var v=b.getAttribute('data-value');
-      state.answers.style_family=v;hideErr('style');renderStyle();queueSync();
-      var target=v==='surprise'?$('advNote'):$('modelsWrap');
-      setTimeout(function(){smoothTo(target);},80);
-    });});
-    $('moreBtn').addEventListener('click',function(){
-      state.answers.collection_opened=!state.answers.collection_opened;renderModels();queueSync();
-    });
+    $('adviseBtn').addEventListener('click',toggleAdvise);
     $('whyBox').addEventListener('toggle',function(){if(this.open){state.answers.reassurance_requested='yes';queueSync();}});
     // coordonnées
     $('fullName').addEventListener('input',function(){state.contact.full_name=this.value;queueSync();});
@@ -1020,65 +972,57 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     renderPhotos();localSave();
   }
 
-  /* style + modèles */
-  function renderStyle(){
-    var s=state.answers.style_family;
-    $('styleTiles').classList.toggle('has-choice',!!s);
-    $$('#styleTiles .pj-style').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-value')===s?'true':'false');});
-    $('advNote').classList.toggle('is-on',s==='surprise');
-    $('modelsWrap').classList.toggle('is-on',!!s&&s!=='surprise');
-    if(s&&s!=='surprise')renderModels();
-  }
+  /* modèles (packshots) + « Je veux être conseillé » */
   function selected(){return Array.isArray(state.answers.selected_models)?state.answers.selected_models:[];}
+  function wallModels(){return selected().filter(function(n){return !!MODEL_BY_NAME[n];});}
+  // style_family (Insta-Pro) : « surprise » si conseillé, sinon la famille du premier modèle retenu
+  function syncFamily(){
+    if(state.answers.style_family==='surprise')return;
+    var w=wallModels();state.answers.style_family=w.length?MODEL_BY_NAME[w[0]].family:'';
+  }
   function modelCard(m){
-    var isSel=selected().indexOf(m.name)>=0;
-    var b=document.createElement('button');b.type='button';b.className='pj-model';b.setAttribute('aria-pressed',isSel?'true':'false');b.setAttribute('data-id',m.id);
-    b.innerHTML='<span class="mchip">Retenu</span><div class="ph"><img src="'+IMG+esc(m.img)+'" alt="'+esc(m.name)+'" loading="lazy"'+(m.cover?' class="cover"':'')+'></div>'+
-      '<div class="m-meta"><div class="m-name">'+esc(m.name)+'</div><div class="m-dim">'+esc(m.size)+'</div><div class="m-why">'+esc(m.why)+'</div></div>';
+    var b=document.createElement('button');b.type='button';b.className='pj-model';b.setAttribute('aria-pressed','false');b.setAttribute('data-id',m.id);
+    b.innerHTML='<div class="ph"><span class="mchip">Retenu</span><img src="'+IMG+esc(m.img)+'" alt="Panneau mural '+esc(m.name)+' — Le Celestone™" loading="lazy"'+(m.flat?' class="flat"':'')+'></div>'+
+      '<div class="m-meta"><div class="m-name">'+esc(m.name)+'</div><div class="m-dim">'+esc(m.size)+'</div></div>';
     b.addEventListener('click',function(){toggleModel(m,b);});
     return b;
   }
   function toggleModel(m,btn){
     var arr=selected().slice(),i=arr.indexOf(m.name);
+    if(i<0&&m.id==='moon')i=arr.indexOf('Moon');
     if(i>=0)arr.splice(i,1);else arr.push(m.name);
     state.answers.selected_models=arr;state.answers.selected_model=arr[0]||'';
-    // état visuel sans reconstruire la grille : le packshot reste en place
-    $$('.pj-model').forEach(function(b){
-      var on=arr.indexOf(MODEL_BY_ID[b.getAttribute('data-id')].name)>=0;
+    if(i<0&&state.answers.style_family==='surprise')state.answers.style_family=''; // un modèle choisi remplace « conseillé »
+    syncFamily();hideErr('style');
+    if(i<0){btn.classList.remove('is-flash');void btn.offsetWidth;btn.classList.add('is-flash');}
+    renderStyle();queueSync();
+  }
+  function toggleAdvise(){
+    if(state.answers.style_family==='surprise'){state.answers.style_family='';syncFamily();}
+    else{
+      // conseillé : on retire les modèles muraux cochés (un produit venu d'une fiche sols/parquets reste)
+      var keep=selected().filter(function(n){return !MODEL_BY_NAME[n];});
+      state.answers.selected_models=keep;state.answers.selected_model=keep[0]||'';
+      state.answers.style_family='surprise';
+      setTimeout(function(){smoothTo($('adviseBtn'));},80);
+    }
+    hideErr('style');renderStyle();queueSync();
+  }
+  function renderStyle(){
+    var grid=$('modelGrid');
+    if(!grid.children.length)MODELS.forEach(function(m){grid.appendChild(modelCard(m));});
+    var arr=selected();
+    $$('#modelGrid .pj-model').forEach(function(b){
+      var m=MODEL_BY_ID[b.getAttribute('data-id')];
+      var on=arr.indexOf(m.name)>=0||(m.id==='moon'&&arr.indexOf('Moon')>=0);
       b.setAttribute('aria-pressed',on?'true':'false');
     });
-    if(i<0){btn.classList.remove('is-flash');void btn.offsetWidth;btn.classList.add('is-flash');}
-    renderSelNote();queueSync();
-  }
-  function renderSelNote(){
-    var arr=selected();
+    var adv=state.answers.style_family==='surprise';
+    $('adviseBtn').setAttribute('aria-pressed',adv?'true':'false');
+    $('advNote').classList.toggle('is-on',adv);
     $('selNote').textContent=arr.length?(arr.length>1?arr.length+' modèles retenus : ':'Modèle retenu : ')+arr.join(' · '):'';
   }
-  function renderModels(){
-    var fam=state.answers.style_family;
-    var ids=RECO[fam]||RECO.surprise;
-    var rec=ids.map(function(id){return MODEL_BY_ID[id];}).filter(Boolean);
-    // les modèles déjà retenus (ex. depuis une fiche modèle) apparaissent en tête
-    selected().forEach(function(n){var m=MODEL_BY_NAME[n];if(m&&rec.indexOf(m)<0)rec.unshift(m);});
-    rec=rec.slice(0,3);
-    var root=$('recModels');
-    var key=fam+'|'+rec.map(function(m){return m.id;}).join(',');
-    if(root.getAttribute('data-fam')!==key){
-      root.innerHTML='';rec.forEach(function(m){root.appendChild(modelCard(m));});
-      root.setAttribute('data-fam',key);
-    }
-    var all=$('allModels');
-    var open=!!state.answers.collection_opened;
-    all.classList.toggle('is-on',open);
-    $('moreBtn').textContent=open?'Réduire':'Voir d\'autres modèles';
-    if(open){
-      var rest=MODELS.filter(function(m){return rec.indexOf(m)<0;});
-      var k2=rest.map(function(m){return m.id;}).join(',');
-      if(all.getAttribute('data-key')!==k2){all.innerHTML='';rest.forEach(function(m){all.appendChild(modelCard(m));});all.setAttribute('data-key',k2);}
-    }else{all.innerHTML='';all.removeAttribute('data-key');}
-    $$('.pj-model').forEach(function(b){b.setAttribute('aria-pressed',selected().indexOf(MODEL_BY_ID[b.getAttribute('data-id')].name)>=0?'true':'false');});
-    renderSelNote();
-  }
+  function modelLabel(){return selected().length?selected().join(', '):ADVISED;}
 
   /* coordonnées */
   function renderContact(){
@@ -1095,7 +1039,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     if(a.surface_m2)out.push('≈ '+fmt(a.surface_m2)+' m²');
     else if(a.measurement_mode==='visit')out.push('Prise de mesures');
     if(selected().length)out.push(selected().join(' · '));
-    else if(a.style_family)out.push(STYLE_LABEL[a.style_family]||a.style_family);
+    else if(a.style_family==='surprise')out.push(ADVISED);
     if(a.timeframe)out.push(a.timeframe);
     var n=state.photo_count||thumbs.length;if(n)out.push(n+(n>1?' photos':' photo'));
     return out;
@@ -1110,7 +1054,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       nx.innerHTML='<svg class="wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 1.9.8 2 .1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg>Continuer sur WhatsApp';
       hint.textContent='';
     }else if(state.stage===4){nx.textContent='Recevoir mon estimation';hint.textContent='Dernière étape';}
-    else{nx.textContent='Continuer';hint.textContent=state.stage===1?'Moins de 2 minutes':(state.stage===2?'Photo facultative':'Le choix du modèle est facultatif');}
+    else{nx.textContent='Continuer';hint.textContent=state.stage===1?'Moins de 2 minutes':(state.stage===2?'Photo facultative':'Plusieurs choix possibles');}
   }
 
   /* ---------- validation & navigation ---------- */
@@ -1129,7 +1073,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       else if(m==='visit'&&!(a.measurement_date_options||[]).length){showErr('measure','Choisissez au moins un jour pour la prise de mesures.');ok=false;}
       if(!ok)first=$('blkMeasure');
     }
-    if(stage===3&&!a.style_family){showErr('style');ok=false;first=$('styleTiles');}
+    if(stage===3&&!selected().length&&a.style_family!=='surprise'){showErr('style');ok=false;first=$('modelGrid');}
     if(stage===4){
       // Safari/iOS : l'autofill remplit parfois sans événement input → on relit le DOM
       state.contact.full_name=String($('fullName').value||'').trim();
@@ -1193,7 +1137,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     rows.push(['Surface',a.surface_m2?'≈ '+fmt(a.surface_m2)+' m²':(a.measurement_mode==='visit'?'Prise de mesures':'À préciser')]);
     if(a.measurement_mode==='visit'&&(a.measurement_date_options||[]).length)rows.push(['Disponibilités',a.measurement_date_options.map(fmtDate).join(' · ')]);
     if(a.timeframe)rows.push(['Échéance',a.timeframe]);
-    rows.push(['Modèle',selected().length?selected().join(', '):(a.style_family?(STYLE_LABEL[a.style_family]||'')+(a.style_family!=='surprise'?' · conseillé par Deutschconfort':''):'Conseillé par Deutschconfort')]);
+    rows.push([selected().length>1?'Modèles':'Modèle',modelLabel()]);
     var n=state.photo_count||thumbs.length;if(n)rows.push(['Photos',String(n)]);
     if(state.code&&!/^LOCAL/.test(state.code))rows.push(['Référence',state.code]);
     $('doneRows').innerHTML=rows.map(function(r){return '<div class="row"><span>'+esc(r[0])+'</span><b>'+esc(r[1])+'</b></div>';}).join('');
@@ -1208,8 +1152,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       'Surface : '+(a.surface_m2?'≈ '+fmt(a.surface_m2)+' m²':(a.measurement_mode==='visit'?'prise de mesures souhaitée':'à préciser')),
       a.measurement_mode==='visit'&&(a.measurement_date_options||[]).length?'Disponibilités : '+a.measurement_date_options.map(fmtDate).join(' / '):null,
       a.measurement_mode==='visit'&&a.measurement_address?'Adresse : '+a.measurement_address:null,
-      'Style : '+(STYLE_LABEL[a.style_family]||'non précisé'),
-      selected().length?'Modèles : '+selected().join(', '):null,
+      (selected().length>1?'Modèles : ':'Modèle : ')+modelLabel(),
       'Échéance : '+(a.timeframe||'non précisée'),
       'Photos : '+(state.photo_count||thumbs.length||0)+(state.photos_pending?' (je vous les envoie ici)':'')
     ].filter(Boolean);
