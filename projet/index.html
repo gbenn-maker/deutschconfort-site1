@@ -15,7 +15,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/site.css">
-  <link rel="preload" as="image" href="../images/realisations/mattoni-facade-villa-800.webp">
+  <link rel="preload" as="image" href="../images/realisations/mattoni-facade-villa-800.webp" media="(min-width:981px)">
+  <link rel="preload" as="image" href="../images/realisations/facade-villa-relief-angle-800.webp" media="(max-width:980px)">
   <style>
     /* ============================================================
        /projet — configurateur de projet Le Celestone™
@@ -34,9 +35,11 @@
     .pj-tel svg{width:15px;height:15px}
     .pj-head .hcall{display:none}
 
-    /* fil d'étapes : 01 — Projet · 02 — Espace · 03 — Modèle · 04 — Coordonnées */
+    /* fil d'étapes : 01 — Projet · 02 — Espace · 03 — Modèle · 04 — Envoi (le parcours « Ouvrir mon compte » saute 02 et 03) */
     .pj-progress{border-bottom:1px solid var(--line);background:var(--chaux)}
     .pj-progress .pj-wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+    .pj-progress.is-short .pj-wrap{grid-template-columns:repeat(2,1fr)}
+    .pj-step.is-skip{display:none}
     .pj-step{position:relative;padding:16px 0 15px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--encre);opacity:.42;transition:opacity .3s;white-space:nowrap}
     .pj-step::after{content:"";position:absolute;left:0;right:6px;bottom:-1px;height:1px;background:var(--basalte);transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
     .pj-step.is-done{opacity:.7}
@@ -78,6 +81,30 @@
     .pj-tile[aria-pressed="true"] .tick{opacity:1;transform:none}
     .pj-tiles.has-choice .pj-tile:not([aria-pressed="true"]) .ph img{filter:saturate(.7) brightness(.86)}
     .pj-tiles.has-choice .pj-tile:not([aria-pressed="true"]):hover .ph img{filter:none}
+    .pj-tile .ph picture{display:block;width:100%;height:100%}
+    .pj-tile .ph img.pro,.pj-card .ph img.pro{object-position:50% 22%}
+
+    /* Professionnel : 4 profils + avantages du compte */
+    .pj-pro{display:none;margin-top:34px}
+    .pj-pro.is-on{display:block;animation:pjIn .4s}
+    .pj-pro-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+    .pj-pro-opt{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:7px;min-height:132px;padding:20px 20px 18px;border:1px solid var(--line);background:transparent;color:var(--basalte);text-align:left;font:inherit;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
+    .pj-pro-opt b{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.1;padding-right:26px}
+    .pj-pro-opt .s{font-size:12.5px;line-height:1.4;color:var(--encre);transition:color .25s}
+    .pj-pro-opt .box{position:absolute;top:14px;right:14px;width:22px;height:22px;border:1px solid var(--line);display:grid;place-items:center;color:transparent;transition:.25s}
+    .pj-pro-opt .box svg{width:11px;height:11px}
+    .pj-pro-opt.is-account{background:var(--calcaire);border-color:var(--calcaire)}
+    .pj-pro-opt:hover{border-color:var(--basalte)}
+    .pj-pro-opt[aria-pressed="true"]{background:var(--basalte);border-color:var(--basalte);color:var(--chaux)}
+    .pj-pro-opt[aria-pressed="true"] .s{color:rgba(245,242,236,.72)}
+    .pj-pro-opt[aria-pressed="true"] .box{background:var(--chaux);border-color:var(--chaux);color:var(--basalte)}
+    .pj-perks-box{margin-top:18px}
+    .pj-perks-box summary{font-size:19px}
+    .pj-perks{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 44px;padding:2px 0 8px}
+    .pj-perks li{padding:15px 0 14px;border-top:1px solid var(--line-soft)}
+    .pj-perks li b{display:block;font-weight:400;font-size:16px;color:var(--basalte);line-height:1.35}
+    .pj-perks li span{display:block;font-size:13.5px;color:var(--encre);margin-top:3px}
+    .pj-perks-go{margin-top:14px;background:none;border:0;padding:0 0 4px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--basalte);border-bottom:1px solid var(--basalte)}
 
     /* rassurance contextuelle */
     .pj-note{display:none;margin-top:14px;font-size:14.5px;color:var(--encre);padding-left:14px;border-left:1px solid var(--basalte)}
@@ -194,6 +221,10 @@
     .pj-form{max-width:520px;display:grid;gap:26px}
     .pj-email-toggle{background:none;border:0;padding:0;text-align:left;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--basalte);border-bottom:1px solid var(--basalte);padding-bottom:4px;justify-self:start}
     .pj-privacy{font-size:12.5px;color:var(--encre);max-width:52ch;margin-top:8px}
+    .pj-send-note{display:flex;gap:14px;align-items:flex-start;margin-top:6px;padding:18px 20px;background:var(--calcaire);font-size:14px;color:var(--encre);max-width:520px}
+    .pj-send-note svg{flex:none;width:20px;height:20px;color:var(--basalte);margin-top:1px}
+    .pj-send-note b{font-weight:400;color:var(--basalte)}
+    .pj-wa-send{display:none}
     .hp{position:absolute!important;left:-9999px!important;opacity:0}
 
     /* erreurs */
@@ -250,6 +281,8 @@
       .pj-tel{display:none}
       .pj-tiles{grid-template-columns:repeat(2,1fr)}
       .pj-tile .ph{aspect-ratio:4/3}
+      .pj-pro-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .pj-perks{grid-template-columns:1fr}
       .pj-photo{grid-template-columns:1fr;gap:26px}
       .pj-done{grid-template-columns:1fr;gap:34px}
       .pj-done .acts{margin-top:26px}
@@ -260,7 +293,7 @@
       .pj-models{grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 12px}
     }
     @media(max-width:640px){
-      .pj-progress .pj-wrap{grid-template-columns:repeat(4,auto);justify-content:start;gap:22px}
+      .pj-progress .pj-wrap,.pj-progress.is-short .pj-wrap{grid-template-columns:repeat(4,auto);justify-content:start;gap:22px}
       .pj-step{font-size:0;padding:14px 0 13px;opacity:.35}
       .pj-step .n{font-size:12px;margin:0}
       .pj-step.is-active{font-size:10.5px;letter-spacing:.2em}
@@ -273,6 +306,11 @@
       .pj-tile .meta{padding:14px 14px 13px}
       .pj-tile .meta h3{font-size:21px}
       .pj-tile .meta p{display:none}
+      .pj-pro{margin-top:28px}
+      .pj-pro-opt{min-height:112px;padding:16px 14px 14px}
+      .pj-pro-opt b{font-size:19px;padding-right:22px}
+      .pj-pro-opt .s{font-size:12px}
+      .pj-pro-opt .box{top:11px;right:11px}
       .pj-cols{grid-template-columns:1fr 1fr;gap:16px}
       .pj-sub{padding-left:0}
       /* jours de visite : une seule ligne, défilement au pouce */
@@ -294,6 +332,10 @@
       .pj-card .rows{padding:6px 18px 10px}
       .pj-foot{flex-direction:column;gap:6px}
     }
+    @media(max-width:400px){
+      .pj-wa-send{letter-spacing:.1em;padding-left:12px;padding-right:12px;gap:8px;white-space:nowrap}
+      .pj-back{letter-spacing:.12em}
+    }
     @media(max-width:380px){
       .pj-chip{padding:0 14px;font-size:11px}
       .pj-chip.day{min-width:64px}
@@ -307,6 +349,9 @@
       .pj-tile:hover .ph img,.pj-model:hover .ph img{transform:none}
       .pj-model[aria-pressed="true"]:hover .ph img{transform:scale(1.05)}
       .pj-advise:hover{border-color:var(--line)}
+      .pj-pro-opt:hover{border-color:var(--line)}
+      .pj-pro-opt.is-account:hover{border-color:var(--calcaire)}
+      .pj-pro-opt[aria-pressed="true"]:hover{border-color:var(--basalte)}
       .pj-advise[aria-pressed="true"]:hover{border-color:var(--basalte)}
       .pj-upload:hover{background:var(--calcaire)}
     }
@@ -346,10 +391,10 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 
 <div class="pj-progress" id="progress" aria-label="Avancement">
   <div class="pj-wrap">
-    <div class="pj-step" data-step="1"><span class="n">01</span>Projet</div>
-    <div class="pj-step" data-step="2"><span class="n">02</span>Espace</div>
-    <div class="pj-step" data-step="3"><span class="n">03</span>Modèle</div>
-    <div class="pj-step" data-step="4"><span class="n">04</span>Coordonnées</div>
+    <div class="pj-step" data-step="1"><span class="n">01</span><span class="l">Projet</span></div>
+    <div class="pj-step" data-step="2"><span class="n">02</span><span class="l">Espace</span></div>
+    <div class="pj-step" data-step="3"><span class="n">03</span><span class="l">Modèle</span></div>
+    <div class="pj-step" data-step="4"><span class="n">04</span><span class="l">Envoi</span></div>
   </div>
 </div>
 
@@ -368,7 +413,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
         <div class="pj-tiles" id="typeTiles">
           <button type="button" class="pj-tile" data-field="project_type" data-value="Façade extérieure" aria-pressed="false">
             <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
-            <div class="ph"><img src="../images/realisations/mattoni-facade-villa-800.webp" alt="Façade de villa contemporaine habillée en Mattoni"></div>
+            <div class="ph"><picture><source media="(max-width:980px)" srcset="../images/realisations/facade-villa-relief-angle-800.webp"><img src="../images/realisations/mattoni-facade-villa-800.webp" alt="Façade de villa contemporaine habillée d'un relief Le Celestone™"></picture></div>
             <div class="meta"><h3>Façade</h3><p>Villa · immeuble · entrée</p></div>
           </button>
           <button type="button" class="pj-tile" data-field="project_type" data-value="Jardin / piscine" aria-pressed="false">
@@ -381,18 +426,43 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
             <div class="ph"><img src="../images/realisations/bigrock-sejour-blanc-800.webp" alt="Séjour lumineux avec un mur d'accent en Big Rock blanc" loading="lazy"></div>
             <div class="meta"><h3>Intérieur</h3><p>Salon · chambre · mur TV</p></div>
           </button>
-          <button type="button" class="pj-tile" data-field="project_type" data-value="Commerce / hôtel" aria-pressed="false">
+          <button type="button" class="pj-tile" data-field="project_type" data-value="Professionnel" aria-pressed="false">
             <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
-            <div class="ph"><img src="../images/realisations/bigrock-arches-restaurant-800.webp" alt="Arches d'un restaurant habillées en Big Rock blanc" loading="lazy"></div>
-            <div class="meta"><h3>Commerce &amp; hôtel</h3><p>Restaurant · boutique · bureau</p></div>
+            <div class="ph"><img class="pro" src="../images/realisations/mur-relief-eclairage-pro-800.webp" alt="Mur en relief sous un éclairage rasant, dans un intérieur professionnel" loading="lazy"></div>
+            <div class="meta"><h3>Professionnel</h3><p>Architecte · promoteur · distributeur</p></div>
           </button>
         </div>
         <p class="pj-note" id="typeNote"></p>
         <div class="pj-err" data-err="project_type">Choisissez le type de projet pour continuer.</div>
+
+        <div class="pj-pro" id="proPanel">
+          <h2 class="pj-q">Vous êtes…</h2>
+          <div class="pj-pro-grid" id="proGrid" role="group" aria-label="Profil professionnel">
+            <button type="button" class="pj-pro-opt" data-pro="architecte" aria-pressed="false"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>Architecte</b><span class="s">Architecte · décorateur · bureau d'études</span></button>
+            <button type="button" class="pj-pro-opt" data-pro="immobilier" aria-pressed="false"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>Projet immobilier / commercial</b><span class="s">Promotion · hôtel · commerce · bureaux</span></button>
+            <button type="button" class="pj-pro-opt" data-pro="distributeur" aria-pressed="false"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>Distributeur</b><span class="s">Showroom · négoce · revente</span></button>
+            <button type="button" class="pj-pro-opt is-account" data-pro="compte" aria-pressed="false"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>Ouvrir mon compte</b><span class="s">Compte professionnel Deutschconfort</span></button>
+          </div>
+          <div class="pj-err" data-err="pro_profile">Choisissez votre profil pour continuer.</div>
+          <details class="pj-why pj-perks-box" id="perksBox">
+            <summary>Découvrir les avantages de l'ouverture de compte<span class="pl"></span></summary>
+            <div class="body">
+              <ul class="pj-perks">
+                <li><b>Conditions professionnelles</b><span>Des conditions dédiées, établies selon vos volumes.</span></li>
+                <li><b>Stock de gros, en continu</b><span>Grandes quantités disponibles en continu, pour suivre vos chantiers.</span></li>
+                <li><b>Kit échantillons offert</b><span>Les modèles en main, catalogue inclus. Réservé aux 50 premiers professionnels.</span></li>
+                <li><b>Formation de pose offerte</b><span>Vos équipes formées à la pose en un ou deux chantiers.</span></li>
+                <li><b>Demandes de votre région</b><span>Distributeurs : les demandes de clients de votre zone vous sont transmises.</span></li>
+                <li><b>Un interlocuteur direct</b><span>Vos demandes, devis et chantiers suivis sur WhatsApp.</span></li>
+              </ul>
+              <button type="button" class="pj-perks-go" id="perksGo">Ouvrir mon compte</button>
+            </div>
+          </details>
+        </div>
       </div>
 
       <div class="pj-block" id="blkCity">
-        <h2 class="pj-q">Où se trouve le projet ?</h2>
+        <h2 class="pj-q" id="cityQ">Où se trouve le projet ?</h2>
         <div class="pj-chips" id="cityChips">
           <button type="button" class="pj-chip" data-city="Casablanca" aria-pressed="false">Casablanca</button>
           <button type="button" class="pj-chip" data-city="Rabat" aria-pressed="false">Rabat</button>
@@ -407,7 +477,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       </div>
 
       <div class="pj-block" id="blkWhen">
-        <h2 class="pj-q">Quand souhaitez-vous avancer ?</h2>
+        <h2 class="pj-q" id="whenQ">Quand souhaitez-vous avancer ?</h2>
         <div class="pj-chips" id="whenChips">
           <button type="button" class="pj-chip" data-field="timeframe" data-value="Dès que possible" aria-pressed="false">Dès que possible</button>
           <button type="button" class="pj-chip" data-field="timeframe" data-value="Dans 1 mois" aria-pressed="false">Dans 1 mois</button>
@@ -421,9 +491,28 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     <!-- 02 · ESPACE -->
     <section class="pj-stage" data-stage="2">
       <div class="pj-title">
-        <div class="eyebrow">Votre espace</div>
-        <h2>Quelle est la taille<br>du <em>mur ?</em></h2>
-        <p class="lead">Une estimation suffit. Nous affinons ensemble.</p>
+        <div class="eyebrow" id="s2Eyebrow">Votre espace</div>
+        <h2 id="s2Title">Quelle est la taille<br>du <em>mur ?</em></h2>
+        <p class="lead" id="s2Lead">Une estimation suffit. Nous affinons ensemble.</p>
+      </div>
+
+      <!-- distributeur : volumes + type de point de vente (à la place de la surface) -->
+      <div class="pj-block pj-first" id="blkVolume" style="display:none">
+        <h2 class="pj-q">Volumes envisagés</h2>
+        <div class="pj-chips" id="volumeChips">
+          <button type="button" class="pj-chip" data-value="Premier stock d'essai" aria-pressed="false">Premier stock d'essai</button>
+          <button type="button" class="pj-chip" data-value="Jusqu'à 100 m² par mois" aria-pressed="false">Jusqu'à 100 m² / mois</button>
+          <button type="button" class="pj-chip" data-value="100 à 300 m² par mois" aria-pressed="false">100 à 300 m² / mois</button>
+          <button type="button" class="pj-chip" data-value="Plus de 300 m² par mois" aria-pressed="false">Plus de 300 m² / mois</button>
+        </div>
+        <div class="pj-err" data-err="volume">Indiquez un volume, même approximatif.</div>
+        <h2 class="pj-q" style="margin-top:40px">Votre activité<small>Facultatif.</small></h2>
+        <div class="pj-chips" id="salesChips">
+          <button type="button" class="pj-chip" data-value="Showroom" aria-pressed="false">Showroom</button>
+          <button type="button" class="pj-chip" data-value="Négoce / dépôt" aria-pressed="false">Négoce / dépôt</button>
+          <button type="button" class="pj-chip" data-value="Entreprise de pose" aria-pressed="false">Entreprise de pose</button>
+          <button type="button" class="pj-chip" data-value="En projet" aria-pressed="false">En projet</button>
+        </div>
       </div>
 
       <div class="pj-block pj-first" id="blkMeasure">
@@ -440,7 +529,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
             </div>
             <div class="pj-result" id="surfaceCalc" aria-live="polite"></div>
           </div>
-          <button type="button" class="pj-opt" data-field="measurement_mode" data-value="unknown" aria-pressed="false"><span class="r"></span><span><b>Je ne sais pas encore</b><span>Une photo nous suffit souvent pour vous orienter.</span></span></button>
+          <button type="button" class="pj-opt" data-field="measurement_mode" data-value="unknown" aria-pressed="false"><span class="r"></span><span><b>Je ne sais pas encore</b><span id="unknownHint">Une photo nous suffit souvent pour vous orienter.</span></span></button>
           <button type="button" class="pj-opt" data-field="measurement_mode" data-value="visit" aria-pressed="false"><span class="r"></span><span><b>Je souhaite une prise de mesures</b><span>Casablanca et environs. Nous confirmons l'heure avec vous.</span></span></button>
           <div class="pj-sub" data-sub="visit">
             <h3 class="pj-q">Vos disponibilités<small>Choisissez jusqu'à trois jours.</small></h3>
@@ -454,8 +543,8 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       <div class="pj-block" id="blkPhoto">
         <div class="pj-photo">
           <div>
-            <h2 class="pj-q" style="font-family:var(--serif);font-size:30px;letter-spacing:-.005em;text-transform:none;line-height:1.1;margin-bottom:10px">Montrez-nous le mur.</h2>
-            <p style="font-size:15px;color:var(--encre);max-width:40ch">Une photo suffit souvent pour mieux vous orienter. Facultatif, mais précieux.</p>
+            <h2 class="pj-q" id="photoTitle" style="font-family:var(--serif);font-size:30px;letter-spacing:-.005em;text-transform:none;line-height:1.1;margin-bottom:10px">Montrez-nous le mur.</h2>
+            <p id="photoLead" style="font-size:15px;color:var(--encre);max-width:40ch">Une photo suffit souvent pour mieux vous orienter. Facultatif, mais précieux.</p>
             <div class="pj-thumbs" id="thumbs"></div>
             <div class="pj-photo-state" id="photoState"></div>
           </div>
@@ -473,8 +562,8 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     <section class="pj-stage" data-stage="3">
       <div class="pj-title">
         <div class="eyebrow">Votre modèle</div>
-        <h2>Quel modèle<br>vous <em>plaît ?</em></h2>
-        <p class="lead">Choisissez un ou plusieurs modèles.</p>
+        <h2 id="s3Title">Quel modèle<br>vous <em>plaît ?</em></h2>
+        <p class="lead" id="s3Lead">Choisissez un ou plusieurs modèles.</p>
       </div>
 
       <div class="pj-block pj-first">
@@ -498,19 +587,32 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     <!-- 04 · COORDONNÉES -->
     <section class="pj-stage" data-stage="4">
       <div class="pj-title">
-        <div class="eyebrow">Votre estimation</div>
-        <h2>Recevez votre<br><em>estimation.</em></h2>
-        <p class="lead">Nous revenons vers vous sur WhatsApp avec les modèles adaptés et la prochaine étape.</p>
+        <div class="eyebrow" id="s4Eyebrow">Votre demande</div>
+        <h2 id="s4Title">Envoyez votre<br><em>demande.</em></h2>
+        <p class="lead" id="s4Lead">Elle arrive directement sur notre WhatsApp, prête à être traitée.</p>
       </div>
       <div class="pj-block pj-first">
         <div class="pj-recap" id="recapChips"></div>
         <form class="pj-form" id="contactForm" autocomplete="on" novalidate>
           <div class="pj-field"><label for="fullName">Prénom et nom</label><input id="fullName" type="text" autocomplete="name" placeholder="Votre nom"></div>
-          <div class="pj-field"><label for="phone">WhatsApp</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+212 6…"><div class="pj-err" data-err="contact">Indiquez votre nom et un numéro WhatsApp valide.</div></div>
+          <div class="pj-field" id="companyField" style="display:none"><label for="company" id="companyLabel">Société</label><input id="company" type="text" autocomplete="organization" placeholder="Nom de la société"></div>
+          <div id="activityBlock" style="display:none">
+            <h3 class="pj-q" style="font-size:11px;margin-bottom:12px">Votre activité</h3>
+            <div class="pj-chips" id="activityChips">
+              <button type="button" class="pj-chip" data-value="architecte" aria-pressed="false">Architecte</button>
+              <button type="button" class="pj-chip" data-value="decorateur" aria-pressed="false">Décorateur</button>
+              <button type="button" class="pj-chip" data-value="promoteur" aria-pressed="false">Promoteur</button>
+              <button type="button" class="pj-chip" data-value="poseur" aria-pressed="false">Entreprise de pose</button>
+              <button type="button" class="pj-chip" data-value="revendeur" aria-pressed="false">Revendeur</button>
+              <button type="button" class="pj-chip" data-value="autre" aria-pressed="false">Autre</button>
+            </div>
+          </div>
+          <div class="pj-field"><label for="phone">Votre numéro WhatsApp</label><input id="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+212 6…"><div class="pj-err" data-err="contact">Indiquez votre nom et un numéro WhatsApp valide.</div></div>
           <button type="button" class="pj-email-toggle" id="emailToggle">+ Ajouter un e-mail</button>
           <div class="pj-field" id="emailField" style="display:none"><label for="email">E-mail <span style="text-transform:none;letter-spacing:0;opacity:.7">(facultatif)</span></label><input id="email" type="email" autocomplete="email" placeholder="vous@exemple.com"></div>
           <input class="hp" id="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <p class="pj-privacy">Vos informations servent uniquement à préparer votre estimation. Rien n'est publié, rien n'est partagé.</p>
+          <div class="pj-send-note"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 1.9.8 2 .1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg><span><b>Envoi par WhatsApp.</b> Votre demande s'ouvre dans WhatsApp, rédigée et classée : il ne vous reste qu'à appuyer sur Envoyer.</span></div>
+          <p class="pj-privacy">Vos informations servent uniquement à traiter votre demande. Rien n'est publié, rien n'est partagé.</p>
         </form>
       </div>
     </section>
@@ -519,11 +621,11 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     <section class="pj-stage" data-stage="5">
       <div class="pj-done">
         <div class="txt">
-          <div class="eyebrow">C'est noté</div>
-          <h2>Votre projet<br>est <em>prêt.</em></h2>
+          <div class="eyebrow">Dernier geste</div>
+          <h2>Appuyez sur<br><em>Envoyer.</em></h2>
           <p class="next" id="nextText"></p>
           <div class="acts">
-            <a class="btn btn-fill" id="waBtn" href="#" rel="noreferrer"><svg class="wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:17px;height:17px"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 1.9.8 2 .1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg>Continuer sur WhatsApp</a>
+            <a class="btn btn-fill" id="waBtn" href="#" rel="noreferrer"><svg class="wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:17px;height:17px"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 1.9.8 2 .1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg>Rouvrir WhatsApp</a>
             <a class="link-underline" href="../realisations.html">Voir les réalisations</a>
           </div>
         </div>
@@ -547,6 +649,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     <button type="button" class="pj-back" id="backBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Retour</button>
     <span class="hint" id="barHint"></span>
     <button type="button" class="btn btn-fill pj-next" id="nextBtn">Continuer</button>
+    <a class="btn btn-fill pj-next pj-wa-send" id="waSend" href="#" rel="noreferrer"><svg class="wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 1.9.8 2 .1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg><span id="waSendLabel">Envoyer ma demande sur WhatsApp</span></a>
   </div>
 </div>
 
@@ -577,19 +680,30 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     {id:'bois-cubo',name:'Bois Cubo',family:'bois',size:'120 × 39 cm · 0,47 m²',img:'panels/bois-cubo-product-800.webp'}
   ];
   var TYPE_META={
-    'Façade extérieure':{label:'Façade',img:'realisations/mattoni-facade-villa-800.webp',note:'Léger, hydrofuge, posé collé-vissé : conçu pour la façade.',key:'facade'},
+    'Façade extérieure':{label:'Façade',img:'realisations/mattoni-facade-villa-800.webp',imgMobile:'realisations/facade-villa-relief-angle-800.webp',note:'Léger, hydrofuge, posé collé-vissé : conçu pour la façade.',key:'facade'},
     'Jardin / piscine':{label:'Jardin & piscine',img:'realisations/cubo-jardin-piscine-800.webp',note:'Conçu pour l\'extérieur et les environnements humides.',key:'jardin'},
     'Intérieur':{label:'Intérieur',img:'realisations/bigrock-sejour-blanc-800.webp',note:'Prêt à peindre, relief marqué, même sur un petit mur.',key:'interieur'},
-    'Commerce / hôtel':{label:'Commerce & hôtel',img:'realisations/bigrock-arches-restaurant-800.webp',note:'Résistant aux chocs, entretien d\'un simple chiffon.',key:'commerce'}
+    'Professionnel':{label:'Professionnel',img:'realisations/mur-relief-eclairage-pro-800.webp',note:'',key:'pro'}
   };
+  var PRO='Professionnel';
+  // Profils professionnels : « type » = valeur project_type reçue par Insta-Pro (détection des demandes B2B)
+  var PRO_META={
+    architecte:{label:'Architecte',type:'Professionnel · Architecte',company:'Cabinet ou société',ph:'Nom du cabinet'},
+    immobilier:{label:'Projet immobilier / commercial',type:'Professionnel · Projet immobilier / commercial',company:'Société',ph:'Nom de la société'},
+    distributeur:{label:'Distributeur',type:'Professionnel · Distributeur',company:'Société ou enseigne',ph:'Nom de l\'enseigne'},
+    compte:{label:'Ouverture de compte',type:'Professionnel · Ouverture de compte',company:'Société',ph:'Nom de la société'}
+  };
+  var ACTIVITY={architecte:'Architecte',decorateur:'Décorateur',promoteur:'Promoteur',poseur:'Entreprise de pose',revendeur:'Revendeur',autre:'Autre'};
+  var MOBILE_MQ='(max-width:980px)';
   var ADVISED='Conseillé par Deutschconfort';
   var MODEL_BY_ID={},MODEL_BY_NAME={};
   MODELS.forEach(function(m){MODEL_BY_ID[m.id]=m;MODEL_BY_NAME[m.name]=m;});
   MODEL_BY_NAME['Moon']=MODEL_BY_ID['moon']; // ancien libellé (dossiers repris)
 
   /* ---------- état ---------- */
-  function freshAnswers(){return {project_type:'',measurement_mode:'',surface_m2:null,wall_length:null,wall_height:null,measurement_date_options:[],measurement_address:'',style_family:'',city:'',timeframe:'',selected_model:'',selected_models:[],collection_opened:false,reassurance_requested:''};}
-  var state={token:null,code:null,stage:1,photo_count:0,photos_pending:0,completed:false,finalizedOk:false,saved_at:0,answers:freshAnswers(),contact:{full_name:'',phone:'',email:''},lastSyncOk:false};
+  function freshAnswers(){return {project_type:'',pro_profile:'',pro_activity:'',distributor_volume:'',sales_point:'',measurement_mode:'',surface_m2:null,wall_length:null,wall_height:null,measurement_date_options:[],measurement_address:'',style_family:'',city:'',timeframe:'',selected_model:'',selected_models:[],collection_opened:false,reassurance_requested:''};}
+  var state={token:null,code:null,stage:1,photo_count:0,photos_pending:0,completed:false,finalizedOk:false,saved_at:0,answers:freshAnswers(),contact:{full_name:'',phone:'',email:'',company:''},lastSyncOk:false};
+  var syncInFlight=0;
   var cityChoice='';   // puce active ('' | ville | '__other')
   var thumbs=[];        // aperçus locaux (data URL réduits)
   var stagesSeen={};
@@ -600,6 +714,26 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
   function qs(n){return new URLSearchParams(location.search).get(n);}
   function srcCode(){var c=(qs('src')||'').toUpperCase();return /^W-[A-Z0-9]{2,4}$/.test(c)?c:'';}
   function num(v){var n=Number(String(v).replace(',','.'));return isFinite(n)&&n>0?Math.round(n*10)/10:null;}
+  function isMobile(){try{return window.matchMedia(MOBILE_MQ).matches;}catch(e){return false;}}
+
+  /* ---------- parcours : particulier ou professionnel ---------- */
+  function isPro(){return state.answers.project_type===PRO;}
+  function pro(){return isPro()&&PRO_META[state.answers.pro_profile]?state.answers.pro_profile:'';}
+  function flow(){return pro()==='compte'?[1,4]:[1,2,3,4];}       // « Ouvrir mon compte » : pas d'espace ni de modèle
+  function nextStage(st){var f=flow(),i=f.indexOf(st);return i>=0&&i<f.length-1?f[i+1]:4;}
+  function prevStage(st){var f=flow(),i=f.indexOf(st);return i>0?f[i-1]:1;}
+  function projectTypeLabel(){return pro()?PRO_META[pro()].type:(state.answers.project_type||'');}
+  // valeurs historiques (dossiers repris, anciens liens) → parcours actuel
+  function normalizeLegacy(a){
+    if(a.project_type==='Commerce / hôtel'){a.project_type=PRO;if(!a.pro_profile)a.pro_profile='immobilier';}
+    var m=String(a.project_type||'').match(/^Professionnel(?:\s*·\s*(.+))?$/);
+    if(m){
+      a.project_type=PRO;
+      if(!a.pro_profile&&m[1])Object.keys(PRO_META).forEach(function(k){if(PRO_META[k].type==='Professionnel · '+m[1])a.pro_profile=k;});
+    }
+    if(a.pro_profile&&!PRO_META[a.pro_profile])a.pro_profile='';
+    return a;
+  }
 
   function localSave(){
     try{
@@ -619,6 +753,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     var timer=ctrl?setTimeout(function(){ctrl.abort();},timeoutMs||15000):null;
     try{
       var init=Object.assign({headers:{'Content-Type':'application/json'}},opt||{});
+      if(!init.keepalive)delete init.keepalive;
       if(ctrl)init.signal=ctrl.signal;
       var res=await fetch(API_ROOT+path,init);
       if(!res.ok){var b={};try{b=await res.json();}catch(e){}var err=new Error(b.error||('HTTP '+res.status));err.status=res.status;throw err;}
@@ -643,6 +778,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     if(!Array.isArray(a.selected_models))a.selected_models=[];
     if(!Array.isArray(a.measurement_date_options))a.measurement_date_options=[];
     if(d.project_type)a.project_type=d.project_type;
+    normalizeLegacy(a);
     if(d.surface_m2&&!a.surface_m2)a.surface_m2=d.surface_m2;
     if(d.style_family)a.style_family=d.style_family;
     if(d.city)a.city=d.city;
@@ -651,29 +787,34 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     if(d.full_name)state.contact.full_name=d.full_name;
     if(d.phone)state.contact.phone=d.phone;
     if(d.email)state.contact.email=d.email;
+    if(d.answers&&d.answers.company_name)state.contact.company=d.answers.company_name;
   }
   var syncTimer=null;
   function queueSync(){clearTimeout(syncTimer);syncTimer=setTimeout(function(){sync();},400);}
-  async function sync(extra){
+  async function sync(extra,opts){
     localSave();
     if(!state.token)return null;
+    var a=state.answers,dist=pro()==='distributeur',acct=pro()==='compte';
     var payload={
       current_step:STEP_MAP[state.stage]||1,
-      answers:state.answers,
+      // la société voyage avec les réponses (jamais stockée dans le navigateur)
+      answers:Object.assign({},a,{company_name:isPro()?(state.contact.company||''):''}),
       full_name:state.contact.full_name,phone:state.contact.phone,email:state.contact.email,
-      city:state.answers.city,surface_m2:state.answers.surface_m2,project_type:state.answers.project_type,
-      style_family:state.answers.style_family,timeframe:state.answers.timeframe,
+      city:a.city,surface_m2:(dist||acct)?undefined:a.surface_m2,project_type:projectTypeLabel(),
+      style_family:a.style_family,timeframe:acct?'':a.timeframe,
       website:$('website')?$('website').value:''
     };
     if(extra)Object.keys(extra).forEach(function(k){payload[k]=extra[k];});
-    // Une fois le projet envoyé, chaque mise à jour reste « complétée » (aucune régression de statut côté Insta-Pro)
+    // Une fois la demande envoyée, chaque mise à jour reste « complétée » (aucune régression de statut côté Insta-Pro)
     if(state.completed)payload.completed=true;
+    syncInFlight++;
     try{
-      var data=await api('/'+encodeURIComponent(state.token),{method:'PATCH',body:JSON.stringify(payload)},state.completed?20000:15000);
+      var data=await api('/'+encodeURIComponent(state.token),{method:'PATCH',body:JSON.stringify(payload),keepalive:!!(opts&&opts.keepalive)},state.completed?25000:15000);
       hydrate(data.dossier);state.lastSyncOk=true;
       if(data.dossier&&data.dossier.status==='completed')state.finalizedOk=true;
       return data;
     }catch(e){state.lastSyncOk=false;return null;}
+    finally{syncInFlight--;}
   }
   async function ensureDossier(){
     if(state.token)return true;
@@ -700,8 +841,9 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       state.stage=state.completed?5:Math.max(1,Math.min(4,Number(persisted.stage||1)));
       state.photo_count=Number(persisted.photo_count||0);
       state.photos_pending=Number(persisted.photos_pending||0);
-      state.answers=Object.assign(freshAnswers(),persisted.answers||{});
+      state.answers=normalizeLegacy(Object.assign(freshAnswers(),persisted.answers||{}));
       cityChoice=persisted.cityChoice||'';
+      if(!state.completed&&flow().indexOf(state.stage)<0)state.stage=1;
     }else{
       localClear();
       if(explicit)state.token=explicit;
@@ -742,11 +884,15 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     }
   }
   function applyPrefill(){
-    // ?type=facade|jardin|interieur|commerce · ?modele=big-rock · ?mesure=1 (prise de mesures)
-    var t=(qs('type')||'').toLowerCase();
+    // ?type=facade|jardin|interieur|pro (commerce = ancien lien → pro / projet immobilier) · ?pro=architecte|immobilier|distributeur|compte
+    // ?modele=big-rock · ?mesure=1 (prise de mesures)
+    var t=(qs('type')||'').toLowerCase(),pp=(qs('pro')||'').toLowerCase();
+    if(t==='commerce'){t='pro';if(!pp)pp='immobilier';}
+    if(t==='professionnel'||PRO_META[pp])t='pro';
     if(t&&!state.answers.project_type){
       Object.keys(TYPE_META).forEach(function(k){if(TYPE_META[k].key===t)state.answers.project_type=k;});
     }
+    if(isPro()&&pp&&PRO_META[pp]&&!state.answers.pro_profile)state.answers.pro_profile=pp;
     var m=(qs('modele')||'').toLowerCase();
     if(m&&MODEL_BY_ID[m]){
       var mod=MODEL_BY_ID[m];
@@ -765,8 +911,32 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
   function bind(){
     // tuiles usage
     $$('#typeTiles .pj-tile').forEach(function(b){b.addEventListener('click',function(){
-      state.answers.project_type=b.getAttribute('data-value');hideErr('project_type');renderType();queueSync();
-      if(!state.answers.city)smoothTo($('blkCity'));
+      var v=b.getAttribute('data-value');
+      state.answers.project_type=v;if(v!==PRO)state.answers.pro_profile='';
+      hideErr('project_type');renderPath();queueSync();
+      if(v===PRO&&!state.answers.pro_profile)smoothTo($('proPanel'));
+      else if(!state.answers.city)smoothTo($('blkCity'));
+    });});
+    // profils professionnels
+    $$('#proGrid .pj-pro-opt').forEach(function(b){b.addEventListener('click',function(){
+      var had=state.answers.pro_profile;
+      state.answers.pro_profile=b.getAttribute('data-pro');hideErr('pro_profile');renderPath();queueSync();
+      if(!had&&!state.answers.city)smoothTo($('blkCity'));
+    });});
+    $('perksBox').addEventListener('toggle',function(){if(this.open){try{if(typeof gtag==='function')gtag('event','projet_avantages_pro',{page_name:'projet',code_source:srcCode()});}catch(e){}}});
+    $('perksGo').addEventListener('click',function(){
+      state.answers.pro_profile='compte';hideErr('pro_profile');$('perksBox').open=false;renderPath();queueSync();smoothTo($('blkCity'));
+    });
+    // distributeur : volumes, activité
+    $$('#volumeChips .pj-chip').forEach(function(b){b.addEventListener('click',function(){
+      state.answers.distributor_volume=b.getAttribute('data-value');hideErr('volume');renderVolume();queueSync();
+    });});
+    $$('#salesChips .pj-chip').forEach(function(b){b.addEventListener('click',function(){
+      var v=b.getAttribute('data-value');state.answers.sales_point=state.answers.sales_point===v?'':v;renderVolume();queueSync();
+    });});
+    // ouverture de compte : activité
+    $$('#activityChips .pj-chip').forEach(function(b){b.addEventListener('click',function(){
+      state.answers.pro_activity=b.getAttribute('data-value');hideErr('contact');renderContact();queueSync();refreshWa();
     });});
     // ville
     $$('#cityChips .pj-chip').forEach(function(b){b.addEventListener('click',function(){
@@ -796,18 +966,29 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     $('adviseBtn').addEventListener('click',toggleAdvise);
     $('whyBox').addEventListener('toggle',function(){if(this.open){state.answers.reassurance_requested='yes';queueSync();}});
     // coordonnées
-    $('fullName').addEventListener('input',function(){state.contact.full_name=this.value;queueSync();});
-    $('phone').addEventListener('input',function(){state.contact.phone=this.value;queueSync();});
-    $('email').addEventListener('input',function(){state.contact.email=this.value;queueSync();});
+    $('fullName').addEventListener('input',function(){state.contact.full_name=this.value;queueSync();refreshWa();});
+    $('company').addEventListener('input',function(){state.contact.company=this.value;queueSync();refreshWa();});
+    $('phone').addEventListener('input',function(){state.contact.phone=this.value;queueSync();refreshWa();});
+    $('email').addEventListener('input',function(){state.contact.email=this.value;queueSync();refreshWa();});
     $('emailToggle').addEventListener('click',function(){$('emailField').style.display='block';this.style.display='none';$('email').focus();});
-    $('contactForm').addEventListener('submit',function(e){e.preventDefault();next();});
+    $('contactForm').addEventListener('submit',function(e){e.preventDefault();});
     // navigation
-    $('backBtn').addEventListener('click',function(){if(state.stage>1&&state.stage<5)go(state.stage-1);});
-    $('nextBtn').addEventListener('click',function(){if(state.stage===5)openWhatsapp(false);else next();});
-    $('waBtn').addEventListener('click',function(e){e.preventDefault();openWhatsapp(true);});
+    $('backBtn').addEventListener('click',function(){if(state.stage>1&&state.stage<5)go(prevStage(state.stage));});
+    $('nextBtn').addEventListener('click',function(){next();});
+    // seul moyen d'envoyer la demande : le message WhatsApp pré-rédigé
+    $('waSend').addEventListener('click',onWaClick);
+    $('waBtn').addEventListener('click',onWaClick);
     $('restartBtn').addEventListener('click',restart);
     document.addEventListener('keydown',function(e){
-      if(e.key==='Enter'&&e.target&&e.target.tagName==='INPUT'&&e.target.type!=='file'){e.preventDefault();if(state.stage<5)next();}
+      if(e.key==='Enter'&&e.target&&e.target.tagName==='INPUT'&&e.target.type!=='file'){
+        e.preventDefault();
+        if(state.stage<4)next();
+        else if(state.stage===4)$('waSend').click();
+      }
+    });
+    // retour depuis WhatsApp : si l'envoi vers Insta-Pro n'a pas abouti, on réessaie
+    document.addEventListener('visibilitychange',function(){
+      if(document.visibilityState==='visible'&&state.completed&&!state.finalizedOk&&!syncInFlight)sync();
     });
   }
 
@@ -824,20 +1005,72 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
   function render(){
     $$('.pj-stage').forEach(function(s){s.classList.toggle('is-active',Number(s.getAttribute('data-stage'))===state.stage);});
     document.body.classList.toggle('is-final',state.stage===5);
-    renderProgress();renderType();renderCity();renderWhen();renderMeasure();renderPhotos();renderStyle();renderContact();renderBar();
+    renderProgress();renderType();renderCity();renderWhen();renderTexts();renderVolume();renderMeasure();renderPhotos();renderStyle();renderContact();renderBar();
     if(state.stage===5)renderDone();
+    refreshWa();
     localSave();
   }
+  // changement de type ou de profil : le parcours (fil d'étapes, textes, champs) suit immédiatement
+  function renderPath(){renderType();renderProgress();renderTexts();renderContact();renderBar();}
+  var STEP_LABELS={1:'Projet',2:'Espace',3:'Modèle',4:'Envoi'};
   function renderProgress(){
-    var p=$('progress');p.classList.toggle('is-final',state.stage===5);
-    $$('.pj-step',p).forEach(function(s){var n=Number(s.getAttribute('data-step'));s.classList.toggle('is-active',n===state.stage);s.classList.toggle('is-done',n<state.stage);});
+    var p=$('progress'),f=flow();p.classList.toggle('is-final',state.stage===5);p.classList.toggle('is-short',f.length<4);
+    var pos=f.indexOf(state.stage);
+    $$('.pj-step',p).forEach(function(s){
+      var n=Number(s.getAttribute('data-step')),i=f.indexOf(n);
+      s.classList.toggle('is-skip',i<0);
+      if(i>=0){s.querySelector('.n').textContent='0'+(i+1);}
+      s.querySelector('.l').textContent=(n===2&&pro()==='distributeur')?'Volumes':STEP_LABELS[n];
+      s.classList.toggle('is-active',n===state.stage);
+      s.classList.toggle('is-done',state.stage===5||(pos>=0&&i>=0&&i<pos));
+    });
   }
   function renderType(){
-    var t=state.answers.project_type;
+    var t=state.answers.project_type,pp=pro();
     $('typeTiles').classList.toggle('has-choice',!!t);
     $$('#typeTiles .pj-tile').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-value')===t?'true':'false');});
     var n=$('typeNote');
-    if(t&&TYPE_META[t]){n.textContent=TYPE_META[t].note;n.classList.add('is-on');}else{n.classList.remove('is-on');}
+    if(t&&TYPE_META[t]&&TYPE_META[t].note){n.textContent=TYPE_META[t].note;n.classList.add('is-on');}else{n.classList.remove('is-on');}
+    // Professionnel : les 4 profils apparaissent sous les tuiles
+    $('proPanel').classList.toggle('is-on',isPro());
+    $$('#proGrid .pj-pro-opt').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-pro')===pp?'true':'false');});
+    // question « ville » / « échéance » selon le profil ; pas d'échéance pour une ouverture de compte
+    $('cityQ').textContent=(pp==='distributeur'||pp==='compte')?'Où êtes-vous basé ?':'Où se trouve le projet ?';
+    $('whenQ').textContent=pp==='distributeur'?'Quand souhaitez-vous démarrer ?':'Quand souhaitez-vous avancer ?';
+    $('blkWhen').style.display=pp==='compte'?'none':'';
+  }
+  function renderTexts(){
+    var pp=pro(),site=(pp==='architecte'||pp==='immobilier');
+    // 02
+    if(pp==='distributeur'){
+      $('s2Eyebrow').textContent='Vos volumes';$('s2Title').innerHTML='Quels volumes<br><em>envisagez-vous ?</em>';$('s2Lead').textContent='Une estimation suffit. Nous construisons l\'offre avec vous.';
+      $('photoTitle').textContent='Montrez-nous votre point de vente.';$('photoLead').textContent='Une photo de votre showroom ou de votre dépôt. Facultatif.';
+    }else if(site){
+      $('s2Eyebrow').textContent='Votre projet';$('s2Title').innerHTML='Quelle est la taille<br>du <em>projet ?</em>';$('s2Lead').textContent='Une estimation suffit. Nous affinons ensemble.';
+      $('photoTitle').textContent='Montrez-nous le projet.';$('photoLead').textContent='Une photo du site ou une capture du plan. Facultatif, mais précieux.';
+    }else{
+      $('s2Eyebrow').textContent='Votre espace';$('s2Title').innerHTML='Quelle est la taille<br>du <em>mur ?</em>';$('s2Lead').textContent='Une estimation suffit. Nous affinons ensemble.';
+      $('photoTitle').textContent='Montrez-nous le mur.';$('photoLead').textContent='Une photo suffit souvent pour mieux vous orienter. Facultatif, mais précieux.';
+    }
+    $('unknownHint').textContent=site?'Une photo ou un plan nous suffit souvent pour vous orienter.':'Une photo nous suffit souvent pour vous orienter.';
+    $('blkVolume').style.display=pp==='distributeur'?'':'none';
+    $('blkMeasure').style.display=pp==='distributeur'?'none':'';
+    // 03
+    if(pp==='distributeur'){$('s3Title').innerHTML='Quels modèles<br>vous <em>intéressent ?</em>';$('s3Lead').textContent='Choisissez les modèles à proposer à vos clients.';}
+    else if(site){$('s3Title').innerHTML='Quels modèles<br>pour le <em>projet ?</em>';$('s3Lead').textContent='Choisissez un ou plusieurs modèles.';}
+    else{$('s3Title').innerHTML='Quel modèle<br>vous <em>plaît ?</em>';$('s3Lead').textContent='Choisissez un ou plusieurs modèles.';}
+    // 04
+    if(pp==='compte'){
+      $('s4Eyebrow').textContent='Compte professionnel';$('s4Title').innerHTML='Ouvrez votre<br><em>compte.</em>';
+      $('s4Lead').textContent='Votre demande arrive directement sur notre WhatsApp. Nous l\'étudions et revenons vers vous avec vos conditions professionnelles.';
+    }else{
+      $('s4Eyebrow').textContent=isPro()?'Demande professionnelle':'Votre demande';$('s4Title').innerHTML='Envoyez votre<br><em>demande.</em>';
+      $('s4Lead').textContent=isPro()?'Elle arrive directement sur notre WhatsApp, prête à être traitée. Nous revenons vers vous avec vos conditions professionnelles.':'Elle arrive directement sur notre WhatsApp, prête à être traitée. Nous revenons vers vous avec les modèles adaptés et la prochaine étape.';
+    }
+  }
+  function renderVolume(){
+    $$('#volumeChips .pj-chip').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-value')===state.answers.distributor_volume?'true':'false');});
+    $$('#salesChips .pj-chip').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-value')===state.answers.sales_point?'true':'false');});
   }
   function renderCity(){
     var c=state.answers.city;
@@ -1029,14 +1262,23 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     if(document.activeElement!==$('fullName'))$('fullName').value=state.contact.full_name||'';
     if(document.activeElement!==$('phone'))$('phone').value=state.contact.phone||'';
     if(state.contact.email){$('email').value=state.contact.email;$('emailField').style.display='block';$('emailToggle').style.display='none';}
+    var pp=pro();
+    $('companyField').style.display=isPro()?'':'none';
+    if(pp){$('companyLabel').textContent=PRO_META[pp].company;$('company').placeholder=PRO_META[pp].ph;}
+    if(document.activeElement!==$('company'))$('company').value=state.contact.company||'';
+    $('activityBlock').style.display=pp==='compte'?'':'none';
+    $$('#activityChips .pj-chip').forEach(function(b){b.setAttribute('aria-pressed',b.getAttribute('data-value')===state.answers.pro_activity?'true':'false');});
     var chips=recapChips();
     $('recapChips').innerHTML=chips.map(function(c){return '<span>'+esc(c)+'</span>';}).join('');
   }
   function recapChips(){
-    var a=state.answers,out=[];
-    if(a.project_type&&TYPE_META[a.project_type])out.push(TYPE_META[a.project_type].label);
+    var a=state.answers,out=[],pp=pro();
+    if(pp)out.push(PRO_META[pp].label);
+    else if(a.project_type&&TYPE_META[a.project_type])out.push(TYPE_META[a.project_type].label);
     if(a.city)out.push(a.city);
-    if(a.surface_m2)out.push('≈ '+fmt(a.surface_m2)+' m²');
+    if(pp==='compte')return out;
+    if(pp==='distributeur'){if(a.distributor_volume)out.push(a.distributor_volume);}
+    else if(a.surface_m2)out.push('≈ '+fmt(a.surface_m2)+' m²');
     else if(a.measurement_mode==='visit')out.push('Prise de mesures');
     if(selected().length)out.push(selected().join(' · '));
     else if(a.style_family==='surprise')out.push(ADVISED);
@@ -1047,14 +1289,17 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 
   /* barre */
   function renderBar(){
-    var back=$('backBtn'),nx=$('nextBtn'),hint=$('barHint');
+    var back=$('backBtn'),nx=$('nextBtn'),wa=$('waSend'),hint=$('barHint'),narrow=false,tiny=false;
+    try{narrow=window.matchMedia('(max-width:640px)').matches;tiny=window.matchMedia('(max-width:350px)').matches;}catch(e){}
     back.classList.toggle('is-on',state.stage>1&&state.stage<5);
     nx.disabled=false;
-    if(state.stage===5){
-      nx.innerHTML='<svg class="wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 1.9.8 2 .1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg>Continuer sur WhatsApp';
-      hint.textContent='';
-    }else if(state.stage===4){nx.textContent='Recevoir mon estimation';hint.textContent='Dernière étape';}
-    else{nx.textContent='Continuer';hint.textContent=state.stage===1?'Moins de 2 minutes':(state.stage===2?'Photo facultative':'Plusieurs choix possibles');}
+    // étapes 04 et final : le bouton principal EST le lien WhatsApp (seul moyen d'envoyer la demande)
+    var send=state.stage>=4;
+    nx.style.display=send?'none':'';
+    wa.style.display=send?'inline-flex':'none';
+    if(state.stage===5){$('waSendLabel').textContent='Rouvrir WhatsApp';hint.textContent='';}
+    else if(state.stage===4){$('waSendLabel').textContent=tiny?'Envoyer':(narrow?'Envoyer sur WhatsApp':'Envoyer ma demande sur WhatsApp');hint.textContent='Envoi direct sur WhatsApp';}
+    else{nx.textContent='Continuer';hint.textContent=state.stage===1?'Moins de 2 minutes':(state.stage===2?(pro()==='distributeur'?'Une estimation suffit':'Photo facultative'):'Plusieurs choix possibles');}
   }
 
   /* ---------- validation & navigation ---------- */
@@ -1062,10 +1307,13 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     hideAllErr();var a=state.answers,ok=true,first=null;
     if(stage===1){
       if(!a.project_type){showErr('project_type');ok=false;first=first||$('blkType');}
+      else if(isPro()&&!pro()){showErr('pro_profile');ok=false;first=first||$('proPanel');}
       if(!String(a.city||'').trim()){showErr('city');ok=false;first=first||$('blkCity');}
-      if(!a.timeframe){showErr('timeframe');ok=false;first=first||$('blkWhen');}
+      if(!a.timeframe&&pro()!=='compte'){showErr('timeframe');ok=false;first=first||$('blkWhen');}
     }
-    if(stage===2){
+    if(stage===2&&pro()==='distributeur'){
+      if(!a.distributor_volume){showErr('volume');ok=false;first=$('blkVolume');}
+    }else if(stage===2){
       var m=a.measurement_mode;
       if(!m){showErr('measure','Indiquez comment estimer la surface.');ok=false;}
       else if(m==='known'&&!a.surface_m2){showErr('measure','Indiquez une surface approximative en m².');ok=false;}
@@ -1077,11 +1325,14 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     if(stage===4){
       // Safari/iOS : l'autofill remplit parfois sans événement input → on relit le DOM
       state.contact.full_name=String($('fullName').value||'').trim();
+      state.contact.company=String($('company').value||'').trim();
       state.contact.phone=String($('phone').value||'').trim();
       state.contact.email=String($('email').value||'').trim();
       var digits=state.contact.phone.replace(/\D/g,'');
       if(!state.contact.full_name||digits.length<8||digits.length>16){showErr('contact','Indiquez votre nom et un numéro WhatsApp valide.');ok=false;first=$('contactForm');}
-      if(state.contact.email&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(state.contact.email)){showErr('contact','Vérifiez l\'adresse e-mail (ou laissez-la vide).');ok=false;first=$('contactForm');}
+      else if(isPro()&&!state.contact.company){showErr('contact','Indiquez le nom de votre '+(pro()==='architecte'?'cabinet ou société':(pro()==='distributeur'?'société ou enseigne':'société'))+'.');ok=false;first=$('contactForm');}
+      else if(pro()==='compte'&&!a.pro_activity){showErr('contact','Choisissez votre activité.');ok=false;first=$('activityBlock');}
+      if(ok&&state.contact.email&&!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i.test(state.contact.email)){showErr('contact','Vérifiez l\'adresse e-mail (ou laissez-la vide).');ok=false;first=$('contactForm');}
     }
     if(!ok&&first)smoothTo(first);
     return ok;
@@ -1090,23 +1341,45 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     if(stagesSeen[n])return;stagesSeen[n]=1;
     try{if(typeof gtag==='function')gtag('event','projet_etape',{page_name:'projet',etape:n,code_source:srcCode()});}catch(e){}
   }
-  function go(stage){
-    state.stage=stage;render();window.scrollTo({top:0,behavior:'auto'});trackStage(stage);sync();
+  function go(stage,noSync){
+    state.stage=stage;render();window.scrollTo({top:0,behavior:'auto'});trackStage(stage);if(!noSync)sync();
   }
-  async function next(){
+  function next(){
+    if(state.stage>=4)return; // l'envoi se fait uniquement par le lien WhatsApp
     if(!validate(state.stage))return;
-    if(state.stage<4){go(state.stage+1);return;}
-    // envoi final : l'écran « Votre projet est prêt » s'affiche tout de suite ;
-    // l'envoi vers Insta-Pro se fait en arrière-plan (réessai automatique), le message
-    // WhatsApp est construit localement et ne dépend pas du serveur.
-    var nx=$('nextBtn');nx.disabled=true;nx.textContent='Envoi…';
+    go(nextStage(state.stage));
+  }
+
+  /* ---------- envoi : uniquement par WhatsApp ---------- */
+  // Le lien wa.me est un vrai <a> (ouverture fiable sur iPhone, Android, navigateurs Instagram/Facebook) ;
+  // sur ordinateur il s'ouvre dans un nouvel onglet (WhatsApp Web), la page reste ouverte.
+  function refreshWa(){
+    if(state.stage<4)return;
+    var url=waUrl(),desk=!isMobile();
+    ['waSend','waBtn'].forEach(function(id){var a=$(id);a.href=url;if(desk){a.target='_blank';a.rel='noopener noreferrer';}else{a.removeAttribute('target');a.rel='noreferrer';}});
+  }
+  function onWaClick(e){
+    if(state.stage===4){
+      if(!validate(4)){e.preventDefault();return;}
+      refreshWa(); // message à jour au moment du clic
+      submitRequest();
+      setTimeout(function(){go(5,true);},80); // après l'ouverture du lien
+    }else{
+      refreshWa();
+      try{if(typeof fbq==='function')fbq('track','Contact',{content_name:'whatsapp_rouvrir'});}catch(err){}
+    }
+  }
+  function submitRequest(){
+    // La demande est marquée « envoyée » dans Insta-Pro au moment où le client ouvre WhatsApp
+    // (keepalive : la requête part même si la page passe en arrière-plan).
     clearTimeout(syncTimer);
-    await ensureDossier();
-    state.completed=true;
-    localSave();
-    go(5); // go() déclenche sync() → PATCH completed:true
-    setTimeout(function(){if(!state.finalizedOk)sync();},6000);
-    setTimeout(function(){if(!state.finalizedOk)sync();},25000);
+    state.completed=true;localSave();
+    try{if(typeof fbq==='function')fbq('track','Contact',{content_name:'whatsapp'});}catch(err){}
+    fireLead();fireGaDossier();
+    var send=function(){if(!state.finalizedOk&&!syncInFlight)sync(null,{keepalive:true});};
+    if(state.token)send();else ensureDossier().then(send);
+    setTimeout(function(){if(!state.finalizedOk&&!syncInFlight)sync();},8000);
+    setTimeout(function(){if(!state.finalizedOk&&!syncInFlight)sync();},30000);
   }
   function restart(){
     localClear();
@@ -1115,72 +1388,109 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 
   /* ---------- final ---------- */
   function segment(){
-    var a=state.answers,city=String(a.city||'').toLowerCase();
+    var a=state.answers,city=String(a.city||'').toLowerCase(),pp=pro();
     var casa=/(casablanca|bouskoura|dar\s*bouazza|tamaris|ain\s*diab|aïn\s*diab|californie|anfa|oasis|cil|palmiers|cfc)/i.test(city);
     var photos=state.photo_count||thumbs.length;
+    if(pp==='compte')return 'Nous étudions votre demande et revenons vers vous avec vos conditions professionnelles.';
+    if(pp==='distributeur')return 'Nous revenons vers vous avec une proposition adaptée à vos volumes et à votre zone.';
     if(a.measurement_mode==='visit'&&casa)return 'Nous vous contactons sur WhatsApp pour confirmer le jour de la prise de mesures.';
     if(a.measurement_mode==='visit')return 'Nous vous contactons sur WhatsApp pour organiser la prise de mesures ou vous orienter au mieux.';
     if(photos&&a.surface_m2)return 'Vous recevez votre estimation sur WhatsApp sous 24 h, avec les modèles adaptés.';
     if(a.surface_m2)return 'Vous recevez votre estimation sur WhatsApp, et une invitation à toucher la matière au showroom.';
     return 'Nous revenons vers vous sur WhatsApp pour préciser votre projet et vous orienter.';
   }
+  function typeImg(meta){return meta?((isMobile()&&meta.imgMobile)?meta.imgMobile:meta.img):'';}
   function renderDone(){
-    var a=state.answers,meta=TYPE_META[a.project_type];
-    $('nextText').textContent=segment()+(state.photos_pending?' Joignez vos photos directement dans la conversation.':'');
+    var a=state.answers,meta=TYPE_META[a.project_type],pp=pro();
+    $('nextText').textContent='Votre demande est prête dans WhatsApp : appuyez sur Envoyer. '+segment()+(state.photos_pending?' Joignez vos photos directement dans la conversation.':'')+' WhatsApp ne s\'est pas ouvert ? Touchez « Rouvrir WhatsApp ».';
     var img=$('doneImg');
     var firstModel=selected().length?MODEL_BY_NAME[selected()[0]]:null;
-    var src=meta?meta.img:(firstModel?firstModel.img:'realisations/mattoni-facade-villa-800.webp');
-    img.src=IMG+src;img.alt=meta?meta.label:'Votre projet';
+    var src=meta?typeImg(meta):(firstModel?firstModel.img:'realisations/mattoni-facade-villa-800.webp');
+    img.src=IMG+src;img.alt=meta?meta.label:'Votre projet';img.classList.toggle('pro',isPro());
     var rows=[];
-    if(meta)rows.push(['Projet',meta.label]);
-    if(a.city)rows.push(['Ville',a.city]);
-    rows.push(['Surface',a.surface_m2?'≈ '+fmt(a.surface_m2)+' m²':(a.measurement_mode==='visit'?'Prise de mesures':'À préciser')]);
-    if(a.measurement_mode==='visit'&&(a.measurement_date_options||[]).length)rows.push(['Disponibilités',a.measurement_date_options.map(fmtDate).join(' · ')]);
-    if(a.timeframe)rows.push(['Échéance',a.timeframe]);
-    rows.push([selected().length>1?'Modèles':'Modèle',modelLabel()]);
-    var n=state.photo_count||thumbs.length;if(n)rows.push(['Photos',String(n)]);
+    if(pp){
+      rows.push(['Profil',PRO_META[pp].label]);
+      if(state.contact.company)rows.push(['Société',state.contact.company]);
+      if(pp==='compte'&&ACTIVITY[a.pro_activity])rows.push(['Activité',ACTIVITY[a.pro_activity]]);
+    }else if(meta)rows.push(['Projet',meta.label]);
+    if(a.city)rows.push([pp==='distributeur'?'Zone':'Ville',a.city]);
+    if(pp==='distributeur'){
+      if(a.distributor_volume)rows.push(['Volumes',a.distributor_volume]);
+      if(a.sales_point)rows.push(['Activité',a.sales_point]);
+    }else if(pp!=='compte'){
+      rows.push(['Surface',surfaceText()]);
+      if(a.measurement_mode==='visit'&&(a.measurement_date_options||[]).length)rows.push(['Disponibilités',a.measurement_date_options.map(fmtDate).join(' · ')]);
+    }
+    if(pp!=='compte'){
+      if(a.timeframe)rows.push(['Échéance',a.timeframe]);
+      rows.push([selected().length>1?'Modèles':'Modèle',modelLabel()]);
+      var n=state.photo_count||thumbs.length;if(n)rows.push(['Photos',String(n)]);
+    }
     if(state.code&&!/^LOCAL/.test(state.code))rows.push(['Référence',state.code]);
     $('doneRows').innerHTML=rows.map(function(r){return '<div class="row"><span>'+esc(r[0])+'</span><b>'+esc(r[1])+'</b></div>';}).join('');
-    $('waBtn').href=waUrl();
-    fireLead();fireGaDossier();
   }
-  function recap(){
-    var a=state.answers,meta=TYPE_META[a.project_type];
-    var bits=[
-      'Projet : '+(meta?meta.label:(a.project_type||'non précisé')),
-      'Ville : '+(a.city||'non précisée'),
-      'Surface : '+(a.surface_m2?'≈ '+fmt(a.surface_m2)+' m²':(a.measurement_mode==='visit'?'prise de mesures souhaitée':'à préciser')),
-      a.measurement_mode==='visit'&&(a.measurement_date_options||[]).length?'Disponibilités : '+a.measurement_date_options.map(fmtDate).join(' / '):null,
-      a.measurement_mode==='visit'&&a.measurement_address?'Adresse : '+a.measurement_address:null,
-      (selected().length>1?'Modèles : ':'Modèle : ')+modelLabel(),
-      'Échéance : '+(a.timeframe||'non précisée'),
-      'Photos : '+(state.photo_count||thumbs.length||0)+(state.photos_pending?' (je vous les envoie ici)':'')
-    ].filter(Boolean);
-    return bits.join('\n');
+  function surfaceText(){
+    var a=state.answers;
+    if(a.surface_m2){
+      var dims=a.measurement_mode==='dimensions'&&a.wall_length&&a.wall_height?' ('+fmt(a.wall_length)+' m × '+fmt(a.wall_height)+' m)':'';
+      return '≈ '+fmt(a.surface_m2)+' m²'+dims;
+    }
+    return a.measurement_mode==='visit'?'Prise de mesures souhaitée':'À préciser';
   }
-  function waUrl(){
-    var msg='Bonjour Deutschconfort, voici mon projet'+(state.code&&!/^LOCAL/.test(state.code)?' ('+state.code+')':'')+' :\n'+recap()+'\nRéf W-PRJ'+(srcCode()?' · '+srcCode():'');
-    return 'https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(msg);
+  /* message WhatsApp : pré-rédigé, classé par rubriques (gras WhatsApp *…*) */
+  function waMessage(){
+    var a=state.answers,c=state.contact,pp=pro(),meta=TYPE_META[a.project_type];
+    var code=state.code&&!/^LOCAL/.test(state.code)?state.code:'';
+    var L=[],sec=function(title,lines){lines=lines.filter(Boolean);if(!lines.length)return;L.push('');L.push('*'+title+'*');lines.forEach(function(x){L.push(x);});};
+    L.push('Bonjour Deutschconfort,');
+    L.push(pp==='compte'?'je souhaite ouvrir un compte professionnel.':(pp?'voici ma demande professionnelle.':'voici ma demande de projet.'));
+    L.push('');
+    L.push('*'+(pp==='compte'?'OUVERTURE DE COMPTE PROFESSIONNEL':(pp?'DEMANDE PROFESSIONNELLE · '+PRO_META[pp].label.toUpperCase():'DEMANDE DE PROJET · '+(meta?meta.label.toUpperCase():'MUR')))+'*');
+    if(code)L.push('Référence : '+code);
+    sec('Contact',[
+      'Nom : '+(c.full_name||'').trim(),
+      pp&&c.company?(pp==='architecte'?'Cabinet / société : ':(pp==='distributeur'?'Société / enseigne : ':'Société : '))+c.company.trim():null,
+      pp==='compte'&&ACTIVITY[a.pro_activity]?'Activité : '+ACTIVITY[a.pro_activity]:null,
+      c.phone?'WhatsApp : '+c.phone.trim():null,
+      c.email?'E-mail : '+c.email.trim():null
+    ]);
+    if(pp==='compte'){
+      sec('Localisation',['Ville : '+(a.city||'non précisée')]);
+    }else{
+      sec(pp==='distributeur'?'Distribution':'Projet',[
+        (pp==='distributeur'?'Zone : ':'Ville : ')+(a.city||'non précisée'),
+        'Échéance : '+(a.timeframe||'non précisée')
+      ]);
+      if(pp==='distributeur'){
+        sec('Volumes',[a.distributor_volume||'à préciser',a.sales_point?'Activité : '+a.sales_point:null]);
+      }else{
+        sec('Surface',[
+          surfaceText(),
+          a.measurement_mode==='visit'&&(a.measurement_date_options||[]).length?'Disponibilités : '+a.measurement_date_options.map(fmtDate).join(' / '):null,
+          a.measurement_mode==='visit'&&a.measurement_address?'Adresse : '+a.measurement_address:null
+        ]);
+      }
+      sec(selected().length>1?'Modèles':'Modèle',[selected().length?selected().join(', '):'Je souhaite être conseillé']);
+      var n=state.photo_count||thumbs.length;
+      if(n)sec('Photos',[n+(n>1?' photos':' photo')+(state.photos_pending?' : je vous les envoie ici':(n>1?' ajoutées au dossier':' ajoutée au dossier'))]);
+    }
+    L.push('');
+    L.push('Réf W-PRJ'+(srcCode()?' · '+srcCode():''));
+    return L.join('\n');
   }
-  function openWhatsapp(fromAnchor){
-    var url=waUrl();
-    try{if(typeof fbq==='function')fbq('track','Contact',{content_name:'whatsapp'});}catch(e){}
-    // le lien <a> est déjà mesuré par mesure.js (clic_whatsapp) ; le bouton de la barre ne l'est pas
-    if(!fromAnchor){try{if(typeof gtag==='function')gtag('event','clic_whatsapp',{page_name:'projet',code_source:'W-PRJ',link_text:'Continuer sur WhatsApp'});}catch(e){}}
-    window.location.href=url;
-  }
+  function waUrl(){return 'https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(waMessage());}
   function fireLead(){
     try{
       var key='dc_lead_'+(state.code||state.token||'local');
       if(localStorage.getItem(key))return;
-      if(typeof fbq==='function'){fbq('track','Lead',{content_name:'projet_celestone',content_category:state.answers.project_type||''});localStorage.setItem(key,'1');}
+      if(typeof fbq==='function'){fbq('track','Lead',{content_name:'projet_celestone',content_category:projectTypeLabel()});localStorage.setItem(key,'1');}
     }catch(e){}
   }
   function fireGaDossier(){
     try{
       var key='dc_ga_dossier_'+(state.code||state.token||'local');
       if(localStorage.getItem(key))return;
-      if(typeof gtag==='function'){gtag('event','dossier_projet',{page_name:'projet',code_source:srcCode(),project_type:state.answers.project_type||''});localStorage.setItem(key,'1');}
+      if(typeof gtag==='function'){gtag('event','dossier_projet',{page_name:'projet',code_source:srcCode(),project_type:projectTypeLabel()});localStorage.setItem(key,'1');}
     }catch(e){}
   }
 
