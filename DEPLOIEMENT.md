@@ -24,7 +24,11 @@ Chaque `git push origin main` déclenche automatiquement la mise en ligne
   `?mesure=1` (prise de mesures présélectionnée), `?produit=<nom>` (produit retenu, ex. parquet), `?new=1` (nouveau projet), `?d=<token>` (reprise d'un dossier).
   Un projet commencé ou envoyé depuis moins de 24 h est réaffiché tel quel sur le même appareil (aucune coordonnée
   n'est gardée dans le navigateur). Événements : Meta Pixel `Lead` + `Contact`, GA4 `projet_etape` (1–5),
-  `dossier_projet`, `clic_whatsapp` (Réf W-PRJ · W-XXX).
+  `dossier_projet`, `clic_whatsapp`, `clic_tel`, `clic_itineraire`.
+  Envoi (décision de Ghali du 05/10/2026) : le bouton « Envoyer ma demande » envoie le dossier dans Insta-Pro
+  (PATCH `completed` ; demande pro → B2B Accounts → Demandes) ; l'écran final ne s'affiche qu'après confirmation
+  d'Insta-Pro et ne propose que trois boutons : « Écrire sur WhatsApp » (wa.me sans message pré-rédigé),
+  « Appeler » (tel:) et « Itinéraire du showroom » (Google Maps). Plus aucun message WhatsApp pré-rédigé sur /projet/.
 - `/devis.html` : redirection vers `/projet/?src=W-DEV` (hors sitemap) depuis le 30/09/2026.
 - `brief-*.html` : pages commerciales avec prix, en `noindex`, jamais liées. `brief-architecte.html` et `brief-promoteurs-construction.html` ont été supprimées le 02/10/2026 (demande de Ghali, nouvelle grille au kilo) : il ne reste que `brief-celestone.html`.
 
@@ -50,7 +54,7 @@ Chaque `git push origin main` déclenche automatiquement la mise en ligne
 - Balise Pinterest `p:domain_verify` dans le `<head>` de `index.html` (revendication du domaine, 01/10/2026) : ne pas la retirer.
 - Petits libellés (sur-titres, fil d'Ariane, étiquettes, en-têtes de tableau) : Encre sur fond clair, jamais Taupe (charte §5 : 3,7:1). Taupe seulement ≥ 24 px.
 - Pages comparatives (pierre de Taza, carrelage/zellige, bardage) : faits externes sourcés en bas de tableau, aucun concurrent ni enseigne nommés, aucun prix ; on dit honnêtement où l'autre matériau reste le meilleur choix (sols, douche, bassin) (décision de Ghali du 30/09/2026 : capter les recherches de substituts).
-- Chaque lien WhatsApp finit par « Réf W-XXX » et chaque lien vers /projet/ porte ?src=W-XXX (code de la page, voir CODES_WHATSAPP_SITE.md).
+- Chaque lien WhatsApp finit par « Réf W-XXX » et chaque lien vers /projet/ porte ?src=W-XXX (code de la page, voir CODES_WHATSAPP_SITE.md). Exception : le bouton WhatsApp de l'écran final de /projet/ (sans message, la demande est déjà dans Insta-Pro).
 - Conversion (décision de Ghali du 30/09/2026) : toute demande de devis / d'estimation passe par `/projet/` —
   les boutons « Demander un devis », « Estimer mon projet », « Devis », les anciens CTA WhatsApp « devis / simulation
   photo / envoyer ma photo » pointent vers `projet/?src=W-XXX` (+ `type=` sur les pages façade, jardin, intérieur ;

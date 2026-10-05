@@ -221,10 +221,6 @@
     .pj-form{max-width:520px;display:grid;gap:26px}
     .pj-email-toggle{background:none;border:0;padding:0;text-align:left;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--basalte);border-bottom:1px solid var(--basalte);padding-bottom:4px;justify-self:start}
     .pj-privacy{font-size:12.5px;color:var(--encre);max-width:52ch;margin-top:8px}
-    .pj-send-note{display:flex;gap:14px;align-items:flex-start;margin-top:6px;padding:18px 20px;background:var(--calcaire);font-size:14px;color:var(--encre);max-width:520px}
-    .pj-send-note svg{flex:none;width:20px;height:20px;color:var(--basalte);margin-top:1px}
-    .pj-send-note b{font-weight:400;color:var(--basalte)}
-    .pj-wa-send{display:none}
     .hp{position:absolute!important;left:-9999px!important;opacity:0}
 
     /* erreurs */
@@ -237,17 +233,15 @@
     .pj-done h2{font-family:var(--serif);font-weight:400;font-size:clamp(40px,5.6vw,72px);line-height:1.02;letter-spacing:-.01em;color:var(--basalte)}
     .pj-done h2 em{font-style:italic;color:var(--taupe)}
     .pj-done .next{font-size:17px;color:var(--encre);margin-top:22px;max-width:44ch}
-    .pj-done .acts{display:flex;flex-direction:column;align-items:flex-start;gap:22px;margin-top:36px}
-    .pj-done .acts .btn{min-width:280px;justify-content:center}
+    /* après l'envoi : trois boutons, rien d'autre (WhatsApp · Appeler · Itinéraire du showroom) */
+    .pj-acts{display:flex;flex-direction:column;align-items:stretch;gap:12px;margin-top:36px;max-width:340px}
+    .pj-acts .btn{justify-content:center;gap:11px}
+    .pj-acts .btn svg{width:17px;height:17px;flex:none}
+    .pj-addr{font-size:12.5px;color:var(--encre);margin-top:16px;max-width:340px;line-height:1.55}
+    .pj-ref{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--encre);margin-top:26px}
     .pj-card{background:var(--calcaire);animation:pjIn .5s .1s both}
     .pj-card .ph{aspect-ratio:4/3;overflow:hidden;background:var(--pierre)}
     .pj-card .ph img{width:100%;height:100%;object-fit:cover}
-    .pj-card .rows{padding:8px 26px 14px}
-    .pj-card .row{display:flex;justify-content:space-between;gap:20px;padding:13px 0;border-bottom:1px solid var(--line-soft);font-size:14.5px;opacity:0;animation:pjIn .4s both}
-    .pj-card .row:last-child{border-bottom:0}
-    .pj-card .row span{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--encre);padding-top:3px}
-    .pj-card .row b{font-weight:400;color:var(--basalte);text-align:right;font-size:16px}
-    .pj-card .row:nth-child(1){animation-delay:.15s}.pj-card .row:nth-child(2){animation-delay:.22s}.pj-card .row:nth-child(3){animation-delay:.29s}.pj-card .row:nth-child(4){animation-delay:.36s}.pj-card .row:nth-child(5){animation-delay:.43s}.pj-card .row:nth-child(6){animation-delay:.5s}.pj-card .row:nth-child(7){animation-delay:.57s}.pj-card .row:nth-child(8){animation-delay:.64s}
     .pj-restart-row{grid-column:1/-1;margin-top:8px}
     .pj-restart{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--encre);background:none;border:0;padding:0;opacity:.7}
     .pj-restart:hover{opacity:1}
@@ -260,10 +254,10 @@
     .pj-back.is-on{visibility:visible}
     .pj-back:hover{opacity:1}
     .pj-next{min-width:300px}
-    .pj-next .wa{width:17px;height:17px;flex:none}
     .pj-next:disabled{opacity:.55;cursor:progress}
     .pj-bar .hint{font-size:12px;color:var(--encre);margin-right:auto;margin-left:20px}
-    @media(min-width:981px){body.is-final .pj-bar{display:none}body.is-final main.pj-main{padding-bottom:80px}}
+    body.is-final .pj-bar{display:none}
+    body.is-final main.pj-main{padding-bottom:80px !important}
 
     /* pied de page minimal */
     .pj-foot{border-top:1px solid var(--line);padding:22px 0 0;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--encre);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;opacity:.8}
@@ -285,8 +279,10 @@
       .pj-perks{grid-template-columns:1fr}
       .pj-photo{grid-template-columns:1fr;gap:26px}
       .pj-done{grid-template-columns:1fr;gap:34px}
-      .pj-done .acts{margin-top:26px}
-      .pj-done .acts .btn{display:none} /* l'action est dans la barre fixe, sous le pouce */
+      .pj-done .pj-card{display:none} /* mobile : les trois boutons d'abord, sous le pouce */
+      .pj-acts{margin-top:28px;max-width:none}
+      .pj-acts .btn{min-height:54px}
+      .pj-addr{max-width:none}
       .pj-bar .hint{display:none}
     }
     @media(max-width:760px){
@@ -329,11 +325,9 @@
       main.pj-main{padding-bottom:130px}
       .pj-thumbs{grid-template-columns:repeat(4,1fr)}
       .pj-done h2{font-size:clamp(38px,11vw,48px)}
-      .pj-card .rows{padding:6px 18px 10px}
       .pj-foot{flex-direction:column;gap:6px}
     }
     @media(max-width:400px){
-      .pj-wa-send{letter-spacing:.1em;padding-left:12px;padding-right:12px;gap:8px;white-space:nowrap}
       .pj-back{letter-spacing:.12em}
     }
     @media(max-width:380px){
@@ -343,6 +337,7 @@
     /* tactile : pas d'inversion « survol » figée après un tap */
     @media(hover:none){
       .btn-fill:hover{background:var(--basalte);color:var(--chaux)}
+      .pj-acts .btn:not(.btn-fill):hover{background:transparent;color:var(--basalte)}
       .pj-chip:hover{border-color:var(--line)}
       .pj-chip[aria-pressed="true"]:hover{border-color:var(--basalte)}
       .pj-opt:hover b{text-decoration:none}
@@ -358,6 +353,7 @@
     @media(prefers-reduced-motion:reduce){.pj-model.is-flash .ph::after{animation:none}}
     /* bandeau cookies (mesure.js) : au-dessus de la barre d'action */
     #dc-consent{bottom:calc(92px + env(safe-area-inset-bottom)) !important}
+    body.is-final #dc-consent{bottom:calc(16px + env(safe-area-inset-bottom)) !important} /* écran final : plus de barre d'action */
   </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -589,7 +585,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       <div class="pj-title">
         <div class="eyebrow" id="s4Eyebrow">Votre demande</div>
         <h2 id="s4Title">Envoyez votre<br><em>demande.</em></h2>
-        <p class="lead" id="s4Lead">Elle arrive directement sur notre WhatsApp, prête à être traitée.</p>
+        <p class="lead" id="s4Lead">Elle arrive directement chez nous, prête à être traitée.</p>
       </div>
       <div class="pj-block pj-first">
         <div class="pj-recap" id="recapChips"></div>
@@ -611,27 +607,29 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
           <button type="button" class="pj-email-toggle" id="emailToggle">+ Ajouter un e-mail</button>
           <div class="pj-field" id="emailField" style="display:none"><label for="email">E-mail <span style="text-transform:none;letter-spacing:0;opacity:.7">(facultatif)</span></label><input id="email" type="email" autocomplete="email" placeholder="vous@exemple.com"></div>
           <input class="hp" id="website" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <div class="pj-send-note"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 1.9.8 2 .1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg><span><b>Envoi par WhatsApp.</b> Votre demande s'ouvre dans WhatsApp, rédigée et classée : il ne vous reste qu'à appuyer sur Envoyer.</span></div>
           <p class="pj-privacy">Vos informations servent uniquement à traiter votre demande. Rien n'est publié, rien n'est partagé.</p>
+          <div class="pj-err" data-err="send" role="alert"></div>
         </form>
       </div>
     </section>
 
-    <!-- FINAL -->
+    <!-- FINAL : demande envoyée → WhatsApp · Appeler · Itinéraire du showroom -->
     <section class="pj-stage" data-stage="5">
       <div class="pj-done">
         <div class="txt">
-          <div class="eyebrow">Dernier geste</div>
-          <h2>Appuyez sur<br><em>Envoyer.</em></h2>
+          <div class="eyebrow" id="doneEyebrow">Demande envoyée</div>
+          <h2 id="doneTitle">Merci, c'est<br><em>bien reçu.</em></h2>
           <p class="next" id="nextText"></p>
-          <div class="acts">
-            <a class="btn btn-fill" id="waBtn" href="#" rel="noreferrer"><svg class="wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style="width:17px;height:17px"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 1.9.8 2 .1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg>Rouvrir WhatsApp</a>
-            <a class="link-underline" href="../realisations.html">Voir les réalisations</a>
+          <div class="pj-acts">
+            <a class="btn btn-fill" id="actWa" href="https://wa.me/212614474221" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 1.9.8 2 .1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg>Écrire sur WhatsApp</a>
+            <a class="btn" id="actCall" href="tel:+212614474221"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.6 3.5h2.6l1.5 4.2-2 1.4a12 12 0 0 0 6.2 6.2l1.4-2 4.2 1.5v2.6a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>Appeler</a>
+            <a class="btn" id="actMap" href="https://www.google.com/maps/dir/?api=1&amp;destination=Deutsch+Confort+11+Rue+Hounaine%2C+Boulevard+d%27Anfa%2C+Casablanca" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/></svg>Itinéraire du showroom</a>
           </div>
+          <p class="pj-addr">Showroom · 11 Rue Hounaine, Bd d'Anfa, Casablanca<br>Lun–Ven · 10h30–13h / 15h30–19h</p>
+          <p class="pj-ref" id="doneRef"></p>
         </div>
         <div class="pj-card" id="doneCard">
           <div class="ph"><img id="doneImg" src="" alt=""></div>
-          <div class="rows" id="doneRows"></div>
         </div>
         <div class="pj-restart-row"><button type="button" class="pj-restart" id="restartBtn">Nouveau projet</button></div>
       </div>
@@ -649,7 +647,6 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     <button type="button" class="pj-back" id="backBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Retour</button>
     <span class="hint" id="barHint"></span>
     <button type="button" class="btn btn-fill pj-next" id="nextBtn">Continuer</button>
-    <a class="btn btn-fill pj-next pj-wa-send" id="waSend" href="#" rel="noreferrer"><svg class="wa" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.5 15.3L2 22l4.9-1.4A10 10 0 1 0 12 2Zm5.2 14.1c-.2.6-1.2 1.2-1.7 1.2-.4.1-1 .1-1.6-.1-.4-.1-.9-.3-1.5-.5-2.6-1.1-4.3-3.8-4.4-4-.1-.2-1.1-1.4-1.1-2.7 0-1.3.7-1.9.9-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.8 1.9.8 2 .1.1.1.3 0 .5-.3.6-.7.9-.5 1.2.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1.2-.2.8-.9 1-1.2.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.2.5.2.5.4.1.1.1.7-.1 1.3Z"/></svg><span id="waSendLabel">Envoyer ma demande sur WhatsApp</span></a>
   </div>
 </div>
 
@@ -657,7 +654,6 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 (function(){
   'use strict';
   var API_ROOT='https://insta-pro-deutschconfort-production-a767.up.railway.app/api/public/web-projects';
-  var WA_NUMBER='212614474221';
   var TOKEN_KEY='celestone_project_token_v1';
   var STATE_KEY='celestone_project_state_v2';
   var RESUME_MS=24*3600e3;
@@ -704,6 +700,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
   function freshAnswers(){return {project_type:'',pro_profile:'',pro_activity:'',distributor_volume:'',sales_point:'',measurement_mode:'',surface_m2:null,wall_length:null,wall_height:null,measurement_date_options:[],measurement_address:'',style_family:'',city:'',timeframe:'',selected_model:'',selected_models:[],collection_opened:false,reassurance_requested:''};}
   var state={token:null,code:null,stage:1,photo_count:0,photos_pending:0,completed:false,finalizedOk:false,saved_at:0,answers:freshAnswers(),contact:{full_name:'',phone:'',email:'',company:''},lastSyncOk:false};
   var syncInFlight=0;
+  var sending=false;   // envoi final en cours (bouton « Envoyer » verrouillé)
   var cityChoice='';   // puce active ('' | ville | '__other')
   var thumbs=[];        // aperçus locaux (data URL réduits)
   var stagesSeen={};
@@ -809,11 +806,11 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     if(state.completed)payload.completed=true;
     syncInFlight++;
     try{
-      var data=await api('/'+encodeURIComponent(state.token),{method:'PATCH',body:JSON.stringify(payload),keepalive:!!(opts&&opts.keepalive)},state.completed?25000:15000);
-      hydrate(data.dossier);state.lastSyncOk=true;
+      var data=await api('/'+encodeURIComponent(state.token),{method:'PATCH',body:JSON.stringify(payload),keepalive:!!(opts&&opts.keepalive)},(opts&&opts.timeout)||(state.completed?25000:15000));
+      hydrate(data.dossier);state.lastSyncOk=true;state.lastSyncErr=null;
       if(data.dossier&&data.dossier.status==='completed')state.finalizedOk=true;
       return data;
-    }catch(e){state.lastSyncOk=false;return null;}
+    }catch(e){state.lastSyncOk=false;state.lastSyncErr=e;return null;}
     finally{syncInFlight--;}
   }
   async function ensureDossier(){
@@ -936,7 +933,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     });});
     // ouverture de compte : activité
     $$('#activityChips .pj-chip').forEach(function(b){b.addEventListener('click',function(){
-      state.answers.pro_activity=b.getAttribute('data-value');hideErr('contact');renderContact();queueSync();refreshWa();
+      state.answers.pro_activity=b.getAttribute('data-value');hideErr('contact');renderContact();queueSync();
     });});
     // ville
     $$('#cityChips .pj-chip').forEach(function(b){b.addEventListener('click',function(){
@@ -966,27 +963,31 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     $('adviseBtn').addEventListener('click',toggleAdvise);
     $('whyBox').addEventListener('toggle',function(){if(this.open){state.answers.reassurance_requested='yes';queueSync();}});
     // coordonnées
-    $('fullName').addEventListener('input',function(){state.contact.full_name=this.value;queueSync();refreshWa();});
-    $('company').addEventListener('input',function(){state.contact.company=this.value;queueSync();refreshWa();});
-    $('phone').addEventListener('input',function(){state.contact.phone=this.value;queueSync();refreshWa();});
-    $('email').addEventListener('input',function(){state.contact.email=this.value;queueSync();refreshWa();});
+    $('fullName').addEventListener('input',function(){state.contact.full_name=this.value;queueSync();});
+    $('company').addEventListener('input',function(){state.contact.company=this.value;queueSync();});
+    $('phone').addEventListener('input',function(){state.contact.phone=this.value;queueSync();});
+    $('email').addEventListener('input',function(){state.contact.email=this.value;queueSync();});
     $('emailToggle').addEventListener('click',function(){$('emailField').style.display='block';this.style.display='none';$('email').focus();});
     $('contactForm').addEventListener('submit',function(e){e.preventDefault();});
     // navigation
     $('backBtn').addEventListener('click',function(){if(state.stage>1&&state.stage<5)go(prevStage(state.stage));});
-    $('nextBtn').addEventListener('click',function(){next();});
-    // seul moyen d'envoyer la demande : le message WhatsApp pré-rédigé
-    $('waSend').addEventListener('click',onWaClick);
-    $('waBtn').addEventListener('click',onWaClick);
+    $('nextBtn').addEventListener('click',function(){if(state.stage===4)submitRequest();else next();});
+    // après l'envoi : WhatsApp · Appeler · Itinéraire (clics WhatsApp et appel déjà mesurés par mesure.js)
+    $('actWa').addEventListener('click',function(){try{if(typeof fbq==='function')fbq('track','Contact',{content_name:'whatsapp_apres_envoi'});}catch(e){}});
+    $('actCall').addEventListener('click',function(){try{if(typeof fbq==='function')fbq('track','Contact',{content_name:'appel_apres_envoi'});}catch(e){}});
+    $('actMap').addEventListener('click',function(){
+      try{if(typeof gtag==='function')gtag('event','clic_itineraire',{page_name:'projet',code_source:srcCode()});}catch(e){}
+      try{if(typeof fbq==='function')fbq('track','FindLocation',{content_name:'showroom'});}catch(e){}
+    });
     $('restartBtn').addEventListener('click',restart);
     document.addEventListener('keydown',function(e){
       if(e.key==='Enter'&&e.target&&e.target.tagName==='INPUT'&&e.target.type!=='file'){
         e.preventDefault();
         if(state.stage<4)next();
-        else if(state.stage===4)$('waSend').click();
+        else if(state.stage===4)submitRequest();
       }
     });
-    // retour depuis WhatsApp : si l'envoi vers Insta-Pro n'a pas abouti, on réessaie
+    // dossier envoyé mais réception non confirmée (reprise d'un ancien envoi) : on réessaie au retour sur la page
     document.addEventListener('visibilitychange',function(){
       if(document.visibilityState==='visible'&&state.completed&&!state.finalizedOk&&!syncInFlight)sync();
     });
@@ -1007,7 +1008,6 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     document.body.classList.toggle('is-final',state.stage===5);
     renderProgress();renderType();renderCity();renderWhen();renderTexts();renderVolume();renderMeasure();renderPhotos();renderStyle();renderContact();renderBar();
     if(state.stage===5)renderDone();
-    refreshWa();
     localSave();
   }
   // changement de type ou de profil : le parcours (fil d'étapes, textes, champs) suit immédiatement
@@ -1062,10 +1062,10 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     // 04
     if(pp==='compte'){
       $('s4Eyebrow').textContent='Compte professionnel';$('s4Title').innerHTML='Ouvrez votre<br><em>compte.</em>';
-      $('s4Lead').textContent='Votre demande arrive directement sur notre WhatsApp. Nous l\'étudions et revenons vers vous avec vos conditions professionnelles.';
+      $('s4Lead').textContent='Votre demande arrive directement chez nous. Nous l\'étudions et revenons vers vous avec vos conditions professionnelles.';
     }else{
       $('s4Eyebrow').textContent=isPro()?'Demande professionnelle':'Votre demande';$('s4Title').innerHTML='Envoyez votre<br><em>demande.</em>';
-      $('s4Lead').textContent=isPro()?'Elle arrive directement sur notre WhatsApp, prête à être traitée. Nous revenons vers vous avec vos conditions professionnelles.':'Elle arrive directement sur notre WhatsApp, prête à être traitée. Nous revenons vers vous avec les modèles adaptés et la prochaine étape.';
+      $('s4Lead').textContent=isPro()?'Elle arrive directement chez nous, prête à être traitée. Nous revenons vers vous avec vos conditions professionnelles.':'Elle arrive directement chez nous, prête à être traitée. Nous revenons vers vous avec les modèles adaptés et la prochaine étape.';
     }
   }
   function renderVolume(){
@@ -1197,7 +1197,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
       try{var data=await api('/'+encodeURIComponent(state.token)+'/photos',{method:'POST',body:JSON.stringify({photos:photos})});hydrate(data.dossier);state.lastSyncOk=true;sent=true;}
       catch(e){state.lastSyncOk=false;}
     }
-    if(!sent){ // réseau indisponible : on compte les photos, elles seront envoyées dans la conversation WhatsApp
+    if(!sent){ // réseau indisponible : on compte les photos ; l'écran final invite à les envoyer sur WhatsApp
       state.photo_count=Math.min(MAX_PHOTOS,(state.photo_count||0)+photos.length);
       state.photos_pending=(state.photos_pending||0)+photos.length;
     }
@@ -1289,16 +1289,12 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 
   /* barre */
   function renderBar(){
-    var back=$('backBtn'),nx=$('nextBtn'),wa=$('waSend'),hint=$('barHint'),narrow=false,tiny=false;
-    try{narrow=window.matchMedia('(max-width:640px)').matches;tiny=window.matchMedia('(max-width:350px)').matches;}catch(e){}
-    back.classList.toggle('is-on',state.stage>1&&state.stage<5);
-    nx.disabled=false;
-    // étapes 04 et final : le bouton principal EST le lien WhatsApp (seul moyen d'envoyer la demande)
-    var send=state.stage>=4;
-    nx.style.display=send?'none':'';
-    wa.style.display=send?'inline-flex':'none';
-    if(state.stage===5){$('waSendLabel').textContent='Rouvrir WhatsApp';hint.textContent='';}
-    else if(state.stage===4){$('waSendLabel').textContent=tiny?'Envoyer':(narrow?'Envoyer sur WhatsApp':'Envoyer ma demande sur WhatsApp');hint.textContent='Envoi direct sur WhatsApp';}
+    var back=$('backBtn'),nx=$('nextBtn'),hint=$('barHint'),tiny=false;
+    try{tiny=window.matchMedia('(max-width:350px)').matches;}catch(e){}
+    back.classList.toggle('is-on',state.stage>1&&state.stage<5&&!sending);
+    nx.disabled=sending;
+    // étape 04 : le bouton principal envoie la demande (dans Insta-Pro), puis l'écran final propose WhatsApp, l'appel et l'itinéraire
+    if(state.stage===4){nx.textContent=sending?'Envoi en cours…':(tiny?'Envoyer':'Envoyer ma demande');hint.textContent='Dernière étape';}
     else{nx.textContent='Continuer';hint.textContent=state.stage===1?'Moins de 2 minutes':(state.stage===2?(pro()==='distributeur'?'Une estimation suffit':'Photo facultative'):'Plusieurs choix possibles');}
   }
 
@@ -1345,41 +1341,57 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     state.stage=stage;render();window.scrollTo({top:0,behavior:'auto'});trackStage(stage);if(!noSync)sync();
   }
   function next(){
-    if(state.stage>=4)return; // l'envoi se fait uniquement par le lien WhatsApp
+    if(state.stage>=4)return; // l'envoi se fait par submitRequest()
     if(!validate(state.stage))return;
     go(nextStage(state.stage));
   }
 
-  /* ---------- envoi : uniquement par WhatsApp ---------- */
-  // Le lien wa.me est un vrai <a> (ouverture fiable sur iPhone, Android, navigateurs Instagram/Facebook) ;
-  // sur ordinateur il s'ouvre dans un nouvel onglet (WhatsApp Web), la page reste ouverte.
-  function refreshWa(){
-    if(state.stage<4)return;
-    var url=waUrl(),desk=!isMobile();
-    ['waSend','waBtn'].forEach(function(id){var a=$(id);a.href=url;if(desk){a.target='_blank';a.rel='noopener noreferrer';}else{a.removeAttribute('target');a.rel='noreferrer';}});
+  /* ---------- envoi ---------- */
+  // Un clic sur « Envoyer » : le dossier est marqué « envoyé » dans Insta-Pro (Dossiers web ; demande pro →
+  // B2B Accounts → Demandes). L'écran final ne s'affiche qu'une fois la réception confirmée par Insta-Pro.
+  // Insta-Pro enregistre l'envoi puis envoie l'e-mail de notification avant de répondre (parfois plus d'une minute) :
+  // la réception est donc aussi confirmée par une lecture rapide du dossier, sans attendre cette réponse.
+  function wait(ms){return new Promise(function(r){setTimeout(r,ms);});}
+  function setSending(v){sending=v;renderBar();}
+  function isDone(d){return !!(d&&(d.status==='completed'||d.completed_at));}
+  async function receivedByServer(){
+    try{var data=await api('/'+encodeURIComponent(state.token),null,8000);if(isDone(data&&data.dossier)){hydrate(data.dossier);return true;}}catch(e){}
+    return false;
   }
-  function onWaClick(e){
-    if(state.stage===4){
-      if(!validate(4)){e.preventDefault();return;}
-      refreshWa(); // message à jour au moment du clic
-      submitRequest();
-      setTimeout(function(){go(5,true);},80); // après l'ouverture du lien
-    }else{
-      refreshWa();
-      try{if(typeof fbq==='function')fbq('track','Contact',{content_name:'whatsapp_rouvrir'});}catch(err){}
-    }
-  }
-  function submitRequest(){
-    // La demande est marquée « envoyée » dans Insta-Pro au moment où le client ouvre WhatsApp
-    // (keepalive : la requête part même si la page passe en arrière-plan).
-    clearTimeout(syncTimer);
-    state.completed=true;localSave();
-    try{if(typeof fbq==='function')fbq('track','Contact',{content_name:'whatsapp'});}catch(err){}
-    fireLead();fireGaDossier();
-    var send=function(){if(!state.finalizedOk&&!syncInFlight)sync(null,{keepalive:true});};
-    if(state.token)send();else ensureDossier().then(send);
-    setTimeout(function(){if(!state.finalizedOk&&!syncInFlight)sync();},8000);
-    setTimeout(function(){if(!state.finalizedOk&&!syncInFlight)sync();},30000);
+  async function submitRequest(){
+    if(sending||state.stage!==4)return;
+    if(!validate(4))return;
+    hideErr('send');setSending(true);clearTimeout(syncTimer);
+    try{
+      if(!state.token&&!(await ensureDossier()))throw new Error('reseau');
+      // une mise à jour en cours se termine d'abord : rien de « non envoyé » n'arrive après l'envoi
+      for(var i=0;i<40&&syncInFlight;i++)await wait(100);
+      var res={done:false,ok:false,err:null};
+      sync({completed:true,current_step:STEP_MAP[5]},{timeout:120000}).then(function(data){
+        res.ok=isDone(data&&data.dossier);res.err=res.ok?null:(state.lastSyncErr||new Error('reseau'));res.done=true;
+      });
+      var ok=false,t0=Date.now();
+      while(!ok&&Date.now()-t0<25000){
+        await wait(1200);
+        if(res.done){
+          if(res.ok){ok=true;break;}
+          if(res.err&&res.err.status===400)throw res.err;   // donnée refusée (ex. numéro) : on l'affiche
+          ok=await receivedByServer();                        // réponse en erreur mais envoi peut-être enregistré
+          if(!ok)throw res.err;
+          break;
+        }
+        ok=await receivedByServer();
+      }
+      if(!ok)throw res.err||new Error('reseau');
+      state.completed=true;state.finalizedOk=true;localSave();
+      try{if(typeof fbq==='function')fbq('track','Contact',{content_name:'projet_envoye'});}catch(err){}
+      fireLead();fireGaDossier();
+      sending=false;
+      go(5,true);
+    }catch(e){
+      var msg=(e&&e.status===400&&e.message&&e.message!=='HTTP 400')?e.message:'L\'envoi n\'a pas abouti. Vérifiez votre connexion et réessayez, ou appelez-nous au +212 614 474 221.';
+      showErr('send',msg);smoothTo(document.querySelector('.pj-err[data-err="send"]'));
+    }finally{setSending(false);}
   }
   function restart(){
     localClear();
@@ -1401,84 +1413,14 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
   }
   function typeImg(meta){return meta?((isMobile()&&meta.imgMobile)?meta.imgMobile:meta.img):'';}
   function renderDone(){
-    var a=state.answers,meta=TYPE_META[a.project_type],pp=pro();
-    $('nextText').textContent='Votre demande est prête dans WhatsApp : appuyez sur Envoyer. '+segment()+(state.photos_pending?' Joignez vos photos directement dans la conversation.':'')+' WhatsApp ne s\'est pas ouvert ? Touchez « Rouvrir WhatsApp ».';
+    var meta=TYPE_META[state.answers.project_type];
+    $('nextText').textContent=segment()+(state.photos_pending?' Vos photos n\'ont pas pu être jointes : envoyez-les-nous sur WhatsApp.':'');
     var img=$('doneImg');
     var firstModel=selected().length?MODEL_BY_NAME[selected()[0]]:null;
     var src=meta?typeImg(meta):(firstModel?firstModel.img:'realisations/mattoni-facade-villa-800.webp');
     img.src=IMG+src;img.alt=meta?meta.label:'Votre projet';img.classList.toggle('pro',isPro());
-    var rows=[];
-    if(pp){
-      rows.push(['Profil',PRO_META[pp].label]);
-      if(state.contact.company)rows.push(['Société',state.contact.company]);
-      if(pp==='compte'&&ACTIVITY[a.pro_activity])rows.push(['Activité',ACTIVITY[a.pro_activity]]);
-    }else if(meta)rows.push(['Projet',meta.label]);
-    if(a.city)rows.push([pp==='distributeur'?'Zone':'Ville',a.city]);
-    if(pp==='distributeur'){
-      if(a.distributor_volume)rows.push(['Volumes',a.distributor_volume]);
-      if(a.sales_point)rows.push(['Activité',a.sales_point]);
-    }else if(pp!=='compte'){
-      rows.push(['Surface',surfaceText()]);
-      if(a.measurement_mode==='visit'&&(a.measurement_date_options||[]).length)rows.push(['Disponibilités',a.measurement_date_options.map(fmtDate).join(' · ')]);
-    }
-    if(pp!=='compte'){
-      if(a.timeframe)rows.push(['Échéance',a.timeframe]);
-      rows.push([selected().length>1?'Modèles':'Modèle',modelLabel()]);
-      var n=state.photo_count||thumbs.length;if(n)rows.push(['Photos',String(n)]);
-    }
-    if(state.code&&!/^LOCAL/.test(state.code))rows.push(['Référence',state.code]);
-    $('doneRows').innerHTML=rows.map(function(r){return '<div class="row"><span>'+esc(r[0])+'</span><b>'+esc(r[1])+'</b></div>';}).join('');
+    $('doneRef').textContent=(state.code&&!/^LOCAL/.test(state.code))?'Référence '+state.code:'';
   }
-  function surfaceText(){
-    var a=state.answers;
-    if(a.surface_m2){
-      var dims=a.measurement_mode==='dimensions'&&a.wall_length&&a.wall_height?' ('+fmt(a.wall_length)+' m × '+fmt(a.wall_height)+' m)':'';
-      return '≈ '+fmt(a.surface_m2)+' m²'+dims;
-    }
-    return a.measurement_mode==='visit'?'Prise de mesures souhaitée':'À préciser';
-  }
-  /* message WhatsApp : pré-rédigé, classé par rubriques (gras WhatsApp *…*) */
-  function waMessage(){
-    var a=state.answers,c=state.contact,pp=pro(),meta=TYPE_META[a.project_type];
-    var code=state.code&&!/^LOCAL/.test(state.code)?state.code:'';
-    var L=[],sec=function(title,lines){lines=lines.filter(Boolean);if(!lines.length)return;L.push('');L.push('*'+title+'*');lines.forEach(function(x){L.push(x);});};
-    L.push('Bonjour Deutschconfort,');
-    L.push(pp==='compte'?'je souhaite ouvrir un compte professionnel.':(pp?'voici ma demande professionnelle.':'voici ma demande de projet.'));
-    L.push('');
-    L.push('*'+(pp==='compte'?'OUVERTURE DE COMPTE PROFESSIONNEL':(pp?'DEMANDE PROFESSIONNELLE · '+PRO_META[pp].label.toUpperCase():'DEMANDE DE PROJET · '+(meta?meta.label.toUpperCase():'MUR')))+'*');
-    if(code)L.push('Référence : '+code);
-    sec('Contact',[
-      'Nom : '+(c.full_name||'').trim(),
-      pp&&c.company?(pp==='architecte'?'Cabinet / société : ':(pp==='distributeur'?'Société / enseigne : ':'Société : '))+c.company.trim():null,
-      pp==='compte'&&ACTIVITY[a.pro_activity]?'Activité : '+ACTIVITY[a.pro_activity]:null,
-      c.phone?'WhatsApp : '+c.phone.trim():null,
-      c.email?'E-mail : '+c.email.trim():null
-    ]);
-    if(pp==='compte'){
-      sec('Localisation',['Ville : '+(a.city||'non précisée')]);
-    }else{
-      sec(pp==='distributeur'?'Distribution':'Projet',[
-        (pp==='distributeur'?'Zone : ':'Ville : ')+(a.city||'non précisée'),
-        'Échéance : '+(a.timeframe||'non précisée')
-      ]);
-      if(pp==='distributeur'){
-        sec('Volumes',[a.distributor_volume||'à préciser',a.sales_point?'Activité : '+a.sales_point:null]);
-      }else{
-        sec('Surface',[
-          surfaceText(),
-          a.measurement_mode==='visit'&&(a.measurement_date_options||[]).length?'Disponibilités : '+a.measurement_date_options.map(fmtDate).join(' / '):null,
-          a.measurement_mode==='visit'&&a.measurement_address?'Adresse : '+a.measurement_address:null
-        ]);
-      }
-      sec(selected().length>1?'Modèles':'Modèle',[selected().length?selected().join(', '):'Je souhaite être conseillé']);
-      var n=state.photo_count||thumbs.length;
-      if(n)sec('Photos',[n+(n>1?' photos':' photo')+(state.photos_pending?' : je vous les envoie ici':(n>1?' ajoutées au dossier':' ajoutée au dossier'))]);
-    }
-    L.push('');
-    L.push('Réf W-PRJ'+(srcCode()?' · '+srcCode():''));
-    return L.join('\n');
-  }
-  function waUrl(){return 'https://wa.me/'+WA_NUMBER+'?text='+encodeURIComponent(waMessage());}
   function fireLead(){
     try{
       var key='dc_lead_'+(state.code||state.token||'local');
