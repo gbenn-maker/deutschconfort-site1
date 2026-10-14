@@ -13,6 +13,11 @@ Chaque `git push origin main` déclenche automatiquement la mise en ligne
 - `css/site.css` : feuille partagée (charte 2026 — Bodoni Moda + Jost,
   palette Basalte/Chaux/Sable/Oxyde). Les couleurs et typos se changent ici.
 - `js/site.js` : menu mobile, lien catalogue, tracking Pixel des clics WhatsApp/tel.
+- Catalogue (14/10/2026) : `media/catalogue-le-celestone-2026.pdf` (Le Celestone 2026, 35 pages, sans prix,
+  version écran 14 Mo). Tous les liens `data-catalogue` (barre du haut, menu mobile, section « Le catalogue 2026 »
+  de l'accueil) le téléchargent sous le nom `Deutschconfort_Catalogue_LeCelestone_2026.pdf`. Pour changer de
+  catalogue : remplacer le PDF (même nom) ou modifier `CATALOGUE_URL` / `CATALOGUE_FILE` dans `js/site.js`.
+  Mesure : Meta Pixel `TelechargementCatalogue` (personnalisé) et GA4 `telechargement_catalogue`.
 - `images/` : chaque photo existe en `.webp` (max 1600px) et `-800.webp`
   (grilles). Les originaux jpg/png restent dans le dépôt mais ne sont plus
   référencés par les pages.

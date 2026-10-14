@@ -87,7 +87,7 @@ nav.wrap{display:flex;align-items:center;justify-content:space-between;height:84
 .mobile-menu a{font-family:var(--serif);font-size:26px;padding:14px 0;border-bottom:1px solid var(--line);color:var(--basalte)}
 .mobile-menu .mgroup{font-family:var(--sans);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--encre);border-bottom:none;padding:26px 0 4px}
 .mobile-menu .mcta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:28px}
-.mobile-menu .mcta .btn{font-size:11px;padding:14px 10px;font-family:var(--sans);border-bottom:none;color:var(--basalte)}
+.mobile-menu .mcta .btn{font-size:11px;padding:14px 10px;font-family:var(--sans);border-bottom:1px solid var(--basalte);color:var(--basalte)}
 .mobile-menu .mcta .btn-fill{color:var(--chaux)}
 
 /* barre d'action mobile (sticky bas d'écran) */

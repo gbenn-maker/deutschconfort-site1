@@ -62,11 +62,14 @@
 
   // ---------- Événements ----------
   // clic_whatsapp · clic_tel · envoi_devis (/devis) · dossier_projet (déclenché par /projet/)
+  // telechargement_catalogue (liens data-catalogue, 14/10/2026)
   document.addEventListener('click', function(e){
     var a = e.target.closest && e.target.closest('a');
     if (!a) return;
     var h = a.getAttribute('href') || '';
-    if (h.indexOf('wa.me') > -1){
+    if (a.hasAttribute('data-catalogue')){
+      window.gtag('event', 'telechargement_catalogue', { page_name: pageName() });
+    } else if (h.indexOf('wa.me') > -1){
       window.gtag('event', 'clic_whatsapp', {
         page_name: pageName(), code_source: waCode(h),
         link_text: (a.textContent || '').replace(/\s+/g, ' ').trim().slice(0, 40)
