@@ -259,15 +259,18 @@
     body.is-final .pj-bar{display:none}
     body.is-final main.pj-main{padding-bottom:80px !important}
 
-    /* onglet déroulant « Catalogue » (15/10/2026) : « Voir le catalogue » télécharge directement le PDF 2026 */
-    .pj-head .navactions{gap:30px}
-    .pj-cat-tab{display:inline-flex;align-items:center;gap:9px;background:none;border:0;border-bottom:1px solid transparent;padding:0 0 3px;font-size:11.5px;font-weight:400;letter-spacing:.18em;text-transform:uppercase;color:var(--basalte);transition:border-color .2s}
-    .pj-cat-tab svg{width:15px;height:15px;flex:none}
-    .pj-cat-tab .chev{width:11px;height:11px;transition:transform .25s}
-    .pj-cat-tab:hover,.pj-cat-tab[aria-expanded="true"]{border-bottom-color:var(--basalte)}
+    /* bandeau « Voir le catalogue 2026 » en tête de page (15/10/2026) : fin, discret, toujours visible (en-tête collant) ;
+       il déroule le panneau du catalogue, dont le bouton « Voir le catalogue » télécharge directement le PDF 2026 */
+    .pj-catbar{background:var(--basalte);color:var(--chaux);text-align:center}
+    .pj-cat-tab{display:inline-flex;align-items:center;justify-content:center;gap:9px;height:34px;padding:0 6px;background:none;border:0;font-size:11px;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--chaux)}
+    .pj-cat-tab span{border-bottom:1px solid rgba(245,242,236,.45);padding-bottom:2px;transition:border-color .2s}
+    .pj-cat-tab:hover span,.pj-cat-tab[aria-expanded="true"] span{border-bottom-color:var(--chaux)}
+    .pj-cat-tab svg{width:14px;height:14px;flex:none}
+    .pj-cat-tab .chev{width:10px;height:10px;transition:transform .25s}
     .pj-cat-tab[aria-expanded="true"] .chev{transform:rotate(180deg)}
-    .pj-cat-drop{position:absolute;left:0;right:0;top:100%;pointer-events:none}
-    .pj-cat-drop .pj-wrap{display:flex;justify-content:flex-end}
+    .pj-cat-tab:focus-visible{outline:1px solid var(--chaux);outline-offset:-4px}
+    .pj-cat-drop{position:absolute;left:0;right:0;top:34px;z-index:5;pointer-events:none}
+    .pj-cat-drop .pj-wrap{display:flex;justify-content:center}
     .pj-cat-panel{pointer-events:auto;width:min(470px,100%);display:grid;grid-template-columns:112px minmax(0,1fr);gap:26px;align-items:start;background:var(--chaux);border:1px solid var(--line);border-top:0;padding:26px;box-shadow:0 34px 60px -36px rgba(20,20,15,.5);opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .22s,transform .22s,visibility 0s linear .22s}
     html.cat-open .pj-cat-panel{opacity:1;visibility:visible;transform:none;transition:opacity .22s,transform .22s,visibility 0s}
     .pj-cat-cover{display:block;box-shadow:0 18px 30px -18px rgba(20,20,15,.55)}
@@ -294,9 +297,6 @@
       .pj-wrap,.pj-bar{padding-left:20px;padding-right:20px}
       .pj-head .hcall{display:inline-flex}
       .pj-tel{display:none}
-      .pj-head .navactions{gap:8px}
-      .pj-cat-tab{height:44px;padding:0 12px;border:1px solid var(--basalte);gap:8px;font-size:11px;letter-spacing:.16em}
-      .pj-cat-tab[aria-expanded="true"]{background:var(--basalte);color:var(--chaux)}
       .pj-cat-drop .pj-wrap{padding:0}
       .pj-cat-panel{width:100%;border-left:0;border-right:0;grid-template-columns:96px minmax(0,1fr);gap:20px;padding:22px 20px 24px}
       .pj-cat-panel{grid-template-columns:96px minmax(0,440px)}
@@ -322,14 +322,9 @@
       .pj-step.is-active{font-size:10.5px;letter-spacing:.2em}
       .pj-step.is-active .n{margin-right:7px}
       .pj-step::after{right:0}
-      /* téléphone : l'onglet Catalogue passe dans la rangée des étapes (place dans l'en-tête : logo + appel) */
-      .pj-progress{position:relative;z-index:55}
-      .pj-progress .pj-wrap,.pj-progress.is-short .pj-wrap{display:flex;align-items:center}
-      .pj-progress .pj-cat-tab{margin-left:auto;height:auto;border:0;border-bottom:1px solid transparent;margin-bottom:-1px;padding:14px 0 12px;font-size:10.5px;letter-spacing:.2em;gap:7px}
-      .pj-progress .pj-cat-tab[aria-expanded="true"]{background:none;color:var(--basalte);border-bottom-color:var(--basalte)}
-      .pj-progress .pj-cat-tab svg{width:14px;height:14px}
-      .pj-progress .pj-cat-tab .chev{width:10px;height:10px}
-      .pj-progress .pj-cat-panel{grid-template-columns:84px minmax(0,1fr);gap:18px}
+      .pj-cat-panel{grid-template-columns:84px minmax(0,1fr);gap:18px}
+      .pj-cat-tab{height:32px;font-size:10.5px;letter-spacing:.18em;gap:8px}
+      .pj-cat-drop{top:32px}
       .pj-title{padding:34px 0 24px}
       .pj-title h1,.pj-title h2{font-size:clamp(34px,10.5vw,44px);max-width:none}
       .pj-title .lead{font-size:15.5px;margin-top:14px}
@@ -364,8 +359,8 @@
     }
     @media(max-width:400px){
       .pj-back{letter-spacing:.12em}
-      .pj-progress .pj-cat-tab svg:not(.chev){display:none}
-      .pj-progress .pj-cat-panel{grid-template-columns:64px minmax(0,1fr);gap:16px}
+      .pj-cat-panel{grid-template-columns:64px minmax(0,1fr);gap:16px}
+      .pj-cat-tab{letter-spacing:.14em}
       .pj-cat-panel .btn{padding:13px 10px;letter-spacing:.14em;white-space:nowrap}
     }
     @media(max-width:380px){
@@ -414,10 +409,12 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
 <body>
 
 <header class="pj-head">
+  <div class="pj-catbar">
+    <button type="button" class="pj-cat-tab" id="pjCatTab" aria-expanded="false" aria-controls="pjCatPanel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 5.6c2.7-1.1 5.4-1 8 .9v12.9c-2.6-1.9-5.3-2-8-.9V5.6Zm18 0c-2.7-1.1-5.4-1-8 .9v12.9c2.6-1.9 5.3-2 8-.9V5.6Z"/></svg><span>Voir le catalogue 2026</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 9 7 7 7-7"/></svg></button>
+  </div>
   <nav class="wrap">
     <a class="brand" href="../">Deutschconfort<small>Solutions architecturales de surfaces</small></a>
     <div class="navactions">
-      <button type="button" class="pj-cat-tab" id="pjCatTab" aria-expanded="false" aria-controls="pjCatPanel"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 5.6c2.7-1.1 5.4-1 8 .9v12.9c-2.6-1.9-5.3-2-8-.9V5.6Zm18 0c-2.7-1.1-5.4-1-8 .9v12.9c2.6-1.9 5.3-2 8-.9V5.6Z"/></svg><span>Catalogue</span><svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m5 9 7 7 7-7"/></svg></button>
       <a class="pj-tel" href="tel:+212614474221"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.6 3.5h2.6l1.5 4.2-2 1.4a12 12 0 0 0 6.2 6.2l1.4-2 4.2 1.5v2.6a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg>+212 614 474 221</a>
       <a class="hcall" href="tel:+212614474221" aria-label="Appeler Deutschconfort au +212 614 474 221"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6.6 3.5h2.6l1.5 4.2-2 1.4a12 12 0 0 0 6.2 6.2l1.4-2 4.2 1.5v2.6a2 2 0 0 1-2.2 2A17 17 0 0 1 4.6 5.7a2 2 0 0 1 2-2.2Z"/></svg><span>Appeler</span></a>
     </div>
@@ -438,29 +435,18 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
   </div>
 </header>
 <script>
-/* onglet « Catalogue » : ouverture / fermeture ; le clic sur « Voir le catalogue » télécharge le PDF
-   (attribut download, même domaine). Téléphone (≤ 640 px) : l'onglet et son panneau passent dans la
-   rangée des étapes. Mesure : GA4 telechargement_catalogue via js/mesure.js, Meta Pixel
-   TelechargementCatalogue ci-dessous (js/site.js n'est pas chargé sur /projet/). */
-document.addEventListener('DOMContentLoaded',function(){
-  var root=document.documentElement,head=document.querySelector('.pj-head'),
-      tab=document.getElementById('pjCatTab'),panel=document.getElementById('pjCatPanel'),
-      drop=document.querySelector('.pj-cat-drop'),prog=document.getElementById('progress');
-  if(!head||!tab||!panel||!drop)return;
-  var navSlot=tab.parentNode,progWrap=prog&&prog.querySelector('.pj-wrap');
-  var mq=window.matchMedia?window.matchMedia('(max-width:640px)'):null;
-  function place(){
-    if(mq&&mq.matches&&progWrap){progWrap.appendChild(tab);prog.appendChild(drop);}
-    else{navSlot.insertBefore(tab,navSlot.firstChild);head.appendChild(drop);}
-  }
+/* bandeau « Voir le catalogue 2026 » : ouverture / fermeture du panneau ; le clic sur « Voir le catalogue »
+   (ou la couverture) télécharge le PDF (attribut download, même domaine). Mesure : GA4 telechargement_catalogue
+   via js/mesure.js, Meta Pixel TelechargementCatalogue ci-dessous (js/site.js n'est pas chargé sur /projet/). */
+(function(){
+  var root=document.documentElement,tab=document.getElementById('pjCatTab'),panel=document.getElementById('pjCatPanel');
+  if(!tab||!panel)return;
   function isOpen(){return root.classList.contains('cat-open');}
   function set(open){
     root.classList.toggle('cat-open',open);
     tab.setAttribute('aria-expanded',open?'true':'false');
     panel.setAttribute('aria-hidden',open?'false':'true');
   }
-  place();
-  if(mq){if(mq.addEventListener)mq.addEventListener('change',place);else if(mq.addListener)mq.addListener(place);}
   tab.addEventListener('click',function(){set(!isOpen());});
   document.addEventListener('click',function(e){
     if(isOpen()&&!panel.contains(e.target)&&!tab.contains(e.target))set(false);
@@ -474,7 +460,7 @@ document.addEventListener('DOMContentLoaded',function(){
       setTimeout(function(){set(false);},600);
     });
   });
-});
+})();
 </script>
 
 <div class="pj-progress" id="progress" aria-label="Avancement">
@@ -1087,7 +1073,8 @@ document.addEventListener('DOMContentLoaded',function(){
 
   function smoothTo(el){
     if(!el)return;
-    var top=el.getBoundingClientRect().top+window.pageYOffset-110;
+    var hd=document.querySelector('.pj-head'),off=(hd?hd.offsetHeight:84)+26; // en-tête collant (bandeau catalogue compris)
+    var top=el.getBoundingClientRect().top+window.pageYOffset-off;
     window.scrollTo({top:Math.max(0,top),behavior:'smooth'});
   }
   function showErr(k,msg){var e=document.querySelector('.pj-err[data-err="'+k+'"]');if(!e)return;if(msg)e.textContent=msg;e.classList.add('is-on');}
