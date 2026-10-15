@@ -18,6 +18,10 @@ Chaque `git push origin main` déclenche automatiquement la mise en ligne
   de l'accueil) le téléchargent sous le nom `Deutschconfort_Catalogue_LeCelestone_2026.pdf`. Pour changer de
   catalogue : remplacer le PDF (même nom) ou modifier `CATALOGUE_URL` / `CATALOGUE_FILE` dans `js/site.js`.
   Mesure : Meta Pixel `TelechargementCatalogue` (personnalisé) et GA4 `telechargement_catalogue`.
+  `/projet/` (15/10/2026) : onglet déroulant « Catalogue » dans l'en-tête (sur téléphone ≤ 640 px, il passe à droite
+  de la rangée des étapes) ; le bouton « Voir le catalogue » et la couverture (`images/catalogue-2026-couverture-240.webp`)
+  téléchargent directement le même PDF. Le lien est écrit en dur dans `projet/index.html` (site.js n'y est pas chargé) :
+  en cas de changement de nom du PDF, le modifier aussi là. Même mesure (Pixel en ligne dans la page, GA4 via mesure.js).
 - `images/` : chaque photo existe en `.webp` (max 1600px) et `-800.webp`
   (grilles). Les originaux jpg/png restent dans le dépôt mais ne sont plus
   référencés par les pages.
