@@ -87,7 +87,7 @@
     /* Professionnel : 4 profils + avantages du compte */
     .pj-pro{display:none;margin-top:34px}
     .pj-pro.is-on{display:block;animation:pjIn .4s}
-    .pj-pro-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+    .pj-pro-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
     .pj-pro-opt{position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:7px;min-height:132px;padding:20px 20px 18px;border:1px solid var(--line);background:transparent;color:var(--basalte);text-align:left;font:inherit;cursor:pointer;transition:background .25s,color .25s,border-color .25s}
     .pj-pro-opt b{font-family:var(--serif);font-weight:400;font-size:22px;line-height:1.1;padding-right:26px}
     .pj-pro-opt .s{font-size:12.5px;line-height:1.4;color:var(--encre);transition:color .25s}
@@ -303,6 +303,7 @@
       .pj-tiles{grid-template-columns:repeat(2,1fr)}
       .pj-tile .ph{aspect-ratio:4/3}
       .pj-pro-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+      .pj-pro-opt.is-account{grid-column:1/-1}
       .pj-perks{grid-template-columns:1fr}
       .pj-photo{grid-template-columns:1fr;gap:26px}
       .pj-done{grid-template-columns:1fr;gap:34px}
@@ -503,7 +504,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
           <button type="button" class="pj-tile" data-field="project_type" data-value="Professionnel" aria-pressed="false">
             <span class="tick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span>
             <div class="ph"><img class="pro" src="../images/realisations/mur-relief-eclairage-pro-800.webp" alt="Mur en relief sous un éclairage rasant, dans un intérieur professionnel" loading="lazy"></div>
-            <div class="meta"><h3>Professionnel</h3><p>Architecte · promoteur · distributeur</p></div>
+            <div class="meta"><h3>Professionnel</h3><p>Architecte · promoteur · hôtel · commerce</p></div>
           </button>
         </div>
         <p class="pj-note" id="typeNote"></p>
@@ -514,7 +515,6 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
           <div class="pj-pro-grid" id="proGrid" role="group" aria-label="Profil professionnel">
             <button type="button" class="pj-pro-opt" data-pro="architecte" aria-pressed="false"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>Architecte</b><span class="s">Architecte · décorateur · bureau d'études</span></button>
             <button type="button" class="pj-pro-opt" data-pro="immobilier" aria-pressed="false"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>Projet immobilier / commercial</b><span class="s">Promotion · hôtel · commerce · bureaux</span></button>
-            <button type="button" class="pj-pro-opt" data-pro="distributeur" aria-pressed="false"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>Distributeur</b><span class="s">Showroom · négoce · revente</span></button>
             <button type="button" class="pj-pro-opt is-account" data-pro="compte" aria-pressed="false"><span class="box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></span><b>Ouvrir mon compte</b><span class="s">Compte professionnel Deutschconfort</span></button>
           </div>
           <div class="pj-err" data-err="pro_profile">Choisissez votre profil pour continuer.</div>
@@ -526,7 +526,6 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
                 <li><b>Stock de gros, en continu</b><span>Grandes quantités disponibles en continu, pour suivre vos chantiers.</span></li>
                 <li><b>Kit échantillons offert</b><span>Les modèles en main, catalogue inclus. Réservé aux 50 premiers professionnels.</span></li>
                 <li><b>Formation de pose offerte</b><span>Vos équipes formées à la pose en un ou deux chantiers.</span></li>
-                <li><b>Demandes de votre région</b><span>Distributeurs : les demandes de clients de votre zone vous sont transmises.</span></li>
                 <li><b>Un interlocuteur direct</b><span>Vos demandes, devis et chantiers suivis sur WhatsApp.</span></li>
               </ul>
               <button type="button" class="pj-perks-go" id="perksGo">Ouvrir mon compte</button>
@@ -963,6 +962,7 @@ src="https://www.facebook.com/tr?id=1750427786411371&ev=PageView&noscript=1"/></
     // ?modele=big-rock · ?mesure=1 (prise de mesures)
     var t=(qs('type')||'').toLowerCase(),pp=(qs('pro')||'').toLowerCase();
     if(t==='commerce'){t='pro';if(!pp)pp='immobilier';}
+    if(pp==='distributeur')pp='compte'; // profil retiré du parcours : anciens liens → ouverture de compte
     if(t==='professionnel'||PRO_META[pp])t='pro';
     if(t&&!state.answers.project_type){
       Object.keys(TYPE_META).forEach(function(k){if(TYPE_META[k].key===t)state.answers.project_type=k;});
