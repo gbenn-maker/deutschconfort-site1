@@ -26,7 +26,7 @@ Chaque `git push origin main` déclenche automatiquement la mise en ligne
 - `images/` : chaque photo existe en `.webp` (max 1600px) et `-800.webp`
   (grilles). Les originaux jpg/png restent dans le dépôt mais ne sont plus
   référencés par les pages.
-- `/visualiseur/` : outil de projection (WebGL + API Insta-Pro), design propre.
+- `/visualiseur/` : redirection vers `/projet/?src=W-VIS` (noindex) depuis le 21/10/2026 — l'ancienne démo (catalogue de secours jugé faux) est retirée ; le visualiseur v3 est en reconstruction (étude du 21/10/2026, doc « Visualiseur Le Celestone »).
 - `/projet/` : configurateur de projet en 4 étapes (Projet · Espace · Style · Coordonnées), même charte
   que le site (`css/site.css`), API Insta-Pro `/api/public/web-projects` inchangée (dossier, photos, WhatsApp).
   Paramètres d'URL : `?src=W-XXX` (page d'origine), `?type=facade|jardin|interieur|commerce` (usage présélectionné),
