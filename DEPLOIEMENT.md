@@ -26,6 +26,13 @@ Chaque `git push origin main` déclenche automatiquement la mise en ligne
 - `images/` : chaque photo existe en `.webp` (max 1600px) et `-800.webp`
   (grilles). Les originaux jpg/png restent dans le dépôt mais ne sont plus
   référencés par les pages.
+- Vidéo de pose (22/10/2026) : vidéo explicative sans voix « Le Celestone · la pose en 6 étapes » (50 s, musique).
+  `media/pose-explicative-celestone-9x16.mp4` (720×1280) et `media/pose-explicative-celestone-16x9.mp4` (1600×900),
+  affiches `images/realisations/pose-explicative-poster-9x16|16x9.webp` (+ `.jpg` pour le JSON-LD VideoObject).
+  `panneaux-modeles.html` et `revetement-mural.html` : verticale sur téléphone, horizontale à partir de 900 px
+  (`data-src` / `data-src-wide`, choix fait par le script de la page) ; `pose-installation.html` : verticale.
+  Sources et montage : PC › `05_CONTENT_OS/07_EXPORTS/VIDEO_EXPLICATIVE_POSE`. Les anciens fichiers
+  `media/pose-installation.mp4` et `media/pose-panneaux-interieur.mp4` ne sont plus référencés.
 - `/visualiseur/` : redirection vers `/projet/?src=W-VIS` (noindex) depuis le 21/10/2026 — l'ancienne démo (catalogue de secours jugé faux) est retirée ; le visualiseur v3 est en reconstruction (étude du 21/10/2026, doc « Visualiseur Le Celestone »).
 - `/projet/` : configurateur de projet en 4 étapes (Projet · Espace · Style · Coordonnées), même charte
   que le site (`css/site.css`), API Insta-Pro `/api/public/web-projects` inchangée (dossier, photos, WhatsApp).
